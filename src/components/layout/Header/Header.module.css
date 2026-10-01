@@ -1,0 +1,55 @@
+/* ===== Layout ===== */
+.header {
+  display: grid;
+  /* Equal side columns keep the logo centered */
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-areas:
+    "menu logo cart"
+    "nav  nav  nav";
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ===== Areas ===== */
+.menuArea {
+  grid-area: menu;
+  justify-self: start;
+}
+
+.logoLink {
+  grid-area: logo;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.cartArea {
+  grid-area: cart;
+  justify-self: end;
+}
+
+.navArea {
+  grid-area: nav;
+}
+
+/* ===== Responsive ===== */
+@media (min-width: 600px) {
+  .header {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "logo nav cart";
+    column-gap: var(--space-md);
+  }
+
+  /* Removed from the grid, otherwise it would create an extra column */
+  .menuArea {
+    display: none;
+  }
+
+  .navArea {
+    justify-self: end;
+  }
+}

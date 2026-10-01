@@ -1,13 +1,17 @@
 import { Outlet } from "react-router";
+import Header from "./components/layout/Header/Header";
 
 // ===== App layout =====
-// Shared layout for all pages. Header and footer are added in the next step.
+// Shared layout for all pages. The footer is added in the next step.
 
 const App = () => {
   return (
-    <main>
-      <Outlet />
-    </main>
+    <>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+    </>
   );
 };
 
