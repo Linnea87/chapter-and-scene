@@ -6,12 +6,15 @@ import MovieDetailPage from "../pages/MovieDetailPage/MovieDetailPage";
 import TvDetailPage from "../pages/TvDetailPage/TvDetailPage";
 import CartPage from "../pages/CartPage/CartPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 // All pages render inside App, which provides the shared layout
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
+
     children: [
       { index: true, element: <HomePage /> },
       { path: "explore", element: <ExplorePage /> },
