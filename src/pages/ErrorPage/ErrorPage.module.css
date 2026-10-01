@@ -1,0 +1,31 @@
+/* ===== Layout ===== */
+/* Fills the screen and centers the content, since no header or footer is shown */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  min-height: 100vh;
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+}
+
+/* ===== Text ===== */
+.message {
+  max-width: 40ch;
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+/* ===== Link ===== */
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  padding: 0 var(--space-lg);
+  color: var(--color-primary-contrast);
+  text-decoration: none;
+  background-color: var(--color-primary);
+  border-radius: var(--radius);
+}

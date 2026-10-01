@@ -1,0 +1,55 @@
+/* ===== Visibility ===== */
+/* Hidden on mobile until the menu is opened */
+.nav {
+  display: none;
+  width: 100%;
+}
+
+.open {
+  display: block;
+}
+
+/* ===== List ===== */
+.navList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  padding: var(--space-sm) 0;
+  list-style: none;
+}
+
+/* ===== Links ===== */
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    color: var(--color-text-muted);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (min-width: 600px) {
+  .nav {
+    display: block;
+    width: auto;
+  }
+
+  .navList {
+    flex-direction: row;
+    gap: var(--space-md);
+    padding: 0;
+  }
+}

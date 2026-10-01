@@ -1,0 +1,21 @@
+/* ===== Link ===== */
+.cartLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  color: var(--color-text);
+}
+
+/* ===== States ===== */
+.active {
+  color: var(--color-primary);
+}
+
+@media (hover: hover) {
+  .cartLink:hover {
+    color: var(--color-text-muted);
+  }
+}
