@@ -1,8 +1,8 @@
-// ===== Catalog page =====
+// ===== Explore page =====
 // Placeholder until the catalog is built in CS-001
 
-const CatalogPage = () => {
+const ExplorePage = () => {
   return <h1>Explore</h1>;
 };
 
-export default CatalogPage;
+export default ExplorePage;
