@@ -1,4 +1,4 @@
-import { TMDB_IMAGE_BASE_URL } from "../services/tmdbConfig";
+import { TMDB_IMAGE_BASE_URL } from "./tmdbConfig";
 
 // Builds a full TMDb image URL. Smaller sizes load faster on mobile.
 // Common sizes: w185, w342, w500, w780, original
