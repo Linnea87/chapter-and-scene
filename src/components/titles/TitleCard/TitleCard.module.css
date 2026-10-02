@@ -1,0 +1,69 @@
+/* ===== Card ===== */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== Poster ===== */
+/* Fixed 2:3 ratio keeps all cards the same height, with or without an image */
+.posterWrapper {
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background-color: var(--color-border);
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* ===== Text ===== */
+.title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.type {
+  padding: 0 var(--space-xs);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+/* ===== States ===== */
+@media (hover: hover) {
+  .card:hover .poster {
+    transform: scale(1.03);
+  }
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius);
+}
