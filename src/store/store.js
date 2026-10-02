@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "../features/cart/cartSlice";
-import { tmdbApi } from "../services/tmdbApi";
+import { tmdbApi } from "../services/tmdb/tmdbApi";
 
 // ===== Store =====
 // Single global store for the app. API services from RTK Query are added in CS-038.
