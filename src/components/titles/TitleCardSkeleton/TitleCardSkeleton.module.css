@@ -1,0 +1,48 @@
+/* ===== Card ===== */
+/* Same layout as TitleCard, so the page does not jump when real cards appear */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* ===== Blocks ===== */
+.block {
+  background-color: var(--color-border);
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.poster {
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius);
+}
+
+.title {
+  width: 80%;
+  height: 1rem;
+}
+
+.meta {
+  width: 50%;
+  height: 0.8rem;
+}
+
+/* ===== Animation ===== */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  .block {
+    animation: none;
+  }
+}
