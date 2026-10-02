@@ -7,7 +7,11 @@ import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGr
 // Shows movies and series based on books. Loading and error states are improved in CS-004 and CS-005.
 
 const ExplorePage = () => {
-  const { titles, isLoading, error } = useExploreTitles();
+  const { titles, isLoading, isFetching, error, refetch } = useExploreTitles();
+
+  // isLoading is only true on the first request, so a retry after an error
+  // uses isFetching to show the skeleton again
+  const showSkeleton = isLoading || (error && isFetching);
 
   return (
     <section className={styles.page}>
@@ -17,9 +21,17 @@ const ExplorePage = () => {
         story.
       </p>
 
-      {isLoading && <TitleGridSkeleton />}
-      {error && <p>Something went wrong while loading titles.</p>}
-      {!isLoading && !error && <TitleGrid titles={titles} />}
+      {showSkeleton && <TitleGridSkeleton />}
+
+      {!showSkeleton && error && (
+        <ErrorMessage
+          title="We couldn't load the titles"
+          message="Check your connection and try again."
+          onRetry={refetch}
+        />
+      )}
+
+      {!showSkeleton && !error && <TitleGrid titles={titles} />}
     </section>
   );
 };

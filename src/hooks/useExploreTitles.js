@@ -13,10 +13,18 @@ const useExploreTitles = () => {
     ...(series.data?.results ?? []),
   ].sort((a, b) => b.popularity - a.popularity);
 
+  // Retries both requests, e.g. from a "Try again" button
+  const refetch = () => {
+    movies.refetch();
+    series.refetch();
+  };
+
   return {
     titles,
     isLoading: movies.isLoading || series.isLoading,
-    error: movies.error || series.error,
+    isFetching: movies.isFetching || series.isFetching,
+    error: movies.error ?? series.error,
+    refetch,
   };
 };
 
