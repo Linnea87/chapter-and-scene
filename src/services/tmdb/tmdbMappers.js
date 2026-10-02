@@ -1,0 +1,27 @@
+// ===== TMDb mappers =====
+// Films and series use different field names in TMDb. These map both to one shape,
+// so components do not need to know the difference.
+
+export const mapTitle = (item, mediaType) => {
+  const isMovie = mediaType === "movie";
+  const date = isMovie ? item.release_date : item.first_air_date;
+
+  return {
+    id: item.id,
+    mediaType,
+    title: isMovie ? item.title : item.name,
+    year: date ? date.slice(0, 4) : null,
+    posterPath: item.poster_path ?? null,
+    backdropPath: item.backdrop_path ?? null,
+    genreIds: item.genre_ids ?? [],
+    popularity: item.popularity ?? null,
+    rating: item.vote_average ?? null,
+  };
+};
+
+// Keeps the page info needed for "Load more" together with the mapped results
+export const mapTitleList = (response, mediaType) => ({
+  page: response.page,
+  totalPages: response.total_pages,
+  results: response.results.map((item) => mapTitle(item, mediaType)),
+});
