@@ -48,9 +48,47 @@
   }
 }
 
+/* ===== Attribution ===== */
+.attribution {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  width: 100%;
+  margin: var(--space-sm) 0;
+  padding-top: var(--space-md);
+  /* Separates the fine print from the navigation */
+  border-top: 1px solid var(--color-border);
+}
+
+/* Logo and notice on one line, wrapping on narrow screens */
+.tmdbRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.tmdbLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+}
+
+/* Kept small so it is less prominent than the app logo, as TMDB requires */
+.tmdbLogo {
+  width: auto;
+  height: 14px;
+}
+
+.textLink {
+  color: inherit;
+}
+
 /* ===== Text ===== */
 .smallText {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: var(--color-text-muted);
 }

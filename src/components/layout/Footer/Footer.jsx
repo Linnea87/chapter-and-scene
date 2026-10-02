@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import tmdbLogo from "../../../assets/tmdb-logo.svg";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
@@ -30,7 +31,37 @@ const Footer = () => {
         </ul>
       </nav>
 
-      {/* TMDb and Google Books attribution is added in CS-041 */}
+      {/* ===== Attribution ===== */}
+      {/* Required by the TMDB terms of use. The logo must be less prominent than the app logo. */}
+      <div className={styles.attribution}>
+        <div className={styles.tmdbRow}>
+          <a
+            href="https://www.themoviedb.org"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.tmdbLink}
+          >
+            <img src={tmdbLogo} alt="TMDB" className={styles.tmdbLogo} />
+          </a>
+          <p className={styles.smallText}>
+            This product uses the TMDB API but is not endorsed or certified by
+            TMDB.
+          </p>
+        </div>
+
+        <p className={styles.smallText}>
+          Book data from{" "}
+          <a
+            href="https://books.google.com"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.textLink}
+          >
+            Google Books
+          </a>
+          .
+        </p>
+      </div>
 
       <p className={styles.smallText}>
         © {currentYear} Chapter & Scene · A fictional shop built as a school
