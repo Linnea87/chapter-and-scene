@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
   GOOGLE_BOOKS_BASE_URL,
-  LANGUAGE,
   MAX_RESULTS,
 } from "./googleBooksConfig";
 import { buildBookQuery, pickBestMatch } from "./googleBooksHelpers";
@@ -19,7 +18,6 @@ export const googleBooksApi = createApi({
         params: {
           q: buildBookQuery(title, author),
           printType: "books",
-          langRestrict: LANGUAGE,
           maxResults: MAX_RESULTS,
           // Optional, only sent when a key exists in .env
           key: import.meta.env.VITE_GOOGLE_BOOKS_KEY,
