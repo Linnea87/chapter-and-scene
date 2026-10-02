@@ -1,5 +1,5 @@
 // ===== TMDb mappers =====
-// Films and series use different field names in TMDb. These map both to one shape,
+// Movies and series use different field names in TMDb. These map both to one shape,
 // so components do not need to know the difference.
 
 export const mapTitle = (item, mediaType) => {

@@ -6,7 +6,7 @@ import {
 import { buildBookQuery, pickBestMatch } from "./googleBooksHelpers";
 
 // ===== Google Books service =====
-// Finds the book a film or series is based on
+// Finds the book a movie or series is based on
 
 export const googleBooksApi = createApi({
   reducerPath: "googleBooksApi",

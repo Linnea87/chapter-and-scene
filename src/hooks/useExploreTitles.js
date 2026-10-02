@@ -1,7 +1,7 @@
 import { useDiscoverTitlesQuery } from "../services/tmdb/tmdbApi";
 
 // ===== useExploreTitles =====
-// Fetches book adaptations for both films and series and merges them into one list
+// Fetches book adaptations for both movies and series and merges them into one list
 
 const useExploreTitles = () => {
   const movies = useDiscoverTitlesQuery({ mediaType: "movie" });
