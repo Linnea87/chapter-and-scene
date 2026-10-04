@@ -16,3 +16,10 @@
   gap: var(--space-md);
   margin-bottom: var(--space-lg);
 }
+
+/* --- Load more --- */
+.loadMore {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-xl);
+}

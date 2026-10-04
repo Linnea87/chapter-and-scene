@@ -1,0 +1,22 @@
+/* ===== Button ===== */
+.button {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-lg);
+  color: var(--color-primary-contrast);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+/* --- States --- */
+.button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+@media (hover: hover) {
+  .button:not(:disabled):hover {
+    opacity: 0.85;
+  }
+}

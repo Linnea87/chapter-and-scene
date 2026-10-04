@@ -1,9 +1,11 @@
-import { useDiscoverTitlesQuery } from "../services/tmdb/tmdbApi";
+import { useDiscoverTitlesInfiniteQuery } from "../services/tmdb/tmdbApi";
 import { CATEGORIES, MEDIA_TYPES } from "../features/explore/exploreConfig";
+import { mergePages } from "../features/explore/exploreHelpers";
 
 // ===== useExploreTitles =====
-// Fetches book adaptations for the selected media type and category
-// and merges movies and series into one list. Defaults to "All".
+// Fetches book adaptations for the selected media type and category,
+// merges movies and series into one list and lets the user load more pages.
+// Defaults to "All".
 
 const useExploreTitles = ({
   category = CATEGORIES[0],
@@ -15,22 +17,38 @@ const useExploreTitles = ({
   const includeSeries = mediaType.id !== "movie" && category.tvGenres !== null;
 
   // --- Requests ---
-  const movies = useDiscoverTitlesQuery(
+  const movies = useDiscoverTitlesInfiniteQuery(
     { mediaType: "movie", genres: category.movieGenres },
     { skip: !includeMovies },
   );
-  const series = useDiscoverTitlesQuery(
+  const series = useDiscoverTitlesInfiniteQuery(
     { mediaType: "tv", genres: category.tvGenres },
     { skip: !includeSeries },
   );
 
   // --- Merge ---
-  // currentData only holds results for the current category,
-  // so old titles are not shown while a new category is loading
-  const titles = [
-    ...(movies.currentData?.results ?? []),
-    ...(series.currentData?.results ?? []),
-  ].sort((a, b) => b.popularity - a.popularity);
+  // currentData only holds pages for the current filters,
+  // so old titles are not shown while new ones are loading
+  const titles = mergePages(
+    movies.currentData?.pages ?? [],
+    series.currentData?.pages ?? [],
+  );
+
+  // --- Load more ---
+  // Only the media types that still have pages are fetched
+  const hasMore = movies.hasNextPage || series.hasNextPage;
+
+  const loadMore = () => {
+    if (movies.hasNextPage) movies.fetchNextPage();
+    if (series.hasNextPage) series.fetchNextPage();
+  };
+
+  // --- Loading states ---
+  // isFetching is also true while loading more, so that case is excluded
+  // here to keep the loaded titles on screen
+  const isFetchingMore = movies.isFetchingNextPage || series.isFetchingNextPage;
+  const isFetching =
+    (movies.isFetching || series.isFetching) && !isFetchingMore;
 
   // --- Retry ---
   // A skipped query has never started and cannot be refetched
@@ -42,7 +60,10 @@ const useExploreTitles = ({
   return {
     titles,
     isLoading: movies.isLoading || series.isLoading,
-    isFetching: movies.isFetching || series.isFetching,
+    isFetching,
+    isFetchingMore,
+    hasMore,
+    loadMore,
     error: movies.error ?? series.error,
     refetch,
   };

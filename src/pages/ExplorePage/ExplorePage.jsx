@@ -6,12 +6,13 @@ import {
   MEDIA_TYPES,
   getOptionById,
 } from "../../features/explore/exploreConfig";
+import { filterTitlesBySearch } from "../../features/explore/exploreHelpers";
+import Button from "../../components/common/Button/Button";
 import FilterChips from "../../components/common/FilterChips/FilterChips";
+import SearchField from "../../components/common/SearchField/SearchField";
+import StatusMessage from "../../components/common/StatusMessage/StatusMessage";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
-import SearchField from "../../components/common/SearchField/SearchField";
-import { filterTitlesBySearch } from "../../features/explore/exploreHelpers";
-import StatusMessage from "../../components/common/StatusMessage/StatusMessage";
 import styles from "./ExplorePage.module.css";
 
 // ===== Explore page =====
@@ -42,7 +43,15 @@ const ExplorePage = () => {
   };
 
   // --- Data ---
-  const { titles, isFetching, error, refetch } = useExploreTitles({
+  const {
+    titles,
+    isFetching,
+    isFetchingMore,
+    hasMore,
+    loadMore,
+    error,
+    refetch,
+  } = useExploreTitles({
     category,
     mediaType,
   });
@@ -115,6 +124,19 @@ const ExplorePage = () => {
       )}
 
       {showResults && !isEmpty && <TitleGrid titles={visibleTitles} />}
+
+      {/* --- Load more --- */}
+      {showResults && hasMore && (
+        <div className={styles.loadMore}>
+          <Button
+            onClick={loadMore}
+            disabled={isFetchingMore}
+            aria-busy={isFetchingMore}
+          >
+            {isFetchingMore ? "Loading..." : "Load more"}
+          </Button>
+        </div>
+      )}
     </section>
   );
 };
