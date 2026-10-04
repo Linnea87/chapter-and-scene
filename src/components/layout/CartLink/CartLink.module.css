@@ -9,6 +9,23 @@
   color: var(--color-text);
 }
 
+/* ===== Badge ===== */
+.badge {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+  color: var(--color-primary-contrast);
+  background-color: var(--color-primary);
+  border-radius: 999px;
+}
+
 /* ===== States ===== */
 .active {
   color: var(--color-primary);
