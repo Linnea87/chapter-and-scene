@@ -3,7 +3,7 @@ import { TMDB_BASE_URL, BOOK_KEYWORD_ID, LANGUAGE } from "./tmdbConfig";
 import { mapTitleList } from "./tmdbMappers";
 
 // ===== TMDb service =====
-// All requests to TMDb go sthrough this service.
+// All requests to TMDb go through this service.
 // mediaType is either "movie" or "tv", since TMDb has separate endpoints for them.
 
 export const tmdbApi = createApi({
@@ -17,14 +17,15 @@ export const tmdbApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    // --- Catalog ---
+    // --- Discover ---
     // Book adaptations, optionally filtered by genre
     discoverTitles: builder.query({
-      query: ({ mediaType, page = 1, genreId }) => ({
+      query: ({ mediaType, page = 1, genres }) => ({
         url: `discover/${mediaType}`,
         params: {
           with_keywords: BOOK_KEYWORD_ID,
-          with_genres: genreId,
+          // An empty string means no filter, so the param is left out
+          with_genres: genres || undefined,
           sort_by: "popularity.desc",
           page,
           language: LANGUAGE,
