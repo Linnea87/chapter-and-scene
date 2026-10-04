@@ -22,3 +22,5 @@ const ErrorMessage = ({
     </div>
   );
 };
+
+export default ErrorMessage
