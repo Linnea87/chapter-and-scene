@@ -1,33 +1,36 @@
 import { useSearchParams } from "react-router";
 import useExploreTitles from "../../hooks/useExploreTitles";
 import {
-  DEFAULT_CATEGORY_ID,
-  getCategoryById,
+  ALL_ID,
+  CATEGORIES,
+  MEDIA_TYPES,
+  getOptionById,
 } from "../../features/explore/exploreConfig";
-import CategoryFilter from "../../components/explore/CategoryFilter/CategoryFilter";
+import FilterChips from "../../components/common/FilterChips/FilterChips";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
 import ErrorMessage from "../../components/common/ErrorMessage/ErrorMessage";
 import styles from "./ExplorePage.module.css";
 
 // ===== Explore page =====
-// Shows movies and series based on books, filtered by category.
-// The selected category lives in the URL (?category=romance).
+// Shows movies and series based on books, filtered by media type and category.
+// The filters live in the URL, e.g. ?type=movie&category=romance
 
 const ExplorePage = () => {
-  // --- Category from URL ---
+  // --- Filters from URL ---
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeCategory = getCategoryById(searchParams.get("category"));
+  const mediaType = getOptionById(MEDIA_TYPES, searchParams.get("type"));
+  const category = getOptionById(CATEGORIES, searchParams.get("category"));
 
-  // Copies the current params so other filters (CS-006) are kept
-  const handleCategoryChange = (categoryId) => {
+  // Updates one param and keeps the others. "All" removes the param.
+  const updateFilter = (key, value) => {
     setSearchParams((prev) => {
       const next = new URLSearchParams(prev);
 
-      if (categoryId === DEFAULT_CATEGORY_ID) {
-        next.delete("category");
+      if (value === ALL_ID) {
+        next.delete(key);
       } else {
-        next.set("category", categoryId);
+        next.set(key, value);
       }
 
       return next;
@@ -35,8 +38,10 @@ const ExplorePage = () => {
   };
 
   // --- Data ---
-  const { titles, isFetching, error, refetch } =
-    useExploreTitles(activeCategory);
+  const { titles, isFetching, error, refetch } = useExploreTitles({
+    category,
+    mediaType,
+});
 
   return (
     <section className={styles.page}>
@@ -46,12 +51,23 @@ const ExplorePage = () => {
         story.
       </p>
 
-      <CategoryFilter
-        activeId={activeCategory.id}
-        onChange={handleCategoryChange}
-      />
+      {/* --- Filters --- */}
+      <div className={styles.filters}>
+        <FilterChips
+          label="Filter by type"
+          options={MEDIA_TYPES}
+          activeId={mediaType.id}
+          onChange={(id) => updateFilter("type", id)}
+        />
+        <FilterChips
+          label="Filter by category"
+          options={CATEGORIES}
+          activeId={category.id}
+          onChange={(id) => updateFilter("category", id)}
+        />
+      </div>
 
-      {/* isFetching covers the first load, category changes and retries */}
+      {/* isFetching covers the first load, filter changes and retries */}
       {isFetching && <TitleGridSkeleton />}
 
       {!isFetching && error && (
