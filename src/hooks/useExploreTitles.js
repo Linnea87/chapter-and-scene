@@ -1,20 +1,27 @@
 import { useDiscoverTitlesQuery } from "../services/tmdb/tmdbApi";
-import { CATEGORIES } from "../features/explore/exploreConfig";
+import { CATEGORIES, MEDIA_TYPES } from "../features/explore/exploreConfig";
 
 // ===== useExploreTitles =====
-// Fetches book adaptations for both movies and series in the selected category
-// and merges them into one list. Defaults to "All".
+// Fetches book adaptations for the selected media type and category
+// and merges movies and series into one list. Defaults to "All".
 
-const useExploreTitles = (category = CATEGORIES[0]) => {
+const useExploreTitles = ({
+  category = CATEGORIES[0],
+  mediaType = MEDIA_TYPES[0],
+} = {}) => {
+  // --- Which requests to send ---
+  // A media type is skipped if it is filtered out or has no matching genre
+  const includeMovies = mediaType.id !== "tv" && category.movieGenres !== null;
+  const includeSeries = mediaType.id !== "movie" && category.tvGenres !== null;
+
   // --- Requests ---
-  // skip: no request is sent when the category has no matching genre
   const movies = useDiscoverTitlesQuery(
     { mediaType: "movie", genres: category.movieGenres },
-    { skip: category.movieGenres === null },
+    { skip: !includeMovies },
   );
   const series = useDiscoverTitlesQuery(
     { mediaType: "tv", genres: category.tvGenres },
-    { skip: category.tvGenres === null },
+    { skip: !includeSeries },
   );
 
   // --- Merge ---

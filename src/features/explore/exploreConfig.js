@@ -1,11 +1,21 @@
-// ===== Explore categories =====
+// ===== Explore filters =====
+// Options for the filter chips on the explore page.
+// The first option in each list is the default.
+
+export const ALL_ID = "all";
+
+// --- Media types ---
+export const MEDIA_TYPES = [
+  { id: ALL_ID, label: "ALL" },
+  { id: "movie", label: "Movies" },
+  { id: "tv", label: "Series" },
+];
+
+// --- Categories ---
 // Shared categories that map to TMDb movie and TV genre IDs.
 // "|" means OR in TMDb's with_genres parameter.
 // An empty string means no genre filter (All).
 // null means there is no matching genre, so that media type is skipped.
-
-export const DEFAULT_CATEGORY_ID = "all";
-
 export const CATEGORIES = [
   { id: "all", label: "All", movieGenres: "", tvGenres: "" },
   { id: "drama", label: "Drama", movieGenres: "18", tvGenres: "18" },
@@ -50,6 +60,7 @@ export const CATEGORIES = [
 ];
 
 // ===== Helpers =====
-// Falls back to "All" if the id is unknown, e.g. a typo in the URL.
-export const getCategoryById = (id) =>
-  CATEGORIES.find((category) => category.id === id) ?? CATEGORIES[0];
+// Finds an option by id. Falls back to the first option ("All")
+// if the id is missing or unknown, e.g. a typo in the URL.
+export const getOptionById = (options, id) =>
+  options.find((option) => option.id === id) ?? options[0];
