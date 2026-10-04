@@ -44,6 +44,16 @@ export const tmdbApi = createApi({
         mapTitleList(response, queryArg.mediaType),
     }),
 
+    // --- Search ---
+    searchTitles: builder.query({
+      query: ({ mediaType, searchTerm, page = 1 }) => ({
+        url: `search/${mediaType}`,
+        params: { query: searchTerm, page, language: LANGUAGE },
+      }),
+      transformResponse: (response, meta, { mediaType }) =>
+        mapTitleList(response, mediaType),
+    }),
+
     // --- Details ---
     // Credits and videos are included to get cast and trailers in one request
     getTitleDetails: builder.query({

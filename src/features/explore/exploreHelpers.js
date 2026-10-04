@@ -3,7 +3,6 @@
 // --- Search ---
 // Keeps titles whose name contains the search term.
 // Case-insensitive, and an empty term returns all titles.
-
 export const filterTitlesBySearch = (titles, searchTerm) => {
   const term = searchTerm.trim().toLowerCase();
 
@@ -22,7 +21,7 @@ export const mergePages = (moviePages, seriesPages) => {
   const seen = new Set();
   const titles = [];
 
-  for (let i = 0; i < pageCount; i += 1 ) {
+  for (let i = 0; i < pageCount; i += 1) {
     const page = [
       ...(moviePages[i]?.results ?? []),
       ...(seriesPages[i]?.results ?? []),
@@ -38,5 +37,5 @@ export const mergePages = (moviePages, seriesPages) => {
     });
   }
 
-  return titles
-}
+  return titles;
+};

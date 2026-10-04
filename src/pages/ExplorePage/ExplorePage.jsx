@@ -125,6 +125,7 @@ const ExplorePage = () => {
 
       {showResults && !isEmpty && <TitleGrid titles={visibleTitles} />}
 
+      {/* --- Load more --- */}
       {showResults && hasMore && (
         <div className={styles.loadMore}>
           <Button
