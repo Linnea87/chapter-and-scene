@@ -9,9 +9,9 @@ import {
 import FilterChips from "../../components/common/FilterChips/FilterChips";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
-import ErrorMessage from "../../components/common/ErrorMessage/ErrorMessage";
 import SearchField from "../../components/common/SearchField/SearchField";
 import { filterTitlesBySearch } from "../../features/explore/exploreHelpers";
+import StatusMessage from "../../components/common/StatusMessage/StatusMessage";
 import styles from "./ExplorePage.module.css";
 
 // ===== Explore page =====
@@ -49,6 +49,19 @@ const ExplorePage = () => {
 
   const visibleTitles = filterTitlesBySearch(titles, searchTerm);
 
+  // --- Result states ---
+  const showResults = !isFetching && !error;
+  const isEmpty = showResults && visibleTitles.length === 0;
+
+  // --- Empty state ---
+  const hasSearch = searchTerm.trim() !== "";
+  const emptyTitle = hasSearch
+    ? `No titles match "${searchTerm.trim()}"`
+    : "No titles match your filters";
+
+  // Removes search, type and category in one step
+  const clearAll = () => setSearchParams({});
+
   return (
     <section className={styles.page}>
       <h1>Find the story. Choose the format</h1>
@@ -83,14 +96,25 @@ const ExplorePage = () => {
       {isFetching && <TitleGridSkeleton />}
 
       {!isFetching && error && (
-        <ErrorMessage
+        <StatusMessage
+          role="alert"
           title="We couldn't load the titles"
           message="Check your connection and try again."
-          onRetry={refetch}
+          actionLabel="Try again"
+          onAction={refetch}
         />
       )}
 
-      {!isFetching && !error && <TitleGrid titles={visibleTitles} />}
+      {isEmpty && (
+        <StatusMessage
+          title={emptyTitle}
+          message="Try another search or clear your filters to see all titles."
+          actionLabel="Clear search and filters"
+          onAction={clearAll}
+        />
+      )}
+
+      {showResults && !isEmpty && <TitleGrid titles={visibleTitles} />}
     </section>
   );
 };
