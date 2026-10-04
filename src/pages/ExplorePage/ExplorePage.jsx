@@ -10,6 +10,8 @@ import FilterChips from "../../components/common/FilterChips/FilterChips";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
 import ErrorMessage from "../../components/common/ErrorMessage/ErrorMessage";
+import SearchField from "../../components/common/SearchField/SearchField";
+import { filterTitlesBySearch } from "../../features/explore/exploreHelpers";
 import styles from "./ExplorePage.module.css";
 
 // ===== Explore page =====
@@ -21,27 +23,31 @@ const ExplorePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const mediaType = getOptionById(MEDIA_TYPES, searchParams.get("type"));
   const category = getOptionById(CATEGORIES, searchParams.get("category"));
+  const searchTerm = searchParams.get("q") ?? "";
 
-  // Updates one param and keeps the others. "All" removes the param.
-  const updateFilter = (key, value) => {
+  // Updates one param and keeps the others.
+  // Empty values and "All" remove the param.
+  const updateFilter = (key, value, options) => {
     setSearchParams((prev) => {
       const next = new URLSearchParams(prev);
 
-      if (value === ALL_ID) {
+      if (!value || value === ALL_ID) {
         next.delete(key);
       } else {
         next.set(key, value);
       }
 
       return next;
-    });
+    }, options);
   };
 
   // --- Data ---
   const { titles, isFetching, error, refetch } = useExploreTitles({
     category,
     mediaType,
-});
+  });
+
+  const visibleTitles = filterTitlesBySearch(titles, searchTerm);
 
   return (
     <section className={styles.page}>
@@ -53,6 +59,12 @@ const ExplorePage = () => {
 
       {/* --- Filters --- */}
       <div className={styles.filters}>
+        <SearchField
+          label="Search titles"
+          placeholder="Search titles"
+          value={searchTerm}
+          onChange={(value) => updateFilter("q", value, { replace: true })}
+        />
         <FilterChips
           label="Filter by type"
           options={MEDIA_TYPES}
@@ -78,7 +90,7 @@ const ExplorePage = () => {
         />
       )}
 
-      {!isFetching && !error && <TitleGrid titles={titles} />}
+      {!isFetching && !error && <TitleGrid titles={visibleTitles} />}
     </section>
   );
 };
