@@ -52,7 +52,7 @@
 .type {
   padding: 0 var(--space-xs);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 /* ===== States ===== */
@@ -63,7 +63,6 @@
 }
 
 .card:focus-visible {
-  outline: 2px solid var(--color-primary);
   outline-offset: 4px;
   border-radius: var(--radius);
 }

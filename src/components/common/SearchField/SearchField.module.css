@@ -8,26 +8,21 @@
 /* --- Search icon inside the field --- */
 .icon {
   position: absolute;
-  left: 0.875rem;
-  opacity: 0.6;
+  left: var(--space-md);
+  color: var(--color-text-muted);
   pointer-events: none;
 }
 
 /* --- Input --- */
+/* Left padding makes room for the icon, right padding for the clear button */
 .input {
   width: 100%;
-  min-height: 44px;
-  padding: 0 2.75rem;
-  border: 1px solid currentColor;
-  border-radius: 999px;
-  background: transparent;
+  min-height: var(--touch-target);
+  padding: 0 var(--touch-target) 0 var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
   color: inherit;
-  font: inherit;
-}
-
-.input:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
 }
 
 /* Hides the browser's own clear button so there are not two */
@@ -41,17 +36,17 @@
   right: 0;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: var(--touch-target);
+  height: var(--touch-target);
   border: none;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: transparent;
   color: inherit;
   cursor: pointer;
 }
 
+/* Keeps the global focus ring inside the field */
 .clear:focus-visible {
-  outline: 2px solid var(--color-primary);
   outline-offset: -4px;
 }
 
