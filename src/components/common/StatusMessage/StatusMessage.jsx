@@ -1,4 +1,5 @@
 import styles from "./StatusMessage.module.css";
+import Button from "../Button/Button";
 
 // ===== Status message =====
 // A centered message with an optional action button.
@@ -11,11 +12,7 @@ const StatusMessage = ({ title, message, actionLabel, onAction, role }) => (
     <p className={styles.message}>{message}</p>
 
     {/* The button is only shown when there is an action */}
-    {onAction && (
-      <button type="button" className={styles.button} onClick={onAction}>
-        {actionLabel}
-      </button>
-    )}
+    {onAction && <Button onClick={onAction}>{actionLabel}</Button>}
   </div>
 );
 

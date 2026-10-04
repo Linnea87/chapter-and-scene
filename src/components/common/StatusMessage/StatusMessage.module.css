@@ -20,21 +20,5 @@
   color: var(--color-text-muted);
 }
 
-/* ===== Button ===== */
-.button {
-  min-height: var(--touch-target);
-  margin-top: var(--space-sm);
-  padding: 0 var(--space-lg);
-  color: var(--color-primary-contrast);
-  background-color: var(--color-primary);
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-}
 
-@media (hover: hover) {
-  .button:hover {
-    opacity: 0.85;
-  }
-}
 
