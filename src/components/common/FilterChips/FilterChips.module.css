@@ -2,9 +2,9 @@
 /* Mobile first: one horizontally scrollable row */
 .list {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-sm);
   margin: 0;
-  padding: 0 0 0.5rem;
+  padding: 0 0 var(--space-sm);
   list-style: none;
   overflow-x: auto;
   scroll-snap-type: x proximity;
@@ -17,20 +17,14 @@
 
 /* --- Chip --- */
 .chip {
-  min-height: 44px;
-  padding: 0 1rem;
-  border: 1px solid currentColor;
-  border-radius: 999px;
+  min-height: var(--touch-target);
+  padding: 0 var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
   background: transparent;
   color: inherit;
-  font: inherit;
   white-space: nowrap;
   cursor: pointer;
-}
-
-.chip:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
 }
 
 .active {
