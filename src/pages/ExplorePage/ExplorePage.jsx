@@ -11,6 +11,7 @@ import Button from "../../components/common/Button/Button";
 import FilterChips from "../../components/common/FilterChips/FilterChips";
 import SearchField from "../../components/common/SearchField/SearchField";
 import StatusMessage from "../../components/common/StatusMessage/StatusMessage";
+import LoadError from "../../components/common/LoadError/LoadError";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
 import styles from "./ExplorePage.module.css";
@@ -72,7 +73,7 @@ const ExplorePage = () => {
   const clearAll = () => setSearchParams({});
 
   return (
-    <section className={styles.page}>
+    <section className="container">
       <h1>Find the story. Choose the format</h1>
       <p className={styles.intro}>
         Explore movies and series adapted from books, then discover the original
@@ -105,13 +106,7 @@ const ExplorePage = () => {
       {isFetching && <TitleGridSkeleton />}
 
       {!isFetching && error && (
-        <StatusMessage
-          role="alert"
-          title="We couldn't load the titles"
-          message="Check your connection and try again."
-          actionLabel="Try again"
-          onAction={refetch}
-        />
+        <LoadError title="We couldn't load the titles" onRetry={refetch} />
       )}
 
       {isEmpty && (
