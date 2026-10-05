@@ -4,6 +4,11 @@ import { CAST_LIMIT } from "./tmdbConfig";
 // Movies and series use different field names in TMDb. These map both to one shape,
 // so components do not need to know the difference.
 
+// --- Helpers ---
+// Takes the year from a TMDb date, e.g. "2011-04-17" → "2011"
+const getYear = (date) => (date ? date.slice(0, 4) : null);
+
+// --- Titles ---
 export const mapTitle = (item, mediaType) => {
   const isMovie = mediaType === "movie";
   const date = isMovie ? item.release_date : item.first_air_date;
@@ -12,7 +17,7 @@ export const mapTitle = (item, mediaType) => {
     id: item.id,
     mediaType,
     title: isMovie ? item.title : item.name,
-    year: date ? date.slice(0, 4) : null,
+    year: getYear(date),
     posterPath: item.poster_path ?? null,
     backdropPath: item.backdrop_path ?? null,
     genreIds: item.genre_ids ?? [],
@@ -38,11 +43,25 @@ export const mapCast = (credits) =>
     profilePath: person.profile_path ?? null,
   }));
 
+// Season 0 holds specials and extras, and seasons without episodes have not aired yet.
+// Both are left out, since they cannot be bought.
+export const mapSeasons = (seasons) =>
+  (seasons ?? [])
+    .filter((season) => season.season_number > 0 && season.episode_count > 0)
+    .map((season) => ({
+      id: season.id,
+      number: season.season_number,
+      name: season.name,
+      episodeCount: season.episode_count,
+      year: getYear(season.air_date),
+    }));
+
 // Builds on mapTitle and adds the fields only the detail page needs
 export const mapTitleDetails = (item, mediaType) => ({
   ...mapTitle(item, mediaType),
   overview: item.overview ?? "",
   genres: (item.genres ?? []).map((genre) => genre.name),
   runtime: item.runtime ?? null,
+  seasons: mapSeasons(item.seasons),
   cast: mapCast(item.credits),
 });
