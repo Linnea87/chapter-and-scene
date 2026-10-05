@@ -1,4 +1,4 @@
-import { CAST_LIMIT } from "./tmdbConfig";
+import { AUTHOR_JOBS, CAST_LIMIT } from "./tmdbConfig";
 
 // ===== TMDb mappers =====
 // Movies and series use different field names in TMDb. These map both to one shape,
@@ -56,6 +56,11 @@ export const mapSeasons = (seasons) =>
       year: getYear(season.air_date),
     }));
 
+// The author is listed in the crew, e.g. with the job "Novel"
+export const findAuthor = (credits) =>
+  credits?.crew?.find((person) => AUTHOR_JOBS.includes(person.job))?.name ??
+  null;
+
 // Builds on mapTitle and adds the fields only the detail page needs
 export const mapTitleDetails = (item, mediaType) => ({
   ...mapTitle(item, mediaType),
@@ -63,5 +68,6 @@ export const mapTitleDetails = (item, mediaType) => ({
   genres: (item.genres ?? []).map((genre) => genre.name),
   runtime: item.runtime ?? null,
   seasons: mapSeasons(item.seasons),
+  author: findAuthor(item.credits),
   cast: mapCast(item.credits),
 });

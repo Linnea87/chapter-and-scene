@@ -10,7 +10,10 @@ export const buildBookQuery = (title, author) =>
 const toHttps = (url) => (url ? url.replace("http://", "https://") : null);
 
 export const mapBook = (item) => {
-  const { volumeInfo = {}, saleInfo = {} } = item;
+  const { volumeInfo = {}, saleInfo = {}, accessInfo = {} } = item;
+
+  // Only USD prices are used, since all prices in the shop are in USD
+  const price = saleInfo.retailPrice;
 
   return {
     id: item.id,
@@ -22,7 +25,7 @@ export const mapBook = (item) => {
     coverUrl: toHttps(volumeInfo.imageLinks?.thumbnail),
     previewLink: toHttps(volumeInfo.previewLink),
     hasPreview: accessInfo.viewability !== "NO_PAGES",
-    retailPrice: saleInfo.retailPrice?.amount ?? null,
+    retailPrice: price?.currencyCode === "USD" ? price.amount : null,
   };
 };
 

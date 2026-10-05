@@ -21,3 +21,12 @@ export const SEASON_PRICES = {
 
 // The whole series costs the sum of all seasons minus this discount
 export const SERIES_DISCOUNT = 0.2;
+
+// --- Books ---
+// Keys match the cart formats. The e-book price is only used
+// when Google Books has no USD price for the book.
+export const BOOK_PRICES = {
+  paperback: 12.99,
+  hardcover: 24.99,
+  ebook: 9.99,
+};

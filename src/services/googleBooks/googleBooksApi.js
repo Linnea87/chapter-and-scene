@@ -1,8 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import {
-  GOOGLE_BOOKS_BASE_URL,
-  MAX_RESULTS,
-} from "./googleBooksConfig";
+import { GOOGLE_BOOKS_BASE_URL, MAX_RESULTS } from "./googleBooksConfig";
 import { buildBookQuery, pickBestMatch } from "./googleBooksHelpers";
 
 // ===== Google Books service =====
@@ -19,6 +16,8 @@ export const googleBooksApi = createApi({
           q: buildBookQuery(title, author),
           printType: "books",
           maxResults: MAX_RESULTS,
+          // Prices are returned in USD, the shop's base currency
+          country: "US",
           // Optional, only sent when a key exists in .env
           key: import.meta.env.VITE_GOOGLE_BOOKS_KEY,
         },

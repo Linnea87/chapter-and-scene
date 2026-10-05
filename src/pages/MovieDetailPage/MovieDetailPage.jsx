@@ -1,10 +1,12 @@
 import { useParams } from "react-router";
-import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import { getMoviePrices } from "../../features/pricing/pricingHelpers";
 import formatRuntime from "../../utils/formatRuntime";
+import BookSection from "../../components/details/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
+import DetailColumns from "../../components/details/DetailColumns/DetailColumns";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
+import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import PriceOptions from "../../components/details/PriceOptions/PriceOptions";
 import Loader from "../../components/common/Loader/Loader";
 import LoadError from "../../components/common/LoadError/LoadError";
@@ -58,7 +60,17 @@ const MovieDetailPage = () => {
   return (
     <DetailLayout>
       <DetailHero details={movie} meta={meta} />
-      <PriceOptions title="Watch the movie" options={priceOptions} />
+
+      {/* --- Watch and read --- */}
+      <DetailColumns>
+        <PriceOptions title="Watch the movie" options={priceOptions} />
+        <BookSection
+          title={movie.title}
+          author={movie.author}
+          mediaType="movie"
+        />
+      </DetailColumns>
+
       <CastList cast={movie.cast} />
     </DetailLayout>
   );

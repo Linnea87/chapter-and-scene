@@ -1,0 +1,55 @@
+/* ===== Text ===== */
+.intro,
+.fallback {
+  margin: 0 0 var(--space-md);
+  color: var(--color-text-muted);
+}
+
+/* ===== Book card ===== */
+/* Cover and text side by side */
+.card {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: var(--space-md);
+  align-items: start;
+  margin-bottom: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+}
+
+/* The same size with or without an image */
+.cover {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-border);
+}
+
+.title {
+  margin: 0 0 var(--space-xs);
+  font-size: 1.125rem;
+}
+
+.author {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-muted);
+}
+
+/* Long descriptions are cut after five lines */
+.description {
+  display: -webkit-box;
+  margin: 0 0 var(--space-sm);
+  overflow: hidden;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.facts {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
