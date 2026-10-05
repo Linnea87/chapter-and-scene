@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { TMDB_BASE_URL, BOOK_KEYWORD_ID, LANGUAGE } from "./tmdbConfig";
-import { mapTitleList } from "./tmdbMappers";
+import { mapTitleDetails, mapTitleList } from "./tmdbMappers";
 
 // ===== TMDb service =====
 // All requests to TMDb go through this service.
@@ -64,6 +64,8 @@ export const tmdbApi = createApi({
           language: LANGUAGE,
         },
       }),
+      transformResponse: (response, meta, { mediaType }) =>
+        mapTitleDetails(response, mediaType),
     }),
 
     // --- Genres ---
