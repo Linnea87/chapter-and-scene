@@ -78,6 +78,14 @@
 @media (min-width: 600px) {
   .content {
     grid-template-columns: 12rem 1fr;
+    /* The first row fits the title, the second row takes the rest */
+    grid-template-rows: auto 1fr;
+  }
+
+  /* The poster spans both rows, so the overview sits right under the title */
+  .poster,
+  .placeholder {
+    grid-row: span 2;
   }
 
   /* Next to the poster instead of below it */
