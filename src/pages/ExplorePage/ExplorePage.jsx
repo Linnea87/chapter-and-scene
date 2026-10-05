@@ -9,9 +9,9 @@ import {
 import { filterTitlesBySearch } from "../../features/explore/exploreHelpers";
 import Button from "../../components/common/Button/Button";
 import FilterChips from "../../components/common/FilterChips/FilterChips";
+import LoadError from "../../components/common/LoadError/LoadError";
 import SearchField from "../../components/common/SearchField/SearchField";
 import StatusMessage from "../../components/common/StatusMessage/StatusMessage";
-import LoadError from "../../components/common/LoadError/LoadError";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
 import styles from "./ExplorePage.module.css";

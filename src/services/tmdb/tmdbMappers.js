@@ -43,6 +43,6 @@ export const mapTitleDetails = (item, mediaType) => ({
   ...mapTitle(item, mediaType),
   overview: item.overview ?? "",
   genres: (item.genres ?? []).map((genre) => genre.name),
-  tuntime: item.runtime ?? null,
+  runtime: item.runtime ?? null,
   cast: mapCast(item.credits),
 });

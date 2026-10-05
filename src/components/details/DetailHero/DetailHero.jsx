@@ -27,7 +27,7 @@ const DetailHero = ({ details, meta }) => {
 
         {/* --- Title and facts --- */}
         <div>
-          <h1 classname={styles.title}>{details.title}</h1>
+          <h1 className={styles.title}>{details.title}</h1>
 
           <ul className={styles.meta}>
             {meta.map((fact) => (
@@ -45,7 +45,7 @@ const DetailHero = ({ details, meta }) => {
         </div>
 
         {details.overview && (
-          <p classname={styles.overview}>{details.overview}</p>
+          <p className={styles.overview}>{details.overview}</p>
         )}
       </div>
     </header>
