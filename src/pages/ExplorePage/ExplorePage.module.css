@@ -1,10 +1,4 @@
 /* ===== Layout ===== */
-.page {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: var(--space-lg) var(--space-md);
-}
-
 .intro {
   margin: 0 0 var(--space-lg);
   color: var(--color-text-muted);

@@ -70,3 +70,10 @@ main {
   white-space: nowrap;
   border: 0;
 }
+
+/* Centers page content and limits its width */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}

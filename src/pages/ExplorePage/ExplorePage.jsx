@@ -9,6 +9,7 @@ import {
 import { filterTitlesBySearch } from "../../features/explore/exploreHelpers";
 import Button from "../../components/common/Button/Button";
 import FilterChips from "../../components/common/FilterChips/FilterChips";
+import LoadError from "../../components/common/LoadError/LoadError";
 import SearchField from "../../components/common/SearchField/SearchField";
 import StatusMessage from "../../components/common/StatusMessage/StatusMessage";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
@@ -72,7 +73,7 @@ const ExplorePage = () => {
   const clearAll = () => setSearchParams({});
 
   return (
-    <section className={styles.page}>
+    <section className="container">
       <h1>Find the story. Choose the format</h1>
       <p className={styles.intro}>
         Explore movies and series adapted from books, then discover the original
@@ -105,13 +106,7 @@ const ExplorePage = () => {
       {isFetching && <TitleGridSkeleton />}
 
       {!isFetching && error && (
-        <StatusMessage
-          role="alert"
-          title="We couldn't load the titles"
-          message="Check your connection and try again."
-          actionLabel="Try again"
-          onAction={refetch}
-        />
+        <LoadError title="We couldn't load the titles" onRetry={refetch} />
       )}
 
       {isEmpty && (

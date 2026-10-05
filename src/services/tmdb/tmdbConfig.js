@@ -8,3 +8,6 @@ export const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
 export const BOOK_KEYWORD_ID = 818;
 
 export const LANGUAGE = "en-US";
+
+// Number of cast members shown on a detail page
+export const CAST_LIMIT = 8;
