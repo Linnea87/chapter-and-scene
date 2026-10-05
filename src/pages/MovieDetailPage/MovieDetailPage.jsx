@@ -1,5 +1,5 @@
-import { Link, useParams } from "react-router";
-import { ArrowLeft } from "lucide-react";
+import { useParams } from "react-router";
+import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import { getMoviePrices } from "../../features/pricing/pricingHelpers";
 import formatRuntime from "../../utils/formatRuntime";
@@ -8,7 +8,6 @@ import DetailHero from "../../components/details/DetailHero/DetailHero";
 import PriceOptions from "../../components/details/PriceOptions/PriceOptions";
 import Loader from "../../components/common/Loader/Loader";
 import LoadError from "../../components/common/LoadError/LoadError";
-import styles from "./MovieDetailPage.module.css";
 
 // ===== Movie detail page =====
 // Shows one movie with facts, prices and cast. The id comes from the URL (/movie/:id).
@@ -25,13 +24,19 @@ const MovieDetailPage = () => {
   } = useGetTitleDetailsQuery({ mediaType: "movie", id });
 
   // --- Loading and error ---
-  if (isFetching) return <Loader label="Loading movie" />;
+  if (isFetching) {
+    return (
+      <DetailLayout>
+        <Loader label="Loading movie" />
+      </DetailLayout>
+    );
+  }
 
   if (error || !movie) {
     return (
-      <section className="container">
+      <DetailLayout>
         <LoadError title="We couldn't load this movie" onRetry={refetch} />
-      </section>
+      </DetailLayout>
     );
   }
 
@@ -51,16 +56,11 @@ const MovieDetailPage = () => {
   ];
 
   return (
-    <article className={`container ${styles.page}`}>
-      <Link to="/explore" className={styles.backLink}>
-        <ArrowLeft size={18} aria-hidden="true" />
-        Back to Explore
-      </Link>
-
+    <DetailLayout>
       <DetailHero details={movie} meta={meta} />
       <PriceOptions title="Watch the movie" options={priceOptions} />
       <CastList cast={movie.cast} />
-    </article>
+    </DetailLayout>
   );
 };
 

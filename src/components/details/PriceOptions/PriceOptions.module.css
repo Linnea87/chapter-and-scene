@@ -23,3 +23,14 @@
 .price {
   font-weight: 600;
 }
+
+/* Label with an optional detail line under it */
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
