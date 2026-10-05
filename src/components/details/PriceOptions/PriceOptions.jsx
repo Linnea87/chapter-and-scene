@@ -3,7 +3,7 @@ import styles from "./PriceOptions.module.css";
 
 // ===== Price options =====
 // Lists the formats a title can be bought in, with prices.
-// options: [{ id, label, price }]
+// options: [{ id, label, detail?, price }]
 
 const PriceOptions = ({ title, options }) => (
   <section>
@@ -12,7 +12,12 @@ const PriceOptions = ({ title, options }) => (
     <ul className={styles.list}>
       {options.map((option) => (
         <li key={option.id} className={styles.option}>
-          <span>{option.label}</span>
+          <span className={styles.text}>
+            <span>{option.label}</span>
+            {option.detail && (
+              <span className={styles.detail}>{option.detail}</span>
+            )}
+          </span>
           <span className={styles.price}>{formatPrice(option.price)}</span>
         </li>
       ))}

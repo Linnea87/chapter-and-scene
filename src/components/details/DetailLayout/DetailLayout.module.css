@@ -1,6 +1,6 @@
 /* ===== Layout ===== */
-/* The page controls the spacing between its sections */
-.page {
+/* Controls the spacing between the sections of a detail page */
+.layout {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
