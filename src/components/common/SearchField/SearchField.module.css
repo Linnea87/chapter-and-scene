@@ -31,18 +31,10 @@
 }
 
 /* --- Clear button --- */
+/* Size and look come from IconButton, this only places it inside the field */
 .clear {
   position: absolute;
   right: 0;
-  display: grid;
-  place-items: center;
-  width: var(--touch-target);
-  height: var(--touch-target);
-  border: none;
-  border-radius: var(--radius-pill);
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
 }
 
 /* Keeps the global focus ring inside the field */

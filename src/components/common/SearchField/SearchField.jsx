@@ -1,5 +1,6 @@
 import { useId } from "react";
 import { Search, X } from "lucide-react";
+import IconButton from "../IconButton/IconButton";
 import styles from "./SearchField.module.css";
 
 // ===== Search field =====
@@ -30,14 +31,12 @@ const SearchField = ({ label, value, onChange, placeholder }) => {
 
       {/* --- Clear button, only shown when there is text --- */}
       {value && (
-        <button
-          type="button"
+        <IconButton
+          icon={X}
+          label="Clear search"
           className={styles.clear}
-          aria-label="Clear search"
           onClick={() => onChange("")}
-        >
-          <X size={20} aria-hidden="true" />
-        </button>
+        />
       )}
     </div>
   );
