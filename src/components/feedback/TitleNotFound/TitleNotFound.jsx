@@ -1,5 +1,5 @@
 import { Clapperboard } from "lucide-react";
-import StatusMessage from "../../common/StatusMessage/StatusMessage";
+import StatusMessage from "../StatusMessage/StatusMessage";
 
 // ===== Title not found =====
 // Shown on a detail page when TMDb has no movie or series with the id in the URL.

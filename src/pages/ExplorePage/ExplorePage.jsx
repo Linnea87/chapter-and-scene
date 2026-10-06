@@ -7,11 +7,11 @@ import {
   getOptionById,
 } from "../../features/explore/exploreConfig";
 import { filterTitlesBySearch } from "../../features/explore/exploreHelpers";
-import Button from "../../components/common/Button/Button";
-import FilterChips from "../../components/common/FilterChips/FilterChips";
-import LoadError from "../../components/common/LoadError/LoadError";
-import SearchField from "../../components/common/SearchField/SearchField";
-import StatusMessage from "../../components/common/StatusMessage/StatusMessage";
+import Button from "../../components/buttons/Button/Button";
+import FilterChips from "../../components/forms/FilterChips/FilterChips";
+import LoadError from "../../components/feedback/LoadError/LoadError";
+import SearchField from "../../components/forms/SearchField/SearchField";
+import StatusMessage from "../../components/feedback/StatusMessage/StatusMessage";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
 import styles from "./ExplorePage.module.css";

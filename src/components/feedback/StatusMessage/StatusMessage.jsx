@@ -1,5 +1,5 @@
-import Button from "../Button/Button";
-import ButtonLink from "../ButtonLink/ButtonLink";
+import Button from "../../buttons/Button/Button";
+import ButtonLink from "../../buttons/ButtonLink/ButtonLink";
 import styles from "./StatusMessage.module.css";
 
 // ===== Status message =====
