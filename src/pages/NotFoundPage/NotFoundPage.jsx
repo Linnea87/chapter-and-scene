@@ -1,5 +1,5 @@
 import { BookX } from "lucide-react";
-import StatusMessage from "../../components/common/StatusMessage/StatusMessage";
+import StatusMessage from "../../components/feedback/StatusMessage/StatusMessage";
 
 // ===== Not found page =====
 // Shown by the router for every URL that does not match a route.

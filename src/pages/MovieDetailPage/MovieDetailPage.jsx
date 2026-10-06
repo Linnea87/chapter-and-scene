@@ -3,15 +3,15 @@ import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import { getMoviePrices } from "../../features/pricing/pricingHelpers";
 import formatRuntime from "../../utils/formatRuntime";
 import isNotFoundError from "../../utils/isNotFoundError";
-import BookSection from "../../components/details/BookSection/BookSection";
+import BookSection from "../../components/books/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
 import DetailColumns from "../../components/details/DetailColumns/DetailColumns";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
-import PriceOptions from "../../components/details/PriceOptions/PriceOptions";
-import TitleNotFound from "../../components/details/TitleNotFound/TitleNotFound";
-import Loader from "../../components/common/Loader/Loader";
-import LoadError from "../../components/common/LoadError/LoadError";
+import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
+import TitleNotFound from "../../components/feedback/TitleNotFound/TitleNotFound";
+import Loader from "../../components/feedback/Loader/Loader";
+import LoadError from "../../components/feedback/LoadError/LoadError";
 
 // ===== Movie detail page =====
 // Shows one movie with facts, prices and cast. The id comes from the URL (/movie/:id).

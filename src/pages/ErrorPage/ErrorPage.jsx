@@ -1,5 +1,5 @@
 import { TriangleAlert } from "lucide-react";
-import StatusMessage from "../../components/common/StatusMessage/StatusMessage";
+import StatusMessage from "../../components/feedback/StatusMessage/StatusMessage";
 import styles from "./ErrorPage.module.css";
 
 // ===== Error page =====

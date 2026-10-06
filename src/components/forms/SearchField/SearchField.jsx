@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { Search, X } from "lucide-react";
-import IconButton from "../IconButton/IconButton";
+import IconButton from "../../buttons/IconButton/IconButton";
 import styles from "./SearchField.module.css";
 
 // ===== Search field =====

@@ -1,5 +1,5 @@
 import getImageUrl from "../../../services/tmdb/getImageUrl";
-import TrailerButton from "../TrailerButton/TrailerButton";
+import TrailerButton from "../../trailer/TrailerButton/TrailerButton";
 import styles from "./DetailHero.module.css";
 
 // ===== Detail hero =====
