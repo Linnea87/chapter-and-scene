@@ -5,8 +5,8 @@ import {
   getSeasonPrice,
   getSeriesPrice,
 } from "../../features/pricing/pricingHelpers";
-import BookSection from "../../components/details/BookSection/BookSection";
 import pluralize from "../../utils/pluralize";
+import BookSection from "../../components/details/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
 import DetailColumns from "../../components/details/DetailColumns/DetailColumns";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
@@ -87,6 +87,7 @@ const TvDetailPage = () => {
 
   const priceOptions =
     seasons.length > 1 ? [...seasonOptions, seriesOption] : seasonOptions;
+
   return (
     <DetailLayout>
       <DetailHero details={series} meta={meta} />

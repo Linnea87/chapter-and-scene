@@ -4,6 +4,7 @@ import styles from "./PriceOptions.module.css";
 // ===== Price options =====
 // Lists the formats a title can be bought in, with prices.
 // options: [{ id, label, detail?, price }]. The title is optional.
+
 const PriceOptions = ({ title, options }) => (
   <section>
     {title && <h2>{title}</h2>}
