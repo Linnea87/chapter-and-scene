@@ -2,9 +2,10 @@
 // Google Books returns large, inconsistent objects. These helpers build the search
 // query and map a result to the fields the UI needs.
 
-// Searching by title and author gives far more accurate matches than title only
+// Plain text search with title and author
+// The intitle:/inauthor: operators currently return no results from Google Books
 export const buildBookQuery = (title, author) =>
-  author ? `intitle:${title} inauthor:${author}` : `intitle:${title}`;
+  [title, author].filter(Boolean).join(" ");
 
 // Cover and preview links are returned over http, which can be blocked on https pages
 const toHttps = (url) => (url ? url.replace("http://", "https://") : null);
