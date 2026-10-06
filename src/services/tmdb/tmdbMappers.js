@@ -61,6 +61,21 @@ export const findAuthor = (credits) =>
   credits?.crew?.find((person) => AUTHOR_JOBS.includes(person.job))?.name ??
   null;
 
+// Picks a YouTube trailer and returns its video key, e.g. "dQw4w9WgXcQ".
+// Official trailers come first, then any trailer, then a teaser.
+export const findTrailerKey = (videos) => {
+  const youtubeVideos = (videos?.results ?? []).filter(
+    (video) => video.site === "YouTube",
+  );
+
+  const trailer =
+    youtubeVideos.find((video) => video.type === "Trailer" && video.official) ??
+    youtubeVideos.find((video) => video.type === "Trailer") ??
+    youtubeVideos.find((video) => video.type === "Teaser");
+
+  return trailer?.key ?? null;
+};
+
 // Builds on mapTitle and adds the fields only the detail page needs
 export const mapTitleDetails = (item, mediaType) => ({
   ...mapTitle(item, mediaType),
@@ -69,5 +84,6 @@ export const mapTitleDetails = (item, mediaType) => ({
   runtime: item.runtime ?? null,
   seasons: mapSeasons(item.seasons),
   author: findAuthor(item.credits),
+  trailerKey: findTrailerKey(item.videos),
   cast: mapCast(item.credits),
 });

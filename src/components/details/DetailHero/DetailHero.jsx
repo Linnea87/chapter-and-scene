@@ -1,4 +1,5 @@
 import getImageUrl from "../../../services/tmdb/getImageUrl";
+import TrailerButton from "../TrailerButton/TrailerButton";
 import styles from "./DetailHero.module.css";
 
 // ===== Detail hero =====
@@ -46,6 +47,16 @@ const DetailHero = ({ details, meta }) => {
 
         {details.overview && (
           <p className={styles.overview}>{details.overview}</p>
+        )}
+
+        {/* --- Trailer, only when one exists --- */}
+        {details.trailerKey && (
+          <div className={styles.actions}>
+            <TrailerButton
+              trailerKey={details.trailerKey}
+              title={details.title}
+            />
+          </div>
         )}
       </div>
     </header>

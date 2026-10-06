@@ -1,0 +1,7 @@
+/* ===== Button content ===== */
+/* Icon and text on one line */
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
