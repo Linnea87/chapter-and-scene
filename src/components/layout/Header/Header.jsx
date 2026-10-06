@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Link } from "react-router";
+import useDisclosure from "../../../hooks/useDisclosure";
 import CartLink from "../CartLink/CartLink";
 import MenuToggle from "../MenuToggle/MenuToggle";
 import NavMenu from "../NavMenu/NavMenu";
@@ -7,11 +7,12 @@ import styles from "./Header.module.css";
 
 const Header = () => {
   // --- State ---
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // --- Handlers ---
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-  const closeMenu = () => setIsMenuOpen(false);
+  // Open and closed state for the mobile menu
+  const {
+    isOpen: isMenuOpen,
+    toggle: toggleMenu,
+    close: closeMenu,
+  } = useDisclosure();
 
   // --- Render ---
   return (
