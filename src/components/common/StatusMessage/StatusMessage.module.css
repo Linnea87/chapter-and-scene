@@ -3,15 +3,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   padding: var(--space-xl) var(--space-md);
   text-align: center;
+}
+
+/* ===== Icon ===== */
+/* Placeholder until the custom illustrations are made */
+.icon {
+  color: var(--color-text-muted);
 }
 
 /* ===== Text ===== */
 .title {
   margin: 0;
   font-size: 1.25rem;
+}
+
+/* A page heading (h1) is larger than a message inside a page (h2) */
+h1.title {
+  font-size: 2rem;
 }
 
 .message {
