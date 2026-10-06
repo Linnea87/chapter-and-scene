@@ -6,12 +6,14 @@ import {
   getSeriesPrice,
 } from "../../features/pricing/pricingHelpers";
 import pluralize from "../../utils/pluralize";
+import isNotFoundError from "../../utils/isNotFoundError";
 import BookSection from "../../components/details/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
 import DetailColumns from "../../components/details/DetailColumns/DetailColumns";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import PriceOptions from "../../components/details/PriceOptions/PriceOptions";
+import TitleNotFound from "../../components/details/TitleNotFound/TitleNotFound";
 import Loader from "../../components/common/Loader/Loader";
 import LoadError from "../../components/common/LoadError/LoadError";
 
@@ -34,6 +36,15 @@ const TvDetailPage = () => {
     return (
       <DetailLayout>
         <Loader label="Loading series" />
+      </DetailLayout>
+    );
+  }
+
+  // A 404 means the id does not exist, so retrying would not help
+  if (isNotFoundError(error)) {
+    return (
+      <DetailLayout>
+        <TitleNotFound />
       </DetailLayout>
     );
   }
