@@ -2,12 +2,14 @@ import { useParams } from "react-router";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import { getMoviePrices } from "../../features/pricing/pricingHelpers";
 import formatRuntime from "../../utils/formatRuntime";
+import isNotFoundError from "../../utils/isNotFoundError";
 import BookSection from "../../components/details/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
 import DetailColumns from "../../components/details/DetailColumns/DetailColumns";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import PriceOptions from "../../components/details/PriceOptions/PriceOptions";
+import TitleNotFound from "../../components/details/TitleNotFound/TitleNotFound";
 import Loader from "../../components/common/Loader/Loader";
 import LoadError from "../../components/common/LoadError/LoadError";
 
@@ -30,6 +32,15 @@ const MovieDetailPage = () => {
     return (
       <DetailLayout>
         <Loader label="Loading movie" />
+      </DetailLayout>
+    );
+  }
+
+  // A 404 means the id does not exist, so retrying would not help
+  if (isNotFoundError(error)) {
+    return (
+      <DetailLayout>
+        <TitleNotFound />
       </DetailLayout>
     );
   }

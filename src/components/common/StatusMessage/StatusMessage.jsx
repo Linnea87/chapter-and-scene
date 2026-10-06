@@ -1,18 +1,31 @@
 import Button from "../Button/Button";
+import ButtonLink from "../ButtonLink/ButtonLink";
 import styles from "./StatusMessage.module.css";
 
 // ===== Status message =====
-// A centered message with an optional action button.
-// Used for errors (role "alert") and empty results (role "status").
+// A centered message with an optional icon and action.
+// Used for errors (role "alert"), empty results and not found pages (role "status").
 // Technical error details are never shown.
 
-const StatusMessage = ({ title, message, actionLabel, onAction, role = "status" }) => (
+const StatusMessage = ({
+  title,
+  message,
+  icon: Icon,
+  titleAs: Title = "h2",
+  actionLabel,
+  onAction,
+  actionTo,
+  role = "status",
+}) => (
   <div className={styles.status} role={role}>
-    <h2 className={styles.title}>{title}</h2>
+    {Icon && <Icon className={styles.icon} size={48} aria-hidden="true" />}
+
+    <Title className={styles.title}>{title}</Title>
     <p className={styles.message}>{message}</p>
 
-    {/* The button is only shown when there is an action */}
+    {/* An action either runs code (onAction) or goes to another page (actionTo) */}
     {onAction && <Button onClick={onAction}>{actionLabel}</Button>}
+    {actionTo && <ButtonLink to={actionTo}>{actionLabel}</ButtonLink>}
   </div>
 );
 

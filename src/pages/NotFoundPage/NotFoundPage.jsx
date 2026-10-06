@@ -1,8 +1,20 @@
-// ===== Not found page =====
-// Placeholder until the 404 page is built in CS-014
+import { BookX } from "lucide-react";
+import StatusMessage from "../../components/common/StatusMessage/StatusMessage";
 
-const NotFoundPage = () => {
-  return <h1>Page not found</h1>;
-};
+// ===== Not found page =====
+// Shown by the router for every URL that does not match a route.
+
+const NotFoundPage = () => (
+  <div className="container">
+    <StatusMessage
+      icon={BookX}
+      titleAs="h1"
+      title="This chapter is missing"
+      message="The page you're looking for doesn't exist."
+      actionLabel="Back to Explore"
+      actionTo="/explore"
+    />
+  </div>
+);
 
 export default NotFoundPage;
