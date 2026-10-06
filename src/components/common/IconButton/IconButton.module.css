@@ -1,0 +1,21 @@
+/* ===== Icon button ===== */
+/* Square touch target with the icon centered */
+.button {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* --- States --- */
+@media (hover: hover) {
+  .button:hover {
+    background-color: var(--color-border);
+  }
+}
