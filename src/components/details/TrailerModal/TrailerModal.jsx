@@ -37,4 +37,4 @@ const TrailerModal = ({ trailerKey, title, isOpen, onClose }) => {
   );
 };
 
-export default TrailerModal
+export default TrailerModal;
