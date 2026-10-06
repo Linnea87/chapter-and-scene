@@ -11,3 +11,6 @@ export const LANGUAGE = "en-US";
 
 // Number of cast members shown on a detail page
 export const CAST_LIMIT = 8;
+
+// Crew jobs that point to the writer of the original book
+export const AUTHOR_JOBS = ["Novel", "Book", "Author"];

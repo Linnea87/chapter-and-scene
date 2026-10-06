@@ -6,7 +6,9 @@ import {
   getSeriesPrice,
 } from "../../features/pricing/pricingHelpers";
 import pluralize from "../../utils/pluralize";
+import BookSection from "../../components/details/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
+import DetailColumns from "../../components/details/DetailColumns/DetailColumns";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import PriceOptions from "../../components/details/PriceOptions/PriceOptions";
@@ -90,9 +92,17 @@ const TvDetailPage = () => {
     <DetailLayout>
       <DetailHero details={series} meta={meta} />
 
-      {priceOptions.length > 0 && (
-        <PriceOptions title="Watch the series" options={priceOptions} />
-      )}
+      {/* --- Watch and read --- */}
+      <DetailColumns>
+        {priceOptions.length > 0 && (
+          <PriceOptions title="Watch the series" options={priceOptions} />
+        )}
+        <BookSection
+          title={series.title}
+          author={series.author}
+          mediaType="tv"
+        />
+      </DetailColumns>
 
       <CastList cast={series.cast} />
     </DetailLayout>

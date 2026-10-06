@@ -1,4 +1,4 @@
-import { PHYSICAL_FORMATS } from "./cartConfig";
+import { DELIVERY_LABELS, PHYSICAL_FORMATS } from "./cartConfig";
 
 // ===== Cart helpers =====
 
@@ -10,3 +10,7 @@ export const createCartKey = (mediaType, id, format) =>
 
 // Physical books are shipped, everything else is delivered digitally
 export const isPhysicalFormat = (format) => PHYSICAL_FORMATS.includes(format);
+
+// Returns the delivery text for a format, e.g. "paperback" → "Delivered in 2–4 days"
+export const getDeliveryLabel = (format) =>
+  isPhysicalFormat(format) ? DELIVERY_LABELS.physical : DELIVERY_LABELS.digital;

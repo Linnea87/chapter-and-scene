@@ -1,4 +1,5 @@
 import {
+  BOOK_PRICES,
   MOVIE_PRICES,
   NEW_RELEASE_YEARS,
   SEASON_PRICES,
@@ -36,3 +37,12 @@ export const getSeriesPrice = (seasons) => {
 
   return Math.ceil(discounted) - 0.01;
 };
+
+// --- Books ---
+// Returns { paperback, hardcover, ebook }.
+// The e-book uses the Google Books price when there is one.
+export const getBookPrices = (book) => ({
+  paperback: BOOK_PRICES.paperback,
+  hardcover: BOOK_PRICES.hardcover,
+  ebook: book?.retailPrice ?? BOOK_PRICES.ebook,
+});
