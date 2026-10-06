@@ -74,22 +74,28 @@
   margin: 0;
 }
 
+/* Full width under the overview on mobile */
+.actions {
+  grid-column: 1 / -1;
+}
+
 /* ===== Larger screens ===== */
 @media (min-width: 600px) {
   .content {
     grid-template-columns: 12rem 1fr;
-    /* The first row fits the title, the second row takes the rest */
-    grid-template-rows: auto 1fr;
+    /* Title, overview and actions take the space they need, the last row takes the rest */
+    grid-template-rows: auto auto 1fr;
   }
 
-  /* The poster spans both rows, so the overview sits right under the title */
+  /* The poster spans all three rows, so the text column sits next to it */
   .poster,
   .placeholder {
-    grid-row: span 2;
+    grid-row: span 3;
   }
 
   /* Next to the poster instead of below it */
-  .overview {
+  .overview,
+  .actions {
     grid-column: 2;
   }
 }
