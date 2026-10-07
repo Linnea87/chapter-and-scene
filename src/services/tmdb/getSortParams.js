@@ -23,7 +23,7 @@ const getSortParams = (mediaType, sort = "popular") => {
     return {
       sort_by: `${dateField}.desc`,
       [`${dateField}.lte`]: today,
-      "vote_count.gte": MINVOTES.recent,
+      "vote_count.gte": MIN_VOTES.recent,
     };
   }
 
