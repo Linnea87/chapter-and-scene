@@ -1,0 +1,199 @@
+/* ===== Stage ===== */
+/* Edge of the previous slide, current slide, edge of the next slide */
+.stage {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  gap: var(--space-sm);
+}
+
+/* --- Edges of the previous and next slides --- */
+.side {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background-color: var(--color-text);
+}
+
+/* Faded, so the current slide stands out */
+.peek {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+/* Shows the side of each image that is closest to the current slide */
+.peekPrevious {
+  object-position: right;
+}
+
+.peekNext {
+  object-position: left;
+}
+
+/* --- Arrows --- */
+/* Size and look come from IconButton, this places them on the edges */
+.arrow {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  color: var(--color-primary-contrast);
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.6));
+}
+
+/* With a mouse the arrows show on hover, and always while using the keyboard.
+   On touch screens there is no hover, so they are always shown. */
+@media (hover: hover) {
+  .arrow {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .carousel:hover .arrow,
+  .carousel:focus-within .arrow {
+    opacity: 1;
+  }
+}
+
+/* ===== Slide ===== */
+/* Mobile first: a taller crop, wider from 600px */
+.slide {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background-color: var(--color-text);
+  color: var(--color-primary-contrast);
+  text-decoration: none;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Text over the image --- */
+/* Dark shade at the bottom so the white text is readable on any image */
+.content {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-xl) var(--space-md) var(--space-md);
+  background: linear-gradient(to top, rgb(0 0 0 / 0.8), transparent);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  color: inherit;
+}
+
+/* Hidden on mobile, where only the title is shown */
+.meta {
+  display: none;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.badge {
+  padding: 0 var(--space-xs);
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+/* ===== Dots ===== */
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-sm);
+}
+
+/* The button is a full touch target, the visible dot is drawn inside it */
+.dot {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: var(--touch-target);
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-border);
+  transition:
+    width 0.2s ease,
+    height 0.2s ease;
+}
+
+/* The current dot is larger and darker */
+.dot[aria-current="true"]::before {
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-text);
+}
+
+/* ===== Larger screens ===== */
+@media (min-width: 600px) {
+  .stage {
+    grid-template-columns: 5rem minmax(0, 1fr) 5rem;
+    gap: var(--space-md);
+  }
+
+  .slide {
+    aspect-ratio: 21 / 9;
+  }
+
+  .content {
+    padding: var(--space-xl);
+  }
+
+  .title {
+    font-size: 2.75rem;
+  }
+
+  /* The title shows first, the details fade in just after */
+  .meta {
+    display: flex;
+    animation: fade-in 0.4s ease 0.5s both;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* No animation for users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  .meta,
+  .arrow {
+    transition: none;
+    animation: none;
+  }
+}
