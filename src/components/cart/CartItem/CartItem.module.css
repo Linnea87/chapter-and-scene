@@ -37,6 +37,11 @@
   color: var(--color-text-muted);
 }
 
+/* --- Quantity, only for physical books --- */
+.quantity {
+  margin-top: var(--space-sm);
+}
+
 .price {
   margin: 0;
   font-weight: 600;

@@ -5,7 +5,6 @@ import {
   increaseQuantity,
 } from "../../../features/cart/cartSlice";
 import IconButton from "../../buttons/IconButton/IconButton";
-
 import styles from "./QuantityControl.module.css";
 
 // ===== Quantity control =====
@@ -42,3 +41,5 @@ const QuantityControl = ({ item }) => {
     </div>
   );
 };
+
+export default QuantityControl;

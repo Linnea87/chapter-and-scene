@@ -1,15 +1,19 @@
 import { useDispatch } from "react-redux";
 import { Trash2 } from "lucide-react";
 import { removeItem } from "../../../features/cart/cartSlice";
-import { getDeliveryLabel } from "../../../features/cart/cartHelpers";
+import {
+  getDeliveryLabel,
+  isPhysicalFormat,
+} from "../../../features/cart/cartHelpers";
 import formatPrice from "../../../utils/formatPrice";
 import IconButton from "../../buttons/IconButton/IconButton";
+import QuantityControl from "../QuantityControl/QuantityControl";
 import Thumbnail from "../../media/Thumbnail/Thumbnail";
-
 import styles from "./CartItem.module.css";
 
 // ===== Cart item =====
 // One row in the cart: image, title, format, delivery, price and a remove button.
+// Physical books also get a quantity control (CS-020).
 // item: a row from the cart state, see createCartItem
 
 const CartItem = ({ item }) => {
@@ -24,6 +28,12 @@ const CartItem = ({ item }) => {
         <h2 className={styles.title}>{item.title}</h2>
         <p className={styles.format}>{item.label}</p>
         <p className={styles.delivery}>{getDeliveryLabel(item.format)}</p>
+
+        {isPhysicalFormat(item.format) && (
+          <div className={styles.quantity}>
+            <QuantityControl item={item} />
+          </div>
+        )}
       </div>
 
       {/* --- Price and remove --- */}
