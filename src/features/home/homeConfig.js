@@ -16,17 +16,18 @@ export const HERO = {
 
 export const HOME_ROWS = [
   {
-    id: "popular",
-    title: "Popular right now",
-    hint: "What everyone is watching",
-    sort: "popular",
-    link: "/explore",
-  },
-  {
     id: "recent",
     title: "Recently added",
     hint: "The newest stories",
     sort: "recent",
+    link: "/explore",
+  },
+
+  {
+    id: "popular",
+    title: "Popular right now",
+    hint: "What everyone is watching",
+    sort: "popular",
     link: "/explore",
   },
 ];
