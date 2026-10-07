@@ -14,3 +14,10 @@ export const CAST_LIMIT = 8;
 
 // Crew jobs that point to the writer of the original book
 export const AUTHOR_JOBS = ["Novel", "Book", "Author"];
+
+// Minimum number of votes per sort order, so titles with only a few votes
+// are left out of "top rated" and unknown titles out of "recent"
+export const MIN_VOTES = {
+  topRated: 300,
+  recent: 20,
+};

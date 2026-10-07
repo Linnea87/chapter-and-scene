@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { TMDB_BASE_URL, BOOK_KEYWORD_ID, LANGUAGE } from "./tmdbConfig";
+import getSortParams from "./getSortParams";
 import { mapTitleDetails, mapTitleList } from "./tmdbMappers";
 
 // ===== TMDb service =====
@@ -33,7 +34,8 @@ export const tmdbApi = createApi({
           with_keywords: BOOK_KEYWORD_ID,
           // An empty string means no filter, so the param is left out
           with_genres: queryArg.genres || undefined,
-          sort_by: "popularity.desc",
+          // Explore leaves sort out and gets the most popular first
+          ...getSortParams(queryArg.mediaType, queryArg.sort),
           page: pageParam,
           language: LANGUAGE,
         },
