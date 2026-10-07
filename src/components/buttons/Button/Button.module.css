@@ -1,22 +1,50 @@
 /* ===== Button ===== */
+/* Shared size and shape for both variants */
 .button {
   min-height: var(--touch-target);
-  padding: 0 var(--space-lg);
-  color: var(--color-primary-contrast);
-  background-color: var(--color-primary);
-  border: none;
+  border: 1px solid transparent;
   border-radius: var(--radius);
   cursor: pointer;
 }
 
-/* --- States --- */
+/* ===== Variants ===== */
+/* Filled: the main action on a page */
+.primary {
+  color: var(--color-primary-contrast);
+  background-color: var(--color-primary);
+}
+
+/* Outlined: actions that repeat, e.g. one per price row */
+.secondary {
+  color: var(--color-primary);
+  background-color: transparent;
+  border-color: var(--color-primary);
+}
+
+/* ===== Sizes ===== */
+/* The height stays the same, so both sizes are easy to tap */
+.medium {
+  padding: 0 var(--space-lg);
+}
+
+/* Narrower, for actions repeated in lists, e.g. one per price row */
+.small {
+  padding: 0 var(--space-md);
+  font-size: 0.875rem;
+}
+
+/* ===== States ===== */
 .button:disabled {
   opacity: 0.6;
   cursor: default;
 }
 
 @media (hover: hover) {
-  .button:not(:disabled):hover {
+  .primary:not(:disabled):hover {
     opacity: 0.85;
+  }
+
+  .secondary:not(:disabled):hover {
+    background-color: color-mix(in srgb, currentColor 10%, transparent);
   }
 }

@@ -1,7 +1,7 @@
 /* ===== Button link ===== */
 /* Reuses the Button styles, then adds what a link needs */
 .link {
-  composes: button from "../Button/Button.module.css";
+  composes: button primary from "../Button/Button.module.css";
   display: inline-flex;
   align-items: center;
   text-decoration: none;
