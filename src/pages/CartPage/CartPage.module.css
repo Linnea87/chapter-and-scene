@@ -1,0 +1,33 @@
+/* ===== List ===== */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ===== Subtotal ===== */
+/* Label on the left, amount on the right */
+.subtotal {
+  display: flex;
+  justify-content: space-between;
+  margin: var(--space-md) 0 0;
+  font-weight: 600;
+}
+
+/* ===== Actions ===== */
+/* Mobile first: full width buttons stacked, easy to tap */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+/* Larger screens: side by side on the right, under the subtotal */
+@media (min-width: 600px) {
+  .actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
