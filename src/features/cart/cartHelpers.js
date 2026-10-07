@@ -14,3 +14,13 @@ export const isPhysicalFormat = (format) => PHYSICAL_FORMATS.includes(format);
 // Returns the delivery text for a format, e.g. "paperback" → "Delivered in 2–4 days"
 export const getDeliveryLabel = (format) =>
   isPhysicalFormat(format) ? DELIVERY_LABELS.physical : DELIVERY_LABELS.digital;
+
+// Builds the cart item for one price option.
+// product: { id, mediaType, title, imageUrl } — the movie, series or book
+// option: { id, label, price } — e.g. rent, season-2 or paperback
+export const createCartItem = (product, option) => ({
+  ...product,
+  format: option.id,
+  label: option.label,
+  unitPrice: option.price,
+});

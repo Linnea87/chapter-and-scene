@@ -1,11 +1,15 @@
+import { createCartItem } from "../../../features/cart/cartHelpers";
 import formatPrice from "../../../utils/formatPrice";
+import AddToCartButton from "../../cart/AddToCartButton/AddToCartButton";
 import styles from "./PriceOptions.module.css";
 
 // ===== Price options =====
-// Lists the formats a title can be bought in, with prices.
-// options: [{ id, label, detail?, price }]. The title is optional.
+// Lists the formats a title can be bought in, with prices and an add button.
+// product: { id, mediaType, title, imageUrl } — what is bought
+// options: [{ id, label, detail?, price }] — how it is bought
+// The title is optional.
 
-const PriceOptions = ({ title, options }) => (
+const PriceOptions = ({ title, product, options }) => (
   <section>
     {title && <h2>{title}</h2>}
 
@@ -18,7 +22,12 @@ const PriceOptions = ({ title, options }) => (
               <span className={styles.detail}>{option.detail}</span>
             )}
           </span>
-          <span className={styles.price}>{formatPrice(option.price)}</span>
+
+          {/* --- Price and add button --- */}
+          <span className={styles.actions}>
+            <span className={styles.price}>{formatPrice(option.price)}</span>
+            <AddToCartButton item={createCartItem(product, option)} />
+          </span>
         </li>
       ))}
     </ul>

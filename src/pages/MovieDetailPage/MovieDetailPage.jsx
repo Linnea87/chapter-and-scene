@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
+import getImageUrl from "../../services/tmdb/getImageUrl";
 import { getMoviePrices } from "../../features/pricing/pricingHelpers";
 import formatRuntime from "../../utils/formatRuntime";
 import isNotFoundError from "../../utils/isNotFoundError";
@@ -68,13 +69,26 @@ const MovieDetailPage = () => {
     { id: "buy", label: "Buy", price: prices.buy },
   ];
 
+  // --- What is added to the cart ---
+  // A small poster is enough for the cart row
+  const product = {
+    id: movie.id,
+    mediaType: "movie",
+    title: movie.title,
+    imageUrl: getImageUrl(movie.posterPath, "w185"),
+  };
+
   return (
     <DetailLayout>
       <DetailHero details={movie} meta={meta} />
 
       {/* --- Watch and read --- */}
       <DetailColumns>
-        <PriceOptions title="Watch the movie" options={priceOptions} />
+        <PriceOptions
+          title="Watch the movie"
+          product={product}
+          options={priceOptions}
+        />
         <BookSection
           title={movie.title}
           author={movie.author}

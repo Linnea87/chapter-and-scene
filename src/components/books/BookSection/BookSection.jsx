@@ -36,6 +36,15 @@ const BookSection = ({ title, author, mediaType }) => {
     price: prices[format],
   }));
 
+  // --- What is added to the cart ---
+  // The book is its own product, with its Google Books id and title
+  const product = {
+    id: book?.id,
+    mediaType: "book",
+    title: book?.title,
+    imageUrl: book?.coverUrl,
+  };
+
   return (
     <section>
       <h2>The book behind the story</h2>
@@ -76,7 +85,7 @@ const BookSection = ({ title, author, mediaType }) => {
             </div>
           </div>
 
-          <PriceOptions options={options} />
+          <PriceOptions product={product} options={options} />
         </>
       )}
     </section>
