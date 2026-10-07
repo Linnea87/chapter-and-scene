@@ -26,11 +26,17 @@ export const selectSubtotal = (state) =>
 export const selectHasPhysicalItems = (state) =>
   selectCartItems(state).some((item) => isPhysicalFormat(item.format));
 
-export const selectShipping = (state) => {
+// Amount left until free shipping, or 0 when shipping is free or not needed
+export const selectAmountToFreeShipping = (state) => {
   if (!selectHasPhysicalItems(state)) return 0;
 
-  return selectSubtotal(state) >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+  const amountLeft = FREE_SHIPPING_THRESHOLD - selectSubtotal(state);
+  return Math.max(0, roundPrice(amountLeft));
 };
+
+// Shipping is charged until the free shipping threshold is reached
+export const selectShipping = (state) =>
+  selectAmountToFreeShipping(state) > 0 ? SHIPPING_COST : 0;
 
 export const selectTotal = (state) =>
   roundPrice(selectSubtotal(state) + selectShipping(state));
