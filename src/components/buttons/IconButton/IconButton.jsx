@@ -4,11 +4,13 @@ import styles from "./IconButton.module.css";
 // A button that only shows an icon, e.g. close or clear.
 // label is required, since screen readers cannot read the icon.
 // className lets the parent decide where the button is placed.
+// iconSize is 20 by default, larger for e.g. carousel arrows.
 
 const IconButton = ({
   icon: Icon,
   label,
   className,
+  iconSize = 20,
   type = "button",
   ...props
 }) => {
@@ -16,7 +18,7 @@ const IconButton = ({
 
   return (
     <button type={type} className={buttonClass} aria-label={label} {...props}>
-      <Icon size={20} aria-hidden="true" />
+      <Icon size={iconSize} aria-hidden="true" />
     </button>
   );
 };
