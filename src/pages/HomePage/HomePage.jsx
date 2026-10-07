@@ -1,4 +1,5 @@
 import { HOME_ROWS } from "../../features/home/homeConfig";
+import HeroCarousel from "../../components/home/HeroCarousel/HeroCarousel";
 import HomeRow from "../../components/home/HomeRow/HomeRow";
 import styles from "./HomePage.module.css";
 
@@ -13,6 +14,8 @@ const HomePage = () => {
       <h1 className="visually-hidden">Discover stories</h1>
 
       <div className={styles.rows}>
+        <HeroCarousel />
+
         {HOME_ROWS.map((row) => (
           <HomeRow key={row.id} row={row} />
         ))}
