@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "../features/cart/cartSlice";
+import { loadCartItems } from "../features/cart/cartStorage";
 import { tmdbApi } from "../services/tmdb/tmdbApi";
 import { googleBooksApi } from "../services/googleBooks/googleBooksApi";
 
@@ -19,6 +20,11 @@ const store = configureStore({
       tmdbApi.middleware,
       googleBooksApi.middleware,
     ),
+
+  // Restores the guest cart saved in localStorage (CS-019)
+  preloadedState: {
+    cart: { cartItems: loadCartItems() },
+  },
 });
 
 export default store;
