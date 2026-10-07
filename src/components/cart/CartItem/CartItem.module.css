@@ -17,6 +17,11 @@
 }
 
 /* ===== Text ===== */
+/* Lets long titles wrap instead of pushing the price out of the row */
+.info {
+  min-width: 0;
+}
+
 .title {
   margin: 0;
   font-size: 1rem;
@@ -35,4 +40,11 @@
 .price {
   margin: 0;
   font-weight: 600;
+}
+
+/* ===== Remove button ===== */
+/* Size and look come from IconButton, this only places it.
+   Lines the icon up with the right edge of the row */
+.remove {
+  margin-right: calc((20px - var(--touch-target)) / 2);
 }
