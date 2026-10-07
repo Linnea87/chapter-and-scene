@@ -34,3 +34,9 @@ export const selectShipping = (state) => {
 
 export const selectTotal = (state) =>
   roundPrice(selectSubtotal(state) + selectShipping(state));
+
+// Returns the cart row with this key, or undefined if it is not in the cart.
+// Takes the key first and returns a selector, so it can be used as
+// useSelector(selectCartItem(key))
+export const selectCartItem = (key) => (state) =>
+  selectCartItems(state).find((item) => item.key === key);

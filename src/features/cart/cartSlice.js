@@ -20,7 +20,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    // Expects { id, mediaType, format, title, imagePath, unitPrice }
+    // Expects { id, mediaType, title, imageUrl, format, label, unitPrice }, see createCartItem
     addItem: (state, action) => {
       const { id, mediaType, format } = action.payload;
       const key = createCartKey(mediaType, id, format);
