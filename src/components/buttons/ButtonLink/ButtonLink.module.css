@@ -1,8 +1,18 @@
 /* ===== Button link ===== */
-/* Reuses the Button styles, then adds what a link needs */
+/* What every link button needs, on top of the Button styles */
 .link {
-  composes: button primary medium from "../Button/Button.module.css";
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
+}
+
+/* ===== Variants ===== */
+/* Reuse the Button styles, so links and buttons always look the same */
+.primary {
+  composes: button primary medium from "../Button/Button.module.css";
+}
+
+.secondary {
+  composes: button secondary medium from "../Button/Button.module.css";
 }
