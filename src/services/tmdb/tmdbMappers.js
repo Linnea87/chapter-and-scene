@@ -18,6 +18,7 @@ export const mapTitle = (item, mediaType) => {
     mediaType,
     title: isMovie ? item.title : item.name,
     year: getYear(date),
+    releaseDate: date ?? null,
     posterPath: item.poster_path ?? null,
     backdropPath: item.backdrop_path ?? null,
     genreIds: item.genre_ids ?? [],
