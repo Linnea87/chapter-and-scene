@@ -104,14 +104,14 @@ const HeroCarousel = () => {
           icon={ChevronLeft}
           label="Previous story"
           className={`${styles.arrow} ${styles.arrowPrevious}`}
-          iconSize={36}
+          iconSize={48}
           onClick={previous}
         />
         <IconButton
           icon={ChevronRight}
           label="Next story"
           className={`${styles.arrow} ${styles.arrowNext}`}
-          iconSize={36}
+          iconSize={48}
           onClick={next}
         />
       </div>
