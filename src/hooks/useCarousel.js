@@ -8,13 +8,10 @@ const useCarousel = (count) => {
   const [current, setCurrent] = useState(0);
 
   // Wraps around, so -1 becomes the last slide and count becomes the first
-  const wrap = (index) => (index + count) % count;
-  const goTo = (index) => setCurrent(wrap(index));
+  const goTo = (index) => setCurrent((index + count) % count);
 
   return {
     current,
-    previousIndex: wrap(current - 1),
-    nextIndex: wrap(current + 1),
     goTo,
     next: () => goTo(current + 1),
     previous: () => goTo(current - 1),
