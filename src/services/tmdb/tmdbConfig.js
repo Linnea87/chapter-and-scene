@@ -21,3 +21,35 @@ export const MIN_VOTES = {
   topRated: 300,
   recent: 20,
 };
+
+// --- Age ratings ---
+// Extra data to append for each media type, since movies and series
+// keep their age ratings in different places
+export const CERTIFICATION_APPEND = {
+  movie: "release_dates",
+  tv: "content_ratings",
+};
+
+// Countries to look for, in order. The site is American first,
+// so the US rating is used, with Sweden as a fallback
+export const CERTIFICATION_COUNTRIES = ["US", "SE"];
+
+// Shows ratings as ages, e.g. "PG-13" becomes "13+".
+// Swedish ratings are already numbers and get "+" in findCertification.
+export const CERTIFICATION_LABELS = {
+  // US movies
+  G: "All ages",
+  PG: "7+",
+  "PG-13": "13+",
+  R: "17+",
+  "NC-17": "18+",
+  // US series
+  "TV-Y": "All ages",
+  "TV-Y7": "7+",
+  "TV-G": "All ages",
+  "TV-PG": "10+",
+  "TV-14": "14+",
+  "TV-MA": "17+",
+  // Sweden
+  Btl: "All ages",
+};

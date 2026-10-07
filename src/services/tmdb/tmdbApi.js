@@ -1,5 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { TMDB_BASE_URL, BOOK_KEYWORD_ID, LANGUAGE } from "./tmdbConfig";
+import {
+  TMDB_BASE_URL,
+  BOOK_KEYWORD_ID,
+  LANGUAGE,
+  CERTIFICATION_APPEND,
+} from "./tmdbConfig";
 import getSortParams from "./getSortParams";
 import { mapTitleDetails, mapTitleList } from "./tmdbMappers";
 
@@ -62,7 +67,7 @@ export const tmdbApi = createApi({
       query: ({ mediaType, id }) => ({
         url: `${mediaType}/${id}`,
         params: {
-          append_to_response: "credits,videos",
+          append_to_response: `credits,videos,${CERTIFICATION_APPEND[mediaType]}`,
           language: LANGUAGE,
         },
       }),
