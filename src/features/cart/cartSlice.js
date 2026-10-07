@@ -50,16 +50,12 @@ const cartSlice = createSlice({
       }
     },
 
-    // Removes the row when the quantity reaches 0
+    // Stops at 1, the row is removed with removeItem
     decreaseQuantity: (state, action) => {
       const item = findItem(state, action.payload);
 
-      if (!item) return;
-
-      item.quantity -= 1;
-
-      if (item.quantity <= 0) {
-        removeByKey(state, action.payload);
+      if (item && item.quantity > 1) {
+        item.quantity -= 1;
       }
     },
 
