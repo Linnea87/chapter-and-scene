@@ -8,7 +8,8 @@ const MEDIA_LABELS = {
   tv: "Series",
 };
 
-const TitleCard = ({ item }) => {
+// titleAs: heading level for the title, "h2" in the grid, "h3" inside a titled row
+const TitleCard = ({ item, titleAs: Title = "h2" }) => {
   const posterUrl = getImageUrl(item.posterPath, "w342");
 
   return (
@@ -29,7 +30,7 @@ const TitleCard = ({ item }) => {
         )}
       </div>
 
-      <h2 className={styles.title}>{item.title}</h2>
+      <Title className={styles.title}>{item.title}</Title>
 
       <p className={styles.meta}>
         <span className={styles.type}>{MEDIA_LABELS[item.mediaType]}</span>

@@ -1,4 +1,9 @@
-import { AUTHOR_JOBS, CAST_LIMIT } from "./tmdbConfig";
+import {
+  AUTHOR_JOBS,
+  CAST_LIMIT,
+  CERTIFICATION_COUNTRIES,
+  CERTIFICATION_LABELS,
+} from "./tmdbConfig";
 
 // ===== TMDb mappers =====
 // Movies and series use different field names in TMDb. These map both to one shape,
@@ -18,6 +23,7 @@ export const mapTitle = (item, mediaType) => {
     mediaType,
     title: isMovie ? item.title : item.name,
     year: getYear(date),
+    releaseDate: date ?? null,
     posterPath: item.poster_path ?? null,
     backdropPath: item.backdrop_path ?? null,
     genreIds: item.genre_ids ?? [],
@@ -76,6 +82,38 @@ export const findTrailerKey = (videos) => {
   return trailer?.key ?? null;
 };
 
+// Finds the age rating for one country, or null.
+// Movies have one rating per release, series one rating per country.
+const getCertification = (item, mediaType, country) => {
+  if (mediaType === "movie") {
+    const releases = item.release_dates?.results?.find(
+      (result) => result.iso_3166_1 === country,
+    );
+    return (
+      releases?.release_dates?.find((release) => release.certification)
+        ?.certification ?? null
+    );
+  }
+
+  return (
+    item.content_ratings?.results?.find(
+      (result) => result.iso_3166_1 === country,
+    )?.rating || null
+  );
+};
+
+// Returns the first age rating found, e.g. "13+", "All ages" or "15+"
+export const findCertification = (item, mediaType) => {
+  const certification = CERTIFICATION_COUNTRIES.map((country) =>
+    getCertification(item, mediaType, country),
+  ).find(Boolean);
+
+  if (!certification) return null;
+  if (/^\d+$/.test(certification)) return `${certification}+`;
+
+  return CERTIFICATION_LABELS[certification] ?? certification;
+};
+
 // Builds on mapTitle and adds the fields only the detail page needs
 export const mapTitleDetails = (item, mediaType) => ({
   ...mapTitle(item, mediaType),
@@ -85,5 +123,6 @@ export const mapTitleDetails = (item, mediaType) => ({
   seasons: mapSeasons(item.seasons),
   author: findAuthor(item.credits),
   trailerKey: findTrailerKey(item.videos),
+  certification: findCertification(item, mediaType),
   cast: mapCast(item.credits),
 });
