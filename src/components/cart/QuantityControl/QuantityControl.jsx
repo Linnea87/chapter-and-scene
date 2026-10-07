@@ -24,12 +24,12 @@ const QuantityControl = ({ item }) => {
     >
       <IconButton
         icon={Minus}
-        label={`Decrease quantity og ${itemName}`}
+        label={`Decrease quantity of ${itemName}`}
         onClick={() => dispatch(decreaseQuantity(item.key))}
       />
 
       {/* --- Current quantity, read aloud when it changes --- */}
-      <span className={StyleSheet.quantity} aria-live="polite">
+      <span className={styles.quantity} aria-live="polite">
         {item.quantity}
       </span>
 
