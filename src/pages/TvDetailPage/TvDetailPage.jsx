@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
+import getImageUrl from "../../services/tmdb/getImageUrl";
 import { SERIES_DISCOUNT } from "../../features/pricing/pricingConfig";
 import {
   getSeasonPrice,
@@ -99,6 +100,15 @@ const TvDetailPage = () => {
   const priceOptions =
     seasons.length > 1 ? [...seasonOptions, seriesOption] : seasonOptions;
 
+  // --- What is added to the cart ---
+  // A small poster is enough for the cart row
+  const product = {
+    id: series.id,
+    mediaType: "tv",
+    title: series.title,
+    imageUrl: getImageUrl(series.posterPath, "w185"),
+  };
+
   return (
     <DetailLayout>
       <DetailHero details={series} meta={meta} />
@@ -106,7 +116,11 @@ const TvDetailPage = () => {
       {/* --- Watch and read --- */}
       <DetailColumns>
         {priceOptions.length > 0 && (
-          <PriceOptions title="Watch the series" options={priceOptions} />
+          <PriceOptions
+            title="Watch the series"
+            product={product}
+            options={priceOptions}
+          />
         )}
         <BookSection
           title={series.title}
