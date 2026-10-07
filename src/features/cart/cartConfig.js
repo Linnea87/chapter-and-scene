@@ -26,3 +26,7 @@ export const FORMAT_LABELS = {
 
 // The book formats, in the order they are shown
 export const BOOK_FORMATS = ["paperback", "hardcover", "ebook"];
+
+// ===== Storage =====
+// Key for the guest cart in localStorage
+export const CART_STORAGE_KEY = "chapter-and-scene-cart";
