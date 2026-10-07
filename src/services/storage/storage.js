@@ -9,7 +9,7 @@
 export const loadFromStorage = (key, fallback) => {
   try {
     const savedValue = localStorage.getItem(key);
-    return savedValue === null ? fallback : JSON.parse(davedValue);
+    return savedValue === null ? fallback : JSON.parse(savedValue);
   } catch {
     return fallback;
   }
