@@ -9,7 +9,7 @@ import styles from "./QuantityControl.module.css";
 
 // ===== Quantity control =====
 // Minus, quantity and plus for one cart row.
-// Decreasing from 1 removes the row (handled in cartSlice).
+// Minus is disabled at 1, the row is removed with the remove button.
 // item: a row from the cart state
 
 const QuantityControl = ({ item }) => {
@@ -25,6 +25,7 @@ const QuantityControl = ({ item }) => {
       <IconButton
         icon={Minus}
         label={`Decrease quantity of ${itemName}`}
+        disabled={item.quantity <= 1}
         onClick={() => dispatch(decreaseQuantity(item.key))}
       />
 
