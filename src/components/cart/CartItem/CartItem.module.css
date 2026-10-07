@@ -1,0 +1,38 @@
+/* ===== Row ===== */
+/* Image, info, price and remove button side by side */
+.item {
+  display: grid;
+  grid-template-columns: 4rem 1fr auto auto;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ===== Image ===== */
+.image {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== Text ===== */
+.title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.format,
+.delivery {
+  margin: 0;
+}
+
+.delivery {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.price {
+  margin: 0;
+  font-weight: 600;
+}
