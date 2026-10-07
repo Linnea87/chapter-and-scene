@@ -1,22 +1,17 @@
 import { useSelector } from "react-redux";
 import { ShoppingBasket } from "lucide-react";
-import {
-  selectCartItems,
-  selectSubtotal,
-} from "../../features/cart/cartSelectors";
-import formatPrice from "../../utils/formatPrice";
+import { selectCartItems } from "../../features/cart/cartSelectors";
 import ButtonLink from "../../components/buttons/ButtonLink/ButtonLink";
 import CartItem from "../../components/cart/CartItem/CartItem";
+import CartSummary from "../../components/cart/CartSummary/CartSummary";
 import StatusMessage from "../../components/feedback/StatusMessage/StatusMessage";
 import styles from "./CartPage.module.css";
 
 // ===== Cart page =====
-// Lists the items in the cart with a remove button on each row.
-// Shipping and total are added in CS-021.
+// Lists the items in the cart with a summary of subtotal, shipping and total.
 
 const CartPage = () => {
   const items = useSelector(selectCartItems);
-  const subtotal = useSelector(selectSubtotal);
 
   // --- Empty cart ---
   if (items.length === 0) {
@@ -44,11 +39,8 @@ const CartPage = () => {
         ))}
       </ul>
 
-      {/* --- Subtotal, updates when a row is removed --- */}
-      <p className={styles.subtotal}>
-        <span>Subtotal</span>
-        <span>{formatPrice(subtotal)}</span>
-      </p>
+      {/* --- Subtotal, shipping and total --- */}
+      <CartSummary className={styles.summary} />
 
       {/* --- Actions, checkout is added in CS-026 --- */}
       <div className={styles.actions}>

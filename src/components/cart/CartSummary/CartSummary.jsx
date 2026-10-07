@@ -11,12 +11,12 @@ import styles from "./CartSummary.module.css";
 
 // ===== Summary row =====
 // One label and amount, only used inside CartSummary
-const SummaryRow = ({ label, value, isTotal = false }) => {
+const SummaryRow = ({ label, value, isTotal = false }) => (
   <div className={isTotal ? `${styles.row} ${styles.total}` : styles.row}>
     <dt>{label}</dt>
     <dd className={styles.value}>{value}</dd>
-  </div>;
-};
+  </div>
+);
 
 // ===== Cart summary =====
 // Subtotal, shipping and total for the cart (CS-021).
