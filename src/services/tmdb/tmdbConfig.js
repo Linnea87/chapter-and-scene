@@ -4,8 +4,11 @@
 export const TMDB_BASE_URL = "https://api.themoviedb.org/3/";
 export const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
 
-// TMDb keyword "based on novel or book", used to only show book adaptations
-export const BOOK_KEYWORD_ID = 818;
+// TMDb keywords for book adaptations. A title needs at least one of them.
+// 818: "based on novel or book"
+// 246466: "based on young adult novel"
+// 15101: "based on children's book"
+export const BOOK_KEYWORD_IDS = [818, 246466, 15101];
 
 export const LANGUAGE = "en-US";
 
