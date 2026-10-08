@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router";
+import useDebouncedValue from "../../hooks/useDebouncedValue";
 import useExploreTitles from "../../hooks/useExploreTitles";
 import {
   ALL_ID,
@@ -6,10 +7,7 @@ import {
   MEDIA_TYPES,
   getOptionById,
 } from "../../features/explore/exploreConfig";
-import {
-  filterTitlesBySearch,
-  getAvailableCategories,
-} from "../../features/explore/exploreHelpers";
+import { getAvailableCategories } from "../../features/explore/exploreHelpers";
 import Button from "../../components/buttons/Button/Button";
 import FilterChips from "../../components/forms/FilterChips/FilterChips";
 import LoadError from "../../components/feedback/LoadError/LoadError";
@@ -51,6 +49,9 @@ const ExplorePage = () => {
   };
 
   // --- Data ---
+  // The search waits until the user stops typing
+  const debouncedSearchTerm = useDebouncedValue(searchTerm);
+
   const {
     titles,
     isFetching,
@@ -62,18 +63,18 @@ const ExplorePage = () => {
   } = useExploreTitles({
     category,
     mediaType,
+    searchTerm: debouncedSearchTerm,
   });
-
-  const visibleTitles = filterTitlesBySearch(titles, searchTerm);
 
   // --- Result states ---
   const showResults = !isFetching && !error;
-  const isEmpty = showResults && visibleTitles.length === 0;
+  const isEmpty = showResults && titles.length === 0;
 
   // --- Empty state ---
-  const hasSearch = searchTerm.trim() !== "";
+  // Uses the debounced term so the message matches the shown results
+  const hasSearch = debouncedSearchTerm.trim() !== "";
   const emptyTitle = hasSearch
-    ? `No titles match "${searchTerm.trim()}"`
+    ? `We couldn't find a book adaptation called "${debouncedSearchTerm.trim()}"`
     : "No titles match your filters";
 
   // Removes search, type and category in one step
@@ -125,7 +126,7 @@ const ExplorePage = () => {
         />
       )}
 
-      {showResults && !isEmpty && <TitleGrid titles={visibleTitles} />}
+      {showResults && !isEmpty && <TitleGrid titles={titles} />}
 
       {/* --- Load more --- */}
       {showResults && hasMore && (

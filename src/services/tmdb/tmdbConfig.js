@@ -10,6 +10,10 @@ export const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
 // 15101: "based on children's book"
 export const BOOK_KEYWORD_IDS = [818, 246466, 15101];
 
+// Number of search results per media type that are checked for a book keyword.
+// Each result needs its own request, so the number is kept small.
+export const SEARCH_CANDIDATE_LIMIT = 10;
+
 export const LANGUAGE = "en-US";
 
 // Number of cast members shown on a detail page

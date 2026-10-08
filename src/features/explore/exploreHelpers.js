@@ -1,3 +1,5 @@
+import { ALL_ID } from "./exploreConfig";
+
 // ===== Explore helpers =====
 
 // --- Categories ---
@@ -15,15 +17,25 @@ export const getAvailableCategories = (categories, mediaType) =>
   });
 
 // --- Search ---
-// Keeps titles whose name contains the search term.
-// Case-insensitive, and an empty term returns all titles.
-export const filterTitlesBySearch = (titles, searchTerm) => {
-  const term = searchTerm.trim().toLowerCase();
+// Keeps titles that have at least one of the category's genres.
+// "" means no genre filter, null means the category does not exist for that type.
+const matchesCategory = (title, category) => {
+  const genres =
+    title.mediaType === "movie" ? category.movieGenres : category.tvGenres;
 
-  if (!term) return titles;
+  if (genres === null) return false;
+  if (genres === "") return true;
 
-  return titles.filter((title) => title.title.toLowerCase().includes(term));
+  return genres.split("|").some((id) => title.genreIds.includes(Number(id)));
 };
+
+// TMDb search cannot filter on genre, so the chips are applied here
+export const filterByMediaTypeAndCategory = (titles, mediaType, category) =>
+  titles.filter(
+    (title) =>
+      (mediaType.id === ALL_ID || title.mediaType === mediaType.id) &&
+      matchesCategory(title, category),
+  );
 
 // --- Pages ---
 // Merges movie and series pages into one list.
