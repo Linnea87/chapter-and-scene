@@ -71,7 +71,7 @@ const ExplorePage = () => {
   const isEmpty = showResults && titles.length === 0;
 
   // --- Empty state ---
-  // Uses the debounced term and the new text
+  // Uses the debounced term so the message matches the shown results
   const hasSearch = debouncedSearchTerm.trim() !== "";
   const emptyTitle = hasSearch
     ? `We couldn't find a book adaptation called "${debouncedSearchTerm.trim()}"`
