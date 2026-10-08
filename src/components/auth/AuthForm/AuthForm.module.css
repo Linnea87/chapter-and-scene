@@ -1,0 +1,13 @@
+/* ===== Auth form ===== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* --- Error message --- */
+/* Keeps its height when empty, so the form does not jump */
+.error {
+  min-height: 1.5em;
+  color: var(--color-error);
+}

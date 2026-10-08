@@ -5,6 +5,8 @@ import ExplorePage from "../pages/ExplorePage/ExplorePage";
 import MovieDetailPage from "../pages/MovieDetailPage/MovieDetailPage";
 import TvDetailPage from "../pages/TvDetailPage/TvDetailPage";
 import CartPage from "../pages/CartPage/CartPage";
+import LoginPage from "../pages/LoginPage/LoginPage";
+import SignUpPage from "../pages/SignUpPage/SignUpPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
@@ -21,6 +23,8 @@ const router = createBrowserRouter([
       { path: "movie/:id", element: <MovieDetailPage /> },
       { path: "tv/:id", element: <TvDetailPage /> },
       { path: "cart", element: <CartPage /> },
+      { path: "login", element: <LoginPage /> },
+      { path: "signup", element: <SignUpPage /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },

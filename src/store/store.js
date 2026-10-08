@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "../features/cart/cartSlice";
 import { loadCartItems, saveCartItems } from "../features/cart/cartStorage";
 import { selectCartItems } from "../features/cart/cartSelectors";
+import authReducer from "../features/auth/authSlice";
 import { tmdbApi } from "../services/tmdb/tmdbApi";
 import { googleBooksApi } from "../services/googleBooks/googleBooksApi";
 
@@ -10,6 +11,7 @@ import { googleBooksApi } from "../services/googleBooks/googleBooksApi";
 
 const store = configureStore({
   reducer: {
+    auth: authReducer,
     cart: cartReducer,
     // RTK Query stores its cache here
     [tmdbApi.reducerPath]: tmdbApi.reducer,
