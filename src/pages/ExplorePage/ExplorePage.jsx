@@ -6,7 +6,10 @@ import {
   MEDIA_TYPES,
   getOptionById,
 } from "../../features/explore/exploreConfig";
-import { filterTitlesBySearch } from "../../features/explore/exploreHelpers";
+import {
+  filterTitlesBySearch,
+  getAvailableCategories,
+} from "../../features/explore/exploreHelpers";
 import Button from "../../components/buttons/Button/Button";
 import FilterChips from "../../components/forms/FilterChips/FilterChips";
 import LoadError from "../../components/feedback/LoadError/LoadError";
@@ -24,7 +27,11 @@ const ExplorePage = () => {
   // --- Filters from URL ---
   const [searchParams, setSearchParams] = useSearchParams();
   const mediaType = getOptionById(MEDIA_TYPES, searchParams.get("type"));
-  const category = getOptionById(CATEGORIES, searchParams.get("category"));
+  const availableCategories = getAvailableCategories(CATEGORIES, mediaType);
+  const category = getOptionById(
+    availableCategories,
+    searchParams.get("category"),
+  );
   const searchTerm = searchParams.get("q") ?? "";
 
   // Updates one param and keeps the others.
@@ -96,7 +103,7 @@ const ExplorePage = () => {
         />
         <FilterChips
           label="Filter by category"
-          options={CATEGORIES}
+          options={availableCategories}
           activeId={category.id}
           onChange={(id) => updateFilter("category", id)}
         />
