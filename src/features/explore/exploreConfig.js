@@ -36,7 +36,7 @@ export const CATEGORIES = [
     id: "thriller-horror",
     label: "Thriller & Horror",
     movieGenres: "53|27",
-    tvGenres: "null",
+    tvGenres: null,
   },
   {
     id: "action-adventure",
