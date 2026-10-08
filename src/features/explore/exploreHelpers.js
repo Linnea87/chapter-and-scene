@@ -1,5 +1,19 @@
 // ===== Explore helpers =====
 
+// --- Categories ---
+// Returns the categories that exist for the chosen media type.
+// A category with null genres for a type is hidden, e.g. Romance for series.
+export const getAvailableCategories = (categories, mediaType) =>
+  categories.filter((category) => {
+    const hasMovies = category.movieGenres !== null;
+    const hasSeries = category.tvGenres !== null;
+
+    if (mediaType.id === "movie") return hasMovies;
+    if (mediaType.id === "tv") return hasSeries;
+
+    return hasMovies || hasSeries;
+  });
+
 // --- Search ---
 // Keeps titles whose name contains the search term.
 // Case-insensitive, and an empty term returns all titles.
