@@ -8,6 +8,7 @@ import useAuthListener from "./hooks/useAuthListener";
 
 const App = () => {
   useAuthListener();
+  
   return (
     <>
       <Header />
