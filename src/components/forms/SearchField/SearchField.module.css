@@ -1,0 +1,50 @@
+/* ===== Search field ===== */
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* --- Search icon inside the field --- */
+.icon {
+  position: absolute;
+  left: var(--space-md);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+/* --- Input --- */
+/* Left padding makes room for the icon, right padding for the clear button */
+.input {
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: 0 var(--touch-target) 0 var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: inherit;
+}
+
+/* Hides the browser's own clear button so there are not two */
+.input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+/* --- Clear button --- */
+/* Size and look come from IconButton, this only places it inside the field */
+.clear {
+  position: absolute;
+  right: 0;
+}
+
+/* Keeps the global focus ring inside the field */
+.clear:focus-visible {
+  outline-offset: -4px;
+}
+
+/* --- Larger screens: limit the width --- */
+@media (min-width: 600px) {
+  .field {
+    max-width: 24rem;
+  }
+}

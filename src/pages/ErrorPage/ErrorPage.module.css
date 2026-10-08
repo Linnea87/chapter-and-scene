@@ -1,0 +1,7 @@
+/* ===== Layout ===== */
+/* Fills the screen and centers the message, since no header or footer is shown */
+.page {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}

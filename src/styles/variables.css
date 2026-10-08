@@ -1,0 +1,35 @@
+:root {
+  /* ===== Colors ===== */
+  /* Grayscale placeholders until the logo and palette are decided */
+  --color-background: #f7f7f5;
+  --color-surface: #ffffff;
+  --color-text: #1f1f1f;
+  --color-text-muted: #6b6b6b;
+  --color-border: #d6d6d6;
+  --color-primary: #333333;
+  --color-primary-contrast: #ffffff;
+  --color-error: #b3261e;
+  --color-overlay: rgb(0 0 0 / 0.8);
+
+  /* ===== Typography ===== */
+  /* System fonts until the brand fonts are chosen */
+  --font-heading: Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* ===== Spacing and sizing ===== */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-pill: 999px;
+  /* Minimum size for tap targets */
+  --touch-target: 44px;
+
+  /* ===== Breakpoints ===== */
+  /* CSS variables do not work in media queries, so these are for reference only */
+  /* Tablet: 600px */
+  /* Desktop: 1024px */
+}

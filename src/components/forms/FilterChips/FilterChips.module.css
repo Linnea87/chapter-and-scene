@@ -1,0 +1,42 @@
+/* ===== Filter chips ===== */
+/* Mobile first: one horizontally scrollable row */
+.list {
+  display: flex;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0 0 var(--space-sm);
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+
+.list li {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+/* --- Chip --- */
+.chip {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+/* --- Desktop: wrap onto several rows instead of scrolling --- */
+@media (min-width: 1024px) {
+  .list {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}

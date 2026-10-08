@@ -1,0 +1,15 @@
+/* ===== Thumbnail ===== */
+/* Size and shape come from the parent through className */
+.thumbnail {
+  display: block;
+  object-fit: cover;
+  background-color: var(--color-border);
+}
+
+/* Empty box with optional centered text, e.g. "No image" */
+.placeholder {
+  display: grid;
+  place-items: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}

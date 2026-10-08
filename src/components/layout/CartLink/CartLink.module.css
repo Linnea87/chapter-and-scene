@@ -1,0 +1,38 @@
+/* ===== Link ===== */
+.cartLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  color: var(--color-text);
+}
+
+/* ===== Badge ===== */
+.badge {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 var(--space-xs);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+  color: var(--color-primary-contrast);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-pill);
+}
+
+/* ===== States ===== */
+.active {
+  color: var(--color-primary);
+}
+
+@media (hover: hover) {
+  .cartLink:hover {
+    color: var(--color-text-muted);
+  }
+}

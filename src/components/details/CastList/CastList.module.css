@@ -1,0 +1,48 @@
+/* ===== Cast list ===== */
+/* Mobile first: one horizontally scrollable row */
+.list {
+  display: flex;
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0 0 var(--space-sm);
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+
+.person {
+  flex: 0 0 6.5rem;
+  scroll-snap-align: start;
+}
+
+/* --- Photo --- */
+/* The same size with or without an image, so the row does not jump */
+.photo {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background-color: var(--color-border);
+}
+
+/* --- Text --- */
+.name {
+  margin: var(--space-xs) 0 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.character {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Desktop: all eight in one row without scrolling --- */
+@media (min-width: 1024px) {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    overflow-x: visible;
+  }
+}

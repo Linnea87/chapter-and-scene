@@ -1,0 +1,214 @@
+/* ===== Carousel ===== */
+/* --peek is how much of the next slides shows, --gap the space between slides */
+.carousel {
+  --arrow-size: 56px;
+  --peek: 3.5rem;
+  --gap: var(--space-sm);
+}
+
+/* ===== Viewport and track ===== */
+/* The viewport shows one slide plus the peeking edges, the rest is hidden */
+.viewport {
+  position: relative;
+  overflow: hidden;
+}
+
+/* All slides in a row. The track moves so the current slide is in the middle.
+   --position is set in HeroCarousel, 100% is the width of the viewport. */
+.track {
+  --slide-width: calc(100% - 2 * (var(--peek) + var(--gap)));
+
+  display: flex;
+  gap: var(--gap);
+  transform: translateX(
+    calc(
+      var(--peek) + var(--gap) - var(--position) *
+        (var(--slide-width) + var(--gap))
+    )
+  );
+  transition: transform 0.5s ease;
+}
+
+/* ===== Slide ===== */
+/* Mobile first: a taller crop, wider from 600px. Faded unless current. */
+.slide {
+  position: relative;
+  display: block;
+  flex: 0 0 var(--slide-width);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background-color: var(--color-text);
+  color: var(--color-primary-contrast);
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+
+.current {
+  opacity: 1;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Text over the image --- */
+/* Dark shade at the bottom so the white text is readable on any image */
+.content {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-xl) var(--space-md) var(--space-md);
+  background: linear-gradient(to top, rgb(0 0 0 / 0.8), transparent);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  color: inherit;
+}
+
+/* Hidden on mobile, where only the title is shown */
+.meta {
+  display: none;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.badge {
+  padding: 0 var(--space-xs);
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+/* ===== Arrows ===== */
+/* Size and look come from IconButton. Centred over the peeking edges. */
+.arrow {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  color: var(--color-primary-contrast);
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.6));
+}
+
+.arrowPrevious {
+  left: calc((var(--peek) - var(--arrow-size)) / 2);
+}
+
+.arrowNext {
+  right: calc((var(--peek) - var(--arrow-size)) / 2);
+}
+
+/* With a mouse the arrows show on hover, and when using the keyboard.
+   On touch screens there is no hover, so they are always shown. */
+@media (hover: hover) {
+  .arrow {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .carousel:hover .arrow,
+  .carousel:has(:focus-visible) .arrow {
+    opacity: 1;
+  }
+}
+
+/* ===== Dots ===== */
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-sm);
+}
+
+/* The button is a full touch target, the visible dot is drawn inside it */
+.dot {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: var(--touch-target);
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-border);
+  transition:
+    width 0.2s ease,
+    height 0.2s ease;
+}
+
+/* The current dot is larger and darker */
+.dot[aria-current="true"]::before {
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-text);
+}
+
+/* ===== Larger screens ===== */
+@media (min-width: 600px) {
+  .carousel {
+    --peek: 5rem;
+    --gap: var(--space-md);
+  }
+
+  .slide {
+    aspect-ratio: 21 / 9;
+  }
+
+  .content {
+    padding: var(--space-xl);
+  }
+
+  .title {
+    font-size: 2.75rem;
+  }
+
+  /* The title shows first, the details fade in just after */
+  .meta {
+    display: flex;
+    animation: fade-in 0.4s ease 0.5s both;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* No movement for users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  .track,
+  .slide,
+  .arrow {
+    transition: none;
+  }
+
+  .meta {
+    animation: none;
+  }
+}

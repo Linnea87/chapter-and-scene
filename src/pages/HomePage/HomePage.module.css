@@ -1,0 +1,7 @@
+/* ===== Rows ===== */
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding-block: var(--space-xl);
+}

@@ -1,0 +1,46 @@
+/* ===== Button ===== */
+.toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  padding: 0;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== Bars ===== */
+.bar {
+  width: 24px;
+  height: 2px;
+  background-color: currentColor;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* ===== Open state ===== */
+/* Moves the outer bars to the center and rotates them into an X */
+.open .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.open .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== Responsive ===== */
+@media (min-width: 600px) {
+  .toggle {
+    display: none;
+  }
+}

@@ -1,0 +1,28 @@
+/* ===== Icon button ===== */
+/* Square touch target with the icon centered */
+.button {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* --- States --- */
+/* Same disabled look as Button */
+.button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* A faint circle in the current text color, so it works on light and dark backgrounds */
+@media (hover: hover) {
+  .button:not(:disabled):hover {
+    background-color: color-mix(in srgb, currentColor 15%, transparent);
+  }
+}

@@ -1,0 +1,19 @@
+/* ===== Layout ===== */
+.intro {
+  margin: 0 0 var(--space-lg);
+  color: var(--color-text-muted);
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+/* --- Load more --- */
+.loadMore {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-xl);
+}

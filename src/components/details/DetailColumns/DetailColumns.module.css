@@ -1,0 +1,14 @@
+/* ===== Columns ===== */
+/* Mobile first: one column, so the sections stack */
+.columns {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+/* Desktop: two equal columns side by side */
+@media (min-width: 1024px) {
+  .columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}

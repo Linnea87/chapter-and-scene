@@ -1,0 +1,45 @@
+/* ===== Price options ===== */
+.list {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 28rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.option {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-height: var(--touch-target);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+}
+
+.price {
+  font-weight: 600;
+}
+
+/* Price and add button stay together on the right */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-left: auto;
+}
+
+/* Label with an optional detail line under it */
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}

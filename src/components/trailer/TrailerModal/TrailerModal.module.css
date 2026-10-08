@@ -1,0 +1,32 @@
+/* ===== Dialog ===== */
+/* No display rule here: the browser hides a closed <dialog> with display: none */
+.dialog {
+  width: calc(100% - 2 * var(--space-md));
+  max-width: 60rem;
+  padding: var(--space-sm);
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--color-text);
+  color: var(--color-primary-contrast);
+}
+
+/* Dims the page behind the open dialog */
+.dialog::backdrop {
+  background-color: var(--color-overlay);
+}
+
+/* ===== Close button ===== */
+/* Pushed to the right, above the player */
+.close {
+  margin: 0 0 var(--space-sm) auto;
+}
+
+/* ===== Player ===== */
+/* Keeps the YouTube player in widescreen format at every width */
+.player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: var(--radius-sm);
+}
