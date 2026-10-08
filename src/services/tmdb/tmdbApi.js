@@ -1,11 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import {
-  TMDB_BASE_URL,
-  BOOK_KEYWORD_IDS,
-  LANGUAGE,
-  CERTIFICATION_APPEND,
-} from "./tmdbConfig";
+import { TMDB_BASE_URL, LANGUAGE, CERTIFICATION_APPEND } from "./tmdbConfig";
 import getAdaptations from "./getAdaptations";
+import getBookKeywords from "./getBookKeywords";
 import getSortParams from "./getSortParams";
 import { mapTitleDetails, mapTitleList } from "./tmdbMappers";
 
@@ -25,7 +21,7 @@ export const tmdbApi = createApi({
   }),
   endpoints: (builder) => ({
     // --- Discover ---
-    // Book adaptations, optionally filtered by genres.
+    // Book adaptations, optionally filtered by genres and an extra keyword.
     // An infinite query keeps every loaded page, so "Load more" can add the next one.
     discoverTitles: builder.infiniteQuery({
       infiniteQueryOptions: {
@@ -37,8 +33,8 @@ export const tmdbApi = createApi({
       query: ({ queryArg, pageParam }) => ({
         url: `discover/${queryArg.mediaType}`,
         params: {
-          // "|" means OR, so a title needs at least one of the book keywords
-          with_keywords: BOOK_KEYWORD_IDS.join("|"),
+          // The extra keyword is used for categories without a TV genre
+          with_keywords: getBookKeywords(queryArg.keywords),
           // An empty string means no filter, so the param is left out
           with_genres: queryArg.genres || undefined,
           // Explore leaves sort out and gets the most popular first
