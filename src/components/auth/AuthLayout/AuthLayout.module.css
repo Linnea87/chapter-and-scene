@@ -1,0 +1,26 @@
+/* ===== Auth layout ===== */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 24rem;
+  margin: var(--space-xl) auto;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.title {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.footer {
+  margin: 0;
+  text-align: center;
+}
