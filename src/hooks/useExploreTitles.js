@@ -27,12 +27,10 @@ const useExploreTitles = ({
   const isSearching = query.length >= MIN_SEARCH_LENGTH;
 
   // --- Which requests to send ---
-  // A media type is skipped if it is filtered out or has no matching genre.
+  // A media type is skipped if it is filtered out.
   // Discover is skipped completely while searching.
-  const includeMovies =
-    !isSearching && mediaType.id !== "tv" && category.movieGenres !== null;
-  const includeSeries =
-    !isSearching && mediaType.id !== "movie" && category.tvGenres !== null;
+  const includeMovies = !isSearching && mediaType.id !== "tv";
+  const includeSeries = !isSearching && mediaType.id !== "movie";
 
   // --- Requests ---
   const movies = useDiscoverTitlesInfiniteQuery(
@@ -40,7 +38,11 @@ const useExploreTitles = ({
     { skip: !includeMovies },
   );
   const series = useDiscoverTitlesInfiniteQuery(
-    { mediaType: "tv", genres: category.tvGenres },
+    {
+      mediaType: "tv",
+      genres: category.tvGenres,
+      keywords: category.tvKeywords,
+    },
     { skip: !includeSeries },
   );
   const search = useSearchAdaptationsQuery(query, { skip: !isSearching });

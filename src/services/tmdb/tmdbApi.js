@@ -6,6 +6,7 @@ import {
   CERTIFICATION_APPEND,
 } from "./tmdbConfig";
 import getAdaptations from "./getAdaptations";
+import getBookKeywords from "./getBookKeywords";
 import getSortParams from "./getSortParams";
 import { mapTitleDetails, mapTitleList } from "./tmdbMappers";
 
@@ -37,8 +38,8 @@ export const tmdbApi = createApi({
       query: ({ queryArg, pageParam }) => ({
         url: `discover/${queryArg.mediaType}`,
         params: {
-          // "|" means OR, so a title needs at least one of the book keywords
-          with_keywords: BOOK_KEYWORD_IDS.join("|"),
+          // Book adaptations, optionally filtered by genres and an extra keyword.
+          with_keywords: getBookKeywords(queryArg.keywords),
           // An empty string means no filter, so the param is left out
           with_genres: queryArg.genres || undefined,
           // Explore leaves sort out and gets the most popular first

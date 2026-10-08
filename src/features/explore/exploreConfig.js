@@ -18,11 +18,17 @@ export const MEDIA_TYPES = [
 // Shared categories that map to TMDb movie and TV genre IDs.
 // "|" means OR in TMDb's with_genres parameter.
 // An empty string means no genre filter (All).
-// null means there is no matching genre, so that media type is skipped.
+// tvKeywords is an extra keyword for series, used when TMDb has no matching TV genre.
 export const CATEGORIES = [
   { id: "all", label: "All", movieGenres: "", tvGenres: "" },
   { id: "drama", label: "Drama", movieGenres: "18", tvGenres: "18" },
-  { id: "romance", label: "Romance", movieGenres: "10749", tvGenres: null },
+  {
+    id: "romance",
+    label: "Romance",
+    movieGenres: "10749",
+    tvGenres: "",
+    tvKeywords: "9840",
+  },
   {
     id: "mystery-crime",
     label: "Mystery & Crime",
@@ -39,7 +45,8 @@ export const CATEGORIES = [
     id: "thriller-horror",
     label: "Thriller & Horror",
     movieGenres: "53|27",
-    tvGenres: null,
+    tvGenres: "",
+    tvKeywords: "316362",
   },
   {
     id: "action-adventure",
