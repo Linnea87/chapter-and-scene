@@ -19,7 +19,7 @@ export const MEDIA_TYPES = [
 export const CATEGORIES = [
   { id: "all", label: "All", movieGenres: "", tvGenres: "" },
   { id: "drama", label: "Drama", movieGenres: "18", tvGenres: "18" },
-  { id: "romance", label: "Romance", movieGenres: "10749", tvGenres: "null" },
+  { id: "romance", label: "Romance", movieGenres: "10749", tvGenres: null },
   {
     id: "mystery-crime",
     label: "Mystery & Crime",
@@ -36,7 +36,7 @@ export const CATEGORIES = [
     id: "thriller-horror",
     label: "Thriller & Horror",
     movieGenres: "53|27",
-    tvGenres: "null",
+    tvGenres: null,
   },
   {
     id: "action-adventure",
