@@ -21,6 +21,12 @@
   border-color: var(--color-primary);
 }
 
+/* Text only: items in menus, no fill and no outline */
+.text {
+  color: inherit;
+  background-color: transparent;
+}
+
 /* ===== Sizes ===== */
 /* The height stays the same, so both sizes are easy to tap */
 .medium {
@@ -44,7 +50,8 @@
     opacity: 0.85;
   }
 
-  .secondary:not(:disabled):hover {
+  .secondary:not(:disabled):hover,
+  .text:not(:disabled):hover {
     background-color: color-mix(in srgb, currentColor 10%, transparent);
   }
 }
