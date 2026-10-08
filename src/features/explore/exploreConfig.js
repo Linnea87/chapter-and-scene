@@ -4,6 +4,9 @@
 
 export const ALL_ID = "all";
 
+// Shortest search term that is sent to TMDb
+export const MIN_SEARCH_LENGTH = 3;
+
 // --- Media types ---
 export const MEDIA_TYPES = [
   { id: ALL_ID, label: "ALL" },

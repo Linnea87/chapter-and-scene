@@ -1,6 +1,7 @@
 import {
   AUTHOR_JOBS,
   CAST_LIMIT,
+  BOOK_KEYWORD_IDS,
   CERTIFICATION_COUNTRIES,
   CERTIFICATION_LABELS,
 } from "./tmdbConfig";
@@ -38,6 +39,15 @@ export const mapTitleList = (response, mediaType) => ({
   totalPages: response.total_pages,
   results: response.results.map((item) => mapTitle(item, mediaType)),
 });
+
+// --- Keywords ---
+// Movies list their keywords under "keywords", series under "results"
+export const mapKeywordIds = (response) =>
+  (response.keywords ?? response.results ?? []).map((keyword) => keyword.id);
+
+// True if a list of keyword ids includes at least one book keyword
+export const hasBookKeyword = (keywordIds) =>
+  keywordIds.some((id) => BOOK_KEYWORD_IDS.includes(id));
 
 // --- Details ---
 // Only the main cast is shown, in the order TMDb ranks them
