@@ -54,6 +54,9 @@ const useCartSync = () => {
     };
   }, [userId, dispatch, store]);
 
+  // --- Save changes while signed in ---
+  // Waits until the account cart is loaded, so the saved cart is never
+  // overwritten by the guest cart.
   useEffect(() => {
     if (!userId || loadedUserId.current !== userId) return;
 
