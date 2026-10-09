@@ -1,0 +1,35 @@
+/* ===== Checkout form ===== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* --- Address --- */
+/* Removes the browser's default fieldset border and spacing */
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  margin-bottom: var(--space-md);
+  padding: 0;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+/* --- Messages --- */
+.notice {
+  color: var(--color-text-muted);
+}
+
+/* Keeps its height when empty, so the form does not jump */
+.error {
+  min-height: 1.5em;
+  color: var(--color-error);
+}

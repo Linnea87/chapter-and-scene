@@ -1,0 +1,11 @@
+/* ===== Content ===== */
+/* One narrow centred column, full width on mobile */
+.content {
+  max-width: 32rem;
+  margin-inline: auto;
+}
+
+/* ===== Summary ===== */
+.summary {
+  margin-bottom: var(--space-lg);
+}
