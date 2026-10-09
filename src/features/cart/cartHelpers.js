@@ -24,3 +24,26 @@ export const createCartItem = (product, option) => ({
   label: option.label,
   unitPrice: option.price,
 });
+
+// Merges the guest cart into the account cart after login.
+// Same key means the same row: the larger quantity is kept.
+// Digital items always have quantity 1, so they stay only once.
+export const mergeCartItems = (guestItems, accountItems) => {
+  const merged = accountItems.map((item) => ({ ...item }));
+
+  guestItems.forEach((guestItem) => {
+    const existingItem = merged.find((item) => item.key === guestItem.key);
+
+    if (existingItem) {
+      existingItem.quantity = Math.max(
+        existingItem.quantity,
+        guestItem.quantity,
+      );
+      return;
+    }
+
+    merged.push(guestItem);
+  });
+
+  return merged;
+};

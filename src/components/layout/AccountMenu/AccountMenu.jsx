@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { LogIn, User } from "lucide-react";
 import { useSelector } from "react-redux";
 import {
@@ -19,12 +19,14 @@ const AccountMenu = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isLoading = useSelector(selectIsAuthLoading);
   const { isOpen, toggle, close } = useDisclosure();
+  const navigate = useNavigate();
 
   // --- Handlers ---
   const handleLogOut = async () => {
     try {
       await signOutUser();
       close();
+      navigate("/");
     } catch (error) {
       console.warn("Could not log out", error);
     }
