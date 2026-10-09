@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { ShoppingBasket } from "lucide-react";
+import { selectIsLoggedIn } from "../../features/auth/authSelectors";
 import { selectCartItems } from "../../features/cart/cartSelectors";
 import ButtonLink from "../../components/ui/buttons/ButtonLink/ButtonLink";
 import CartItem from "../../components/cart/CartItem/CartItem";
@@ -12,6 +13,7 @@ import styles from "./CartPage.module.css";
 
 const CartPage = () => {
   const items = useSelector(selectCartItems);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   // --- Empty cart ---
   if (items.length === 0) {
@@ -42,10 +44,13 @@ const CartPage = () => {
       {/* --- Subtotal, shipping and total --- */}
       <CartSummary className={styles.summary} />
 
-      {/* --- Actions, checkout is added in CS-026 --- */}
+      {/* --- Actions --- */}
       <div className={styles.actions}>
         <ButtonLink to="/explore" variant="secondary">
           Keep exploring
+        </ButtonLink>
+        <ButtonLink to="/checkout">
+          {isLoggedIn ? "Continue to checkout" : "Log in to check out"}
         </ButtonLink>
       </div>
     </div>

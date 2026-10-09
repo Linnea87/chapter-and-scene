@@ -1,5 +1,6 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import signUpUser from "../../services/supabase/auth/signUpUser";
+import { getRedirectPath } from "../../features/auth/authHelpers";
 import AuthForm from "../../components/auth/AuthForm/AuthForm";
 import AuthLayout from "../../components/auth/AuthLayout/AuthLayout";
 
@@ -7,11 +8,13 @@ import AuthLayout from "../../components/auth/AuthLayout/AuthLayout";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirectTo = getRedirectPath(location);
 
   // Throws on failure, AuthForm shows the message
   const handleSubmit = async (credentials) => {
     await signUpUser(credentials);
-    navigate("/");
+    navigate(redirectTo, { replace: true });
   };
 
   return (
@@ -20,7 +23,10 @@ const SignUpPage = () => {
       subtitle="Save your library and orders."
       footer={
         <>
-          Have an account? <Link to="/login">Log in</Link>
+          Have an account?{" "}
+          <Link to="/login" state={location.state}>
+            Log in
+          </Link>
         </>
       }
     >
