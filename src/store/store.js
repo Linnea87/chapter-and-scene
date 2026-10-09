@@ -5,9 +5,11 @@ import { selectCartItems } from "../features/cart/cartSelectors";
 import authReducer from "../features/auth/authSlice";
 import { tmdbApi } from "../services/tmdb/tmdbApi";
 import { googleBooksApi } from "../services/googleBooks/googleBooksApi";
+import { supabaseApi } from "../services/supabase/supabaseApi";
 
 // ===== Store =====
-// Single global store for the app. API services from RTK Query are added in CS-038.
+// Single global store for the app. API services from RTK Query are added in CS-038,
+// and the Supabase service in CS-027.
 
 const store = configureStore({
   reducer: {
@@ -16,12 +18,14 @@ const store = configureStore({
     // RTK Query stores its cache here
     [tmdbApi.reducerPath]: tmdbApi.reducer,
     [googleBooksApi.reducerPath]: googleBooksApi.reducer,
+    [supabaseApi.reducerPath]: supabaseApi.reducer,
   },
   // RTK Query needs its middleware to run requests and manage the cache
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       tmdbApi.middleware,
       googleBooksApi.middleware,
+      supabaseApi.middleware,
     ),
 
   // Restores the guest cart saved in localStorage (CS-019)

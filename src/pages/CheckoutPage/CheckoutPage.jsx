@@ -57,7 +57,7 @@ const CheckoutPage = () => {
   };
 
   // --- Render ---
-  // The order is placed, the confirmation page is added in CS-027
+  // The order is placed, go to the order page
   if (placedOrderId) {
     return <Navigate to={`/order/${placedOrderId}`} replace />;
   }

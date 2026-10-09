@@ -17,3 +17,28 @@ export const toOrderItemRow = (item, orderId) => ({
   quantity: item.quantity,
   delivery_status: isPhysicalFormat(item.format) ? "processing" : null,
 });
+
+// --- Database → app ---
+// Same shape as a cart item, so CartItem can show it
+export const toOrderItem = (row) => ({
+  key: row.id,
+  id: row.external_id,
+  mediaType: row.media_type,
+  title: row.title,
+  imageUrl: row.image_url,
+  format: row.format,
+  label: row.label,
+  unitPrice: Number(row.unit_price),
+  quantity: row.quantity,
+  deliveryStatus: row.delivery_status,
+});
+
+export const toOrder = (row) => ({
+  id: row.id,
+  createdAt: row.created_at,
+  subtotal: Number(row.subtotal),
+  shipping: Number(row.shipping),
+  total: Number(row.total),
+  shippingAddress: row.shipping_address,
+  items: row.order_items.map(toOrderItem),
+});
