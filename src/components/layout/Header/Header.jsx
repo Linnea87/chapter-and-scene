@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import useDisclosure from "../../../hooks/useDisclosure";
+import AccountMenu from "../AccountMenu/AccountMenu";
 import CartLink from "../CartLink/CartLink";
 import MenuToggle from "../MenuToggle/MenuToggle";
 import NavMenu from "../NavMenu/NavMenu";
@@ -27,7 +28,8 @@ const Header = () => {
         Chapter & Scene
       </Link>
 
-      <div className={styles.cartArea}>
+      <div className={styles.actionsArea}>
+        <AccountMenu />
         <CartLink onNavigate={closeMenu} />
       </div>
 
