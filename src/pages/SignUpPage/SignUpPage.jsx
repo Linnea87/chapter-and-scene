@@ -23,7 +23,7 @@ const SignUpPage = () => {
       subtitle="Save your library and orders."
       footer={
         <>
-          Have an account?
+          Have an account?{" "}
           <Link to="/login" state={location.state}>
             Log in
           </Link>

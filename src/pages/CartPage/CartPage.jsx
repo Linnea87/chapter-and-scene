@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { ShoppingBasket } from "lucide-react";
-import { selectCartItems } from "../../features/cart/cartSelectors";
 import { selectIsLoggedIn } from "../../features/auth/authSelectors";
+import { selectCartItems } from "../../features/cart/cartSelectors";
 import ButtonLink from "../../components/ui/buttons/ButtonLink/ButtonLink";
 import CartItem from "../../components/cart/CartItem/CartItem";
 import CartSummary from "../../components/cart/CartSummary/CartSummary";
@@ -44,7 +44,6 @@ const CartPage = () => {
       {/* --- Subtotal, shipping and total --- */}
       <CartSummary className={styles.summary} />
 
-      {/* --- Actions, checkout is added in CS-026 --- */}
       {/* --- Actions --- */}
       <div className={styles.actions}>
         <ButtonLink to="/explore" variant="secondary">

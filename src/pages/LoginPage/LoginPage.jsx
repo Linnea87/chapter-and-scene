@@ -8,9 +8,7 @@ import AuthLayout from "../../components/auth/AuthLayout/AuthLayout";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-
   const location = useLocation();
-
   const redirectTo = getRedirectPath(location);
 
   // Throws on failure, AuthForm shows the message
@@ -25,7 +23,7 @@ const LoginPage = () => {
       subtitle="Welcome."
       footer={
         <>
-          No account?
+          No account?{" "}
           <Link to="/signup" state={location.state}>
             Sign up
           </Link>

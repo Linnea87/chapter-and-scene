@@ -11,7 +11,7 @@ import styles from "./CheckoutForm.module.css";
 
 // ===== Checkout form =====
 // Shipping address (only when needsAddress is true), payment method,
-// the signed-in email, a demo notice and "Place order".
+// a demo notice and "Place order".
 // onSubmit receives the address, or null for digital orders, and may throw.
 // The error message is then shown in the form.
 

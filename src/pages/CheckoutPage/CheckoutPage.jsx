@@ -29,8 +29,8 @@ const CheckoutPage = () => {
   const subtotal = useSelector(selectSubtotal);
   const shipping = useSelector(selectShipping);
   const total = useSelector(selectTotal);
-  const hasPhysicalItems = useSelector(selectHasPhysicalItems);
   const user = useSelector(selectUser);
+  const hasPhysicalItems = useSelector(selectHasPhysicalItems);
 
   // Set when the order is saved, used to go to the confirmation page
   const [placedOrderId, setPlacedOrderId] = useState(null);
@@ -82,7 +82,6 @@ const CheckoutPage = () => {
         <CartSummary className={styles.summary} />
 
         <CheckoutForm
-          email={user.email}
           needsAddress={hasPhysicalItems}
           onSubmit={handlePlaceOrder}
         />
