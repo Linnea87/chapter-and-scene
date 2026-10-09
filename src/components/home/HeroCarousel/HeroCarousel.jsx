@@ -5,7 +5,7 @@ import useHomeTitles from "../../../hooks/useHomeTitles";
 import { useGetTitleDetailsQuery } from "../../../services/tmdb/tmdbApi";
 import getImageUrl from "../../../services/tmdb/getImageUrl";
 import { HERO } from "../../../features/home/homeConfig";
-import IconButton from "../../buttons/IconButton/IconButton";
+import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./HeroCarousel.module.css";
 
 // ===== Hero carousel =====

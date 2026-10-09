@@ -2,7 +2,7 @@ import { useFindBookQuery } from "../../../services/googleBooks/googleBooksApi";
 import { getBookPrices } from "../../../features/pricing/pricingHelpers";
 import { getDeliveryLabel } from "../../../features/cart/cartHelpers";
 import { BOOK_FORMATS, FORMAT_LABELS } from "../../../features/cart/cartConfig";
-import Loader from "../../feedback/Loader/Loader";
+import Loader from "../../ui/feedback/Loader/Loader";
 import PriceOptions from "../../pricing/PriceOptions/PriceOptions";
 import styles from "./BookSection.module.css";
 

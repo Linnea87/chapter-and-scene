@@ -1,6 +1,6 @@
 import { Play } from "lucide-react";
 import useDisclosure from "../../../hooks/useDisclosure";
-import Button from "../../buttons/Button/Button";
+import Button from "../../ui/buttons/Button/Button";
 import TrailerModal from "../TrailerModal/TrailerModal";
 import styles from "./TrailerButton.module.css";
 

@@ -7,11 +7,11 @@ import {
   MEDIA_TYPES,
   getOptionById,
 } from "../../features/explore/exploreConfig";
-import Button from "../../components/buttons/Button/Button";
-import FilterChips from "../../components/forms/FilterChips/FilterChips";
-import LoadError from "../../components/feedback/LoadError/LoadError";
-import SearchField from "../../components/forms/SearchField/SearchField";
-import StatusMessage from "../../components/feedback/StatusMessage/StatusMessage";
+import Button from "../../components/ui/buttons/Button/Button";
+import FilterChips from "../../components/ui/forms/FilterChips/FilterChips";
+import LoadError from "../../components/ui/feedback/LoadError/LoadError";
+import SearchField from "../../components/ui/forms/SearchField/SearchField";
+import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
 import styles from "./ExplorePage.module.css";

@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { ShoppingBasket } from "lucide-react";
 import { selectCartItems } from "../../features/cart/cartSelectors";
-import ButtonLink from "../../components/buttons/ButtonLink/ButtonLink";
+import ButtonLink from "../../components/ui/buttons/ButtonLink/ButtonLink";
 import CartItem from "../../components/cart/CartItem/CartItem";
 import CartSummary from "../../components/cart/CartSummary/CartSummary";
-import StatusMessage from "../../components/feedback/StatusMessage/StatusMessage";
+import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
 import styles from "./CartPage.module.css";
 
 // ===== Cart page =====
