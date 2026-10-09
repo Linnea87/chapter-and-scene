@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import addLibraryItems from "../../services/supabase/library/addLibraryItems";
 import createOrder from "../../services/supabase/orders/createOrder";
 import { isPhysicalFormat } from "../../features/cart/cartHelpers";
+import { selectUser } from "../../features/auth/authSelectors";
 import {
   selectCartItems,
   selectHasPhysicalItems,
@@ -29,6 +30,7 @@ const CheckoutPage = () => {
   const shipping = useSelector(selectShipping);
   const total = useSelector(selectTotal);
   const hasPhysicalItems = useSelector(selectHasPhysicalItems);
+  const user = useSelector(selectUser);
 
   // Set when the order is saved, used to go to the confirmation page
   const [placedOrderId, setPlacedOrderId] = useState(null);
@@ -67,6 +69,9 @@ const CheckoutPage = () => {
     <div className="container">
       <div className={styles.content}>
         <h1>Checkout</h1>
+        <p className={styles.account}>
+          Ordering as <strong>{user.email}</strong>
+        </p>
 
         <ul className={styles.list}>
           {items.map((item) => (
@@ -77,6 +82,7 @@ const CheckoutPage = () => {
         <CartSummary className={styles.summary} />
 
         <CheckoutForm
+          email={user.email}
           needsAddress={hasPhysicalItems}
           onSubmit={handlePlaceOrder}
         />

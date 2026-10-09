@@ -5,6 +5,12 @@
   margin-inline: auto;
 }
 
+/* ===== Account ===== */
+.account {
+  margin: 0 0 var(--space-md);
+  color: var(--color-text-muted);
+}
+
 /* ===== List ===== */
 .list {
   margin: 0 0 var(--space-md);
