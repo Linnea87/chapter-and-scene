@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import useDialog from "../../../hooks/useDialog";
-import IconButton from "../../buttons/IconButton/IconButton";
+import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./TrailerModal.module.css";
 
 // ===== Trailer modal =====

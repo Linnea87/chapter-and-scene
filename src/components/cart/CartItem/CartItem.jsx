@@ -6,9 +6,9 @@ import {
   isPhysicalFormat,
 } from "../../../features/cart/cartHelpers";
 import formatPrice from "../../../utils/formatPrice";
-import IconButton from "../../buttons/IconButton/IconButton";
+import IconButton from "../../ui/buttons/IconButton/IconButton";
 import QuantityControl from "../QuantityControl/QuantityControl";
-import Thumbnail from "../../media/Thumbnail/Thumbnail";
+import Thumbnail from "../../ui/media/Thumbnail/Thumbnail";
 import styles from "./CartItem.module.css";
 
 // ===== Cart item =====

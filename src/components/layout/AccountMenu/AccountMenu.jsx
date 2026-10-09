@@ -7,8 +7,8 @@ import {
 } from "../../../features/auth/authSelectors";
 import useDisclosure from "../../../hooks/useDisclosure";
 import signOutUser from "../../../services/supabase/auth/signOutUser";
-import Button from "../../buttons/Button/Button";
-import IconButton from "../../buttons/IconButton/IconButton";
+import Button from "../../ui/buttons/Button/Button";
+import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./AccountMenu.module.css";
 
 // ===== Account menu =====

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Button from "../../buttons/Button/Button";
-import TextField from "../../forms/TextField/TextField";
+import Button from "../../ui/buttons/Button/Button";
+import TextField from "../../ui/forms/TextField/TextField";
 import styles from "./AuthForm.module.css";
 
 // ===== Auth form =====
