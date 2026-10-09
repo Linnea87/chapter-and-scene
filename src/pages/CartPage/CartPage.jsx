@@ -43,10 +43,12 @@ const CartPage = () => {
       <CartSummary className={styles.summary} />
 
       {/* --- Actions, checkout is added in CS-026 --- */}
+      {/* --- Actions --- */}
       <div className={styles.actions}>
         <ButtonLink to="/explore" variant="secondary">
           Keep exploring
         </ButtonLink>
+        <ButtonLink to="/checkout">Continue to checkout</ButtonLink>
       </div>
     </div>
   );
