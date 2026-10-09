@@ -10,9 +10,9 @@ import DetailColumns from "../../components/details/DetailColumns/DetailColumns"
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
-import TitleNotFound from "../../components/feedback/TitleNotFound/TitleNotFound";
-import Loader from "../../components/feedback/Loader/Loader";
-import LoadError from "../../components/feedback/LoadError/LoadError";
+import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
+import Loader from "../../components/ui/feedback/Loader/Loader";
+import LoadError from "../../components/ui/feedback/LoadError/LoadError";
 
 // ===== Movie detail page =====
 // Shows one movie with facts, prices and cast. The id comes from the URL (/movie/:id).

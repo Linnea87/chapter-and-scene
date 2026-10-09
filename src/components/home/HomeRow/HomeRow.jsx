@@ -1,6 +1,6 @@
 import useHomeTitles from "../../../hooks/useHomeTitles";
 import { ROW_LIMIT } from "../../../features/home/homeConfig";
-import LoadError from "../../feedback/LoadError/LoadError";
+import LoadError from "../../ui/feedback/LoadError/LoadError";
 import TitleRow from "../../titles/TitleRow/TitleRow";
 
 // ===== Home row =====

@@ -4,7 +4,7 @@ import {
   decreaseQuantity,
   increaseQuantity,
 } from "../../../features/cart/cartSlice";
-import IconButton from "../../buttons/IconButton/IconButton";
+import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./QuantityControl.module.css";
 
 // ===== Quantity control =====

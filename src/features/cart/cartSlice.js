@@ -62,6 +62,11 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.cartItems = [];
     },
+
+    // Replaces the whole cart, e.g. with the merged cart after login
+    setCartItems: (state, action) => {
+      state.cartItems = action.payload;
+    },
   },
 });
 
@@ -71,6 +76,7 @@ export const {
   increaseQuantity,
   decreaseQuantity,
   clearCart,
+  setCartItems,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

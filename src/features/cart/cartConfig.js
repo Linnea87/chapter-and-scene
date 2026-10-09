@@ -14,10 +14,13 @@ export const DELIVERY_LABELS = {
   digital: "Instant access",
 };
 
+// How long a rented movie can be watched
+export const RENTAL_HOURS = 48;
+
 // Display names for every format in the shop (movies, series and books).
 // Which formats each title can be bought in is decided elsewhere, e.g. BOOK_FORMATS.
 export const FORMAT_LABELS = {
-  rent: "Rent for 48 hours",
+  rent: `Rent for ${RENTAL_HOURS} hours`,
   buy: "Buy",
   paperback: "Paperback",
   hardcover: "Hardcover",

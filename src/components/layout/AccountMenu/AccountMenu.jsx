@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { LogIn, User } from "lucide-react";
 import { useSelector } from "react-redux";
 import {
@@ -7,8 +7,8 @@ import {
 } from "../../../features/auth/authSelectors";
 import useDisclosure from "../../../hooks/useDisclosure";
 import signOutUser from "../../../services/supabase/auth/signOutUser";
-import Button from "../../buttons/Button/Button";
-import IconButton from "../../buttons/IconButton/IconButton";
+import Button from "../../ui/buttons/Button/Button";
+import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./AccountMenu.module.css";
 
 // ===== Account menu =====
@@ -19,12 +19,14 @@ const AccountMenu = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isLoading = useSelector(selectIsAuthLoading);
   const { isOpen, toggle, close } = useDisclosure();
+  const navigate = useNavigate();
 
   // --- Handlers ---
   const handleLogOut = async () => {
     try {
       await signOutUser();
       close();
+      navigate("/");
     } catch (error) {
       console.warn("Could not log out", error);
     }

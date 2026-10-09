@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../../features/cart/cartSlice";
 import { selectCartItem } from "../../../features/cart/cartSelectors";
 import { createCartKey } from "../../../features/cart/cartHelpers";
-import Button from "../../buttons/Button/Button";
+import Button from "../../ui/buttons/Button/Button";
 
 // ===== Add to cart button =====
 // Adds one price option to the cart and shows when it is already there.
