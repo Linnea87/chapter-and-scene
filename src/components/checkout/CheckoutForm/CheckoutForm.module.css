@@ -23,6 +23,16 @@
   font-size: 1.25rem;
 }
 
+/* --- Payment method --- */
+/* The whole row is clickable and easy to tap */
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: var(--touch-target);
+  cursor: pointer;
+}
+
 /* --- Messages --- */
 .notice {
   color: var(--color-text-muted);

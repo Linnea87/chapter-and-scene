@@ -16,6 +16,13 @@ export const EMPTY_ADDRESS = Object.fromEntries(
   ADDRESS_FIELDS.map((field) => [field.name, ""]),
 );
 
+// Payment methods in the checkout. Payment is simulated, so no details are asked for.
+export const PAYMENT_METHODS = [
+  { id: "card", label: "Card" },
+  { id: "paypal", label: "PayPal" },
+  { id: "invoice", label: "Invoice" },
+];
+
 // Shown in the checkout, payment is simulated
 export const DEMO_NOTICE =
   "This is a demo shop. No payment is taken and nothing is shipped.";
