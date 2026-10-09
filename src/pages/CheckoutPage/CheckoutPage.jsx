@@ -12,6 +12,7 @@ import {
   selectTotal,
 } from "../../features/cart/cartSelectors";
 import { clearCart } from "../../features/cart/cartSlice";
+import CartItem from "../../components/cart/CartItem/CartItem";
 import CartSummary from "../../components/cart/CartSummary/CartSummary";
 import CheckoutForm from "../../components/checkout/CheckoutForm/CheckoutForm";
 import styles from "./CheckoutPage.module.css";
@@ -66,6 +67,12 @@ const CheckoutPage = () => {
     <div className="container">
       <div className={styles.content}>
         <h1>Checkout</h1>
+
+        <ul className={styles.list}>
+          {items.map((item) => (
+            <CartItem key={item.key} item={item} isReadOnly />
+          ))}
+        </ul>
 
         <CartSummary className={styles.summary} />
 

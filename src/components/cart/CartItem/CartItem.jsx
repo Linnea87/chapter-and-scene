@@ -14,13 +14,17 @@ import styles from "./CartItem.module.css";
 // ===== Cart item =====
 // One row in the cart: image, title, format, delivery, price and a remove button.
 // Physical books also get a quantity control (CS-020).
+// isReadOnly hides the controls, e.g. in the checkout.
 // item: a row from the cart state, see createCartItem
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, isReadOnly = false }) => {
   const dispatch = useDispatch();
+  const itemClass = isReadOnly
+    ? `${styles.item} ${styles.readOnly}`
+    : styles.item;
 
   return (
-    <li className={styles.item}>
+    <li className={itemClass}>
       <Thumbnail src={item.imageUrl} className={styles.image} />
 
       {/* --- Title, format and delivery --- */}
@@ -29,7 +33,7 @@ const CartItem = ({ item }) => {
         <p className={styles.format}>{item.label}</p>
         <p className={styles.delivery}>{getDeliveryLabel(item.format)}</p>
 
-        {isPhysicalFormat(item.format) && (
+        {!isReadOnly && isPhysicalFormat(item.format) && (
           <div className={styles.quantity}>
             <QuantityControl item={item} />
           </div>
@@ -41,12 +45,14 @@ const CartItem = ({ item }) => {
         {formatPrice(item.unitPrice * item.quantity)}
       </p>
 
-      <IconButton
-        icon={Trash2}
-        label={`Remove ${item.title}, ${item.label}`}
-        className={styles.remove}
-        onClick={() => dispatch(removeItem(item.key))}
-      />
+      {!isReadOnly && (
+        <IconButton
+          icon={Trash2}
+          label={`Remove ${item.title}, ${item.label}`}
+          className={styles.remove}
+          onClick={() => dispatch(removeItem(item.key))}
+        />
+      )}
     </li>
   );
 };

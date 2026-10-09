@@ -9,6 +9,11 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Without the remove button there is one column less */
+.readOnly {
+  grid-template-columns: 4rem 1fr auto;
+}
+
 /* ===== Image ===== */
 .image {
   width: 100%;
