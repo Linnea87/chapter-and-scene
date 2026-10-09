@@ -7,7 +7,7 @@ export const toCartRow = (item) => ({
   media_type: item.mediaType,
   external_id: String(item.id),
   title: item.title,
-  image_url: item.imageYrl ?? null,
+  image_url: item.imageUrl ?? null,
   format: item.format,
   label: item.label,
   unit_price: item.unitPrice,
