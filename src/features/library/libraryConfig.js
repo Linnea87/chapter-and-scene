@@ -8,9 +8,5 @@ export const LIBRARY_SECTIONS = [
   { id: "ebooks", title: "E-books", mediaType: "book" },
 ];
 
-// Shown instead of the cart label for movies, e.g. "Buy" → "Purchased".
-// Other formats keep their own label, e.g. "Season 2" or "E-book".
-export const LIBRARY_LABELS = {
-  rent: "Rental",
-  buy: "Purchased",
-};
+// Marks rented movies, so they stand out from bought ones
+export const RENTAL_LABEL = "Rented";

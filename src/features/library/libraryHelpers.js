@@ -1,10 +1,16 @@
-import { LIBRARY_LABELS, LIBRARY_SECTIONS } from "./libraryConfig";
+import { LIBRARY_SECTIONS, RENTAL_LABEL } from "./libraryConfig";
 
 // ===== Library helpers =====
 
-// Returns the label shown in My library, e.g. "Rental", "Season 2" or "E-book"
-export const getLibraryLabel = (item) =>
-  LIBRARY_LABELS[item.format] ?? item.label;
+// Returns the label shown in My library, or null when none is needed.
+// Rented movies are marked, bought movies need no label,
+// seasons and e-books keep their own label, e.g. "Season 2" or "E-book".
+export const getLibraryLabel = (item) => {
+  if (item.format === "rent") return RENTAL_LABEL;
+  if (item.format === "buy") return null;
+
+  return item.label;
+};
 
 // Splits the library into the sections in LIBRARY_SECTIONS.
 // Sections without items are left out, so no empty headings are shown.
