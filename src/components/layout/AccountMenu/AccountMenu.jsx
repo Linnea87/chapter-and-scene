@@ -8,12 +8,13 @@ import {
 import useDisclosure from "../../../hooks/useDisclosure";
 import signOutUser from "../../../services/supabase/auth/signOutUser";
 import Button from "../../ui/buttons/Button/Button";
+import ButtonLink from "../../ui/buttons/ButtonLink/ButtonLink";
 import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./AccountMenu.module.css";
 
 // ===== Account menu =====
 // Logged out: a link to the log in page.
-// Logged in: an account icon that opens a small menu with "Log out".
+// Logged in: an account icon that opens a small menu with "My library" and "Log out".
 
 const AccountMenu = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -57,6 +58,9 @@ const AccountMenu = () => {
 
       {isOpen && (
         <div className={styles.menu}>
+          <ButtonLink to="/library" variant="text" onClick={close}>
+            My library
+          </ButtonLink>
           <Button variant="text" size="small" onClick={handleLogOut}>
             Log out
           </Button>
