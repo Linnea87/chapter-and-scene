@@ -8,5 +8,7 @@ export const LIBRARY_SECTIONS = [
   { id: "ebooks", title: "E-books", mediaType: "book" },
 ];
 
-// Marks rented movies, so they stand out from bought ones
+// Labels for rented movies, so they stand out from bought ones.
+// Active rentals also show the time left, e.g. "Rented · 31 h left".
 export const RENTAL_LABEL = "Rented";
+export const EXPIRED_RENTAL_LABEL = "Rental expired";

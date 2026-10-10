@@ -9,6 +9,15 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Expired rentals: faded, and the poster in black and white */
+.expired {
+  opacity: 0.6;
+}
+
+.expired .image {
+  filter: grayscale(1);
+}
+
 /* ===== Image ===== */
 .image {
   width: 100%;
