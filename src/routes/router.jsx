@@ -7,6 +7,7 @@ import TvDetailPage from "../pages/TvDetailPage/TvDetailPage";
 import CartPage from "../pages/CartPage/CartPage";
 import CheckoutPage from "../pages/CheckoutPage/CheckoutPage";
 import OrderPage from "../pages/OrderPage/OrderPage";
+import LibraryPage from "../pages/LibraryPage/LibraryPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import SignUpPage from "../pages/SignUpPage/SignUpPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
         children: [
           { path: "checkout", element: <CheckoutPage /> },
           { path: "order/:id", element: <OrderPage /> },
+          { path: "library", element: <LibraryPage /> },
         ],
       },
 
