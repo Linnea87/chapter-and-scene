@@ -1,7 +1,7 @@
 import { RENTAL_HOURS } from "../../../features/cart/cartConfig";
 
 // ===== Library mappers =====
-// Convert a purchased cart item into a row in library_items.
+// Convert between purchased items in the app and rows in library_items.
 
 // --- Helpers ---
 // Rentals expire RENTAL_HOURS after purchase, everything else is kept forever
@@ -21,4 +21,16 @@ export const toLibraryRow = (item) => ({
   format: item.format,
   label: item.label,
   expires_at: getExpiresAt(item.format),
+});
+
+// --- Database → app ---
+export const toLibraryItem = (row) => ({
+  key: row.id,
+  id: row.external_id,
+  mediaType: row.media_type,
+  title: row.title,
+  imageUrl: row.image_url,
+  format: row.format,
+  label: row.label,
+  expiresAt: row.expires_at,
 });
