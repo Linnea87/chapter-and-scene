@@ -19,12 +19,15 @@
   position: relative;
 }
 
-/* Opens below the icon, aligned to the right edge */
+/* Opens below the icon, aligned to the right edge.
+   The menu items are stacked and share the same width */
 .menu {
   position: absolute;
   top: 100%;
   right: 0;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
   width: max-content;
   padding: var(--space-sm);
   border: 1px solid var(--color-border);
