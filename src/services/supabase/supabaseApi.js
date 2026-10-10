@@ -1,4 +1,5 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
+import getLibraryItems from "./library/getLibraryItems";
 import getOrder from "./orders/getOrder";
 
 // ===== Supabase API =====
@@ -21,11 +22,17 @@ export const supabaseApi = createApi({
   reducerPath: "supabaseApi",
   // No base URL, every endpoint calls a Supabase function instead
   baseQuery: fakeBaseQuery(),
+  // Cache labels, used to fetch the library again after a purchase
+  tagTypes: ["Library"],
   endpoints: (build) => ({
     getOrder: build.query({
       queryFn: (orderId) => runQuery(getOrder, orderId),
     }),
+    getLibraryItems: build.query({
+      queryFn: () => runQuery(getLibraryItems),
+      providesTags: ["Library"],
+    }),
   }),
 });
 
-export const { useGetOrderQuery } = supabaseApi;
+export const { useGetOrderQuery, useGetLibraryItemsQuery } = supabaseApi;
