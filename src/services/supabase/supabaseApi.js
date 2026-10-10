@@ -1,16 +1,19 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
+import addLibraryItems from "./library/addLibraryItems";
 import getLibraryItems from "./library/getLibraryItems";
 import getOrder from "./orders/getOrder";
 
 // ===== Supabase API =====
-// RTK Query service for reading data from Supabase.
+// RTK Query service for reading and saving data in Supabase.
 // Gives loading, error and retry states like the TMDb and Google Books services.
 // The Supabase calls live in their own service files, this only wraps them.
 
-// Runs a Supabase service function and returns it in the shape RTK Query expects
+// Runs a Supabase service function and returns it in the shape RTK Query expects.
+// RTK Query needs a value, so functions that return nothing give null.
 const runQuery = async (serviceFunction, ...args) => {
   try {
-    return { data: await serviceFunction(...args) };
+    const data = await serviceFunction(...args);
+    return { data: data ?? null };
   } catch (error) {
     console.warn("Supabase request failed:", error);
 
@@ -32,7 +35,16 @@ export const supabaseApi = createApi({
       queryFn: () => runQuery(getLibraryItems),
       providesTags: ["Library"],
     }),
+    addLibraryItems: build.mutation({
+      queryFn: (items) => runQuery(addLibraryItems, items),
+      // The library has changed, so getLibraryItems fetches it again
+      invalidatesTags: ["Library"],
+    }),
   }),
 });
 
-export const { useGetOrderQuery, useGetLibraryItemsQuery } = supabaseApi;
+export const {
+  useGetOrderQuery,
+  useGetLibraryItemsQuery,
+  useAddLibraryItemsMutation,
+} = supabaseApi;

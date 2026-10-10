@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import subscribeToAuthChanges from "../services/supabase/auth/subscribeToAuthChanges";
+import { supabaseApi } from "../services/supabase/supabaseApi";
 import { toAuthUser } from "../features/auth/authHelpers";
 import { setUser } from "../features/auth/authSlice";
 
@@ -14,6 +15,10 @@ const useAuthListener = () => {
   useEffect(() => {
     const unsubscribe = subscribeToAuthChanges((user) => {
       dispatch(setUser(toAuthUser(user)));
+
+      // Signed out: forget cached orders and library,
+      // so the next person does not see them
+      if (!user) dispatch(supabaseApi.util.resetApiState());
     });
 
     return unsubscribe;
