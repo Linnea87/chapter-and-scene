@@ -61,6 +61,7 @@ const OrderPage = () => {
             <CartItem key={item.key} item={item} isReadOnly />
           ))}
         </ul>
+
         <p className={styles.total}>
           <span>Total</span>
           <span>{formatPrice(order.total)}</span>
