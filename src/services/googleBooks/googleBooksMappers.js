@@ -10,6 +10,7 @@ export const mapBook = (item) => {
 
   // Only USD prices are used, since all prices in the shop are in USD
   const price = saleInfo.retailPrice;
+  const hasPreview = accessInfo.viewability !== "NO_PAGES";
 
   return {
     id: item.id,
@@ -20,7 +21,9 @@ export const mapBook = (item) => {
     publishedYear: volumeInfo.publishedDate?.slice(0, 4) ?? null,
     coverUrl: toHttps(volumeInfo.imageLinks?.thumbnail),
     previewLink: toHttps(volumeInfo.previewLink),
-    hasPreview: accessInfo.viewability !== "NO_PAGES",
+    hasPreview,
+    // Some publishers only allow the preview on Google's own site
+    canEmbedPreview: hasPreview && accessInfo.embeddable === true,
     retailPrice: price?.currencyCode === "USD" ? price.amount : null,
   };
 };
