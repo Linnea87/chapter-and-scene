@@ -4,18 +4,21 @@ import {
   isRentalExpired,
 } from "../../../features/library/libraryHelpers";
 import PlayButton from "../PlayButton/PlayButton";
+import ReadButton from "../ReadButton/ReadButton";
 import Thumbnail from "../../ui/media/Thumbnail/Thumbnail";
 import styles from "./LibraryItem.module.css";
 
 // ===== Library item =====
 // One row in My library: image, title and a label when needed, e.g. "Rented" or "Season 2".
 // Movies and series that can be watched get a title link and a Play button.
-// Expired rentals get a "Buy or rent again" link instead. Books have no page of their own.
+// E-books get a Read button. Books have no page of their own.
+// Expired rentals get a "Buy or rent again" link instead.
 // item: a row from getLibraryItems, see toLibraryItem
 
 const LibraryItem = ({ item }) => {
+  const isBook = item.mediaType === "book";
   const isExpired = isRentalExpired(item);
-  const isWatchable = item.mediaType !== "book" && !isExpired;
+  const isWatchable = !isBook && !isExpired;
   const detailPath = `/${item.mediaType}/${item.id}`;
   const label = getLibraryLabel(item);
 
@@ -31,8 +34,14 @@ const LibraryItem = ({ item }) => {
         {label && <p className={styles.format}>{label}</p>}
 
         {isWatchable && (
-          <div className={styles.play}>
+          <div className={styles.action}>
             <PlayButton item={item} />
+          </div>
+        )}
+
+        {isBook && (
+          <div className={styles.action}>
+            <ReadButton item={item} />
           </div>
         )}
 
