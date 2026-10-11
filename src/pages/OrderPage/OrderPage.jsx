@@ -73,7 +73,12 @@ const OrderPage = () => {
 
         <ul className={styles.list}>
           {order.items.map((item) => (
-            <CartItem key={item.key} item={item} isReadOnly />
+            <CartItem
+              key={item.key}
+              item={item}
+              isReadOnly
+              showConversion={false}
+            />
           ))}
         </ul>
 

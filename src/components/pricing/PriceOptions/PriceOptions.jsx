@@ -1,5 +1,5 @@
 import { createCartItem } from "../../../features/cart/cartHelpers";
-import formatPrice from "../../../utils/formatPrice";
+import Price from "../Price/Price";
 import PriceAction from "../PriceAction/PriceAction";
 import styles from "./PriceOptions.module.css";
 
@@ -26,7 +26,9 @@ const PriceOptions = ({ title, product, options }) => (
 
           {/* --- Price and action --- */}
           <span className={styles.actions}>
-            <span className={styles.price}>{formatPrice(option.price)}</span>
+            <span className={styles.price}>
+              <Price amount={option.price} />
+            </span>
             <PriceAction item={createCartItem(product, option)} />
           </span>
         </li>
