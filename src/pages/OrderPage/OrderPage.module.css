@@ -6,21 +6,9 @@
 }
 
 /* ===== Back link ===== */
-/* Only shown when the order is opened from the order history.
-   Same look as the back link on detail pages */
+/* Only shown when the order is opened from the order history */
 .backLink {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  min-height: var(--touch-target);
   margin-bottom: var(--space-md);
-  text-decoration: none;
-}
-
-@media (hover: hover) {
-  .backLink:hover {
-    text-decoration: underline;
-  }
 }
 
 /* ===== Order number ===== */

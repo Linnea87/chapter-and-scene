@@ -7,17 +7,7 @@
 }
 
 /* ===== Back link ===== */
+/* Only as wide as its text, not the full width of the layout */
 .backLink {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
   align-self: flex-start;
-  min-height: var(--touch-target);
-  text-decoration: none;
-}
-
-@media (hover: hover) {
-  .backLink:hover {
-    text-decoration: underline;
-  }
 }

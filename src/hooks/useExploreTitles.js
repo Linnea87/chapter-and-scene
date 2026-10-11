@@ -15,12 +15,14 @@ import {
 // ===== useExploreTitles =====
 // Fetches book adaptations for the selected media type and category,
 // merges movies and series into one list and lets the user load more pages.
-// Defaults to "All".
+// Defaults to "All", sorted by popularity. sort is used by the browse page,
+// e.g. "recent" for the newest titles, see getSortParams.
 
 const useExploreTitles = ({
   category = CATEGORIES[0],
   mediaType = MEDIA_TYPES[0],
   searchTerm = "",
+  sort,
 } = {}) => {
   // --- Search or discover ---
   const query = searchTerm.trim();
@@ -34,7 +36,7 @@ const useExploreTitles = ({
 
   // --- Requests ---
   const movies = useDiscoverTitlesInfiniteQuery(
-    { mediaType: "movie", genres: category.movieGenres },
+    { mediaType: "movie", genres: category.movieGenres, sort },
     { skip: !includeMovies },
   );
   const series = useDiscoverTitlesInfiniteQuery(
@@ -42,6 +44,7 @@ const useExploreTitles = ({
       mediaType: "tv",
       genres: category.tvGenres,
       keywords: category.tvKeywords,
+      sort,
     },
     { skip: !includeSeries },
   );
@@ -53,6 +56,7 @@ const useExploreTitles = ({
   const discoverTitles = mergePages(
     movies.currentData?.pages ?? [],
     series.currentData?.pages ?? [],
+    sort,
   );
   const searchTitles = filterByMediaTypeAndCategory(
     search.currentData ?? [],

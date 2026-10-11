@@ -11,8 +11,8 @@ export const HERO = {
 };
 
 // --- Rows ---
-// "See all" goes to Explore. Sorting in Explore is added in CS-009,
-// so "Recently added" will link to a sorted list then.
+// "See all" opens the browse page with every title in the row's order,
+// e.g. /browse/recent. The id is used in the address.
 
 export const HOME_ROWS = [
   {
@@ -20,7 +20,7 @@ export const HOME_ROWS = [
     title: "Recently added",
     hint: "The newest stories",
     sort: "recent",
-    link: "/explore",
+    link: "/browse/recent",
   },
 
   {
@@ -28,7 +28,7 @@ export const HOME_ROWS = [
     title: "Popular right now",
     hint: "What everyone is watching",
     sort: "popular",
-    link: "/explore",
+    link: "/browse/popular",
   },
 ];
 
