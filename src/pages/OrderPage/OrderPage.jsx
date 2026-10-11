@@ -88,14 +88,17 @@ const OrderPage = () => {
         </p>
 
         {/* --- Actions, only after a purchase --- */}
-        {/* My library is the main action when the order has digital items */}
+        {/* The main action is My library when the order has digital items,
+            otherwise the order history, where the delivery can be followed */}
         {!isFromOrderHistory && (
           <div className={styles.actions}>
             <ButtonLink to="/explore" variant="secondary">
               Keep exploring
             </ButtonLink>
-            {hasDigitalItems(order.items) && (
+            {hasDigitalItems(order.items) ? (
               <ButtonLink to="/library">Go to My library</ButtonLink>
+            ) : (
+              <ButtonLink to="/orders">Go to order history</ButtonLink>
             )}
           </div>
         )}

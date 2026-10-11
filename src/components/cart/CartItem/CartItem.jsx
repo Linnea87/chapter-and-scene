@@ -5,6 +5,7 @@ import {
   getDeliveryLabel,
   isPhysicalFormat,
 } from "../../../features/cart/cartHelpers";
+import { DELIVERY_STATUS_LABELS } from "../../../features/orders/orderConfig";
 import IconButton from "../../ui/buttons/IconButton/IconButton";
 import QuantityControl from "../QuantityControl/QuantityControl";
 import Price from "../../pricing/Price/Price";
@@ -13,9 +14,10 @@ import styles from "./CartItem.module.css";
 
 // ===== Cart item =====
 // One row in the cart: image, title, format, delivery, price and a remove button.
-// Physical books also get a quantity control (CS-020).
+// Physical books also get a quantity control.
 // isReadOnly hides the controls, e.g. in the checkout.
 // showConversion: false on the order page, where prices are only shown in USD.
+// Order items also show their delivery status.
 // item: a row from the cart state, see createCartItem
 
 const CartItem = ({ item, isReadOnly = false, showConversion = true }) => {
@@ -23,6 +25,13 @@ const CartItem = ({ item, isReadOnly = false, showConversion = true }) => {
   const itemClass = isReadOnly
     ? `${styles.item} ${styles.readOnly}`
     : styles.item;
+
+  // Order items with a delivery status show it before the delivery time,
+  // e.g. "Processing · Delivered in 2–4 days". Cart items have no status.
+  const deliveryLabel = getDeliveryLabel(item.format);
+  const deliveryText = item.deliveryStatus
+    ? `${DELIVERY_STATUS_LABELS[item.deliveryStatus]} · ${deliveryLabel}`
+    : deliveryLabel;
 
   return (
     <li className={itemClass}>
@@ -32,7 +41,7 @@ const CartItem = ({ item, isReadOnly = false, showConversion = true }) => {
       <div className={styles.info}>
         <h2 className={styles.title}>{item.title}</h2>
         <p className={styles.format}>{item.label}</p>
-        <p className={styles.delivery}>{getDeliveryLabel(item.format)}</p>
+        <p className={styles.delivery}>{deliveryText}</p>
 
         {!isReadOnly && isPhysicalFormat(item.format) && (
           <div className={styles.quantity}>

@@ -1,7 +1,8 @@
 import { isPhysicalFormat } from "../../../features/cart/cartHelpers";
+import { getDeliveryStatus } from "../../../features/orders/orderHelpers";
 
 // ===== Order mappers =====
-// Convert a cart item in the app into a row in order_items.
+// Convert between orders in the app and rows in orders and order_items.
 
 // --- App → database ---
 // Physical books start as "processing", digital items have no delivery status
@@ -19,8 +20,9 @@ export const toOrderItemRow = (item, orderId) => ({
 });
 
 // --- Database → app ---
-// Same shape as a cart item, so CartItem can show it
-export const toOrderItem = (row) => ({
+// Same shape as a cart item, so CartItem can show it.
+// The order date is needed to show if a book has been shipped, see getDeliveryStatus.
+export const toOrderItem = (row, orderCreatedAt) => ({
   key: row.id,
   id: row.external_id,
   mediaType: row.media_type,
@@ -30,7 +32,7 @@ export const toOrderItem = (row) => ({
   label: row.label,
   unitPrice: Number(row.unit_price),
   quantity: row.quantity,
-  deliveryStatus: row.delivery_status,
+  deliveryStatus: getDeliveryStatus(row.delivery_status, orderCreatedAt),
 });
 
 export const toOrder = (row) => ({
@@ -40,5 +42,5 @@ export const toOrder = (row) => ({
   shipping: Number(row.shipping),
   total: Number(row.total),
   shippingAddress: row.shipping_address,
-  items: row.order_items.map(toOrderItem),
+  items: row.order_items.map((item) => toOrderItem(item, row.created_at)),
 });
