@@ -1,0 +1,18 @@
+/* ===== Currency select ===== */
+/* Placeholder look until the design round. Same height as the header icons,
+   no border, so it sits next to the icons like text */
+.select {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-sm);
+  border: none;
+  background-color: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+/* The focus ring is kept for keyboard users, but hidden after a mouse click */
+.select:focus:not(:focus-visible) {
+  outline: none;
+}

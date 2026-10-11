@@ -7,9 +7,9 @@ export const BASE_CURRENCY = "USD";
 
 // Options for the currency selector, in the order they are shown
 export const CURRENCIES = [
-  { code: "USD", label: "USD $" },
-  { code: "SEK", label: "SEK kr" },
-  { code: "GBP", label: "GBP £" },
+  { code: "USD", label: "USD" },
+  { code: "SEK", label: "SEK" },
+  { code: "GBP", label: "GBP" },
 ];
 
 // ===== Storage =====
