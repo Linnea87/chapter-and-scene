@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import useExploreTitles from "../../hooks/useExploreTitles";
 import { HOME_ROWS } from "../../features/home/homeConfig";
 import Button from "../../components/ui/buttons/Button/Button";
+import BackLink from "../../components/ui/navigation/BackLink/BackLink";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
@@ -46,6 +47,10 @@ const BrowsePage = () => {
 
   return (
     <section className="container">
+      <BackLink to="/" className={styles.backLink}>
+        Back to home
+      </BackLink>
+
       <h1>{row.title}</h1>
       <p className={styles.intro}>{row.hint}</p>
 
