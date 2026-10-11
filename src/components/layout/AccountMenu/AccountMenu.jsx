@@ -14,7 +14,8 @@ import styles from "./AccountMenu.module.css";
 
 // ===== Account menu =====
 // Logged out: a link to the log in page.
-// Logged in: an account icon that opens a small menu with "My library" and "Log out".
+// Logged in: an account icon that opens a small menu with "My library",
+// "Order history" and "Log out".
 
 const AccountMenu = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -60,6 +61,9 @@ const AccountMenu = () => {
         <div className={styles.menu}>
           <ButtonLink to="/library" variant="text" onClick={close}>
             My library
+          </ButtonLink>
+          <ButtonLink to="/orders" variant="text" onClick={close}>
+            Order history
           </ButtonLink>
           <Button variant="text" size="small" onClick={handleLogOut}>
             Log out
