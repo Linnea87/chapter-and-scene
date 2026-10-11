@@ -9,30 +9,36 @@ import styles from "./LibraryItem.module.css";
 // ===== Library item =====
 // One row in My library: image, title and a label when needed, e.g. "Rented" or "Season 2".
 // Movies and series link to their detail page, books have no page of their own.
-// Expired rentals are greyed out.
+// Expired rentals get a "Buy or rent again" link instead of a title link.
 // item: a row from getLibraryItems, see toLibraryItem
 
 const LibraryItem = ({ item }) => {
-  const hasDetailPage = item.mediaType !== "book";
+  const isExpired = isRentalExpired(item);
+  const detailPath = `/${item.mediaType}/${item.id}`;
+  const hasTitleLink = item.mediaType !== "book" && !isExpired;
   const label = getLibraryLabel(item);
-  const itemClass = isRentalExpired(item)
-    ? `${styles.item} ${styles.expired}`
-    : styles.item;
 
   return (
-    <li className={itemClass}>
+    <li className={styles.item}>
       <Thumbnail src={item.imageUrl} className={styles.image} />
 
-      {/* --- Title and label --- */}
+      {/* --- Title, label and buy or rent again --- */}
       <div className={styles.info}>
         <h3 className={styles.title}>
-          {hasDetailPage ? (
-            <Link to={`/${item.mediaType}/${item.id}`}>{item.title}</Link>
+          {hasTitleLink ? (
+            <Link to={detailPath}>{item.title}</Link>
           ) : (
             item.title
           )}
         </h3>
         {label && <p className={styles.format}>{label}</p>}
+
+        {isExpired && (
+          <Link to={detailPath} className={styles.again}>
+            Buy or rent again
+            <span className="visually-hidden"> {item.title}</span>
+          </Link>
+        )}
       </div>
     </li>
   );
