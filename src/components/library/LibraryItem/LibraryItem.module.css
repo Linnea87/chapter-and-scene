@@ -33,6 +33,17 @@
   color: var(--color-text-muted);
 }
 
+/* --- Play, only for movies and series that can be watched --- */
+.play {
+  margin-top: var(--space-sm);
+}
+
+/* PlayButton renders nothing while loading or without a trailer,
+   so the empty wrapper should not leave a gap */
+.play:empty {
+  display: none;
+}
+
 /* --- Buy or rent again, only for expired rentals --- */
 /* A small text link under the label. The height keeps it easy to tap */
 .again {
