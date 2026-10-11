@@ -1,0 +1,8 @@
+/* ===== Converted amount ===== */
+/* Smaller and muted, since it is only a guide. The USD price is what is charged */
+.converted {
+  font-size: 0.875em;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}

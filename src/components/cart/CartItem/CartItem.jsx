@@ -5,9 +5,9 @@ import {
   getDeliveryLabel,
   isPhysicalFormat,
 } from "../../../features/cart/cartHelpers";
-import formatPrice from "../../../utils/formatPrice";
 import IconButton from "../../ui/buttons/IconButton/IconButton";
 import QuantityControl from "../QuantityControl/QuantityControl";
+import Price from "../../pricing/Price/Price";
 import Thumbnail from "../../ui/media/Thumbnail/Thumbnail";
 import styles from "./CartItem.module.css";
 
@@ -15,9 +15,10 @@ import styles from "./CartItem.module.css";
 // One row in the cart: image, title, format, delivery, price and a remove button.
 // Physical books also get a quantity control (CS-020).
 // isReadOnly hides the controls, e.g. in the checkout.
+// showConversion: false on the order page, where prices are only shown in USD.
 // item: a row from the cart state, see createCartItem
 
-const CartItem = ({ item, isReadOnly = false }) => {
+const CartItem = ({ item, isReadOnly = false, showConversion = true }) => {
   const dispatch = useDispatch();
   const itemClass = isReadOnly
     ? `${styles.item} ${styles.readOnly}`
@@ -42,7 +43,10 @@ const CartItem = ({ item, isReadOnly = false }) => {
 
       {/* --- Price and remove --- */}
       <p className={styles.price}>
-        {formatPrice(item.unitPrice * item.quantity)}
+        <Price
+          amount={item.unitPrice * item.quantity}
+          showConversion={showConversion}
+        />
       </p>
 
       {!isReadOnly && (

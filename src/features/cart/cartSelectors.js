@@ -1,12 +1,10 @@
 import { isPhysicalFormat } from "./cartHelpers";
 import { SHIPPING_COST, FREE_SHIPPING_THRESHOLD } from "./cartConfig";
+import roundPrice from "../../utils/roundPrice";
 
 // ===== Cart selectors =====
 // Components read cart data through these, so they do not depend on the state shape.
-// All prices are in USD and converted to the selected currency when displayed.
-
-// Rounds to two decimals to avoid floating point errors, e.g. 0.1 + 0.2
-const roundPrice = (value) => Math.round(value * 100) / 100;
+// All prices are in USD. Another currency is only shown as a conversion next to them.
 
 export const selectCartItems = (state) => state.cart.cartItems;
 
