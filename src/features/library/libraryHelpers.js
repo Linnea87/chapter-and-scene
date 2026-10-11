@@ -34,10 +34,20 @@ export const getLibraryLabel = (item) => {
   return item.label;
 };
 
+// Returns the id of the section an item belongs to.
+// Expired rentals go to History, everything else to the section for its media type.
+const getSectionId = (item) => {
+  if (isRentalExpired(item)) return "history";
+
+  return LIBRARY_SECTIONS.find(
+    (section) => section.mediaType === item.mediaType,
+  )?.id;
+};
+
 // Splits the library into the sections in LIBRARY_SECTIONS.
 // Sections without items are left out, so no empty headings are shown.
 export const groupBySection = (items) =>
   LIBRARY_SECTIONS.map((section) => ({
     ...section,
-    items: items.filter((item) => item.mediaType === section.mediaType),
+    items: items.filter((item) => getSectionId(item) === section.id),
   })).filter((section) => section.items.length > 0);
