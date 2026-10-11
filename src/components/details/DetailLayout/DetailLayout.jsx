@@ -1,5 +1,4 @@
-import { Link } from "react-router";
-import { ArrowLeft } from "lucide-react";
+import BackLink from "../../ui/navigation/BackLink/BackLink";
 import styles from "./DetailLayout.module.css";
 
 // ===== Detail layout =====
@@ -7,10 +6,9 @@ import styles from "./DetailLayout.module.css";
 
 const DetailLayout = ({ children }) => (
   <article className={`container ${styles.layout}`}>
-    <Link to="/explore" className={styles.backLink}>
-      <ArrowLeft size={18} aria-hidden="true" />
+    <BackLink to="/explore" className={styles.backLink}>
       Back to Explore
-    </Link>
+    </BackLink>
 
     {children}
   </article>
