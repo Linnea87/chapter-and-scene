@@ -39,6 +39,14 @@
   margin: 0 0 var(--space-sm) auto;
 }
 
+/* ===== Notice ===== */
+/* Above the video, so it is read before the trailer starts */
+.notice {
+  margin: 0 0 var(--space-sm);
+  font-weight: 600;
+  text-align: center;
+}
+
 /* ===== Player ===== */
 /* Keeps the YouTube player in widescreen format at every width */
 .player {
@@ -54,11 +62,4 @@
 .fullWindow .player {
   width: min(100%, calc((100dvh - 8rem) * 16 / 9));
   margin-inline: auto;
-}
-
-/* ===== Notice ===== */
-.notice {
-  margin: var(--space-sm) 0 0;
-  font-size: 0.875rem;
-  text-align: center;
 }

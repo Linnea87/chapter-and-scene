@@ -6,7 +6,7 @@ import styles from "./TrailerModal.module.css";
 // ===== Trailer modal =====
 // Plays a YouTube trailer in a native <dialog>, so the user stays on the page.
 // isPlayer: player mode, used in My library. Fills the window, is labelled
-// "Now playing" and can show a notice under the video.
+// "Now playing" and can show a notice above the video.
 
 const TrailerModal = ({
   trailerKey,
@@ -37,6 +37,8 @@ const TrailerModal = ({
         onClick={onClose}
       />
 
+      {notice && <p className={styles.notice}>{notice}</p>}
+
       {/* The player is only rendered while open, so the video stops on close */}
       {isOpen && (
         <iframe
@@ -47,8 +49,6 @@ const TrailerModal = ({
           allowFullScreen
         />
       )}
-
-      {notice && <p className={styles.notice}>{notice}</p>}
     </dialog>
   );
 };
