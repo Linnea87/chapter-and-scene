@@ -1,0 +1,55 @@
+/* ===== Row ===== */
+/* Image and info side by side, same row style as CartItem */
+.item {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ===== Image ===== */
+.image {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== Text ===== */
+/* Lets long titles wrap instead of widening the row */
+.info {
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.format {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Play or Read, for items that can be watched or read --- */
+.action {
+  margin-top: var(--space-sm);
+}
+
+/* PlayButton and ReadButton render nothing while loading,
+   so the empty wrapper should not leave a gap */
+.action:empty {
+  display: none;
+}
+
+/* --- Buy or rent again, only for expired rentals --- */
+/* A small text link under the label. The height keeps it easy to tap */
+.again {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  font-size: 0.875rem;
+  color: var(--color-text);
+}

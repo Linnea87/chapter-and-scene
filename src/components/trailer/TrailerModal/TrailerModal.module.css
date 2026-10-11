@@ -15,10 +15,36 @@
   background-color: var(--color-overlay);
 }
 
+/* --- Player mode, used in My library --- */
+/* Fills the whole window, like a streaming player */
+.fullWindow {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Centres the video vertically. Only while open, so a closed dialog stays hidden */
+.fullWindow[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* ===== Close button ===== */
 /* Pushed to the right, above the player */
 .close {
   margin: 0 0 var(--space-sm) auto;
+}
+
+/* ===== Notice ===== */
+/* Above the video, so it is read before the trailer starts */
+.notice {
+  margin: 0 0 var(--space-sm);
+  font-weight: 600;
+  text-align: center;
 }
 
 /* ===== Player ===== */
@@ -29,4 +55,11 @@
   aspect-ratio: 16 / 9;
   border: none;
   border-radius: var(--radius-sm);
+}
+
+/* In player mode the video also fits the window height.
+   8rem leaves room for the close button and the notice */
+.fullWindow .player {
+  width: min(100%, calc((100dvh - 8rem) * 16 / 9));
+  margin-inline: auto;
 }

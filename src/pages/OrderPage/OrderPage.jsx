@@ -1,6 +1,9 @@
 import { useParams } from "react-router";
 import { useGetOrderQuery } from "../../services/supabase/supabaseApi";
-import { formatOrderNumber } from "../../features/orders/orderHelpers";
+import {
+  formatOrderNumber,
+  hasDigitalItems,
+} from "../../features/orders/orderHelpers";
 import formatPrice from "../../utils/formatPrice";
 import ButtonLink from "../../components/ui/buttons/ButtonLink/ButtonLink";
 import CartItem from "../../components/cart/CartItem/CartItem";
@@ -64,9 +67,16 @@ const OrderPage = () => {
           <span>{formatPrice(order.total)}</span>
         </p>
 
-        <ButtonLink to="/explore" variant="secondary">
-          Keep exploring
-        </ButtonLink>
+        {/* --- Actions --- */}
+        {/* My library is the main action when the order has digital items */}
+        <div className={styles.actions}>
+          <ButtonLink to="/explore" variant="secondary">
+            Keep exploring
+          </ButtonLink>
+          {hasDigitalItems(order.items) && (
+            <ButtonLink to="/library">Go to My library</ButtonLink>
+          )}
+        </div>
       </div>
     </div>
   );

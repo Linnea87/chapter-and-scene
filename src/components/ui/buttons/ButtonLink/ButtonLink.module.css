@@ -16,3 +16,8 @@
 .secondary {
   composes: button secondary medium from "../Button/Button.module.css";
 }
+
+/* Text only, small: items in menus, matches Button variant="text" size="small" */
+.text {
+  composes: button text small from "../Button/Button.module.css";
+}

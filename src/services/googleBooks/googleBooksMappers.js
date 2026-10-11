@@ -1,11 +1,6 @@
-// ===== Google Books helpers =====
-// Google Books returns large, inconsistent objects. These helpers build the search
-// query and map a result to the fields the UI needs.
-
-// Plain text search with title and author
-// The intitle:/inauthor: operators currently return no results from Google Books
-export const buildBookQuery = (title, author) =>
-  [title, author].filter(Boolean).join(" ");
+// ===== Google Books mappers =====
+// Google Books returns large, inconsistent objects. These mappers turn a result
+// into the fields the UI needs.
 
 // Cover and preview links are returned over http, which can be blocked on https pages
 const toHttps = (url) => (url ? url.replace("http://", "https://") : null);
@@ -15,6 +10,7 @@ export const mapBook = (item) => {
 
   // Only USD prices are used, since all prices in the shop are in USD
   const price = saleInfo.retailPrice;
+  const hasPreview = accessInfo.viewability !== "NO_PAGES";
 
   return {
     id: item.id,
@@ -25,7 +21,9 @@ export const mapBook = (item) => {
     publishedYear: volumeInfo.publishedDate?.slice(0, 4) ?? null,
     coverUrl: toHttps(volumeInfo.imageLinks?.thumbnail),
     previewLink: toHttps(volumeInfo.previewLink),
-    hasPreview: accessInfo.viewability !== "NO_PAGES",
+    hasPreview,
+    // Some publishers only allow the preview on Google's own site
+    canEmbedPreview: hasPreview && accessInfo.embeddable === true,
     retailPrice: price?.currencyCode === "USD" ? price.amount : null,
   };
 };

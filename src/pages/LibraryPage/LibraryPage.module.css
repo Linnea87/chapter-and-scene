@@ -1,0 +1,20 @@
+/* ===== Content ===== */
+/* One narrow centred column, like the checkout and order page */
+.content {
+  max-width: 32rem;
+  margin-inline: auto;
+}
+
+/* ===== Sections ===== */
+/* Space between Movies, Series and E-books */
+.section {
+  margin-top: var(--space-xl);
+}
+
+/* ===== List ===== */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}

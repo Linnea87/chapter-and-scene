@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Navigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import addLibraryItems from "../../services/supabase/library/addLibraryItems";
 import createOrder from "../../services/supabase/orders/createOrder";
+import { useAddLibraryItemsMutation } from "../../services/supabase/supabaseApi";
 import { isPhysicalFormat } from "../../features/cart/cartHelpers";
 import { selectUser } from "../../features/auth/authSelectors";
 import {
@@ -24,6 +24,7 @@ import styles from "./CheckoutPage.module.css";
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
+  const [addLibraryItems] = useAddLibraryItemsMutation();
 
   const items = useSelector(selectCartItems);
   const subtotal = useSelector(selectSubtotal);
@@ -46,9 +47,10 @@ const CheckoutPage = () => {
       shippingAddress,
     });
 
-    // Physical books are shipped, everything else goes to the library
+    // Physical books are shipped, everything else goes to the library.
+    // unwrap() throws on failure, like the other service calls.
     const digitalItems = items.filter((item) => !isPhysicalFormat(item.format));
-    await addLibraryItems(digitalItems);
+    await addLibraryItems(digitalItems).unwrap();
 
     // Both updates happen in the same render, so the page goes to the
     // confirmation page instead of seeing an empty cart.

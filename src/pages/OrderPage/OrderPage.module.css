@@ -27,3 +27,19 @@
   font-weight: 600;
   font-size: 1.125rem;
 }
+
+/* ===== Actions ===== */
+/* Mobile first: full width buttons stacked, easy to tap */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Larger screens: side by side on the right */
+@media (min-width: 600px) {
+  .actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
