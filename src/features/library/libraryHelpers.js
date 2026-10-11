@@ -34,6 +34,15 @@ export const getLibraryLabel = (item) => {
   return item.label;
 };
 
+// True when the library also has the same movie as a purchase
+const isBought = (item, items) =>
+  items.some(
+    (other) =>
+      other.mediaType === item.mediaType &&
+      other.id === item.id &&
+      other.format === "buy",
+  );
+
 // Returns the id of the section an item belongs to.
 // Expired rentals go to History, everything else to the section for its media type.
 const getSectionId = (item) => {
@@ -45,9 +54,15 @@ const getSectionId = (item) => {
 };
 
 // Splits the library into the sections in LIBRARY_SECTIONS.
+// An expired rental is left out once the movie has been bought, since it is in Movies.
 // Sections without items are left out, so no empty headings are shown.
-export const groupBySection = (items) =>
-  LIBRARY_SECTIONS.map((section) => ({
+export const groupBySection = (items) => {
+  const visibleItems = items.filter(
+    (item) => !(isRentalExpired(item) && isBought(item, items)),
+  );
+
+  return LIBRARY_SECTIONS.map((section) => ({
     ...section,
-    items: items.filter((item) => getSectionId(item) === section.id),
+    items: visibleItems.filter((item) => getSectionId(item) === section.id),
   })).filter((section) => section.items.length > 0);
+};
