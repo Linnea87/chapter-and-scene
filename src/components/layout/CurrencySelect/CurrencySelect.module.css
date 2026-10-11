@@ -11,8 +11,3 @@
   font-size: 0.875rem;
   cursor: pointer;
 }
-
-/* The focus ring is kept for keyboard users, but hidden after a mouse click */
-.select:focus:not(:focus-visible) {
-  outline: none;
-}
