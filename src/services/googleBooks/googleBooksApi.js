@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { GOOGLE_BOOKS_BASE_URL, MAX_RESULTS } from "./googleBooksConfig";
-import { buildBookQuery, pickBestMatch } from "./googleBooksHelpers";
+import buildBookQuery from "./buildBookQuery";
+import { pickBestMatch } from "./googleBooksMappers";
 
 // ===== Google Books service =====
 // Finds the book a movie or series is based on
