@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Navigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import createOrder from "../../services/supabase/orders/createOrder";
-import { useAddLibraryItemsMutation } from "../../services/supabase/supabaseApi";
+import {
+  useAddLibraryItemsMutation,
+  useCreateOrderMutation,
+} from "../../services/supabase/supabaseApi";
 import { isPhysicalFormat } from "../../features/cart/cartHelpers";
 import { selectUser } from "../../features/auth/authSelectors";
 import {
@@ -24,6 +26,7 @@ import styles from "./CheckoutPage.module.css";
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
+  const [createOrder] = useCreateOrderMutation();
   const [addLibraryItems] = useAddLibraryItemsMutation();
 
   const items = useSelector(selectCartItems);
@@ -37,7 +40,8 @@ const CheckoutPage = () => {
   const [placedOrderId, setPlacedOrderId] = useState(null);
 
   // --- Handlers ---
-  // Throws on failure, CheckoutForm shows the message
+  // Throws on failure, CheckoutForm shows the message.
+  // unwrap() makes the mutations throw on failure, like the other service calls.
   const handlePlaceOrder = async (shippingAddress) => {
     const orderId = await createOrder({
       items,
@@ -45,10 +49,9 @@ const CheckoutPage = () => {
       shipping,
       total,
       shippingAddress,
-    });
+    }).unwrap();
 
-    // Physical books are shipped, everything else goes to the library.
-    // unwrap() throws on failure, like the other service calls.
+    // Physical books are shipped, everything else goes to the library
     const digitalItems = items.filter((item) => !isPhysicalFormat(item.format));
     await addLibraryItems(digitalItems).unwrap();
 

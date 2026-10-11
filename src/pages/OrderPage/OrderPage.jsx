@@ -1,4 +1,5 @@
-import { useParams } from "react-router";
+import { Link, useLocation, useParams } from "react-router";
+import { ArrowLeft } from "lucide-react";
 import { useGetOrderQuery } from "../../services/supabase/supabaseApi";
 import {
   formatOrderNumber,
@@ -14,12 +15,17 @@ import styles from "./OrderPage.module.css";
 
 // ===== Order page =====
 // Shows one order: order number, items and total.
-// Used as the confirmation after a purchase (CS-027), later also from the order history.
+// After a purchase it is the confirmation (CS-027), with links to keep shopping.
+// From the order history (CS-028) it shows the order details and a link back.
 // Only reachable when signed in, see ProtectedRoute.
 
 const OrderPage = () => {
   const { id } = useParams();
+  const location = useLocation();
   const { data: order, isLoading, isError, refetch } = useGetOrderQuery(id);
+
+  // Set by OrderListItem when the order is opened from the order history
+  const isFromOrderHistory = location.state?.fromOrderHistory === true;
 
   // --- Loading and errors ---
   if (isLoading) return <Loader label="Loading your order" />;
@@ -51,7 +57,16 @@ const OrderPage = () => {
   return (
     <div className="container">
       <div className={styles.content}>
-        <h1>Thank you for your purchase</h1>
+        {isFromOrderHistory && (
+          <Link to="/orders" className={styles.backLink}>
+            <ArrowLeft size={18} aria-hidden="true" />
+            Back to order history
+          </Link>
+        )}
+
+        <h1>
+          {isFromOrderHistory ? "Order details" : "Thank you for your purchase"}
+        </h1>
         <p className={styles.number}>
           Order number <strong>{formatOrderNumber(order.id)}</strong>
         </p>
@@ -67,16 +82,18 @@ const OrderPage = () => {
           <span>{formatPrice(order.total)}</span>
         </p>
 
-        {/* --- Actions --- */}
+        {/* --- Actions, only after a purchase --- */}
         {/* My library is the main action when the order has digital items */}
-        <div className={styles.actions}>
-          <ButtonLink to="/explore" variant="secondary">
-            Keep exploring
-          </ButtonLink>
-          {hasDigitalItems(order.items) && (
-            <ButtonLink to="/library">Go to My library</ButtonLink>
-          )}
-        </div>
+        {!isFromOrderHistory && (
+          <div className={styles.actions}>
+            <ButtonLink to="/explore" variant="secondary">
+              Keep exploring
+            </ButtonLink>
+            {hasDigitalItems(order.items) && (
+              <ButtonLink to="/library">Go to My library</ButtonLink>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
