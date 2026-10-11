@@ -9,3 +9,8 @@ export const formatOrderNumber = (orderId) => orderId.slice(0, 8).toUpperCase();
 // True when at least one item goes to the library instead of being shipped
 export const hasDigitalItems = (items) =>
   items.some((item) => !isPhysicalFormat(item.format));
+
+// Total number of items in an order, counting quantity,
+// e.g. two copies of a paperback and one rental → 3
+export const getItemCount = (items) =>
+  items.reduce((total, item) => total + item.quantity, 0);
