@@ -15,6 +15,12 @@ export const LIBRARY_SECTIONS = [
 export const RENTAL_LABEL = "Rented";
 export const EXPIRED_RENTAL_LABEL = "Rental expired";
 
-// Shown under the video in the player, since the shop has no full movies or series
+// Shown above the content in the player and the reader,
+// since the shop has no full movies, series or books
 export const PLAYER_NOTICE =
   "Demo: the trailer is shown in place of the full movie or series.";
+export const READER_NOTICE =
+  "Demo: the Google Books preview is shown in place of the full e-book.";
+
+// Shown instead of the Read button when Google Books has no preview
+export const NO_PREVIEW_MESSAGE = "No preview available";

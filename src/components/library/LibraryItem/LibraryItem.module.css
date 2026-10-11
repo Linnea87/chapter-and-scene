@@ -33,14 +33,14 @@
   color: var(--color-text-muted);
 }
 
-/* --- Play, only for movies and series that can be watched --- */
-.play {
+/* --- Play or Read, for items that can be watched or read --- */
+.action {
   margin-top: var(--space-sm);
 }
 
-/* PlayButton renders nothing while loading or without a trailer,
+/* PlayButton and ReadButton render nothing while loading,
    so the empty wrapper should not leave a gap */
-.play:empty {
+.action:empty {
   display: none;
 }
 
