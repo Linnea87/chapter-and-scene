@@ -21,6 +21,25 @@ export const getHoursLeft = (expiresAt) => {
 export const isRentalExpired = (item) =>
   item.format === "rent" && getHoursLeft(item.expiresAt) === 0;
 
+// True when an owned format gives access to the format of a price option.
+// The whole series includes every season, e.g. "series" covers "season-2".
+const coversFormat = (ownedFormat, format) =>
+  ownedFormat === format ||
+  (ownedFormat === "series" && format.startsWith("season-"));
+
+// Finds the library item for a format the user already has, e.g. a bought movie,
+// a season of a bought series or an active rental. Expired rentals are not counted,
+// so they can be bought again.
+// item: a cart item from createCartItem
+export const findOwnedItem = (libraryItems, item) =>
+  libraryItems.find(
+    (owned) =>
+      owned.mediaType === item.mediaType &&
+      owned.id === String(item.id) &&
+      coversFormat(owned.format, item.format) &&
+      !isRentalExpired(owned),
+  );
+
 // Returns the label shown in My library, or null when none is needed.
 // Rentals show the time left or that they have expired, bought movies need no label,
 // seasons and e-books keep their own label, e.g. "Season 2" or "E-book".
