@@ -5,6 +5,24 @@
   margin-inline: auto;
 }
 
+/* ===== Back link ===== */
+/* Only shown when the order is opened from the order history.
+   Same look as the back link on detail pages */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: var(--touch-target);
+  margin-bottom: var(--space-md);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .backLink:hover {
+    text-decoration: underline;
+  }
+}
+
 /* ===== Order number ===== */
 .number {
   margin: 0 0 var(--space-md);
