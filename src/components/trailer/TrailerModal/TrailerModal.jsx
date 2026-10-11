@@ -5,20 +5,34 @@ import styles from "./TrailerModal.module.css";
 
 // ===== Trailer modal =====
 // Plays a YouTube trailer in a native <dialog>, so the user stays on the page.
+// isPlayer: player mode, used in My library. Fills the window, is labelled
+// "Now playing" and can show a notice under the video.
 
-const TrailerModal = ({ trailerKey, title, isOpen, onClose }) => {
+const TrailerModal = ({
+  trailerKey,
+  title,
+  isOpen,
+  onClose,
+  isPlayer = false,
+  notice,
+}) => {
   const dialogRef = useDialog(isOpen);
+
+  const label = isPlayer ? `Now playing: ${title}` : `${title} trailer`;
+  const dialogClass = isPlayer
+    ? `${styles.dialog} ${styles.fullWindow}`
+    : styles.dialog;
 
   return (
     <dialog
       ref={dialogRef}
-      className={styles.dialog}
-      aria-label={`${title} trailer`}
+      className={dialogClass}
+      aria-label={label}
       onClose={onClose}
     >
       <IconButton
         icon={X}
-        label="Close trailer"
+        label={isPlayer ? "Close player" : "Close trailer"}
         className={styles.close}
         onClick={onClose}
       />
@@ -28,11 +42,13 @@ const TrailerModal = ({ trailerKey, title, isOpen, onClose }) => {
         <iframe
           className={styles.player}
           src={`https://www.youtube-nocookie.com/embed/${trailerKey}?autoplay=1`}
-          title={`${title} trailer`}
+          title={label}
           allow="autoplay; encrypted-media; picture-in-picture"
           allowFullScreen
         />
       )}
+
+      {notice && <p className={styles.notice}>{notice}</p>}
     </dialog>
   );
 };
