@@ -1,11 +1,6 @@
-// ===== Google Books helpers =====
-// Google Books returns large, inconsistent objects. These helpers build the search
-// query and map a result to the fields the UI needs.
-
-// Plain text search with title and author
-// The intitle:/inauthor: operators currently return no results from Google Books
-export const buildBookQuery = (title, author) =>
-  [title, author].filter(Boolean).join(" ");
+// ===== Google Books mappers =====
+// Google Books returns large, inconsistent objects. These mappers turn a result
+// into the fields the UI needs.
 
 // Cover and preview links are returned over http, which can be blocked on https pages
 const toHttps = (url) => (url ? url.replace("http://", "https://") : null);
