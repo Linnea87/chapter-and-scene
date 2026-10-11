@@ -9,15 +9,6 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-/* Expired rentals: faded, and the poster in black and white */
-.expired {
-  opacity: 0.6;
-}
-
-.expired .image {
-  filter: grayscale(1);
-}
-
 /* ===== Image ===== */
 .image {
   width: 100%;
@@ -40,4 +31,14 @@
   margin: 0;
   font-size: 0.875rem;
   color: var(--color-text-muted);
+}
+
+/* --- Buy or rent again, only for expired rentals --- */
+/* A small text link under the label. The height keeps it easy to tap */
+.again {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  font-size: 0.875rem;
+  color: var(--color-text);
 }
