@@ -1,55 +1,32 @@
-/* ===== Visibility ===== */
-/* Hidden on mobile until the menu is opened */
-.nav {
-  display: none;
-  width: 100%;
-}
-
-.open {
-  display: block;
-}
-
 /* ===== List ===== */
+/* The icons side by side, with room between them */
 .navList {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  gap: var(--space-md);
   margin: 0;
-  padding: var(--space-sm) 0;
+  padding: 0;
   list-style: none;
 }
 
 /* ===== Links ===== */
+/* Round touch target with the icon in the middle */
 .link {
   display: inline-flex;
   align-items: center;
-  min-height: var(--touch-target);
-  font-weight: 500;
+  justify-content: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border-radius: var(--radius-pill);
   color: var(--color-text);
-  text-decoration: none;
 }
 
+/* The current page is turquoise, like the cart link */
 .active {
-  text-decoration: underline;
-  text-underline-offset: 6px;
+  color: var(--color-primary);
 }
 
 @media (hover: hover) {
   .link:hover {
     color: var(--color-text-muted);
-  }
-}
-
-/* ===== Responsive ===== */
-@media (min-width: 600px) {
-  .nav {
-    display: block;
-    width: auto;
-  }
-
-  .navList {
-    flex-direction: row;
-    gap: var(--space-md);
-    padding: 0;
   }
 }

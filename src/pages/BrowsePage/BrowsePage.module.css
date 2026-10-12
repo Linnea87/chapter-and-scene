@@ -1,12 +1,19 @@
 /* ===== Back link ===== */
+/* The round area around the arrow is larger than the arrow itself,
+   so it is pulled up and left to line the arrow up with the heading */
 .backLink {
-  margin-bottom: var(--space-md);
+  margin: calc(-1 * var(--space-md)) 0 0 calc(-1 * var(--space-sm));
 }
 
 /* ===== Layout ===== */
-/* Same spacing as the explore page */
+/* The hint sits close under the heading, so they read as one block */
+.title {
+  margin-bottom: var(--space-xs);
+}
+
+/* Room between the heading block and the grid */
 .intro {
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 var(--space-xl);
   color: var(--color-text-muted);
 }
 

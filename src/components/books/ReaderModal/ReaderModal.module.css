@@ -9,8 +9,8 @@
   margin: 0;
   padding: var(--space-sm);
   border: none;
-  background-color: var(--color-text);
-  color: var(--color-primary-contrast);
+  background-color: var(--color-media-background);
+  color: var(--color-text);
 }
 
 /* Stacks the close button, notice and reader. Only while open,

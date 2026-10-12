@@ -5,9 +5,15 @@
   margin-inline: auto;
 }
 
-/* ===== Account ===== */
+/* ===== Title and account ===== */
+/* Centred, like the headings on the other pages */
+.title {
+  text-align: center;
+}
+
 .account {
   margin: 0 0 var(--space-md);
+  text-align: center;
   color: var(--color-text-muted);
 }
 

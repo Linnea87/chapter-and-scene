@@ -14,7 +14,9 @@ const FilterChips = ({ label, options, activeId, onChange }) => (
           <li key={option.id}>
             <button
               type="button"
-              className={isActive ? `${styles.chip} ${styles.active}` : styles.chip}
+              className={
+                isActive ? `${styles.chip} ${styles.active}` : styles.chip
+              }
               aria-pressed={isActive}
               onClick={() => onChange(option.id)}
             >

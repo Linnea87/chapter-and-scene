@@ -20,8 +20,9 @@
   cursor: pointer;
 }
 
+/* The selected tab gets the brand gradient as its line */
 .selected {
-  border-bottom-color: var(--color-text);
+  border-image: var(--gradient-primary) 1;
   color: var(--color-text);
   font-weight: 600;
 }

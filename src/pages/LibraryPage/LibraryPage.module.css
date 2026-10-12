@@ -1,8 +1,7 @@
-/* ===== Content ===== */
-/* One narrow centred column, like the checkout and order page */
-.content {
-  max-width: 32rem;
-  margin-inline: auto;
+/* ===== Title ===== */
+/* Centred, like the headings on the movies and series pages */
+.title {
+  text-align: center;
 }
 
 /* ===== Sections ===== */
@@ -11,10 +10,8 @@
   margin-top: var(--space-xl);
 }
 
-/* ===== List ===== */
+/* ===== Grid ===== */
+/* The same poster grid as explore, so the columns match across the site */
 .list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--color-border);
+  composes: grid from "../../components/titles/TitleGrid/TitleGrid.module.css";
 }

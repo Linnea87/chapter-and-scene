@@ -1,14 +1,16 @@
 /* ===== Layout ===== */
-.intro {
-  margin: 0 0 var(--space-lg);
-  color: var(--color-text-muted);
+/* Centred above the genres, with room between them */
+.title {
+  margin-bottom: var(--space-lg);
+  text-align: center;
 }
 
+/* Room between the filters and the grid, same as on the browse pages */
 .filters {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
 }
 
 /* --- Load more --- */

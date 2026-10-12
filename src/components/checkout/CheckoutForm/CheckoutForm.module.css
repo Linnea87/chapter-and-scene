@@ -34,12 +34,15 @@
 }
 
 /* --- Messages --- */
+/* No margins of their own, the form's gap sets the spacing */
 .notice {
+  margin: 0;
   color: var(--color-text-muted);
 }
 
 /* Keeps its height when empty, so the form does not jump */
 .error {
   min-height: 1.5em;
+  margin: 0;
   color: var(--color-error);
 }

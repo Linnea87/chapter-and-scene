@@ -47,11 +47,11 @@ const BrowsePage = () => {
 
   return (
     <section className="container">
-      <BackLink to="/" className={styles.backLink}>
+      <BackLink to="/" iconOnly className={styles.backLink}>
         Back to home
       </BackLink>
 
-      <h1>{row.title}</h1>
+      <h1 className={styles.title}>{row.title}</h1>
       <p className={styles.intro}>{row.hint}</p>
 
       {/* isFetching covers the first load and retries */}

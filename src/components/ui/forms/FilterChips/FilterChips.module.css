@@ -1,5 +1,5 @@
 /* ===== Filter chips ===== */
-/* Mobile first: one horizontally scrollable row */
+/* Mobile first: one row that scrolls sideways */
 .list {
   display: flex;
   gap: var(--space-sm);
@@ -16,21 +16,33 @@
 }
 
 /* --- Chip --- */
+/* A soft dark surface without a border */
 .chip {
   min-height: var(--touch-target);
   padding: 0 var(--space-md);
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: var(--radius-pill);
-  background: transparent;
+  background: var(--color-surface);
   color: inherit;
+  font: inherit;
+  font-size: 0.875rem;
   white-space: nowrap;
   cursor: pointer;
 }
 
+/* The selected chip is light with dark text,
+   so turquoise is kept for the buttons that do something */
 .active {
-  border-color: var(--color-primary);
-  background: var(--color-primary);
-  color: var(--color-primary-contrast);
+  background: var(--color-text);
+  color: var(--color-background);
+  font-weight: 600;
+}
+
+/* ===== States ===== */
+@media (hover: hover) {
+  .chip:not(.active):hover {
+    background: var(--color-surface-hover);
+  }
 }
 
 /* --- Desktop: wrap onto several rows instead of scrolling --- */

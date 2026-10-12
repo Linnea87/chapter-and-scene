@@ -6,8 +6,9 @@ import styles from "./SearchField.module.css";
 // ===== Search field =====
 // A controlled search input with a clear button.
 // The parent owns the value and receives every change through onChange.
+// ref is passed on to the input, so the parent can move focus into it.
 
-const SearchField = ({ label, value, onChange, placeholder }) => {
+const SearchField = ({ label, value, onChange, placeholder, ref }) => {
   // Unique id that connects the label to the input
   const id = useId();
 
@@ -21,6 +22,7 @@ const SearchField = ({ label, value, onChange, placeholder }) => {
 
       <input
         id={id}
+        ref={ref}
         type="search"
         className={styles.input}
         value={value}

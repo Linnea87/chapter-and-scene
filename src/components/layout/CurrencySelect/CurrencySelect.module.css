@@ -1,6 +1,20 @@
 /* ===== Currency select ===== */
-/* Placeholder look until the design round. Same height as the header icons,
-   no border, so it sits next to the icons like text */
+/* Label on the left and the select on the right, on one row.
+   The side padding matches the menu items, so the texts line up on both sides */
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-inline: var(--space-md);
+}
+
+.label {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* Same height as the menu items, no border, so it reads like text */
 .select {
   min-height: var(--touch-target);
   padding: 0 var(--space-sm);

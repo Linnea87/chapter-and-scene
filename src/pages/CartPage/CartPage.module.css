@@ -1,3 +1,9 @@
+/* ===== Title ===== */
+/* Centred, like the headings on the other pages */
+.title {
+  text-align: center;
+}
+
 /* ===== List ===== */
 .list {
   margin: 0;

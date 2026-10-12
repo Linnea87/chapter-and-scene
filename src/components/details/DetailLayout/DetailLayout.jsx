@@ -6,7 +6,7 @@ import styles from "./DetailLayout.module.css";
 
 const DetailLayout = ({ children }) => (
   <article className={`container ${styles.layout}`}>
-    <BackLink to="/explore" className={styles.backLink}>
+    <BackLink to="/explore" iconOnly className={styles.backLink}>
       Back to Explore
     </BackLink>
 
