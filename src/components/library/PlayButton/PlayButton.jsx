@@ -25,7 +25,7 @@ const PlayButton = ({ item }) => {
     <>
       <Button variant="secondary" size="small" onClick={open}>
         <span className={styles.content}>
-          <Play size={16} aria-hidden="true" />
+          <Play size={16} fill="currentColor" aria-hidden="true" />
           Play
           <span className="visually-hidden"> {item.title}</span>
         </span>

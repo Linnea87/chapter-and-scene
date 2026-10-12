@@ -16,7 +16,7 @@ const TrailerButton = ({ trailerKey, title }) => {
     <>
       <Button onClick={open}>
         <span className={styles.content}>
-          <Play size={20} aria-hidden="true" />
+          <Play size={20} fill="currentColor" aria-hidden="true" />
           Watch trailer
         </span>
       </Button>
