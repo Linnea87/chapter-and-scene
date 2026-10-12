@@ -11,7 +11,18 @@
 }
 
 /* ===== Back link ===== */
-/* Only as wide as its text, not the full width of the layout */
+/* Only the arrow over the backdrop. A faint circle shows on hover,
+   like the icon buttons */
 .backLink {
   align-self: flex-start;
+  justify-content: center;
+  width: var(--touch-target);
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+}
+
+@media (hover: hover) {
+  .backLink:hover {
+    background-color: color-mix(in srgb, currentColor 15%, transparent);
+  }
 }

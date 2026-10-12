@@ -6,8 +6,9 @@ import styles from "./DetailLayout.module.css";
 
 const DetailLayout = ({ children }) => (
   <article className={`container ${styles.layout}`}>
+    {/* Only the arrow is shown over the backdrop, the text is for screen readers */}
     <BackLink to="/explore" className={styles.backLink}>
-      Back to Explore
+      <span className="visually-hidden">Back to Explore</span>
     </BackLink>
 
     {children}
