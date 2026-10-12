@@ -2,6 +2,10 @@ import { Link } from "react-router";
 import tmdbLogo from "../../../assets/tmdb-logo.svg";
 import styles from "./Footer.module.css";
 
+// ===== Footer =====
+// Site name, tagline, the same main pages as the header, and the
+// attribution that TMDB and Google Books require.
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -19,8 +23,13 @@ const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link to="/explore" className={styles.navLink}>
-              Explore
+            <Link to="/movies" className={styles.navLink}>
+              Movies
+            </Link>
+          </li>
+          <li>
+            <Link to="/series" className={styles.navLink}>
+              Series
             </Link>
           </li>
           <li>

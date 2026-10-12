@@ -41,10 +41,3 @@
 .clear:focus-visible {
   outline-offset: -4px;
 }
-
-/* --- Larger screens: limit the width --- */
-@media (min-width: 600px) {
-  .field {
-    max-width: 24rem;
-  }
-}

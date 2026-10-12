@@ -1,24 +1,25 @@
 /* ===== Button ===== */
-/* Shared size and shape for both variants */
+/* Shared size and shape for all variants, with rounded ends */
 .button {
   min-height: var(--touch-target);
   border: 1px solid transparent;
-  border-radius: var(--radius);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
   cursor: pointer;
 }
 
 /* ===== Variants ===== */
-/* Filled: the main action on a page */
+/* Filled with the brand gradient: the main action on a page */
 .primary {
   color: var(--color-primary-contrast);
-  background-color: var(--color-primary);
+  background-image: var(--gradient-primary);
 }
 
 /* Outlined: actions that repeat, e.g. one per price row */
 .secondary {
-  color: var(--color-primary);
+  color: var(--color-text);
   background-color: transparent;
-  border-color: var(--color-primary);
+  border-color: var(--color-border);
 }
 
 /* Text only: items in menus, no fill and no outline */
@@ -37,6 +38,14 @@
 .small {
   padding: 0 var(--space-md);
   font-size: 0.875rem;
+}
+
+/* Round, for a single icon, e.g. add to cart. The text is hidden for screen readers */
+.icon {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  padding: 0;
 }
 
 /* ===== States ===== */

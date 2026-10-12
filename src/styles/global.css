@@ -11,6 +11,12 @@ body {
   line-height: 1.6;
   color: var(--color-text);
   background-color: var(--color-background);
+  /* A soft turquoise glow at the top of every page, fading into the background */
+  background-image: var(--gradient-glow);
+  background-repeat: no-repeat;
+  background-size: 100% 40rem;
+  /* Full width backdrops never make the page scroll sideways */
+  overflow-x: clip;
 }
 
 /* ===== Typography ===== */

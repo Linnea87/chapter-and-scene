@@ -10,26 +10,28 @@ import {
 import Button from "../../components/ui/buttons/Button/Button";
 import FilterChips from "../../components/ui/forms/FilterChips/FilterChips";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
-import SearchField from "../../components/ui/forms/SearchField/SearchField";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
 import styles from "./ExplorePage.module.css";
 
 // ===== Explore page =====
-// Shows movies and series based on books, filtered by media type and category.
-// The filters live in the URL, e.g. ?type=movie&category=romance
+// Shows movies and series based on books, filtered by category.
+// /movies and /series show one media type, /explore shows both, e.g. search results.
+// The category lives in the URL, e.g. ?category=romance.
+// The search term (?q=) comes from the search bar in the header.
 
-const ExplorePage = () => {
-  // --- Filters from URL ---
+const ExplorePage = ({ mediaTypeId = ALL_ID }) => {
+  // --- Media type from the route, filters from the URL ---
   const [searchParams, setSearchParams] = useSearchParams();
-  const mediaType = getOptionById(MEDIA_TYPES, searchParams.get("type"));
+  const mediaType = getOptionById(MEDIA_TYPES, mediaTypeId);
+  const isAllTypes = mediaType.id === ALL_ID;
   const category = getOptionById(CATEGORIES, searchParams.get("category"));
   const searchTerm = searchParams.get("q") ?? "";
 
   // Updates one param and keeps the others.
   // Empty values and "All" remove the param.
-  const updateFilter = (key, value, options) => {
+  const updateFilter = (key, value) => {
     setSearchParams((prev) => {
       const next = new URLSearchParams(prev);
 
@@ -40,7 +42,7 @@ const ExplorePage = () => {
       }
 
       return next;
-    }, options);
+    });
   };
 
   // --- Data ---
@@ -77,26 +79,14 @@ const ExplorePage = () => {
 
   return (
     <section className="container">
-      <h1>Find the story. Choose the format</h1>
-      <p className={styles.intro}>
-        Explore movies and series adapted from books, then discover the original
-        story.
-      </p>
+      {/* "Movies" or "Series". On /explore, the search results page,
+          the heading is only for screen readers */}
+      <h1 className={isAllTypes ? "visually-hidden" : styles.title}>
+        {isAllTypes ? "Explore stories" : mediaType.label}
+      </h1>
 
       {/* --- Filters --- */}
       <div className={styles.filters}>
-        <SearchField
-          label="Search titles"
-          placeholder="Search titles"
-          value={searchTerm}
-          onChange={(value) => updateFilter("q", value, { replace: true })}
-        />
-        <FilterChips
-          label="Filter by type"
-          options={MEDIA_TYPES}
-          activeId={mediaType.id}
-          onChange={(id) => updateFilter("type", id)}
-        />
         <FilterChips
           label="Filter by category"
           options={CATEGORIES}

@@ -1,14 +1,22 @@
 /* ===== Content ===== */
-/* One narrow centred column, like the order page and My library */
+/* One narrow centred column, like the order page */
 .content {
   max-width: 32rem;
   margin-inline: auto;
 }
 
+/* Centred, like the headings on the movies, series and library pages */
+.title {
+  text-align: center;
+}
+
 /* ===== List ===== */
+/* The orders as separate cards with a little space between them */
 .list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--color-border);
 }

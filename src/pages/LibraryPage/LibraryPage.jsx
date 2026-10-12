@@ -49,21 +49,19 @@ const LibraryPage = () => {
   // --- Library ---
   return (
     <div className="container">
-      <div className={styles.content}>
-        <h1>My library</h1>
+      <h1 className={styles.title}>My library</h1>
 
-        {groupBySection(items).map((section) => (
-          <section key={section.id} className={styles.section}>
-            <h2>{section.title}</h2>
+      {groupBySection(items).map((section) => (
+        <section key={section.id} className={styles.section}>
+          <h2>{section.title}</h2>
 
-            <ul className={styles.list}>
-              {section.items.map((item) => (
-                <LibraryItem key={item.key} item={item} />
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
+          <ul className={styles.list}>
+            {section.items.map((item) => (
+              <LibraryItem key={item.key} item={item} />
+            ))}
+          </ul>
+        </section>
+      ))}
     </div>
   );
 };

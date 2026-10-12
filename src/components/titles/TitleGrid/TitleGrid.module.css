@@ -1,9 +1,10 @@
 /* ===== Grid ===== */
-/* Mobile first: 2 columns, then more on larger screens */
+/* Mobile first: 3 columns, like the poster rows in streaming apps,
+   then more on larger screens */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-lg) var(--space-md);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-lg) var(--space-sm);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -12,7 +13,8 @@
 /* ===== Responsive ===== */
 @media (min-width: 600px) {
   .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-lg) var(--space-md);
   }
 }
 

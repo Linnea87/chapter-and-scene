@@ -1,20 +1,53 @@
 :root {
   /* ===== Colors ===== */
-  /* Grayscale placeholders until the logo and palette are decided */
-  --color-background: #f7f7f5;
-  --color-surface: #ffffff;
-  --color-text: #1f1f1f;
-  --color-text-muted: #6b6b6b;
-  --color-border: #d6d6d6;
-  --color-primary: #333333;
-  --color-primary-contrast: #ffffff;
-  --color-error: #b3261e;
+  /* Dark theme with a turquoise to aqua gradient (CS-048) */
+
+  /* --- Surfaces --- */
+  --color-background: #0b1517;
+  --color-surface: #132326;
+  --color-surface-hover: #1b2f33;
+  /* Behind videos, book previews and hero images */
+  --color-media-background: #000000;
   --color-overlay: rgb(0 0 0 / 0.8);
+
+  /* --- Text --- */
+  --color-text: #eef6f6;
+  --color-text-muted: #9db3b5;
+  --color-border: #22383b;
+
+  /* --- Brand --- */
+  /* Solid turquoise, e.g. the current page icon, the cart badge and focus rings */
+  --color-primary: #22c4c4;
+  /* Dark text on turquoise, easier to read than white */
+  --color-primary-contrast: #0b1517;
+  /* Buttons and the selected tab */
+  --gradient-primary: linear-gradient(90deg, #22c4c4, #7cefe6);
+  /* Soft glow at the top of every page, decoration only.
+     One wide glow in the middle that follows the screen width,
+     and fades out within 30rem so it never ends in a hard line */
+  --gradient-glow:
+    radial-gradient(
+      ellipse 80% 30rem at 50% 0%,
+      rgb(15 163 163 / 0.28),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 40% 18rem at 50% 0%,
+      rgb(94 230 224 / 0.12),
+      transparent 70%
+    );
+
+  /* --- Status --- */
+  /* Something good or done, e.g. "Rented · 31 h left" and "Save $1.95" */
+  --color-success: #7cefe6;
+  --color-error: #ff7a7a;
 
   /* ===== Typography ===== */
   /* System fonts until the brand fonts are chosen */
   --font-heading: Georgia, "Times New Roman", serif;
   --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Handwritten, only for the site name in the header */
+  --font-script: "Dancing Script", cursive;
 
   /* ===== Spacing and sizing ===== */
   --space-xs: 0.25rem;

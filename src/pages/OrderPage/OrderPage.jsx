@@ -58,12 +58,12 @@ const OrderPage = () => {
     <div className="container">
       <div className={styles.content}>
         {isFromOrderHistory && (
-          <BackLink to="/orders" className={styles.backLink}>
+          <BackLink to="/orders" iconOnly className={styles.backLink}>
             Back to order history
           </BackLink>
         )}
 
-        <h1>
+        <h1 className={styles.title}>
           {isFromOrderHistory ? "Order details" : "Thank you for your purchase"}
         </h1>
         <p className={styles.number}>

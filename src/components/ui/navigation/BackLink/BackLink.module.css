@@ -8,8 +8,22 @@
   text-decoration: none;
 }
 
+/* --- Only the arrow --- */
+/* A round touch target with the arrow in the middle.
+   A faint circle shows on hover, like the icon buttons */
+.iconOnly {
+  justify-content: center;
+  width: var(--touch-target);
+  border-radius: var(--radius-pill);
+}
+
+/* ===== States ===== */
 @media (hover: hover) {
   .link:hover {
     text-decoration: underline;
+  }
+
+  .iconOnly:hover {
+    background-color: color-mix(in srgb, currentColor 15%, transparent);
   }
 }

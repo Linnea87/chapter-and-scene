@@ -1,43 +1,62 @@
+import { useRef } from "react";
 import { Link } from "react-router";
+import { Search } from "lucide-react";
+import useCloseOnOutside from "../../../hooks/useCloseOnOutside";
 import useDisclosure from "../../../hooks/useDisclosure";
 import AccountMenu from "../AccountMenu/AccountMenu";
 import CartLink from "../CartLink/CartLink";
-import CurrencySelect from "../CurrencySelect/CurrencySelect";
-import MenuToggle from "../MenuToggle/MenuToggle";
 import NavMenu from "../NavMenu/NavMenu";
+import SearchBar from "../SearchBar/SearchBar";
+import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./Header.module.css";
 
+// ===== Header =====
+// The site name on top, linking to the home page.
+// Below it, icons only, on every screen size: the account menu on the left,
+// the main pages in the middle, and search and the cart on the right.
+// The search icon folds out a search bar under the icons.
+
 const Header = () => {
-  // --- State ---
-  // Open and closed state for the mobile menu
+  // --- Search bar ---
+  // Closes on a click outside the header or on Escape
   const {
-    isOpen: isMenuOpen,
-    toggle: toggleMenu,
-    close: closeMenu,
+    isOpen: isSearchOpen,
+    toggle: toggleSearch,
+    close: closeSearch,
   } = useDisclosure();
+  const headerRef = useRef(null);
+  useCloseOnOutside(headerRef, isSearchOpen, closeSearch);
 
   // --- Render ---
   return (
-    <header className={styles.header}>
-      {/* Hidden from 600px, where the nav links are always visible */}
-      <div className={styles.menuArea}>
-        <MenuToggle isOpen={isMenuOpen} onToggle={toggleMenu} />
-      </div>
-
-      {/* Text logo until the real logo is designed */}
-      <Link to="/" onClick={closeMenu} className={styles.logoLink}>
+    <header ref={headerRef} className={styles.header}>
+      {/* Text logo in a handwritten font until a real logo is designed */}
+      <Link to="/" className={styles.logo}>
         Chapter & Scene
       </Link>
 
-      <div className={styles.actionsArea}>
-        <CurrencySelect />
+      <div className={styles.accountArea}>
         <AccountMenu />
-        <CartLink onNavigate={closeMenu} />
       </div>
 
-      <div className={styles.navArea}>
-        <NavMenu isOpen={isMenuOpen} onNavigate={closeMenu} />
+      <NavMenu />
+
+      <div className={styles.actionsArea}>
+        <IconButton
+          icon={Search}
+          label="Search"
+          iconSize={24}
+          aria-expanded={isSearchOpen}
+          onClick={toggleSearch}
+        />
+        <CartLink />
       </div>
+
+      {isSearchOpen && (
+        <div className={styles.searchArea}>
+          <SearchBar />
+        </div>
+      )}
     </header>
   );
 };
