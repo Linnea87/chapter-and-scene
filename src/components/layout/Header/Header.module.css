@@ -1,9 +1,12 @@
 /* ===== Layout ===== */
 /* Transparent, so the page glow starts at the very top of the window
    and there is no hard edge under the header.
+   Above the page, so the detail backdrop can sit behind the icons.
    Equal side columns keep the main pages exactly in the middle,
    in line with the logo and the page headings */
 .header {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;

@@ -10,11 +10,13 @@
 
 /* --- Only the arrow --- */
 /* A round touch target with the arrow in the middle.
+   A soft shadow keeps it visible on light images.
    A faint circle shows on hover, like the icon buttons */
 .iconOnly {
   justify-content: center;
   width: var(--touch-target);
   border-radius: var(--radius-pill);
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.6));
 }
 
 /* ===== States ===== */
