@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import useTabParam from "../../hooks/useTabParam";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
 import { SERIES_DISCOUNT } from "../../features/pricing/pricingConfig";
@@ -24,6 +25,9 @@ import Tabs from "../../components/ui/navigation/Tabs/Tabs";
 
 const TvDetailPage = () => {
   const { id } = useParams();
+
+  // The selected tab is kept in the URL, e.g. ?tab=read, so it stays after a reload
+  const [selectedTab, selectTab] = useTabParam("watch");
 
   // currentData is empty while a new id loads, so the previous series is never shown
   const {
@@ -119,6 +123,8 @@ const TvDetailPage = () => {
           Series without seasons that can be bought only show Read */}
       <Tabs
         label="Watch or read"
+        selectedId={selectedTab}
+        onSelect={selectTab}
         tabs={[
           ...(priceOptions.length > 0
             ? [

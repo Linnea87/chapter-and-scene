@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import useTabParam from "../../hooks/useTabParam";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
 import { getMoviePrices } from "../../features/pricing/pricingHelpers";
@@ -20,6 +21,9 @@ import Tabs from "../../components/ui/navigation/Tabs/Tabs";
 
 const MovieDetailPage = () => {
   const { id } = useParams();
+
+  // The selected tab is kept in the URL, e.g. ?tab=read, so it stays after a reload
+  const [selectedTab, selectTab] = useTabParam("watch");
 
   // currentData is empty while a new id loads, so the previous movie is never shown
   const {
@@ -87,6 +91,8 @@ const MovieDetailPage = () => {
       {/* Watch is selected first, Read shows the book behind the movie */}
       <Tabs
         label="Watch or read"
+        selectedId={selectedTab}
+        onSelect={selectTab}
         tabs={[
           {
             id: "watch",
