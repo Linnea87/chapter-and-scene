@@ -1,4 +1,6 @@
 /* ===== Layout ===== */
+/* Transparent, so the page glow starts at the very top of the window
+   and there is no hard edge under the header */
 .header {
   display: grid;
   /* Equal side columns keep the logo centered */
@@ -8,8 +10,6 @@
     "nav  nav  nav";
   align-items: center;
   padding: var(--space-sm) var(--space-md);
-  background-color: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
 }
 
 /* ===== Areas ===== */
