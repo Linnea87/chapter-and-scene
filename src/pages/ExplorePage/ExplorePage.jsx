@@ -31,7 +31,7 @@ const ExplorePage = ({ mediaTypeId = ALL_ID }) => {
 
   // Updates one param and keeps the others.
   // Empty values and "All" remove the param.
-  const updateFilter = (key, value, options) => {
+  const updateFilter = (key, value) => {
     setSearchParams((prev) => {
       const next = new URLSearchParams(prev);
 
@@ -42,7 +42,7 @@ const ExplorePage = ({ mediaTypeId = ALL_ID }) => {
       }
 
       return next;
-    }, options);
+    });
   };
 
   // --- Data ---

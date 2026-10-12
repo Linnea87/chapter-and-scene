@@ -1,5 +1,5 @@
 // ===== Explore filters =====
-// Options for the filter chips on the explore page.
+// Media types for the movies, series and explore pages, and the genre filter chips.
 // The first option in each list is the default.
 
 export const ALL_ID = "all";

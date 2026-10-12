@@ -4,6 +4,7 @@
   margin-bottom: var(--space-lg);
   text-align: center;
 }
+
 /* Room between the filters and the grid, same as on the browse pages */
 .filters {
   display: flex;

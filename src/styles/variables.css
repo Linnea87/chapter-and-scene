@@ -18,7 +18,7 @@
   /* --- Brand --- */
   /* Solid turquoise, e.g. the selected filter chip */
   --color-primary: #22c4c4;
-  /* Dark text on turquoise, easier to read than white */
+  /* Solid turquoise, e.g. the current page icon, the cart badge and focus rings */
   --color-primary-contrast: #0b1517;
   /* Buttons and the selected tab */
   --gradient-primary: linear-gradient(90deg, #22c4c4, #7cefe6);
