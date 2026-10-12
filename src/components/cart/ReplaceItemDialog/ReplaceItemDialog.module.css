@@ -1,0 +1,43 @@
+/* ===== Dialog ===== */
+/* A small centred box. The browser centres a modal <dialog> on its own.
+   No display rule here: the browser hides a closed <dialog> with display: none */
+.dialog {
+  width: calc(100% - 2 * var(--space-md));
+  max-width: 26rem;
+  padding: var(--space-lg);
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* Dims the page behind the open dialog */
+.dialog::backdrop {
+  background-color: var(--color-overlay);
+}
+
+/* ===== Text ===== */
+.title {
+  margin: 0 0 var(--space-sm);
+  font-size: 1.25rem;
+}
+
+.message {
+  margin: 0 0 var(--space-lg);
+}
+
+/* ===== Actions ===== */
+/* Mobile first: stacked, easy to tap */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Larger screens: side by side on the right */
+@media (min-width: 600px) {
+  .actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}

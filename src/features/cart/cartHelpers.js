@@ -25,6 +25,27 @@ export const createCartItem = (product, option) => ({
   unitPrice: option.price,
 });
 
+// True when two cart items give access to the same story twice, so only one
+// of them should be bought: renting and buying the same movie, or the whole
+// series together with one of its seasons. Book formats never clash, since
+// a paperback and an e-book are different products.
+const isConflict = (a, b) => {
+  const isSameStory =
+    a.mediaType === b.mediaType && String(a.id) === String(b.id);
+
+  if (!isSameStory || a.format === b.format) return false;
+  if (a.mediaType === "movie") return true;
+  if (a.mediaType === "tv")
+    return a.format === "series" || b.format === "series";
+
+  return false;
+};
+
+// Returns the cart items that clash with an item that is about to be added,
+// e.g. the rental when the user adds "Buy" for the same movie
+export const findConflictingItems = (cartItems, item) =>
+  cartItems.filter((cartItem) => isConflict(cartItem, item));
+
 // Merges the guest cart into the account cart after login.
 // Same key means the same row: the larger quantity is kept.
 // Digital items always have quantity 1, so they stay only once.
