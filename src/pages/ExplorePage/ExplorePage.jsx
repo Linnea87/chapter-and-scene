@@ -10,7 +10,6 @@ import {
 import Button from "../../components/ui/buttons/Button/Button";
 import FilterChips from "../../components/ui/forms/FilterChips/FilterChips";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
-import SearchField from "../../components/ui/forms/SearchField/SearchField";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
@@ -18,7 +17,8 @@ import styles from "./ExplorePage.module.css";
 
 // ===== Explore page =====
 // Shows movies and series based on books, filtered by media type and category.
-// The filters live in the URL, e.g. ?type=movie&category=romance
+// The filters live in the URL, e.g. ?type=movie&category=romance.
+// The search term (?q=) comes from the search bar in the header.
 
 const ExplorePage = () => {
   // --- Filters from URL ---
@@ -85,12 +85,6 @@ const ExplorePage = () => {
 
       {/* --- Filters --- */}
       <div className={styles.filters}>
-        <SearchField
-          label="Search titles"
-          placeholder="Search titles"
-          value={searchTerm}
-          onChange={(value) => updateFilter("q", value, { replace: true })}
-        />
         <FilterChips
           label="Filter by type"
           options={MEDIA_TYPES}
