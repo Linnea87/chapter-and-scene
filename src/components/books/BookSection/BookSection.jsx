@@ -1,6 +1,5 @@
 import { useFindBookQuery } from "../../../services/googleBooks/googleBooksApi";
 import { getBookPrices } from "../../../features/pricing/pricingHelpers";
-import { getDeliveryLabel } from "../../../features/cart/cartHelpers";
 import { BOOK_FORMATS, FORMAT_LABELS } from "../../../features/cart/cartConfig";
 import Loader from "../../ui/feedback/Loader/Loader";
 import LoadError from "../../ui/feedback/LoadError/LoadError";
@@ -36,7 +35,6 @@ const BookSection = ({ title, author, mediaType, storyId }) => {
   const options = BOOK_FORMATS.map((format) => ({
     id: format,
     label: FORMAT_LABELS[format],
-    detail: getDeliveryLabel(format),
     price: prices[format],
   }));
 

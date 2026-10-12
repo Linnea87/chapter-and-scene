@@ -1,17 +1,10 @@
 /* ===== Layout ===== */
 /* Controls the spacing between the sections of a detail page.
-   The hero backdrop is placed from the top of the layout, behind everything,
-   so the layout keeps it in its own layer above the page */
+   Not positioned, so the hero backdrop is placed from the top of the page,
+   behind the header. isolation keeps the backdrop behind the page content */
 .layout {
-  position: relative;
   isolation: isolate;
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
-}
-
-/* ===== Back link ===== */
-/* Only as wide as the arrow, not the full width of the layout */
-.backLink {
-  align-self: flex-start;
 }

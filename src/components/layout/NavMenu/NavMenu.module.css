@@ -1,8 +1,8 @@
 /* ===== List ===== */
-/* The icons side by side, with room between them */
+/* The icons close together, so they read as one group */
 .navList {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-xs);
   margin: 0;
   padding: 0;
   list-style: none;
