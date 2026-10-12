@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import useTabParam from "../../hooks/useTabParam";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
 import { SERIES_DISCOUNT } from "../../features/pricing/pricingConfig";
@@ -10,19 +11,23 @@ import pluralize from "../../utils/pluralize";
 import isNotFoundError from "../../utils/isNotFoundError";
 import BookSection from "../../components/books/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
-import DetailColumns from "../../components/details/DetailColumns/DetailColumns";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
 import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
+import Tabs from "../../components/ui/navigation/Tabs/Tabs";
 
 // ===== TV detail page =====
-// Shows one series with facts, seasons, prices and cast. The id comes from the URL (/tv/:id).
+// Shows one series with facts, watch and read options in tabs, and cast.
+// The id comes from the URL (/tv/:id).
 
 const TvDetailPage = () => {
   const { id } = useParams();
+
+  // The selected tab is kept in the URL, e.g. ?tab=read, so it stays after a reload
+  const [selectedTab, selectTab] = useTabParam("watch");
 
   // currentData is empty while a new id loads, so the previous series is never shown
   const {
@@ -114,20 +119,41 @@ const TvDetailPage = () => {
       <DetailHero details={series} meta={meta} />
 
       {/* --- Watch and read --- */}
-      <DetailColumns>
-        {priceOptions.length > 0 && (
-          <PriceOptions
-            title="Watch the series"
-            product={product}
-            options={priceOptions}
-          />
-        )}
-        <BookSection
-          title={series.title}
-          author={series.author}
-          mediaType="tv"
-        />
-      </DetailColumns>
+      {/* Watch is selected first, Read shows the book behind the series.
+          Series without seasons that can be bought only show Read */}
+      <Tabs
+        label="Watch or read"
+        selectedId={selectedTab}
+        onSelect={selectTab}
+        tabs={[
+          ...(priceOptions.length > 0
+            ? [
+                {
+                  id: "watch",
+                  label: "Watch",
+                  panel: (
+                    <PriceOptions
+                      title="Watch the series"
+                      product={product}
+                      options={priceOptions}
+                    />
+                  ),
+                },
+              ]
+            : []),
+          {
+            id: "read",
+            label: "Read",
+            panel: (
+              <BookSection
+                title={series.title}
+                author={series.author}
+                mediaType="tv"
+              />
+            ),
+          },
+        ]}
+      />
 
       <CastList cast={series.cast} />
     </DetailLayout>

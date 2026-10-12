@@ -1,0 +1,38 @@
+/* ===== Tab list ===== */
+/* The tabs side by side, with a line under them on all screen sizes */
+.list {
+  display: flex;
+  gap: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ===== Tab ===== */
+/* Text with a line under the selected tab. Same height as other buttons */
+.tab {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-sm);
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.selected {
+  border-bottom-color: var(--color-text);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+@media (hover: hover) {
+  .tab:not(.selected):hover {
+    color: var(--color-text);
+  }
+}
+
+/* ===== Panel ===== */
+.panel {
+  padding-top: var(--space-lg);
+}
