@@ -9,7 +9,7 @@ import styles from "./BookSection.module.css";
 
 // ===== Book section =====
 // Finds the book a movie or series is based on in Google Books,
-// and shows it with prices for each book format.
+// and shows it with prices for each book format. The tab above it names the section.
 // If Google Books cannot be reached, the user can try again without reloading.
 
 const BookSection = ({ title, author, mediaType }) => {
@@ -50,8 +50,6 @@ const BookSection = ({ title, author, mediaType }) => {
 
   return (
     <section>
-      <h2>The book behind the story</h2>
-
       {isFetching && <Loader label="Loading book" />}
 
       {/* Google Books could not be reached, so trying again can help */}

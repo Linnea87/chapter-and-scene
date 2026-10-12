@@ -23,8 +23,6 @@ const MovieSeries = ({ collection, movieId }) => {
 
   return (
     <section>
-      <h2>More from {collection.name}</h2>
-
       {isFetching && <TitleGridSkeleton label="Loading the movie series" />}
 
       {!isFetching && error && (
