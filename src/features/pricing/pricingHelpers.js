@@ -1,6 +1,7 @@
 import {
   BOOK_PRICES,
   BUNDLE_DISCOUNT,
+  BUNDLE_WATCH_FORMATS,
   MOVIE_PRICES,
   NEW_RELEASE_YEARS,
   SEASON_PRICES,
@@ -51,19 +52,22 @@ export const getBookPrices = (book) => ({
 
 // --- Bundle ---
 // Returns the bundle discount for a cart, e.g. 1.95 for a $12.99 paperback
-// bought together with its movie. Every book whose movie or series is also in
-// the cart gets BUNDLE_DISCOUNT off. Removing either part removes the discount.
+// bought together with its movie. A book gets BUNDLE_DISCOUNT off when the whole
+// story is in the cart too: the movie bought, or the whole series.
+// Removing either part removes the discount.
 export const getBundleDiscount = (items) => {
-  // The stories that have a movie or series in the cart
-  const watchedStoryIds = new Set(
+  // The stories that are bought as a whole, see BUNDLE_WATCH_FORMATS
+  const boughtStoryIds = new Set(
     items
-      .filter((item) => item.mediaType !== "book" && item.storyId)
+      .filter(
+        (item) => BUNDLE_WATCH_FORMATS.includes(item.format) && item.storyId,
+      )
       .map((item) => item.storyId),
   );
 
   const discount = items
     .filter(
-      (item) => item.mediaType === "book" && watchedStoryIds.has(item.storyId),
+      (item) => item.mediaType === "book" && boughtStoryIds.has(item.storyId),
     )
     .reduce(
       (total, item) => total + item.unitPrice * item.quantity * BUNDLE_DISCOUNT,
@@ -72,3 +76,13 @@ export const getBundleDiscount = (items) => {
 
   return roundPrice(discount);
 };
+
+// Returns the price of a bundle with one copy of the book, and the price
+// without the bundle, e.g. { price: 21.69, regularPrice: 22.98 }.
+// Uses the same rule as getBundleDiscount, so the cart shows the same total.
+export const getBundlePrices = (watchPrice, bookPrice) => ({
+  price: roundPrice(
+    watchPrice + bookPrice - roundPrice(bookPrice * BUNDLE_DISCOUNT),
+  ),
+  regularPrice: roundPrice(watchPrice + bookPrice),
+});
