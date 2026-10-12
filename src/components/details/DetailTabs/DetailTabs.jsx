@@ -9,7 +9,7 @@ import Tabs from "../../ui/navigation/Tabs/Tabs";
 // The selected tab is kept in the URL, e.g. ?tab=read, so it stays after a reload.
 // watchLabel: e.g. "Watch the movie"
 // watchPanel: the price options, or null when there is nothing to buy
-// book: { title, author, mediaType } for the book section
+// book: { title, author, mediaType, storyId } for the book section
 // collection, movieId: only for movies in a movie series
 
 const DetailTabs = ({ watchLabel, watchPanel, book, collection, movieId }) => {

@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
+import { createStoryId } from "../../features/cart/cartHelpers";
 import { SERIES_DISCOUNT } from "../../features/pricing/pricingConfig";
 import {
   getSeasonPrice,
@@ -101,12 +102,15 @@ const TvDetailPage = () => {
     seasons.length > 1 ? [...seasonOptions, seriesOption] : seasonOptions;
 
   // --- What is added to the cart ---
-  // A small poster is enough for the cart row
+  // A small poster is enough for the cart row.
+  // storyId links the series to the book behind it, for the bundle discount
+  const storyId = createStoryId("tv", series.id);
   const product = {
     id: series.id,
     mediaType: "tv",
     title: series.title,
     imageUrl: getImageUrl(series.posterPath, "w185"),
+    storyId,
   };
 
   return (
@@ -119,13 +123,15 @@ const TvDetailPage = () => {
         watchLabel="Watch the series"
         watchPanel={
           priceOptions.length > 0 ? (
-            <PriceOptions
-              product={product}
-              options={priceOptions}
-            />
+            <PriceOptions product={product} options={priceOptions} />
           ) : null
         }
-        book={{ title: series.title, author: series.author, mediaType: "tv" }}
+        book={{
+          title: series.title,
+          author: series.author,
+          mediaType: "tv",
+          storyId,
+        }}
       />
 
       <CastList cast={series.cast} />

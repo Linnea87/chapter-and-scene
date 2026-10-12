@@ -30,3 +30,8 @@ export const BOOK_PRICES = {
   hardcover: 24.99,
   ebook: 9.99,
 };
+
+// --- Bundle ---
+// Books are this much cheaper when the movie or series of the same story
+// is in the cart too, e.g. 0.15 → 15% off the book
+export const BUNDLE_DISCOUNT = 0.15;

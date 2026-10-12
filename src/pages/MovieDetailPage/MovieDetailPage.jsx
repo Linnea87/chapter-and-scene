@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
+import { createStoryId } from "../../features/cart/cartHelpers";
 import { getMoviePrices } from "../../features/pricing/pricingHelpers";
 import formatRuntime from "../../utils/formatRuntime";
 import isNotFoundError from "../../utils/isNotFoundError";
@@ -71,12 +72,15 @@ const MovieDetailPage = () => {
   ];
 
   // --- What is added to the cart ---
-  // A small poster is enough for the cart row
+  // A small poster is enough for the cart row.
+  // storyId links the movie to the book behind it, for the bundle discount
+  const storyId = createStoryId("movie", movie.id);
   const product = {
     id: movie.id,
     mediaType: "movie",
     title: movie.title,
     imageUrl: getImageUrl(movie.posterPath, "w185"),
+    storyId,
   };
 
   return (
@@ -86,13 +90,13 @@ const MovieDetailPage = () => {
       {/* --- Watch, read and movie series --- */}
       <DetailTabs
         watchLabel="Watch the movie"
-        watchPanel={
-          <PriceOptions
-            product={product}
-            options={priceOptions}
-          />
-        }
-        book={{ title: movie.title, author: movie.author, mediaType: "movie" }}
+        watchPanel={<PriceOptions product={product} options={priceOptions} />}
+        book={{
+          title: movie.title,
+          author: movie.author,
+          mediaType: "movie",
+          storyId,
+        }}
         collection={movie.collection}
         movieId={movie.id}
       />
