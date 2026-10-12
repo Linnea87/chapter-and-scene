@@ -3,12 +3,14 @@ import { getBookPrices } from "../../../features/pricing/pricingHelpers";
 import { getDeliveryLabel } from "../../../features/cart/cartHelpers";
 import { BOOK_FORMATS, FORMAT_LABELS } from "../../../features/cart/cartConfig";
 import Loader from "../../ui/feedback/Loader/Loader";
+import LoadError from "../../ui/feedback/LoadError/LoadError";
 import PriceOptions from "../../pricing/PriceOptions/PriceOptions";
 import styles from "./BookSection.module.css";
 
 // ===== Book section =====
 // Finds the book a movie or series is based on in Google Books,
 // and shows it with prices for each book format.
+// If Google Books cannot be reached, the user can try again without reloading.
 
 const BookSection = ({ title, author, mediaType }) => {
   // The search is skipped until there is a title to search for
@@ -16,6 +18,7 @@ const BookSection = ({ title, author, mediaType }) => {
     currentData: book,
     isFetching,
     error,
+    refetch,
   } = useFindBookQuery({ title, author }, { skip: !title });
 
   const storyType = mediaType === "movie" ? "movie" : "series";
@@ -51,10 +54,15 @@ const BookSection = ({ title, author, mediaType }) => {
 
       {isFetching && <Loader label="Loading book" />}
 
-      {/* Shown when Google Books fails or has no match */}
-      {!isFetching && (error || !book) && (
+      {/* Google Books could not be reached, so trying again can help */}
+      {!isFetching && error && (
+        <LoadError title="We couldn't load the book" onRetry={refetch} />
+      )}
+
+      {/* Google Books answered, but has no match for this story */}
+      {!isFetching && !error && !book && (
         <p className={styles.fallback}>
-          We couldn't find the book behind this {storyType} right now.
+          We couldn't find the book behind this {storyType}.
         </p>
       )}
 
