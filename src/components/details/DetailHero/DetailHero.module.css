@@ -150,16 +150,10 @@
 
 .hero:has(.backdrop) .content {
   grid-template-columns: 1fr;
-  padding-top: 25vw;
+  padding-top: 15vw;
 }
 
 .hero:has(.backdrop) .overview,
 .hero:has(.backdrop) .actions {
   grid-column: 1;
-}
-
-@media (min-width: 1024px) {
-  .hero:has(.backdrop) .content {
-    padding-top: 15vw;
-  }
 }
