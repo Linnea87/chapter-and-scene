@@ -41,22 +41,13 @@ const Footer = () => {
       </nav>
 
       {/* ===== Attribution ===== */}
-      {/* Required by the TMDB terms of use. The logo must be less prominent than the app logo. */}
+      {/* Required by the TMDB terms of use. The notice names TMDB,
+          and the logo sits in the bottom row, less prominent than the app logo */}
       <div className={styles.attribution}>
-        <div className={styles.tmdbRow}>
-          <a
-            href="https://www.themoviedb.org"
-            target="_blank"
-            rel="noreferrer"
-            className={styles.tmdbLink}
-          >
-            <img src={tmdbLogo} alt="TMDB" className={styles.tmdbLogo} />
-          </a>
-          <p className={styles.smallText}>
-            This product uses the TMDB API but is not endorsed or certified by
-            TMDB.
-          </p>
-        </div>
+        <p className={styles.smallText}>
+          This product uses the TMDB API but is not endorsed or certified by
+          TMDB.
+        </p>
 
         <p className={styles.smallText}>
           Book data from{" "}
@@ -72,10 +63,21 @@ const Footer = () => {
         </p>
       </div>
 
-      <p className={styles.smallText}>
-        © {currentYear} Chapter & Scene · A fictional shop built as a school
-        project
-      </p>
+      {/* --- Copyright on the left, TMDB logo on the right --- */}
+      <div className={styles.bottomRow}>
+        <p className={styles.smallText}>
+          © {currentYear} Chapter & Scene · A school project
+        </p>
+
+        <a
+          href="https://www.themoviedb.org"
+          target="_blank"
+          rel="noreferrer"
+          className={styles.tmdbLink}
+        >
+          <img src={tmdbLogo} alt="TMDB" className={styles.tmdbLogo} />
+        </a>
+      </div>
     </footer>
   );
 };

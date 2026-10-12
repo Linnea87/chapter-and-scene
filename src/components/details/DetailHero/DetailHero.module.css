@@ -7,10 +7,10 @@
   gap: var(--space-lg);
 }
 
-/* Full width behind the top of the page, like streaming services.
-   It is placed from the top of DetailLayout, behind the back link too.
-   It fades in at the top, so there is no hard edge under the header,
-   and fades out at the bottom, so the text on top stays easy to read */
+/* Full width from the top of the page, behind the header, like streaming services.
+   It fades in at the top, so the header icons stay easy to see, and eases out
+   at the bottom in steps, so even bright images have no visible edge.
+   Mobile first: square and visible far down, so the title sits on the image */
 .backdrop {
   position: absolute;
   top: 0;
@@ -19,15 +19,18 @@
   width: 100vw;
   /* Overrides max-width: 100% for images in global.css, so it can reach the edges */
   max-width: none;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;
   translate: -50% 0;
   object-fit: cover;
   opacity: 0.6;
   mask-image: linear-gradient(
     to bottom,
     transparent,
-    black 20%,
-    black 40%,
+    black 25%,
+    black 60%,
+    rgb(0 0 0 / 0.6) 75%,
+    rgb(0 0 0 / 0.25) 88%,
+    rgb(0 0 0 / 0.08) 96%,
     transparent
   );
 }
@@ -89,8 +92,10 @@
   margin-top: var(--space-md);
 }
 
+/* Small pills, so the genres do not compete with the title */
 .genres li {
   padding: 0 var(--space-sm);
+  font-size: 0.8rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
 }
@@ -109,6 +114,18 @@
 
 /* ===== Larger screens ===== */
 @media (min-width: 600px) {
+  /* Lower and fading out sooner, there is more room beside the text */
+  .backdrop {
+    aspect-ratio: 16 / 9;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 20%,
+      black 40%,
+      transparent
+    );
+  }
+
   .content {
     grid-template-columns: 12rem 1fr;
     /* Title, overview and actions take the space they need, the last row takes the rest */
@@ -150,10 +167,16 @@
 
 .hero:has(.backdrop) .content {
   grid-template-columns: 1fr;
-  padding-top: 15vw;
+  padding-top: 25vw;
 }
 
 .hero:has(.backdrop) .overview,
 .hero:has(.backdrop) .actions {
   grid-column: 1;
+}
+
+@media (min-width: 600px) {
+  .hero:has(.backdrop) .content {
+    padding-top: 15vw;
+  }
 }

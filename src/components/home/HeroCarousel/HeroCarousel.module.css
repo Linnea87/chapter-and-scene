@@ -3,7 +3,7 @@
    Mobile first: narrow edges and smaller arrows, so the slide gets more room */
 .carousel {
   --arrow-size: var(--touch-target);
-  --peek: 2rem;
+  --peek: 1.5rem;
   --gap: var(--space-sm);
 }
 
@@ -35,13 +35,13 @@
 }
 
 /* ===== Slide ===== */
-/* Low and wide on every screen, so the rows below are visible too.
-   Faded unless current. */
+/* Mobile first: tall for the upright poster, low and wide from 600px
+   for the backdrop. Faded unless current. */
 .slide {
   position: relative;
   display: block;
   flex: 0 0 var(--slide-width);
-  aspect-ratio: 3 / 1;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: var(--radius);
   background-color: var(--color-media-background);
@@ -74,20 +74,28 @@
   background: linear-gradient(to top, rgb(0 0 0 / 0.8), transparent);
 }
 
+/* Mobile first: the poster already shows the title, so the text is only
+   for screen readers. From 600px the backdrop has no title, so it shows */
 .title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
   margin: 0;
-  font-size: 1.75rem;
-  line-height: 1.1;
-  color: inherit;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
-/* Hidden on mobile, where only the title is shown */
+/* Age rating, year and genres.
+   The title shows first, the details fade in just after */
 .meta {
-  display: none;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-xs) var(--space-sm);
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
+  animation: fade-in 0.4s ease 0.5s both;
 }
 
 .badge {
@@ -117,8 +125,7 @@
   right: calc((var(--peek) - var(--arrow-size)) / 2);
 }
 
-/* With a mouse the arrows show on hover, and when using the keyboard.
-   On touch screens there is no hover, so they are always shown. */
+/* With a mouse the arrows show on hover, and when using the keyboard */
 @media (hover: hover) {
   .arrow {
     opacity: 0;
@@ -128,6 +135,13 @@
   .carousel:hover .arrow,
   .carousel:has(:focus-visible) .arrow {
     opacity: 1;
+  }
+}
+
+/* On touch screens the slides are swiped, so the arrows are not needed */
+@media (hover: none) {
+  .arrow {
+    display: none;
   }
 }
 
@@ -176,18 +190,28 @@
     --gap: var(--space-md);
   }
 
+  .slide {
+    aspect-ratio: 3 / 1;
+  }
+
   .content {
     padding: var(--space-xl);
   }
 
   .title {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
     font-size: 2.75rem;
+    line-height: 1.1;
+    color: inherit;
   }
 
-  /* The title shows first, the details fade in just after */
   .meta {
-    display: flex;
-    animation: fade-in 0.4s ease 0.5s both;
+    font-size: 0.95rem;
   }
 }
 

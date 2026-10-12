@@ -53,7 +53,9 @@ const AccountMenu = () => {
       <IconButton
         icon={User}
         label="Account menu"
+        className={styles.trigger}
         iconSize={24}
+        strokeWidth={1.8}
         aria-expanded={isOpen}
         onClick={toggle}
       />

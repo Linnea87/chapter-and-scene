@@ -45,7 +45,9 @@ const Header = () => {
         <IconButton
           icon={Search}
           label="Search"
-          iconSize={24}
+          className={styles.searchButton}
+          iconSize={22}
+          strokeWidth={1.8}
           aria-expanded={isSearchOpen}
           onClick={toggleSearch}
         />
