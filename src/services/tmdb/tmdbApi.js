@@ -3,7 +3,11 @@ import { TMDB_BASE_URL, LANGUAGE, CERTIFICATION_APPEND } from "./tmdbConfig";
 import getAdaptations from "./getAdaptations";
 import getBookKeywords from "./getBookKeywords";
 import getSortParams from "./getSortParams";
-import { mapTitleDetails, mapTitleList } from "./tmdbMappers";
+import {
+  mapCollectionMovies,
+  mapTitleDetails,
+  mapTitleList,
+} from "./tmdbMappers";
 
 // ===== TMDb service =====
 // All requests to TMDb go through this service.
@@ -67,6 +71,16 @@ export const tmdbApi = createApi({
         mapTitleDetails(response, mediaType),
     }),
 
+    // --- Movie series ---
+    // The movies in a movie series, e.g. every Harry Potter movie
+    getCollection: builder.query({
+      query: (collectionId) => ({
+        url: `collection/${collectionId}`,
+        params: { language: LANGUAGE },
+      }),
+      transformResponse: mapCollectionMovies,
+    }),
+
     // --- Genres ---
     getGenres: builder.query({
       query: (mediaType) => ({
@@ -82,5 +96,6 @@ export const {
   useDiscoverTitlesInfiniteQuery,
   useSearchAdaptationsQuery,
   useGetTitleDetailsQuery,
+  useGetCollectionQuery,
   useGetGenresQuery,
 } = tmdbApi;

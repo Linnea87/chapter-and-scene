@@ -124,6 +124,24 @@ export const findCertification = (item, mediaType) => {
   return CERTIFICATION_LABELS[certification] ?? certification;
 };
 
+// The movie series a movie belongs to, e.g. { id: 1241, name: "Harry Potter" },
+// or null. TMDb ends every name with "Collection", which is left out here.
+const mapCollection = (collection) =>
+  collection
+    ? { id: collection.id, name: collection.name.replace(/ Collection$/, "") }
+    : null;
+
+// The movies in a movie series, in the order they were released, e.g. the
+// first Harry Potter movie first. Movies without a release date come last.
+export const mapCollectionMovies = (response) =>
+  (response.parts ?? [])
+    .map((part) => mapTitle(part, "movie"))
+    .sort((a, b) => {
+      if (!a.releaseDate) return 1;
+      if (!b.releaseDate) return -1;
+      return a.releaseDate.localeCompare(b.releaseDate);
+    });
+
 // Builds on mapTitle and adds the fields only the detail page needs
 export const mapTitleDetails = (item, mediaType) => ({
   ...mapTitle(item, mediaType),
@@ -135,4 +153,5 @@ export const mapTitleDetails = (item, mediaType) => ({
   trailerKey: findTrailerKey(item.videos),
   certification: findCertification(item, mediaType),
   cast: mapCast(item.credits),
+  collection: mapCollection(item.belongs_to_collection),
 });
