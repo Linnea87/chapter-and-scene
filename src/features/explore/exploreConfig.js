@@ -9,7 +9,7 @@ export const MIN_SEARCH_LENGTH = 3;
 
 // --- Media types ---
 export const MEDIA_TYPES = [
-  { id: ALL_ID, label: "ALL" },
+  { id: ALL_ID, label: "All" },
   { id: "movie", label: "Movies" },
   { id: "tv", label: "Series" },
 ];
