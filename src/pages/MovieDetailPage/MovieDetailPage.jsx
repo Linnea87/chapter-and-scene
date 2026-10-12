@@ -6,16 +6,17 @@ import formatRuntime from "../../utils/formatRuntime";
 import isNotFoundError from "../../utils/isNotFoundError";
 import BookSection from "../../components/books/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
-import DetailColumns from "../../components/details/DetailColumns/DetailColumns";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
 import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
+import Tabs from "../../components/ui/navigation/Tabs/Tabs";
 
 // ===== Movie detail page =====
-// Shows one movie with facts, prices and cast. The id comes from the URL (/movie/:id).
+// Shows one movie with facts, watch and read options in tabs, and cast.
+// The id comes from the URL (/movie/:id).
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -83,18 +84,34 @@ const MovieDetailPage = () => {
       <DetailHero details={movie} meta={meta} />
 
       {/* --- Watch and read --- */}
-      <DetailColumns>
-        <PriceOptions
-          title="Watch the movie"
-          product={product}
-          options={priceOptions}
-        />
-        <BookSection
-          title={movie.title}
-          author={movie.author}
-          mediaType="movie"
-        />
-      </DetailColumns>
+      {/* Watch is selected first, Read shows the book behind the movie */}
+      <Tabs
+        label="Watch or read"
+        tabs={[
+          {
+            id: "watch",
+            label: "Watch",
+            panel: (
+              <PriceOptions
+                title="Watch the movie"
+                product={product}
+                options={priceOptions}
+              />
+            ),
+          },
+          {
+            id: "read",
+            label: "Read",
+            panel: (
+              <BookSection
+                title={movie.title}
+                author={movie.author}
+                mediaType="movie"
+              />
+            ),
+          },
+        ]}
+      />
 
       <CastList cast={movie.cast} />
     </DetailLayout>
