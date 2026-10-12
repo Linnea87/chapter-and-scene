@@ -9,6 +9,7 @@ import CastList from "../../components/details/CastList/CastList";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import DetailTabs from "../../components/details/DetailTabs/DetailTabs";
+import BundleOffer from "../../components/pricing/BundleOffer/BundleOffer";
 import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
 import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
 import Loader from "../../components/ui/feedback/Loader/Loader";
@@ -83,6 +84,14 @@ const MovieDetailPage = () => {
     storyId,
   };
 
+  // The book behind the movie, used by the book tab and the bundle
+  const book = {
+    title: movie.title,
+    author: movie.author,
+    mediaType: "movie",
+    storyId,
+  };
+
   return (
     <DetailLayout>
       <DetailHero details={movie} meta={meta} />
@@ -91,14 +100,18 @@ const MovieDetailPage = () => {
       <DetailTabs
         watchLabel="Watch the movie"
         watchPanel={<PriceOptions product={product} options={priceOptions} />}
-        book={{
-          title: movie.title,
-          author: movie.author,
-          mediaType: "movie",
-          storyId,
-        }}
+        book={book}
         collection={movie.collection}
         movieId={movie.id}
+      />
+
+      {/* --- Bundle: buying the movie and the book together --- */}
+      <BundleOffer
+        title="Movie + book bundle"
+        description="Buy the movie and the book together."
+        product={product}
+        option={priceOptions.find((option) => option.id === "buy")}
+        book={book}
       />
 
       <CastList cast={movie.cast} />
