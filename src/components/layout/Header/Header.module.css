@@ -9,6 +9,21 @@
   padding: var(--space-sm) var(--space-md);
 }
 
+/* ===== Logo ===== */
+/* A row of its own above the icons, centred.
+   Small, light and muted, like a signature, so it does not take over the page */
+.logo {
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-script);
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
 /* ===== Areas ===== */
 .accountArea {
   justify-self: start;

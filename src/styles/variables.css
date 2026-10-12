@@ -46,6 +46,8 @@
   /* System fonts until the brand fonts are chosen */
   --font-heading: Georgia, "Times New Roman", serif;
   --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Handwritten, only for the site name in the header */
+  --font-script: "Dancing Script", cursive;
 
   /* ===== Spacing and sizing ===== */
   --space-xs: 0.25rem;
