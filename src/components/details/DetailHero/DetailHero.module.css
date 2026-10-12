@@ -8,8 +8,9 @@
 }
 
 /* Full width behind the top of the page, like streaming services.
-   It is placed from the top of DetailLayout, behind the back link too,
-   and fades into the background, so the text on top stays easy to read */
+   It is placed from the top of DetailLayout, behind the back link too.
+   It fades in at the top, so there is no hard edge under the header,
+   and fades out at the bottom, so the text on top stays easy to read */
 .backdrop {
   position: absolute;
   top: 0;
@@ -22,7 +23,13 @@
   translate: -50% 0;
   object-fit: cover;
   opacity: 0.6;
-  mask-image: linear-gradient(to bottom, black 40%, transparent);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 40%,
+    transparent
+  );
 }
 
 .content {
