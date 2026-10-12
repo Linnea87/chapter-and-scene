@@ -1,29 +1,25 @@
 import { useParams } from "react-router";
-import useTabParam from "../../hooks/useTabParam";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
 import { getMoviePrices } from "../../features/pricing/pricingHelpers";
 import formatRuntime from "../../utils/formatRuntime";
 import isNotFoundError from "../../utils/isNotFoundError";
-import BookSection from "../../components/books/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
+import DetailTabs from "../../components/details/DetailTabs/DetailTabs";
 import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
 import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
-import Tabs from "../../components/ui/navigation/Tabs/Tabs";
 
 // ===== Movie detail page =====
-// Shows one movie with facts, watch and read options in tabs, and cast.
+// Shows one movie with facts, tabs to watch the movie, read the book and,
+// for movies in a movie series, see the other movies. Then the cast.
 // The id comes from the URL (/movie/:id).
 
 const MovieDetailPage = () => {
   const { id } = useParams();
-
-  // The selected tab is kept in the URL, e.g. ?tab=read, so it stays after a reload
-  const [selectedTab, selectTab] = useTabParam("watch");
 
   // currentData is empty while a new id loads, so the previous movie is never shown
   const {
@@ -87,36 +83,18 @@ const MovieDetailPage = () => {
     <DetailLayout>
       <DetailHero details={movie} meta={meta} />
 
-      {/* --- Watch and read --- */}
-      {/* Watch is selected first, Read shows the book behind the movie */}
-      <Tabs
-        label="Watch or read"
-        selectedId={selectedTab}
-        onSelect={selectTab}
-        tabs={[
-          {
-            id: "watch",
-            label: "Watch",
-            panel: (
-              <PriceOptions
-                title="Watch the movie"
-                product={product}
-                options={priceOptions}
-              />
-            ),
-          },
-          {
-            id: "read",
-            label: "Read",
-            panel: (
-              <BookSection
-                title={movie.title}
-                author={movie.author}
-                mediaType="movie"
-              />
-            ),
-          },
-        ]}
+      {/* --- Watch, read and movie series --- */}
+      <DetailTabs
+        watchLabel="Watch the movie"
+        watchPanel={
+          <PriceOptions
+            product={product}
+            options={priceOptions}
+          />
+        }
+        book={{ title: movie.title, author: movie.author, mediaType: "movie" }}
+        collection={movie.collection}
+        movieId={movie.id}
       />
 
       <CastList cast={movie.cast} />
