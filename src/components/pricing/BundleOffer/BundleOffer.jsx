@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Check, ShoppingBasket } from "lucide-react";
 import useOwnedItem from "../../../hooks/useOwnedItem";
 import { useFindBookQuery } from "../../../services/googleBooks/googleBooksApi";
 import { BOOK_FORMATS, FORMAT_LABELS } from "../../../features/cart/cartConfig";
@@ -26,7 +27,7 @@ import styles from "./BundleOffer.module.css";
 // ===== Bundle offer =====
 // Offers the whole story and its book together at a lower price, with one row
 // per book format, e.g. buying the movie and the paperback.
-// "Add both" adds both to the cart. A rental of the same movie is replaced.
+// The basket button adds both to the cart. A rental of the same movie is replaced.
 // Shown in its own tab, so a short message is shown instead when there is
 // no bundle: the book is not found, or the user already owns the story.
 // description: e.g. "Buy the movie and the book together."
@@ -142,13 +143,18 @@ const BundleOffer = ({ description, product, option, book }) => {
 
               <Button
                 variant="secondary"
-                size="small"
+                size="icon"
                 onClick={() => handleAdd(bundle.bookItem)}
                 disabled={bundle.isInCart}
               >
-                {bundle.isInCart ? "In cart" : "Add both"}
+                {bundle.isInCart ? (
+                  <Check size={20} aria-hidden="true" />
+                ) : (
+                  <ShoppingBasket size={20} aria-hidden="true" />
+                )}
                 <span className="visually-hidden">
-                  : {watchName} and {FORMAT_LABELS[bundle.format]}
+                  {bundle.isInCart ? "In cart" : "Add both to cart"}:{" "}
+                  {watchName} and {FORMAT_LABELS[bundle.format]}
                 </span>
               </Button>
             </span>

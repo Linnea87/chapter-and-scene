@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Check, ShoppingBasket } from "lucide-react";
 import useDisclosure from "../../../hooks/useDisclosure";
 import { addItem, removeItem } from "../../../features/cart/cartSlice";
 import {
@@ -13,7 +14,8 @@ import Button from "../../ui/buttons/Button/Button";
 import ReplaceItemDialog from "../ReplaceItemDialog/ReplaceItemDialog";
 
 // ===== Add to cart button =====
-// Adds one price option to the cart and shows when it is already there.
+// Adds one price option to the cart and shows when it is already there:
+// a basket icon to add, a check mark when it is in the cart.
 // When the option clashes with something in the cart, e.g. renting and buying
 // the same movie, the user is asked which one to keep.
 // The quantity of physical books is changed in the cart.
@@ -48,18 +50,20 @@ const AddToCartButton = ({ item }) => {
   };
 
   // --- Render ---
+  const Icon = isInCart ? Check : ShoppingBasket;
+
   return (
     <>
       <Button
         variant="secondary"
-        size="small"
+        size="icon"
         onClick={handleAdd}
         disabled={isInCart}
       >
-        {isInCart ? "In cart" : "Add"}
+        <Icon size={20} aria-hidden="true" />
         {/* Tells screen readers what the button does and which option it belongs to */}
         <span className="visually-hidden">
-          {!isInCart && " to cart"}: {item.label}
+          {isInCart ? "In cart" : "Add to cart"}: {item.label}
         </span>
       </Button>
 

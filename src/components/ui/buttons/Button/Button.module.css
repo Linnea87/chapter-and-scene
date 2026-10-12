@@ -40,6 +40,14 @@
   font-size: 0.875rem;
 }
 
+/* Round, for a single icon, e.g. add to cart. The text is hidden for screen readers */
+.icon {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  padding: 0;
+}
+
 /* ===== States ===== */
 .button:disabled {
   opacity: 0.6;
