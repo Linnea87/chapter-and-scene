@@ -31,6 +31,10 @@ const DetailHero = ({ details, meta }) => {
           <h1 className={styles.title}>{details.title}</h1>
 
           <ul className={styles.meta}>
+            {/* Age rating first, e.g. "13+", only when TMDb has one */}
+            {details.certification && (
+              <li className={styles.badge}>{details.certification}</li>
+            )}
             {meta.map((fact) => (
               <li key={fact}>{fact}</li>
             ))}

@@ -68,6 +68,15 @@
   gap: var(--space-xs) var(--space-md);
 }
 
+/* Age rating in a small box, like in the hero carousel */
+.badge {
+  padding: 0 var(--space-xs);
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
 .genres {
   gap: var(--space-xs);
   margin-top: var(--space-sm);
