@@ -1,10 +1,14 @@
 /* ===== Layout ===== */
+/* Mobile first: compact, so the footer does not take over a small screen.
+   Room above it, so the page content does not end right at the footer.
+   More room from 600px */
 .footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-xl) var(--space-md);
+  margin-top: var(--space-xl);
+  gap: var(--space-xs);
+  padding: var(--space-lg) var(--space-md);
   text-align: center;
   color: var(--color-text);
   background-color: var(--color-surface);
@@ -20,7 +24,8 @@
 }
 
 .tagline {
-  margin: 0 0 var(--space-sm);
+  margin: 0;
+  font-size: 0.875rem;
   color: var(--color-text-muted);
 }
 
@@ -61,17 +66,25 @@
   border-top: 1px solid var(--color-border);
 }
 
-/* Logo and notice on one line, wrapping on narrow screens */
-.tmdbRow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
+.textLink {
+  color: inherit;
 }
 
+/* ===== Bottom row ===== */
+/* Copyright on the left and the TMDB logo on the right, across the full width */
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  width: 100%;
+  text-align: left;
+}
+
+/* The logo keeps its size, the copyright wraps instead */
 .tmdbLink {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   min-height: var(--touch-target);
 }
@@ -79,11 +92,7 @@
 /* Kept small so it is less prominent than the app logo, as TMDB requires */
 .tmdbLogo {
   width: auto;
-  height: 14px;
-}
-
-.textLink {
-  color: inherit;
+  height: 9px;
 }
 
 /* ===== Text ===== */
@@ -91,4 +100,17 @@
   margin: 0;
   font-size: 0.75rem;
   color: var(--color-text-muted);
+}
+
+/* ===== Larger screens ===== */
+@media (min-width: 600px) {
+  .footer {
+    gap: var(--space-sm);
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .tagline {
+    margin-bottom: var(--space-sm);
+    font-size: 1rem;
+  }
 }
