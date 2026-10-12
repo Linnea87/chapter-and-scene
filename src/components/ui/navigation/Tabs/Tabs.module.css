@@ -1,9 +1,12 @@
 /* ===== Tab list ===== */
-/* The tabs side by side, with a line under them on all screen sizes */
+/* The tabs side by side, with a line under them on all screen sizes.
+   If they do not fit on a narrow screen, the row scrolls sideways */
 .list {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   border-bottom: 1px solid var(--color-border);
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
 /* ===== Tab ===== */
@@ -17,6 +20,8 @@
   background-color: transparent;
   color: var(--color-text-muted);
   font: inherit;
+  font-size: 0.9rem;
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -36,4 +41,15 @@
 /* ===== Panel ===== */
 .panel {
   padding-top: var(--space-lg);
+}
+
+/* ===== Larger screens ===== */
+@media (min-width: 600px) {
+  .list {
+    gap: var(--space-md);
+  }
+
+  .tab {
+    font-size: 1rem;
+  }
 }
