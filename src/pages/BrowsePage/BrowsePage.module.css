@@ -11,9 +11,9 @@
   margin-bottom: var(--space-xs);
 }
 
-/* Same spacing as the explore page */
+/* Room between the heading block and the grid */
 .intro {
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 var(--space-xl);
   color: var(--color-text-muted);
 }
 
