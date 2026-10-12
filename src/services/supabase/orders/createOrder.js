@@ -3,12 +3,14 @@ import { toOrderItemRow } from "./orderMappers";
 
 // ===== Create order =====
 // Saves an order and its items for the signed-in user.
+// discount is the bundle discount, 0 when there is none.
 // Returns the new order id, used for the confirmation page.
 // Throws on failure, so the caller can handle the error.
 
 const createOrder = async ({
   items,
   subtotal,
+  discount,
   shipping,
   total,
   shippingAddress,
@@ -18,6 +20,7 @@ const createOrder = async ({
     .from("orders")
     .insert({
       subtotal,
+      discount,
       shipping,
       total,
       shipping_address: shippingAddress ?? null,

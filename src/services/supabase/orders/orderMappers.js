@@ -39,6 +39,7 @@ export const toOrder = (row) => ({
   id: row.id,
   createdAt: row.created_at,
   subtotal: Number(row.subtotal),
+  discount: Number(row.discount),
   shipping: Number(row.shipping),
   total: Number(row.total),
   shippingAddress: row.shipping_address,
