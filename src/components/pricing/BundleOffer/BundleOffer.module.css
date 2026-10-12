@@ -1,48 +1,20 @@
 /* ===== Offer ===== */
-/* A box that stands out from the price rows, so the bundle is easy to see */
+/* Laid out like the other tabs, directly in the panel */
 .offer {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  max-width: 28rem;
-  padding: var(--space-lg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  background-color: var(--color-surface);
 }
 
 /* ===== Text ===== */
-.title {
-  margin: 0;
-  font-size: 1.125rem;
-}
-
 .text {
   margin: 0;
   color: var(--color-text-muted);
 }
 
-/* ===== Price and button ===== */
-/* Side by side, the button wraps under the price on narrow screens */
-.footer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
-}
-
-.prices {
+/* Shown instead of the offer when there is no bundle */
+.message {
   margin: 0;
-}
-
-.price {
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-/* The price without the bundle, crossed out */
-.regularPrice {
   color: var(--color-text-muted);
 }
 

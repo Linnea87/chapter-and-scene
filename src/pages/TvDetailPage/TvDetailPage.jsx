@@ -126,8 +126,9 @@ const TvDetailPage = () => {
     <DetailLayout>
       <DetailHero details={series} meta={meta} />
 
-      {/* --- Watch and read --- */}
-      {/* Series without seasons that can be bought have no Watch tab */}
+      {/* --- Watch, read and bundle --- */}
+      {/* Series without seasons that can be bought have no Watch tab.
+          The bundle needs the whole series option, i.e. more than one season */}
       <DetailTabs
         watchLabel="Watch the series"
         watchPanel={
@@ -136,19 +137,18 @@ const TvDetailPage = () => {
           ) : null
         }
         book={book}
+        bundleLabel="Series + book"
+        bundlePanel={
+          seasons.length > 1 ? (
+            <BundleOffer
+              description="Get the whole series and the book together."
+              product={product}
+              option={seriesOption}
+              book={book}
+            />
+          ) : null
+        }
       />
-
-      {/* --- Bundle: the whole series and the book together --- */}
-      {/* Only when there is a whole series option, i.e. more than one season */}
-      {seasons.length > 1 && (
-        <BundleOffer
-          title="Series + book bundle"
-          description="Get the whole series and the book together."
-          product={product}
-          option={seriesOption}
-          book={book}
-        />
-      )}
 
       <CastList cast={series.cast} />
     </DetailLayout>

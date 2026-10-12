@@ -96,22 +96,22 @@ const MovieDetailPage = () => {
     <DetailLayout>
       <DetailHero details={movie} meta={meta} />
 
-      {/* --- Watch, read and movie series --- */}
+      {/* --- Watch, read, bundle and movie series --- */}
       <DetailTabs
         watchLabel="Watch the movie"
         watchPanel={<PriceOptions product={product} options={priceOptions} />}
         book={book}
+        bundleLabel="Movie + book"
+        bundlePanel={
+          <BundleOffer
+            description="Buy the movie and the book together."
+            product={product}
+            option={priceOptions.find((option) => option.id === "buy")}
+            book={book}
+          />
+        }
         collection={movie.collection}
         movieId={movie.id}
-      />
-
-      {/* --- Bundle: buying the movie and the book together --- */}
-      <BundleOffer
-        title="Movie + book bundle"
-        description="Buy the movie and the book together."
-        product={product}
-        option={priceOptions.find((option) => option.id === "buy")}
-        book={book}
       />
 
       <CastList cast={movie.cast} />
