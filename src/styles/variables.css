@@ -23,16 +23,17 @@
   /* Buttons and the selected tab */
   --gradient-primary: linear-gradient(90deg, #22c4c4, #7cefe6);
   /* Soft glow at the top of every page, decoration only.
-     Each glow fades out within 30rem, so it never ends in a hard line */
+     One wide glow in the middle that follows the screen width,
+     and fades out within 30rem so it never ends in a hard line */
   --gradient-glow:
     radial-gradient(
-      ellipse 50rem 30rem at 20% 0%,
-      rgb(15 163 163 / 0.35),
+      ellipse 80% 30rem at 50% 0%,
+      rgb(15 163 163 / 0.28),
       transparent 70%
     ),
     radial-gradient(
-      ellipse 50rem 30rem at 80% 0%,
-      rgb(94 230 224 / 0.18),
+      ellipse 40% 18rem at 50% 0%,
+      rgb(94 230 224 / 0.12),
       transparent 70%
     );
 
