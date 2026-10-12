@@ -71,14 +71,14 @@
 }
 
 /* ===== Bottom row ===== */
-/* Copyright on the left and the TMDB logo on the right, across the full width */
+/* The copyright and the TMDB logo together in the middle, like the rest of the footer */
 .bottomRow {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
-  width: 100%;
-  text-align: left;
+  justify-content: center;
+  gap: var(--space-sm) var(--space-md);
+  margin-top: var(--space-sm);
 }
 
 /* The logo keeps its size, the copyright wraps instead */
