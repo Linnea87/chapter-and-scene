@@ -1,45 +1,28 @@
-import { Link } from "react-router";
-import useDisclosure from "../../../hooks/useDisclosure";
 import AccountMenu from "../AccountMenu/AccountMenu";
 import CartLink from "../CartLink/CartLink";
 import CurrencySelect from "../CurrencySelect/CurrencySelect";
-import MenuToggle from "../MenuToggle/MenuToggle";
 import NavMenu from "../NavMenu/NavMenu";
 import styles from "./Header.module.css";
 
-const Header = () => {
-  // --- State ---
-  // Open and closed state for the mobile menu
-  const {
-    isOpen: isMenuOpen,
-    toggle: toggleMenu,
-    close: closeMenu,
-  } = useDisclosure();
+// ===== Header =====
+// Icons only, on every screen size: the account menu on the left,
+// the main pages in the middle and the cart on the right.
+// The site name is shown as the heading on the home page instead.
 
-  // --- Render ---
-  return (
-    <header className={styles.header}>
-      {/* Hidden from 600px, where the nav links are always visible */}
-      <div className={styles.menuArea}>
-        <MenuToggle isOpen={isMenuOpen} onToggle={toggleMenu} />
-      </div>
+const Header = () => (
+  <header className={styles.header}>
+    <div className={styles.accountArea}>
+      <AccountMenu />
+    </div>
 
-      {/* Text logo until the real logo is designed */}
-      <Link to="/" onClick={closeMenu} className={styles.logoLink}>
-        Chapter & Scene
-      </Link>
+    <NavMenu />
 
-      <div className={styles.actionsArea}>
-        <CurrencySelect />
-        <AccountMenu />
-        <CartLink onNavigate={closeMenu} />
-      </div>
-
-      <div className={styles.navArea}>
-        <NavMenu isOpen={isMenuOpen} onNavigate={closeMenu} />
-      </div>
-    </header>
-  );
-};
+    {/* The currency moves into the account menu in the next step */}
+    <div className={styles.actionsArea}>
+      <CurrencySelect />
+      <CartLink />
+    </div>
+  </header>
+);
 
 export default Header;

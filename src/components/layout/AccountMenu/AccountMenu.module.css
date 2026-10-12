@@ -19,12 +19,12 @@
   position: relative;
 }
 
-/* Opens below the icon, aligned to the right edge.
-   The menu items are stacked and share the same width */
+/* Opens below the icon, aligned to the left edge, since the icon
+   is on the left of the header. The menu items are stacked and share the same width */
 .menu {
   position: absolute;
   top: 100%;
-  right: 0;
+  left: 0;
   z-index: 10;
   display: flex;
   flex-direction: column;
