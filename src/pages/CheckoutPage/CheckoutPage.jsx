@@ -76,7 +76,7 @@ const CheckoutPage = () => {
   return (
     <div className="container">
       <div className={styles.content}>
-        <h1>Checkout</h1>
+        <h1 className={styles.title}>Checkout</h1>
         <p className={styles.account}>
           Ordering as <strong>{user.email}</strong>
         </p>
