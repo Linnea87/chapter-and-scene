@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import useCarousel from "../../../hooks/useCarousel";
 import useHomeTitles from "../../../hooks/useHomeTitles";
+import useSwipe from "../../../hooks/useSwipe";
 import { useGetTitleDetailsQuery } from "../../../services/tmdb/tmdbApi";
 import getImageUrl from "../../../services/tmdb/getImageUrl";
 import { HERO } from "../../../features/home/homeConfig";
@@ -12,24 +13,26 @@ import styles from "./HeroCarousel.module.css";
 // The highest rated book adaptations on a track that slides sideways.
 // The current slide links to the title, and the slides next to it peek in
 // on each side. No autoplay, so the user decides when the slide changes.
-
-// Labels shown for each media type
-const MEDIA_LABELS = {
-  movie: "Movie",
-  tv: "Series",
-};
+// Mobile shows the upright poster, larger screens the wide backdrop.
+// On touch screens the slides are swiped, with a mouse the arrows are used.
 
 const HeroCarousel = () => {
   const { titles, isLoading } = useHomeTitles({ sort: HERO.sort });
 
   // --- Slides ---
-  // Only titles with a backdrop image can be shown in the hero
+  // Only titles with both a poster and a backdrop can be shown in the hero
   const slides = titles
-    .filter((title) => title.backdropPath)
+    .filter((title) => title.posterPath && title.backdropPath)
     .slice(0, HERO.limit);
 
   const { current, goTo, next, previous } = useCarousel(slides.length);
   const slide = slides[current];
+
+  // Swiping left shows the next slide, like turning a page
+  const swipeHandlers = useSwipe({
+    onSwipeLeft: next,
+    onSwipeRight: previous,
+  });
 
   // --- Details for the current slide ---
   // Age rating and genres are only in the details, so one slide is fetched at a time
@@ -54,7 +57,7 @@ const HeroCarousel = () => {
       aria-roledescription="carousel"
       aria-label="Featured stories"
     >
-      <div className={styles.viewport}>
+      <div className={styles.viewport} {...swipeHandlers}>
         {/* --position moves the track, see the CSS */}
         <div className={styles.track} style={{ "--position": position }}>
           {track.map((item, index) => {
@@ -71,11 +74,19 @@ const HeroCarousel = () => {
                 // Only the current slide can be clicked, tabbed to or read out
                 inert={!isCurrent}
               >
-                <img
-                  src={getImageUrl(item.backdropPath, "w1280")}
-                  alt=""
-                  className={styles.image}
-                />
+                {/* The browser picks the image: the backdrop from 600px,
+                    the upright poster on smaller screens */}
+                <picture>
+                  <source
+                    media="(min-width: 600px)"
+                    srcSet={getImageUrl(item.backdropPath, "w1280")}
+                  />
+                  <img
+                    src={getImageUrl(item.posterPath, "w500")}
+                    alt=""
+                    className={styles.image}
+                  />
+                </picture>
 
                 <div className={styles.content}>
                   <h2 className={styles.title}>{item.title}</h2>
@@ -88,7 +99,7 @@ const HeroCarousel = () => {
                         </span>
                       )}
                       <span>
-                        {MEDIA_LABELS[item.mediaType]} · {item.year}
+                        {item.year}
                         {genres && ` · ${genres}`}
                       </span>
                     </p>
@@ -99,7 +110,7 @@ const HeroCarousel = () => {
           })}
         </div>
 
-        {/* --- Arrows over the peeking slides --- */}
+        {/* --- Arrows over the peeking slides, hidden on touch screens --- */}
         <IconButton
           icon={ChevronLeft}
           label="Previous story"
