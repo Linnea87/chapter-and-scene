@@ -1,5 +1,6 @@
 import { isPhysicalFormat } from "./cartHelpers";
 import { SHIPPING_COST, FREE_SHIPPING_THRESHOLD } from "./cartConfig";
+import { getBundleDiscount } from "../pricing/pricingHelpers";
 import roundPrice from "../../utils/roundPrice";
 
 // ===== Cart selectors =====
@@ -20,6 +21,11 @@ export const selectSubtotal = (state) =>
     ),
   );
 
+// The bundle discount when a book and its movie or series are both in the cart.
+// Free shipping is still based on the subtotal before the discount.
+export const selectBundleDiscount = (state) =>
+  getBundleDiscount(selectCartItems(state));
+
 // Shipping only applies when the cart contains at least one physical book
 export const selectHasPhysicalItems = (state) =>
   selectCartItems(state).some((item) => isPhysicalFormat(item.format));
@@ -37,7 +43,9 @@ export const selectShipping = (state) =>
   selectAmountToFreeShipping(state) > 0 ? SHIPPING_COST : 0;
 
 export const selectTotal = (state) =>
-  roundPrice(selectSubtotal(state) + selectShipping(state));
+  roundPrice(
+    selectSubtotal(state) - selectBundleDiscount(state) + selectShipping(state),
+  );
 
 // Returns the cart row with this key, or undefined if it is not in the cart.
 // Takes the key first and returns a selector, so it can be used as
