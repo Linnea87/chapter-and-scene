@@ -22,10 +22,19 @@
   --color-primary-contrast: #0b1517;
   /* Buttons and the selected tab */
   --gradient-primary: linear-gradient(90deg, #22c4c4, #7cefe6);
-  /* Soft glow behind heroes, decoration only */
+  /* Soft glow at the top of every page, decoration only.
+     Each glow fades out within 30rem, so it never ends in a hard line */
   --gradient-glow:
-    radial-gradient(circle at 30% 50%, rgb(15 163 163 / 0.55), transparent 60%),
-    radial-gradient(circle at 75% 50%, rgb(94 230 224 / 0.45), transparent 60%);
+    radial-gradient(
+      ellipse 50rem 30rem at 20% 0%,
+      rgb(15 163 163 / 0.35),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50rem 30rem at 80% 0%,
+      rgb(94 230 224 / 0.18),
+      transparent 70%
+    );
 
   /* --- Status --- */
   /* Something good or done, e.g. "Rented · 31 h left" and "Save $1.95" */
