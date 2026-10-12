@@ -9,6 +9,7 @@ import BookSection from "../../components/books/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
+import MovieSeries from "../../components/details/MovieSeries/MovieSeries";
 import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
 import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
 import Loader from "../../components/ui/feedback/Loader/Loader";
@@ -17,6 +18,7 @@ import Tabs from "../../components/ui/navigation/Tabs/Tabs";
 
 // ===== Movie detail page =====
 // Shows one movie with facts, watch and read options in tabs, and cast.
+// Movies in a movie series also get a tab with the other movies (CS-015).
 // The id comes from the URL (/movie/:id).
 
 const MovieDetailPage = () => {
@@ -87,10 +89,11 @@ const MovieDetailPage = () => {
     <DetailLayout>
       <DetailHero details={movie} meta={meta} />
 
-      {/* --- Watch and read --- */}
-      {/* Watch is selected first, Read shows the book behind the movie */}
+      {/* --- Watch, read and movie series --- */}
+      {/* Watch is selected first, Read shows the book behind the movie.
+          The movie series tab is only shown when the movie is part of one */}
       <Tabs
-        label="Watch or read"
+        label="Watch, read or see the movie series"
         selectedId={selectedTab}
         onSelect={selectTab}
         tabs={[
@@ -116,6 +119,20 @@ const MovieDetailPage = () => {
               />
             ),
           },
+          ...(movie.collection
+            ? [
+                {
+                  id: "series",
+                  label: `More from ${movie.collection.name}`,
+                  panel: (
+                    <MovieSeries
+                      collection={movie.collection}
+                      movieId={movie.id}
+                    />
+                  ),
+                },
+              ]
+            : []),
         ]}
       />
 
