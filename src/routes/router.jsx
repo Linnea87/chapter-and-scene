@@ -26,6 +26,9 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "explore", element: <ExplorePage /> },
+      // The same page with the media type fixed, linked from the header
+      { path: "movies", element: <ExplorePage mediaTypeId="movie" /> },
+      { path: "series", element: <ExplorePage mediaTypeId="tv" /> },
       { path: "browse/:rowId", element: <BrowsePage /> },
       { path: "movie/:id", element: <MovieDetailPage /> },
       { path: "tv/:id", element: <TvDetailPage /> },

@@ -1,10 +1,11 @@
 import { NavLink } from "react-router";
-import { Compass, House } from "lucide-react";
+import { Clapperboard, House, Tv } from "lucide-react";
 import getNavLinkClass from "../../../utils/getNavLinkClass";
 import styles from "./NavMenu.module.css";
 
 // ===== Nav menu =====
-// The main pages as icon links in the middle of the header.
+// The main pages as icon links in the middle of the header:
+// home, movies and series.
 // The icons have no text, so aria-label names each link for screen readers.
 // The link for the current page is highlighted.
 
@@ -21,8 +22,13 @@ const NavMenu = () => (
         </NavLink>
       </li>
       <li>
-        <NavLink to="/explore" className={getLinkClass} aria-label="Explore">
-          <Compass size={24} strokeWidth={1.8} aria-hidden="true" />
+        <NavLink to="/movies" className={getLinkClass} aria-label="Movies">
+          <Clapperboard size={24} strokeWidth={1.8} aria-hidden="true" />
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/series" className={getLinkClass} aria-label="Series">
+          <Tv size={24} strokeWidth={1.8} aria-hidden="true" />
         </NavLink>
       </li>
     </ul>

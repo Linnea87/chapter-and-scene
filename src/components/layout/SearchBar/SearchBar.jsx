@@ -5,7 +5,7 @@ import SearchField from "../../ui/forms/SearchField/SearchField";
 // ===== Search bar =====
 // The search field that folds out under the header icons.
 // Typing shows the results on the explore page, e.g. /explore?q=dune.
-// On the explore page the chosen type and category are kept.
+// On the explore page the chosen category is kept.
 
 const SearchBar = () => {
   const [searchParams] = useSearchParams();
