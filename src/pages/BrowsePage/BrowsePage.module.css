@@ -1,0 +1,18 @@
+/* ===== Back link ===== */
+.backLink {
+  margin-bottom: var(--space-md);
+}
+
+/* ===== Layout ===== */
+/* Same spacing as the explore page */
+.intro {
+  margin: 0 0 var(--space-lg);
+  color: var(--color-text-muted);
+}
+
+/* --- Load more --- */
+.loadMore {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-xl);
+}

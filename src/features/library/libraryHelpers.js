@@ -3,18 +3,16 @@ import {
   LIBRARY_SECTIONS,
   RENTAL_LABEL,
 } from "./libraryConfig";
+import msToHours from "../../utils/msToHours";
 
 // ===== Library helpers =====
-
-// Milliseconds in one hour, used to turn a time difference into hours
-const MS_PER_HOUR = 60 * 60 * 1000;
 
 // Returns the hours left on a rental, rounded up, e.g. 30.2 → 31.
 // Returns 0 when the rental has expired.
 export const getHoursLeft = (expiresAt) => {
   const msLeft = new Date(expiresAt) - Date.now();
 
-  return Math.max(0, Math.ceil(msLeft / MS_PER_HOUR));
+  return Math.max(0, Math.ceil(msToHours(msLeft)));
 };
 
 // True for a rented movie whose time has run out. Bought items never expire.

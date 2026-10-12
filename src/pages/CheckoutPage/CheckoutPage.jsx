@@ -8,6 +8,7 @@ import {
 import { isPhysicalFormat } from "../../features/cart/cartHelpers";
 import { selectUser } from "../../features/auth/authSelectors";
 import {
+  selectBundleDiscount,
   selectCartItems,
   selectHasPhysicalItems,
   selectShipping,
@@ -31,6 +32,7 @@ const CheckoutPage = () => {
 
   const items = useSelector(selectCartItems);
   const subtotal = useSelector(selectSubtotal);
+  const discount = useSelector(selectBundleDiscount);
   const shipping = useSelector(selectShipping);
   const total = useSelector(selectTotal);
   const user = useSelector(selectUser);
@@ -46,6 +48,7 @@ const CheckoutPage = () => {
     const orderId = await createOrder({
       items,
       subtotal,
+      discount,
       shipping,
       total,
       shippingAddress,

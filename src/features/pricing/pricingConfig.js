@@ -30,3 +30,12 @@ export const BOOK_PRICES = {
   hardcover: 24.99,
   ebook: 9.99,
 };
+
+// --- Bundle ---
+// Books are this much cheaper when the whole story is bought with them,
+// e.g. 0.15 → 15% off the book
+export const BUNDLE_DISCOUNT = 0.15;
+
+// The movie or series formats that count as the whole story:
+// buying the movie, or the whole series. Rentals and single seasons do not.
+export const BUNDLE_WATCH_FORMATS = ["buy", "series"];

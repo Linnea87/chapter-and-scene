@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import {
   selectAmountToFreeShipping,
+  selectBundleDiscount,
   selectHasPhysicalItems,
   selectShipping,
   selectSubtotal,
@@ -22,10 +23,12 @@ const SummaryRow = ({ label, value, isTotal = false }) => (
 // Subtotal, shipping and total for the cart.
 // Shipping is only shown when the cart has a physical book.
 // Amounts show a conversion next to them when another currency is selected.
+// A bundle discount is shown when a book and its movie or series are both in the cart.
 // className lets the parent decide the spacing.
 
 const CartSummary = ({ className }) => {
   const subtotal = useSelector(selectSubtotal);
+  const bundleDiscount = useSelector(selectBundleDiscount);
   const shipping = useSelector(selectShipping);
   const total = useSelector(selectTotal);
   const hasPhysicalItems = useSelector(selectHasPhysicalItems);
@@ -35,6 +38,18 @@ const CartSummary = ({ className }) => {
     <section className={className} aria-label="Order summary">
       <dl className={styles.list}>
         <SummaryRow label="Subtotal" value={<Price amount={subtotal} />} />
+
+        {/* --- Only when a book and its movie or series are both in the cart --- */}
+        {bundleDiscount > 0 && (
+          <SummaryRow
+            label="Bundle discount"
+            value={
+              <>
+                −<Price amount={bundleDiscount} />
+              </>
+            }
+          />
+        )}
 
         {hasPhysicalItems && (
           <SummaryRow

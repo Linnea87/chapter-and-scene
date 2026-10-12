@@ -1,4 +1,6 @@
 import { isPhysicalFormat } from "../cart/cartHelpers";
+import { SHIPPED_AFTER_HOURS } from "./orderConfig";
+import msToHours from "../../utils/msToHours";
 
 // ===== Order helpers =====
 
@@ -14,3 +16,13 @@ export const hasDigitalItems = (items) =>
 // e.g. two copies of a paperback and one rental → 3
 export const getItemCount = (items) =>
   items.reduce((total, item) => total + item.quantity, 0);
+
+// Returns the delivery status to show for an order item.
+// Digital items have no status (null). A book still "processing" counts as
+// "shipped" once SHIPPED_AFTER_HOURS have passed, see orderConfig.
+export const getDeliveryStatus = (savedStatus, orderCreatedAt) => {
+  if (savedStatus !== "processing") return savedStatus;
+
+  const hoursSinceOrder = msToHours(Date.now() - new Date(orderCreatedAt));
+  return hoursSinceOrder >= SHIPPED_AFTER_HOURS ? "shipped" : "processing";
+};

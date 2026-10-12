@@ -12,6 +12,7 @@ export const toCartRow = (item) => ({
   label: item.label,
   unit_price: item.unitPrice,
   quantity: item.quantity,
+  story_id: item.storyId ?? null,
 });
 
 // --- Database → app ---
@@ -25,4 +26,5 @@ export const toCartItem = (row) => ({
   label: row.label,
   unitPrice: Number(row.unit_price),
   quantity: row.quantity,
+  storyId: row.story_id,
 });

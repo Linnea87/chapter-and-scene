@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import App from "../App";
 import HomePage from "../pages/HomePage/HomePage";
 import ExplorePage from "../pages/ExplorePage/ExplorePage";
+import BrowsePage from "../pages/BrowsePage/BrowsePage";
 import MovieDetailPage from "../pages/MovieDetailPage/MovieDetailPage";
 import TvDetailPage from "../pages/TvDetailPage/TvDetailPage";
 import CartPage from "../pages/CartPage/CartPage";
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "explore", element: <ExplorePage /> },
+      { path: "browse/:rowId", element: <BrowsePage /> },
       { path: "movie/:id", element: <MovieDetailPage /> },
       { path: "tv/:id", element: <TvDetailPage /> },
       { path: "cart", element: <CartPage /> },

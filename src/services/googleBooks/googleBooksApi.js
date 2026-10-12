@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
 import { GOOGLE_BOOKS_BASE_URL, MAX_RESULTS } from "./googleBooksConfig";
 import buildBookQuery from "./buildBookQuery";
 import { mapBook, pickBestMatch } from "./googleBooksMappers";
@@ -8,7 +8,13 @@ import { mapBook, pickBestMatch } from "./googleBooksMappers";
 
 export const googleBooksApi = createApi({
   reducerPath: "googleBooksApi",
-  baseQuery: fetchBaseQuery({ baseUrl: GOOGLE_BOOKS_BASE_URL }),
+
+  // Google Books sometimes fails for a moment, e.g. "503 Service temporarily
+  // unavailable". retry tries again up to 2 times, with a short wait in between,
+  // before the error is shown
+  baseQuery: retry(fetchBaseQuery({ baseUrl: GOOGLE_BOOKS_BASE_URL }), {
+    maxRetries: 2,
+  }),
   endpoints: (builder) => ({
     findBook: builder.query({
       query: ({ title, author }) => ({

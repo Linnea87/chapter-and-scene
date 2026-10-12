@@ -1,0 +1,6 @@
+/* ===== Empty ===== */
+/* Shown when the series has no other movies yet */
+.empty {
+  margin: 0;
+  color: var(--color-text-muted);
+}

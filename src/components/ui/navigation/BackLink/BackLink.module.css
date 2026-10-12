@@ -1,0 +1,15 @@
+/* ===== Back link ===== */
+/* Arrow and text on one line, easy to tap. The parent sets the spacing */
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: var(--touch-target);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    text-decoration: underline;
+  }
+}

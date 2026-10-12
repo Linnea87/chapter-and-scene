@@ -1,3 +1,4 @@
+import { sortTitles } from "../titles/titleHelpers";
 import { ALL_ID } from "./exploreConfig";
 
 // ===== Explore helpers =====
@@ -24,19 +25,20 @@ export const filterByMediaTypeAndCategory = (titles, mediaType, category) =>
 
 // --- Pages ---
 // Merges movie and series pages into one list.
-// Each page pair is sorted by popularity on its own and added after the previous ones,
+// Each page pair is sorted on its own and added after the previous ones,
 // so loading more never moves titles that are already shown.
 // Duplicates are removed, since TMDb pages can shift between requests.
-export const mergePages = (moviePages, seriesPages) => {
+// sort: "popular" (default), "topRated" or "recent", see sortTitles
+export const mergePages = (moviePages, seriesPages, sort = "popular") => {
   const pageCount = Math.max(moviePages.length, seriesPages.length);
   const seen = new Set();
   const titles = [];
 
   for (let i = 0; i < pageCount; i += 1) {
-    const page = [
-      ...(moviePages[i]?.results ?? []),
-      ...(seriesPages[i]?.results ?? []),
-    ].sort((a, b) => b.popularity - a.popularity);
+    const page = sortTitles(
+      [...(moviePages[i]?.results ?? []), ...(seriesPages[i]?.results ?? [])],
+      sort,
+    );
 
     page.forEach((title) => {
       const key = `${title.mediaType}-${title.id}`;

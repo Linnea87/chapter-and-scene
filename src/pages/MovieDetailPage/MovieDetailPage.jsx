@@ -1,21 +1,24 @@
 import { useParams } from "react-router";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
+import { createStoryId } from "../../features/cart/cartHelpers";
 import { getMoviePrices } from "../../features/pricing/pricingHelpers";
 import formatRuntime from "../../utils/formatRuntime";
 import isNotFoundError from "../../utils/isNotFoundError";
-import BookSection from "../../components/books/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
-import DetailColumns from "../../components/details/DetailColumns/DetailColumns";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
+import DetailTabs from "../../components/details/DetailTabs/DetailTabs";
+import BundleOffer from "../../components/pricing/BundleOffer/BundleOffer";
 import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
 import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
 
 // ===== Movie detail page =====
-// Shows one movie with facts, prices and cast. The id comes from the URL (/movie/:id).
+// Shows one movie with facts, tabs to watch the movie, read the book and,
+// for movies in a movie series, see the other movies. Then the cast.
+// The id comes from the URL (/movie/:id).
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -70,31 +73,46 @@ const MovieDetailPage = () => {
   ];
 
   // --- What is added to the cart ---
-  // A small poster is enough for the cart row
+  // A small poster is enough for the cart row.
+  // storyId links the movie to the book behind it, for the bundle discount
+  const storyId = createStoryId("movie", movie.id);
   const product = {
     id: movie.id,
     mediaType: "movie",
     title: movie.title,
     imageUrl: getImageUrl(movie.posterPath, "w185"),
+    storyId,
+  };
+
+  // The book behind the movie, used by the book tab and the bundle
+  const book = {
+    title: movie.title,
+    author: movie.author,
+    mediaType: "movie",
+    storyId,
   };
 
   return (
     <DetailLayout>
       <DetailHero details={movie} meta={meta} />
 
-      {/* --- Watch and read --- */}
-      <DetailColumns>
-        <PriceOptions
-          title="Watch the movie"
-          product={product}
-          options={priceOptions}
-        />
-        <BookSection
-          title={movie.title}
-          author={movie.author}
-          mediaType="movie"
-        />
-      </DetailColumns>
+      {/* --- Watch, read, bundle and movie series --- */}
+      <DetailTabs
+        watchLabel="Watch the movie"
+        watchPanel={<PriceOptions product={product} options={priceOptions} />}
+        book={book}
+        bundleLabel="Movie + book"
+        bundlePanel={
+          <BundleOffer
+            description="Buy the movie and the book together."
+            product={product}
+            option={priceOptions.find((option) => option.id === "buy")}
+            book={book}
+          />
+        }
+        collection={movie.collection}
+        movieId={movie.id}
+      />
 
       <CastList cast={movie.cast} />
     </DetailLayout>

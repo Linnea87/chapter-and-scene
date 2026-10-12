@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
+import { createStoryId } from "../../features/cart/cartHelpers";
 import { SERIES_DISCOUNT } from "../../features/pricing/pricingConfig";
 import {
   getSeasonPrice,
@@ -8,18 +9,19 @@ import {
 } from "../../features/pricing/pricingHelpers";
 import pluralize from "../../utils/pluralize";
 import isNotFoundError from "../../utils/isNotFoundError";
-import BookSection from "../../components/books/BookSection/BookSection";
 import CastList from "../../components/details/CastList/CastList";
-import DetailColumns from "../../components/details/DetailColumns/DetailColumns";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
+import DetailTabs from "../../components/details/DetailTabs/DetailTabs";
+import BundleOffer from "../../components/pricing/BundleOffer/BundleOffer";
 import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
 import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
 
 // ===== TV detail page =====
-// Shows one series with facts, seasons, prices and cast. The id comes from the URL (/tv/:id).
+// Shows one series with facts, tabs to watch the series and read the book,
+// and the cast. The id comes from the URL (/tv/:id).
 
 const TvDetailPage = () => {
   const { id } = useParams();
@@ -101,33 +103,52 @@ const TvDetailPage = () => {
     seasons.length > 1 ? [...seasonOptions, seriesOption] : seasonOptions;
 
   // --- What is added to the cart ---
-  // A small poster is enough for the cart row
+  // A small poster is enough for the cart row.
+  // storyId links the series to the book behind it, for the bundle discount
+  const storyId = createStoryId("tv", series.id);
   const product = {
     id: series.id,
     mediaType: "tv",
     title: series.title,
     imageUrl: getImageUrl(series.posterPath, "w185"),
+    storyId,
+  };
+
+  // The book behind the series, used by the book tab and the bundle
+  const book = {
+    title: series.title,
+    author: series.author,
+    mediaType: "tv",
+    storyId,
   };
 
   return (
     <DetailLayout>
       <DetailHero details={series} meta={meta} />
 
-      {/* --- Watch and read --- */}
-      <DetailColumns>
-        {priceOptions.length > 0 && (
-          <PriceOptions
-            title="Watch the series"
-            product={product}
-            options={priceOptions}
-          />
-        )}
-        <BookSection
-          title={series.title}
-          author={series.author}
-          mediaType="tv"
-        />
-      </DetailColumns>
+      {/* --- Watch, read and bundle --- */}
+      {/* Series without seasons that can be bought have no Watch tab.
+          The bundle needs the whole series option, i.e. more than one season */}
+      <DetailTabs
+        watchLabel="Watch the series"
+        watchPanel={
+          priceOptions.length > 0 ? (
+            <PriceOptions product={product} options={priceOptions} />
+          ) : null
+        }
+        book={book}
+        bundleLabel="Series + book"
+        bundlePanel={
+          seasons.length > 1 ? (
+            <BundleOffer
+              description="Get the whole series and the book together."
+              product={product}
+              option={seriesOption}
+              book={book}
+            />
+          ) : null
+        }
+      />
 
       <CastList cast={series.cast} />
     </DetailLayout>

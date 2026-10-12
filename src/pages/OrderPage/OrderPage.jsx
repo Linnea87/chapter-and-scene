@@ -1,5 +1,4 @@
-import { Link, useLocation, useParams } from "react-router";
-import { ArrowLeft } from "lucide-react";
+import { useLocation, useParams } from "react-router";
 import { useGetOrderQuery } from "../../services/supabase/supabaseApi";
 import {
   formatOrderNumber,
@@ -7,6 +6,7 @@ import {
 } from "../../features/orders/orderHelpers";
 import formatPrice from "../../utils/formatPrice";
 import ButtonLink from "../../components/ui/buttons/ButtonLink/ButtonLink";
+import BackLink from "../../components/ui/navigation/BackLink/BackLink";
 import CartItem from "../../components/cart/CartItem/CartItem";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
 import Loader from "../../components/ui/feedback/Loader/Loader";
@@ -58,10 +58,9 @@ const OrderPage = () => {
     <div className="container">
       <div className={styles.content}>
         {isFromOrderHistory && (
-          <Link to="/orders" className={styles.backLink}>
-            <ArrowLeft size={18} aria-hidden="true" />
+          <BackLink to="/orders" className={styles.backLink}>
             Back to order history
-          </Link>
+          </BackLink>
         )}
 
         <h1>
@@ -82,20 +81,31 @@ const OrderPage = () => {
           ))}
         </ul>
 
+        {/* --- Bundle discount, only when the order had one --- */}
+        {order.discount > 0 && (
+          <p className={styles.discount}>
+            <span>Bundle discount</span>
+            <span>−{formatPrice(order.discount)}</span>
+          </p>
+        )}
+
         <p className={styles.total}>
           <span>Total</span>
           <span>{formatPrice(order.total)}</span>
         </p>
 
         {/* --- Actions, only after a purchase --- */}
-        {/* My library is the main action when the order has digital items */}
+        {/* The main action is My library when the order has digital items,
+            otherwise the order history, where the delivery can be followed */}
         {!isFromOrderHistory && (
           <div className={styles.actions}>
             <ButtonLink to="/explore" variant="secondary">
               Keep exploring
             </ButtonLink>
-            {hasDigitalItems(order.items) && (
+            {hasDigitalItems(order.items) ? (
               <ButtonLink to="/library">Go to My library</ButtonLink>
+            ) : (
+              <ButtonLink to="/orders">Go to order history</ButtonLink>
             )}
           </div>
         )}
