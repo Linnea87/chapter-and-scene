@@ -7,8 +7,7 @@ import styles from "./CurrencySelect.module.css";
 
 // ===== Currency select =====
 // Lets the visitor choose the currency that prices are converted to.
-// Shown in the header for everyone, signed in or not.
-// The look is a placeholder until the design round.
+// Shown at the bottom of the account menu, for everyone, signed in or not.
 
 const CurrencySelect = () => {
   const dispatch = useDispatch();
@@ -18,8 +17,8 @@ const CurrencySelect = () => {
   const id = useId();
 
   return (
-    <div>
-      <label htmlFor={id} className="visually-hidden">
+    <div className={styles.field}>
+      <label htmlFor={id} className={styles.label}>
         Currency
       </label>
 

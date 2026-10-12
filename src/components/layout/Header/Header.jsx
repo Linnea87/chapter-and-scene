@@ -1,6 +1,5 @@
 import AccountMenu from "../AccountMenu/AccountMenu";
 import CartLink from "../CartLink/CartLink";
-import CurrencySelect from "../CurrencySelect/CurrencySelect";
 import NavMenu from "../NavMenu/NavMenu";
 import styles from "./Header.module.css";
 
@@ -17,9 +16,7 @@ const Header = () => (
 
     <NavMenu />
 
-    {/* The currency moves into the account menu in the next step */}
     <div className={styles.actionsArea}>
-      <CurrencySelect />
       <CartLink />
     </div>
   </header>
