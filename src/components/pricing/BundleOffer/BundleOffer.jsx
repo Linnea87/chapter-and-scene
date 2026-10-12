@@ -7,7 +7,6 @@ import {
   createCartItem,
   createCartKey,
   findConflictingItems,
-  getDeliveryLabel,
 } from "../../../features/cart/cartHelpers";
 import { selectCartItems } from "../../../features/cart/cartSelectors";
 import { addItem, removeItem } from "../../../features/cart/cartSlice";
@@ -130,8 +129,7 @@ const BundleOffer = ({ description, product, option, book }) => {
                 {watchName} + {FORMAT_LABELS[bundle.format]}
               </span>
               <span className={optionStyles.detail}>
-                {getDeliveryLabel(bundle.format)} · Save{" "}
-                <Price amount={bundle.saving} showConversion={false} />
+                Save <Price amount={bundle.saving} showConversion={false} />
               </span>
             </span>
 

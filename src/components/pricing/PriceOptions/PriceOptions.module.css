@@ -9,11 +9,12 @@
 }
 
 /* Text on the left, price and button on the right, always on one row.
+   The first line of the text lines up with the first line of the price.
    The text wraps onto more lines instead of pushing the price down */
 .option {
   display: grid;
   grid-template-columns: 1fr auto;
-  align-items: center;
+  align-items: baseline;
   gap: var(--space-md);
   min-height: var(--touch-target);
   padding: var(--space-sm) var(--space-md);
@@ -22,8 +23,22 @@
   background-color: var(--color-surface);
 }
 
+/* Mobile first: the converted amount goes under the price, so the price
+   column is narrow and the option name fits on one line.
+   Smaller and normal weight, so the option name is read first.
+   From 600px on one line */
 .price {
-  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.3;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 600px) {
+  .price {
+    display: block;
+  }
 }
 
 /* Price and add button stay together on the right */
