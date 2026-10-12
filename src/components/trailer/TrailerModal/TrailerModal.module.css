@@ -6,8 +6,8 @@
   padding: var(--space-sm);
   border: none;
   border-radius: var(--radius);
-  background-color: var(--color-text);
-  color: var(--color-primary-contrast);
+  background-color: var(--color-media-background);
+  color: var(--color-text);
 }
 
 /* Dims the page behind the open dialog */
