@@ -1,15 +1,20 @@
 /* ===== Carousel ===== */
-/* --peek is how much of the next slides shows, --gap the space between slides */
+/* --peek is how much of the next slides shows, --gap the space between slides.
+   Mobile first: narrow edges and smaller arrows, so the slide gets more room */
 .carousel {
-  --arrow-size: 56px;
-  --peek: 3.5rem;
+  --arrow-size: var(--touch-target);
+  --peek: 2rem;
   --gap: var(--space-sm);
 }
 
 /* ===== Viewport and track ===== */
-/* The viewport shows one slide plus the peeking edges, the rest is hidden */
+/* The viewport shows one slide plus the peeking edges, the rest is hidden.
+   It is as wide as the window, edge to edge, even inside the page container */
 .viewport {
   position: relative;
+  left: 50%;
+  width: 100vw;
+  translate: -50% 0;
   overflow: hidden;
 }
 
@@ -30,12 +35,13 @@
 }
 
 /* ===== Slide ===== */
-/* Mobile first: a taller crop, wider from 600px. Faded unless current. */
+/* Low and wide on every screen, so the rows below are visible too.
+   Faded unless current. */
 .slide {
   position: relative;
   display: block;
   flex: 0 0 var(--slide-width);
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 1;
   overflow: hidden;
   border-radius: var(--radius);
   background-color: var(--color-media-background);
@@ -165,12 +171,9 @@
 /* ===== Larger screens ===== */
 @media (min-width: 600px) {
   .carousel {
+    --arrow-size: 56px;
     --peek: 5rem;
     --gap: var(--space-md);
-  }
-
-  .slide {
-    aspect-ratio: 21 / 9;
   }
 
   .content {
