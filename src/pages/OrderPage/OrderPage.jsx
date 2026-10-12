@@ -81,6 +81,14 @@ const OrderPage = () => {
           ))}
         </ul>
 
+        {/* --- Bundle discount, only when the order had one --- */}
+        {order.discount > 0 && (
+          <p className={styles.discount}>
+            <span>Bundle discount</span>
+            <span>−{formatPrice(order.discount)}</span>
+          </p>
+        )}
+
         <p className={styles.total}>
           <span>Total</span>
           <span>{formatPrice(order.total)}</span>

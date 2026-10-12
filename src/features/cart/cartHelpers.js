@@ -8,6 +8,10 @@ import { DELIVERY_LABELS, PHYSICAL_FORMATS } from "./cartConfig";
 export const createCartKey = (mediaType, id, format) =>
   `${mediaType}-${id}-${format}`;
 
+// Links the items that belong to the same story, e.g. "movie-671" for a
+// Harry Potter movie and the book behind it. Used for the bundle discount.
+export const createStoryId = (mediaType, id) => `${mediaType}-${id}`;
+
 // Physical books are shipped, everything else is delivered digitally
 export const isPhysicalFormat = (format) => PHYSICAL_FORMATS.includes(format);
 

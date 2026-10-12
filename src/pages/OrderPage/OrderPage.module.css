@@ -25,6 +25,15 @@
   border-top: 1px solid var(--color-border);
 }
 
+/* ===== Discount ===== */
+/* Same row layout as the total, but in normal text */
+.discount {
+  display: flex;
+  justify-content: space-between;
+  margin: var(--space-md) 0 0;
+  color: var(--color-text-muted);
+}
+
 /* ===== Total ===== */
 .total {
   display: flex;

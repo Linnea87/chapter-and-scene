@@ -1,0 +1,27 @@
+/* ===== Offer ===== */
+/* Laid out like the other tabs, directly in the panel */
+.offer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ===== Text ===== */
+.text {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+/* Shown instead of the offer when there is no bundle */
+.message {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+/* ===== Note ===== */
+/* Tells the user before adding that a rental in the cart is replaced */
+.note {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}

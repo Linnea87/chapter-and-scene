@@ -11,8 +11,9 @@ import styles from "./BookSection.module.css";
 // Finds the book a movie or series is based on in Google Books,
 // and shows it with prices for each book format. The tab above it names the section.
 // If Google Books cannot be reached, the user can try again without reloading.
+// storyId: the movie or series the book belongs to, used for the bundle discount.
 
-const BookSection = ({ title, author, mediaType }) => {
+const BookSection = ({ title, author, mediaType, storyId }) => {
   // The search is skipped until there is a title to search for
   const {
     currentData: book,
@@ -46,6 +47,7 @@ const BookSection = ({ title, author, mediaType }) => {
     mediaType: "book",
     title: book?.title,
     imageUrl: book?.coverUrl,
+    storyId,
   };
 
   return (

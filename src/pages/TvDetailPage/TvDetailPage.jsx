@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
+import { createStoryId } from "../../features/cart/cartHelpers";
 import { SERIES_DISCOUNT } from "../../features/pricing/pricingConfig";
 import {
   getSeasonPrice,
@@ -12,6 +13,7 @@ import CastList from "../../components/details/CastList/CastList";
 import DetailHero from "../../components/details/DetailHero/DetailHero";
 import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import DetailTabs from "../../components/details/DetailTabs/DetailTabs";
+import BundleOffer from "../../components/pricing/BundleOffer/BundleOffer";
 import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
 import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
 import Loader from "../../components/ui/feedback/Loader/Loader";
@@ -101,31 +103,51 @@ const TvDetailPage = () => {
     seasons.length > 1 ? [...seasonOptions, seriesOption] : seasonOptions;
 
   // --- What is added to the cart ---
-  // A small poster is enough for the cart row
+  // A small poster is enough for the cart row.
+  // storyId links the series to the book behind it, for the bundle discount
+  const storyId = createStoryId("tv", series.id);
   const product = {
     id: series.id,
     mediaType: "tv",
     title: series.title,
     imageUrl: getImageUrl(series.posterPath, "w185"),
+    storyId,
+  };
+
+  // The book behind the series, used by the book tab and the bundle
+  const book = {
+    title: series.title,
+    author: series.author,
+    mediaType: "tv",
+    storyId,
   };
 
   return (
     <DetailLayout>
       <DetailHero details={series} meta={meta} />
 
-      {/* --- Watch and read --- */}
-      {/* Series without seasons that can be bought have no Watch tab */}
+      {/* --- Watch, read and bundle --- */}
+      {/* Series without seasons that can be bought have no Watch tab.
+          The bundle needs the whole series option, i.e. more than one season */}
       <DetailTabs
         watchLabel="Watch the series"
         watchPanel={
           priceOptions.length > 0 ? (
-            <PriceOptions
+            <PriceOptions product={product} options={priceOptions} />
+          ) : null
+        }
+        book={book}
+        bundleLabel="Series + book"
+        bundlePanel={
+          seasons.length > 1 ? (
+            <BundleOffer
+              description="Get the whole series and the book together."
               product={product}
-              options={priceOptions}
+              option={seriesOption}
+              book={book}
             />
           ) : null
         }
-        book={{ title: series.title, author: series.author, mediaType: "tv" }}
       />
 
       <CastList cast={series.cast} />

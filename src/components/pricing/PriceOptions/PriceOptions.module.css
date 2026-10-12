@@ -2,17 +2,18 @@
 .list {
   display: grid;
   gap: var(--space-sm);
-  max-width: 28rem;
+  max-width: 36rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* Text on the left, price and button on the right, always on one row.
+   The text wraps onto more lines instead of pushing the price down */
 .option {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-md);
   min-height: var(--touch-target);
   padding: var(--space-sm) var(--space-md);
@@ -30,7 +31,6 @@
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  margin-left: auto;
 }
 
 /* Label with an optional detail line under it */

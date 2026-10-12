@@ -9,6 +9,7 @@ create table public.orders (
     references auth.users (id) on delete cascade,
   subtotal numeric(10, 2) not null,
   shipping numeric(10, 2) not null default 0,
+  discount numeric(10, 2) not null default 0,
   total numeric(10, 2) not null,
   currency text not null default 'USD',
   shipping_address jsonb,
@@ -105,6 +106,7 @@ create table public.cart_items (
   label text not null,
   unit_price numeric(10, 2) not null,
   quantity integer not null default 1 check (quantity > 0),
+  story_id text,
   created_at timestamptz not null default now(),
   unique (user_id, key)
 );
