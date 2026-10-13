@@ -149,6 +149,7 @@
 .dots {
   display: flex;
   justify-content: center;
+  min-height: var(--touch-target);
   margin-top: var(--space-sm);
 }
 

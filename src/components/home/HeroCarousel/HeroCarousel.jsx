@@ -42,7 +42,23 @@ const HeroCarousel = () => {
     { skip: !slide },
   );
 
-  if (isLoading || !slide) return null;
+  // --- Placeholder ---
+  // An empty slide with the same size while loading,
+  // so the rows below do not jump down when the slides arrive
+  if (isLoading) {
+    return (
+      <div className={styles.carousel} aria-hidden="true">
+        <div className={styles.viewport}>
+          <div className={styles.track} style={{ "--position": 0 }}>
+            <div className={`${styles.slide} ${styles.current}`} />
+          </div>
+        </div>
+        <div className={styles.dots} />
+      </div>
+    );
+  }
+
+  if (!slide) return null;
 
   const genres = details?.genres?.slice(0, 2).join(", ");
 
@@ -86,6 +102,7 @@ const HeroCarousel = () => {
                     src={getImageUrl(item.posterPath, "w500")}
                     alt=""
                     className={styles.image}
+                    fetchPriority={isCurrent ? "high" : "auto"}
                   />
                 </picture>
 
