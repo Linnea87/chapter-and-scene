@@ -1,4 +1,7 @@
-/* ===== Text field ===== */
+/* ===== Text field styles ===== */
+/* A labelled text input, e.g. email, password and address. */
+
+/* --- Field --- */
 .field {
   display: flex;
   flex-direction: column;

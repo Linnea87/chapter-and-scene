@@ -1,13 +1,13 @@
-import { useId } from "react";
-import useDialog from "../../../hooks/useDialog";
-import Button from "../../ui/buttons/Button/Button";
-import styles from "./ReplaceItemDialog.module.css";
-
 // ===== Replace item dialog =====
 // Asks the user what to keep when an option clashes with something in the cart,
 // e.g. "Rent for 48 hours" is in the cart and the user adds "Buy".
 // Escape or "Keep current" keeps the cart as it is.
 // newItem: the item being added, conflictingItems: the items it clashes with
+
+import { useId } from "react";
+import useDialog from "../../../hooks/useDialog";
+import Button from "../../ui/buttons/Button/Button";
+import styles from "./ReplaceItemDialog.module.css";
 
 const ReplaceItemDialog = ({
   isOpen,
@@ -26,6 +26,8 @@ const ReplaceItemDialog = ({
       ref={dialogRef}
       className={styles.dialog}
       aria-labelledby={titleId}
+      // Lets useDialog focus the dialog itself when it opens
+      tabIndex={-1}
       onClose={onKeep}
     >
       <h2 id={titleId} className={styles.title}>

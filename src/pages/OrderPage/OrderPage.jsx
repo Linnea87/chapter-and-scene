@@ -1,3 +1,9 @@
+// ===== Order page =====
+// Shows one order: order number, items and total.
+// After a purchase it is the confirmation (CS-027), with links to keep shopping.
+// From the order history (CS-028) it shows the order details and a link back.
+// Only reachable when signed in, see ProtectedRoute.
+
 import { useLocation, useParams } from "react-router";
 import { useGetOrderQuery } from "../../services/supabase/supabaseApi";
 import {
@@ -5,19 +11,13 @@ import {
   hasDigitalItems,
 } from "../../features/orders/orderHelpers";
 import formatPrice from "../../utils/formatPrice";
-import ButtonLink from "../../components/ui/buttons/ButtonLink/ButtonLink";
-import BackLink from "../../components/ui/navigation/BackLink/BackLink";
 import CartItem from "../../components/cart/CartItem/CartItem";
+import ButtonLink from "../../components/ui/buttons/ButtonLink/ButtonLink";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
+import BackLink from "../../components/ui/navigation/BackLink/BackLink";
 import styles from "./OrderPage.module.css";
-
-// ===== Order page =====
-// Shows one order: order number, items and total.
-// After a purchase it is the confirmation (CS-027), with links to keep shopping.
-// From the order history (CS-028) it shows the order details and a link back.
-// Only reachable when signed in, see ProtectedRoute.
 
 const OrderPage = () => {
   const { id } = useParams();
@@ -56,14 +56,14 @@ const OrderPage = () => {
   // --- Order ---
   return (
     <div className="container">
-      <div className={styles.content}>
+      <div className="narrow-column">
         {isFromOrderHistory && (
           <BackLink to="/orders" iconOnly className={styles.backLink}>
             Back to order history
           </BackLink>
         )}
 
-        <h1 className={styles.title}>
+        <h1 className="page-title">
           {isFromOrderHistory ? "Order details" : "Thank you for your purchase"}
         </h1>
         <p className={styles.number}>

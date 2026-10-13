@@ -1,3 +1,10 @@
+// ===== Library item =====
+// One row in My library: image, title and a label when needed, e.g. "Rented" or "Season 2".
+// Movies and series that can be watched get a title link and a Play button.
+// E-books get a Read button. Books have no page of their own.
+// Expired rentals get a "Buy or rent again" link instead.
+// item: a row from getLibraryItems, see toLibraryItem
+
 import { Link } from "react-router";
 import {
   getLibraryLabel,
@@ -7,13 +14,6 @@ import PlayButton from "../PlayButton/PlayButton";
 import ReadButton from "../ReadButton/ReadButton";
 import Thumbnail from "../../ui/media/Thumbnail/Thumbnail";
 import styles from "./LibraryItem.module.css";
-
-// ===== Library item =====
-// One row in My library: image, title and a label when needed, e.g. "Rented" or "Season 2".
-// Movies and series that can be watched get a title link and a Play button.
-// E-books get a Read button. Books have no page of their own.
-// Expired rentals get a "Buy or rent again" link instead.
-// item: a row from getLibraryItems, see toLibraryItem
 
 const LibraryItem = ({ item }) => {
   const isBook = item.mediaType === "book";

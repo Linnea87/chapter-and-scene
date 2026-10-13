@@ -1,4 +1,7 @@
-/* ===== Checkout form ===== */
+/* ===== Checkout form styles ===== */
+/* The address, payment method and demo notice in the checkout. */
+
+/* --- Form --- */
 .form {
   display: flex;
   flex-direction: column;
@@ -33,16 +36,9 @@
   cursor: pointer;
 }
 
-/* --- Messages --- */
-/* No margins of their own, the form's gap sets the spacing */
+/* --- Demo notice --- */
+/* No margin of its own, the form's gap sets the spacing */
 .notice {
   margin: 0;
   color: var(--color-text-muted);
-}
-
-/* Keeps its height when empty, so the form does not jump */
-.error {
-  min-height: 1.5em;
-  margin: 0;
-  color: var(--color-error);
 }

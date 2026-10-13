@@ -1,3 +1,7 @@
+// ===== TV detail page =====
+// Shows one series with facts, tabs to watch the series and read the book,
+// and the cast. The id comes from the URL (/tv/:id).
+
 import { useParams } from "react-router";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
@@ -18,10 +22,6 @@ import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
 import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
-
-// ===== TV detail page =====
-// Shows one series with facts, tabs to watch the series and read the book,
-// and the cast. The id comes from the URL (/tv/:id).
 
 const TvDetailPage = () => {
   const { id } = useParams();

@@ -1,3 +1,7 @@
+// ===== TMDb mappers =====
+// Movies and series use different field names in TMDb. These map both to one shape,
+// so components do not need to know the difference.
+
 import {
   AUTHOR_JOBS,
   CAST_LIMIT,
@@ -5,10 +9,6 @@ import {
   CERTIFICATION_COUNTRIES,
   CERTIFICATION_LABELS,
 } from "./tmdbConfig";
-
-// ===== TMDb mappers =====
-// Movies and series use different field names in TMDb. These map both to one shape,
-// so components do not need to know the difference.
 
 // --- Helpers ---
 // Takes the year from a TMDb date, e.g. "2011-04-17" → "2011"

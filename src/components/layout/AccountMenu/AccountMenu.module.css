@@ -1,4 +1,7 @@
-/* ===== Account icon and menu ===== */
+/* ===== Account menu styles ===== */
+/* The round account icon and the menu that opens under it. */
+
+/* --- Account icon and menu --- */
 .account {
   position: relative;
 }
@@ -34,7 +37,7 @@
   text-align: left;
 }
 
-/* ===== Currency ===== */
+/* --- Currency --- */
 /* Set apart from the account links by a line */
 .currency {
   margin-top: var(--space-sm);

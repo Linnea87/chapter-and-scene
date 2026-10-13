@@ -1,6 +1,3 @@
-import { useId, useRef } from "react";
-import styles from "./Tabs.module.css";
-
 // ===== Tabs =====
 // Accessible tabs: only the selected tab's panel is shown.
 // The parent decides which tab is selected, e.g. from the URL with useTabParam.
@@ -9,6 +6,9 @@ import styles from "./Tabs.module.css";
 // label: describes the tabs for screen readers, e.g. "Watch or read"
 // tabs: [{ id, label, panel }], panel is the content shown for that tab
 // selectedId: the id of the selected tab, onSelect: called with the id of a new tab
+
+import { useId, useRef } from "react";
+import styles from "./Tabs.module.css";
 
 const Tabs = ({ label, tabs, selectedId, onSelect }) => {
   const baseId = useId();

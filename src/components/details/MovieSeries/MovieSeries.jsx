@@ -1,14 +1,14 @@
-import { useGetCollectionQuery } from "../../../services/tmdb/tmdbApi";
-import LoadError from "../../ui/feedback/LoadError/LoadError";
-import TitleGrid from "../../titles/TitleGrid/TitleGrid";
-import TitleGridSkeleton from "../../titles/TitleGridSkeleton/TitleGridSkeleton";
-import styles from "./MovieSeries.module.css";
-
 // ===== Movie series =====
 // The other movies in the same movie series, oldest first, e.g. every
 // Harry Potter movie except the one the user is looking at.
 // Each movie links to its detail page.
 // collection: { id, name } from the movie details, movieId: the current movie
+
+import { useGetCollectionQuery } from "../../../services/tmdb/tmdbApi";
+import LoadError from "../../ui/feedback/LoadError/LoadError";
+import TitleGrid from "../../titles/TitleGrid/TitleGrid";
+import TitleGridSkeleton from "../../titles/TitleGridSkeleton/TitleGridSkeleton";
+import styles from "./MovieSeries.module.css";
 
 const MovieSeries = ({ collection, movieId }) => {
   const {

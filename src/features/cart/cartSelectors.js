@@ -1,11 +1,11 @@
+// ===== Cart selectors =====
+// Components read cart data through these, so they do not depend on the state shape.
+// All prices are in USD. Another currency is only shown as a conversion next to them.
+
 import { isPhysicalFormat } from "./cartHelpers";
 import { SHIPPING_COST, FREE_SHIPPING_THRESHOLD } from "./cartConfig";
 import { getBundleDiscount } from "../pricing/pricingHelpers";
 import roundPrice from "../../utils/roundPrice";
-
-// ===== Cart selectors =====
-// Components read cart data through these, so they do not depend on the state shape.
-// All prices are in USD. Another currency is only shown as a conversion next to them.
 
 export const selectCartItems = (state) => state.cart.cartItems;
 

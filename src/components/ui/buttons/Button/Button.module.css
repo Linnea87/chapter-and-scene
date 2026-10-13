@@ -1,6 +1,14 @@
-/* ===== Button ===== */
-/* Shared size and shape for all variants, with rounded ends */
+/* ===== Button styles ===== */
+/* The shared button styles: variants, sizes and states. */
+
+/* --- Base --- */
+/* Shared size and shape for all variants, with rounded ends.
+   An icon and text inside sit on one line, centred, e.g. "▶ Play" */
 .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
   min-height: var(--touch-target);
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
@@ -8,7 +16,7 @@
   cursor: pointer;
 }
 
-/* ===== Variants ===== */
+/* --- Variants --- */
 /* Filled with the brand gradient: the main action on a page */
 .primary {
   color: var(--color-primary-contrast);
@@ -28,9 +36,11 @@
   background-color: transparent;
 }
 
-/* ===== Sizes ===== */
-/* The height stays the same, so both sizes are easy to tap */
+/* --- Sizes --- */
+/* The height stays the same, so both sizes are easy to tap.
+   A little more room between icon and text on the larger size */
 .medium {
+  gap: var(--space-sm);
   padding: 0 var(--space-lg);
 }
 
@@ -48,7 +58,7 @@
   padding: 0;
 }
 
-/* ===== States ===== */
+/* --- States --- */
 .button:disabled {
   opacity: 0.6;
   cursor: default;

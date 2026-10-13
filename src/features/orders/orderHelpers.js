@@ -1,8 +1,9 @@
+// ===== Order helpers =====
+// Pure functions for orders: order number, item count and delivery status.
+
 import { isPhysicalFormat } from "../cart/cartHelpers";
 import { SHIPPED_AFTER_HOURS } from "./orderConfig";
 import msToHours from "../../utils/msToHours";
-
-// ===== Order helpers =====
 
 // Short order number for display, e.g. "3f2a9c1e-…" → "3F2A9C1E".
 // The full id is still used in the URL and the database.

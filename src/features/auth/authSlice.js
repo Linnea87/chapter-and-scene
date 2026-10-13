@@ -1,6 +1,9 @@
+// ===== Auth slice =====
+// The signed-in user, or null for a guest. Set by the Supabase auth listener.
+
 import { createSlice } from "@reduxjs/toolkit";
 
-// ===== State =====
+// --- State ---
 // isLoading is true until Supabase has told us if someone is signed in,
 // so the app does not flash a "logged out" view on page load.
 
@@ -9,7 +12,7 @@ const initialState = {
   isLoading: true,
 };
 
-// ===== Slice =====
+// --- Slice ---
 const authSlice = createSlice({
   name: "auth",
   initialState,

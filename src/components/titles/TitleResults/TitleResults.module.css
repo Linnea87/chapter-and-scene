@@ -1,0 +1,9 @@
+/* ===== Title results styles ===== */
+/* The Load more button centred under the grid. */
+
+/* --- Load more --- */
+.loadMore {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-xl);
+}

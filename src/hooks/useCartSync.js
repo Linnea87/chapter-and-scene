@@ -1,3 +1,7 @@
+// ===== Cart sync hook =====
+// Keeps the cart in sync with the signed-in user's account.
+// Used once, at the top of the app.
+
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import getCartItems from "../services/supabase/cart/getCartItems";
@@ -6,10 +10,6 @@ import { selectUser } from "../features/auth/authSelectors";
 import { mergeCartItems } from "../features/cart/cartHelpers";
 import { selectCartItems } from "../features/cart/cartSelectors";
 import { clearCart, setCartItems } from "../features/cart/cartSlice";
-
-// ===== Cart sync hook =====
-// Keeps the cart in sync with the signed-in user's account.
-// Used once, at the top of the app.
 
 const useCartSync = () => {
   const dispatch = useDispatch();

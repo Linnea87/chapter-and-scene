@@ -1,4 +1,7 @@
-/* ===== Layout ===== */
+/* ===== Detail hero styles ===== */
+/* The top of a detail page: backdrop, title, facts, genres and overview. */
+
+/* --- Layout --- */
 /* Mobile first: the backdrop at the top, then the title and text.
    Without a backdrop, the poster and title are side by side */
 .hero {
@@ -42,7 +45,7 @@
   align-items: start;
 }
 
-/* ===== Poster ===== */
+/* --- Poster --- */
 .poster,
 .placeholder {
   width: 100%;
@@ -59,7 +62,7 @@
   background-color: var(--color-border);
 }
 
-/* ===== Text ===== */
+/* --- Text --- */
 .title {
   margin: 0 0 var(--space-sm);
 }
@@ -76,15 +79,6 @@
 
 .meta {
   gap: var(--space-xs) var(--space-md);
-}
-
-/* Age rating in a small box, like in the hero carousel */
-.badge {
-  padding: 0 var(--space-xs);
-  border: 1px solid currentColor;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  color: var(--color-text);
 }
 
 .genres {
@@ -112,7 +106,7 @@
   grid-column: 1 / -1;
 }
 
-/* ===== Larger screens ===== */
+/* --- Larger screens --- */
 @media (min-width: 600px) {
   /* Lower and fading out sooner, there is more room beside the text */
   .backdrop {
@@ -156,7 +150,7 @@
   }
 }
 
-/* ===== With a backdrop ===== */
+/* --- With a backdrop --- */
 /* The backdrop already shows the story, so the small poster is hidden and
    the text uses the full width, starting part way down the image.
    Without a backdrop, the poster is shown as before */

@@ -1,0 +1,48 @@
+/* ===== Media dialog styles ===== */
+/* The dialog around a video or a book: size, close button and notice. */
+
+/* --- Dialog --- */
+/* A centred box by default. No display rule here:
+   the browser hides a closed <dialog> with display: none */
+.dialog {
+  width: calc(100% - 2 * var(--space-md));
+  max-width: 60rem;
+  padding: var(--space-sm);
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--color-media-background);
+  color: var(--color-text);
+}
+
+/* --- Full window --- */
+/* Fills the whole window, like a streaming player */
+.fullWindow {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Stacks the close button, notice and content, centred vertically.
+   Only while open, so a closed dialog stays hidden */
+.fullWindow[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* --- Close button --- */
+/* Pushed to the right, above the content */
+.close {
+  margin: 0 0 var(--space-sm) auto;
+}
+
+/* --- Notice --- */
+/* Above the content, so it is read first */
+.notice {
+  margin: 0 0 var(--space-sm);
+  font-weight: 600;
+  text-align: center;
+}

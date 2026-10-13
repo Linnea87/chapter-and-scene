@@ -1,10 +1,10 @@
-import { supabase } from "../supabaseClient";
-import { toCartItem } from "./cartMappers";
-
 // ===== Get cart items =====
 // Fetches the signed-in user's cart.
 // Row Level Security makes sure only their own rows are returned.
 // Throws on failure, so the caller can handle the error.
+
+import { supabase } from "../supabaseClient";
+import { toCartItem } from "./cartMappers";
 
 const getCartItems = async () => {
   const { data, error } = await supabase

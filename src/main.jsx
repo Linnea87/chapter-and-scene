@@ -1,3 +1,6 @@
+// ===== Entry point =====
+// Starts the app: the Redux store, the router and the global styles.
+
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router";

@@ -1,8 +1,3 @@
-import useTabParam from "../../../hooks/useTabParam";
-import BookSection from "../../books/BookSection/BookSection";
-import MovieSeries from "../MovieSeries/MovieSeries";
-import Tabs from "../../ui/navigation/Tabs/Tabs";
-
 // ===== Detail tabs =====
 // The tabs on a movie or series page: watch, read the book, the bundle and,
 // for movies in a movie series, the other movies. Shared by both detail pages.
@@ -13,6 +8,11 @@ import Tabs from "../../ui/navigation/Tabs/Tabs";
 // bundleLabel: e.g. "Movie + book"
 // bundlePanel: the bundle offer, or null when there is no bundle
 // collection, movieId: only for movies in a movie series
+
+import useTabParam from "../../../hooks/useTabParam";
+import BookSection from "../../books/BookSection/BookSection";
+import MovieSeries from "../MovieSeries/MovieSeries";
+import Tabs from "../../ui/navigation/Tabs/Tabs";
 
 const DetailTabs = ({
   watchLabel,

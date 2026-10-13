@@ -1,8 +1,8 @@
-import styles from "./FilterChips.module.css";
-
 // ===== Filter chips =====
 // A reusable row of toggle buttons. The parent owns the selected option.
 // options: [{ id, label }]
+
+import styles from "./FilterChips.module.css";
 
 const FilterChips = ({ label, options, activeId, onChange }) => (
   <div role="group" aria-label={label}>

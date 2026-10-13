@@ -1,6 +1,12 @@
+// ===== Movie detail page =====
+// Shows one movie with facts, tabs to watch the movie, read the book and,
+// for movies in a movie series, see the other movies. Then the cast.
+// The id comes from the URL (/movie/:id).
+
 import { useParams } from "react-router";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
+import { FORMAT_LABELS } from "../../features/cart/cartConfig";
 import { createStoryId } from "../../features/cart/cartHelpers";
 import { getMoviePrices } from "../../features/pricing/pricingHelpers";
 import formatRuntime from "../../utils/formatRuntime";
@@ -11,14 +17,9 @@ import DetailLayout from "../../components/details/DetailLayout/DetailLayout";
 import DetailTabs from "../../components/details/DetailTabs/DetailTabs";
 import BundleOffer from "../../components/pricing/BundleOffer/BundleOffer";
 import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
-import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
-import Loader from "../../components/ui/feedback/Loader/Loader";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
-
-// ===== Movie detail page =====
-// Shows one movie with facts, tabs to watch the movie, read the book and,
-// for movies in a movie series, see the other movies. Then the cast.
-// The id comes from the URL (/movie/:id).
+import Loader from "../../components/ui/feedback/Loader/Loader";
+import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -66,10 +67,11 @@ const MovieDetailPage = () => {
   ].filter(Boolean);
 
   // --- Prices ---
+  // The labels come from FORMAT_LABELS, so they match the cart and orders
   const prices = getMoviePrices(movie.year);
   const priceOptions = [
-    { id: "rent", label: "Rent for 48 hours", price: prices.rent },
-    { id: "buy", label: "Buy", price: prices.buy },
+    { id: "rent", label: FORMAT_LABELS.rent, price: prices.rent },
+    { id: "buy", label: FORMAT_LABELS.buy, price: prices.buy },
   ];
 
   // --- What is added to the cart ---

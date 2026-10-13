@@ -1,3 +1,10 @@
+// ===== Account menu =====
+// An account icon on the left of the header that opens a small menu.
+// Logged out: "Log in". The log in page links on to "Create account".
+// Logged in: "My library", "Order history" and "Log out".
+// The currency is chosen at the bottom of the menu for everyone.
+// Closes on a click outside the menu or on Escape.
+
 import { useRef } from "react";
 import { useNavigate } from "react-router";
 import { User } from "lucide-react";
@@ -14,13 +21,6 @@ import Button from "../../ui/buttons/Button/Button";
 import ButtonLink from "../../ui/buttons/ButtonLink/ButtonLink";
 import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./AccountMenu.module.css";
-
-// ===== Account menu =====
-// An account icon on the left of the header that opens a small menu.
-// Logged out: "Log in". The log in page links on to "Create account".
-// Logged in: "My library", "Order history" and "Log out".
-// The currency is chosen at the bottom of the menu for everyone.
-// Closes on a click outside the menu or on Escape.
 
 const AccountMenu = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

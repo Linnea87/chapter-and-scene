@@ -1,6 +1,7 @@
-import { DELIVERY_LABELS, PHYSICAL_FORMATS } from "./cartConfig";
-
 // ===== Cart helpers =====
+// Pure functions for the cart: keys, formats, delivery labels, conflicts and merging.
+
+import { DELIVERY_LABELS, PHYSICAL_FORMATS } from "./cartConfig";
 
 // Builds a unique key for a cart row.
 // Media type is included because a movie and a series can share the same TMDb id,

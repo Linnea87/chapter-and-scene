@@ -1,10 +1,11 @@
+// ===== Log in page =====
+// Email and password log in. Goes back to the page the user came from, or Home.
+
 import { Link, useLocation, useNavigate } from "react-router";
 import signInUser from "../../services/supabase/auth/signInUser";
 import { getRedirectPath } from "../../features/auth/authHelpers";
 import AuthForm from "../../components/auth/AuthForm/AuthForm";
 import AuthLayout from "../../components/auth/AuthLayout/AuthLayout";
-
-// ===== Log in page =====
 
 const LoginPage = () => {
   const navigate = useNavigate();

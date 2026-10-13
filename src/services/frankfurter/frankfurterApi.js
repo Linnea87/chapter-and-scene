@@ -1,12 +1,12 @@
+// ===== Frankfurter service =====
+// Fetches exchange rates from USD to the other currencies in the shop.
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { FRANKFURTER_BASE_URL } from "./frankfurterConfig";
 import {
   BASE_CURRENCY,
   CURRENCIES,
 } from "../../features/currency/currencyConfig";
-
-// ===== Frankfurter service =====
-// Fetches exchange rates from USD to the other currencies in the shop.
 
 // The currencies to convert to, e.g. "SEK,GBP"
 const TARGET_CURRENCIES = CURRENCIES.map((currency) => currency.code)

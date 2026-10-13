@@ -1,4 +1,7 @@
-/* ===== Card ===== */
+/* ===== Order list item styles ===== */
+/* One order as a card in the order history. */
+
+/* --- Card --- */
 /* Info on the left, total on the right, on a soft dark surface */
 .item {
   display: flex;
@@ -19,7 +22,7 @@
   }
 }
 
-/* ===== Info ===== */
+/* --- Info --- */
 /* Date on one line, order number and item count under it */
 .info {
   display: flex;
@@ -36,7 +39,7 @@
   color: var(--color-text-muted);
 }
 
-/* ===== Total ===== */
+/* --- Total --- */
 .total {
   font-weight: 600;
 }

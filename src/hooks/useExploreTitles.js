@@ -1,3 +1,9 @@
+// ===== useExploreTitles =====
+// Fetches book adaptations for the selected media type and category,
+// merges movies and series into one list and lets the user load more pages.
+// Defaults to "All", sorted by popularity. sort is used by the browse page,
+// e.g. "recent" for the newest titles, see getSortParams.
+
 import {
   useDiscoverTitlesInfiniteQuery,
   useSearchAdaptationsQuery,
@@ -11,12 +17,6 @@ import {
   filterByMediaTypeAndCategory,
   mergePages,
 } from "../features/explore/exploreHelpers";
-
-// ===== useExploreTitles =====
-// Fetches book adaptations for the selected media type and category,
-// merges movies and series into one list and lets the user load more pages.
-// Defaults to "All", sorted by popularity. sort is used by the browse page,
-// e.g. "recent" for the newest titles, see getSortParams.
 
 const useExploreTitles = ({
   category = CATEGORIES[0],

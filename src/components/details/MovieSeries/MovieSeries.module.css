@@ -1,4 +1,7 @@
-/* ===== Empty ===== */
+/* ===== Movie series styles ===== */
+/* The other movies in the same series, in the More from tab. */
+
+/* --- Empty --- */
 /* Shown when the series has no other movies yet */
 .empty {
   margin: 0;

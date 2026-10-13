@@ -1,11 +1,14 @@
-/* ===== Text ===== */
+/* ===== Book section styles ===== */
+/* The Read the book tab: the intro text and the book card. */
+
+/* --- Text --- */
 .intro,
 .fallback {
   margin: 0 0 var(--space-md);
   color: var(--color-text-muted);
 }
 
-/* ===== Book card ===== */
+/* --- Book card --- */
 /* Cover and text side by side */
 .card {
   display: grid;

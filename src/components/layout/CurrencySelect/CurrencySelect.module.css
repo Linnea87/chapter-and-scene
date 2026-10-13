@@ -1,4 +1,7 @@
-/* ===== Currency select ===== */
+/* ===== Currency select styles ===== */
+/* The currency label and select at the bottom of the account menu. */
+
+/* --- Field --- */
 /* Label on the left and the select on the right, on one row.
    The side padding matches the menu items, so the texts line up on both sides */
 .field {

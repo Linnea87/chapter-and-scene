@@ -1,11 +1,11 @@
+// ===== Home page =====
+// Featured stories and themed rows of book adaptations (CS-045).
+// The rows come from HOME_ROWS, so a row is added in the config, not here.
+
 import { HOME_ROWS } from "../../features/home/homeConfig";
 import HeroCarousel from "../../components/home/HeroCarousel/HeroCarousel";
 import HomeRow from "../../components/home/HomeRow/HomeRow";
 import styles from "./HomePage.module.css";
-
-// ===== Home page =====
-// Featured stories and themed rows of book adaptations (CS-045).
-// The rows come from HOME_ROWS, so a row is added in the config, not here.
 
 const HomePage = () => {
   return (

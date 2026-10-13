@@ -1,8 +1,8 @@
-import getImageUrl from "../../../services/tmdb/getImageUrl";
-import styles from "./CastList.module.css";
-
 // ===== Cast list =====
 // Main cast with photo, name and character. Hidden when there is no cast.
+
+import getImageUrl from "../../../services/tmdb/getImageUrl";
+import styles from "./CastList.module.css";
 
 const CastList = ({ cast }) => {
   if (cast.length === 0) return null;
