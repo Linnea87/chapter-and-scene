@@ -66,15 +66,17 @@
 }
 
 /* --- Text over the image --- */
-/* Dark shade at the bottom so the white text is readable on any image */
+/* Mobile first: at the top of the poster, since most posters have their
+   own title at the bottom. A dark shade behind keeps the white text readable.
+   From 600px at the bottom of the wide backdrop, which has no title */
 .content {
   position: absolute;
-  inset: auto 0 0 0;
+  inset: 0 0 auto 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
-  padding: var(--space-xl) var(--space-md) var(--space-md);
-  background: linear-gradient(to top, rgb(0 0 0 / 0.8), transparent);
+  padding: var(--space-md) var(--space-md) var(--space-xl);
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0.7), transparent);
 }
 
 /* Mobile first: the poster already shows the title, so the text is only
@@ -89,8 +91,9 @@
   white-space: nowrap;
 }
 
-/* Age rating, year and genres.
-   The title shows first, the details fade in just after */
+/* Age rating, year and genres. A soft shadow around the letters keeps them
+   apart from the poster's own title. The title shows first,
+   the details fade in just after */
 .meta {
   display: flex;
   flex-wrap: wrap;
@@ -98,6 +101,7 @@
   gap: var(--space-xs) var(--space-sm);
   margin: 0;
   font-size: 0.8rem;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.9);
   animation: fade-in 0.4s ease 0.5s both;
 }
 
@@ -191,7 +195,9 @@
   }
 
   .content {
+    inset: auto 0 0 0;
     padding: var(--space-xl);
+    background: linear-gradient(to top, rgb(0 0 0 / 0.8), transparent);
   }
 
   .title {
