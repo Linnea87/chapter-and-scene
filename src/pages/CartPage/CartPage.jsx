@@ -25,7 +25,7 @@ const CartPage = () => {
           title="Your cart is empty"
           message="Find a story to watch or read."
           actionLabel="Explore stories"
-          actionTo="/explore"
+          actionTo="/"
         />
       </div>
     );
@@ -46,7 +46,7 @@ const CartPage = () => {
 
       {/* --- Actions --- */}
       <div className={styles.actions}>
-        <ButtonLink to="/explore" variant="secondary">
+        <ButtonLink to="/" variant="secondary">
           Keep exploring
         </ButtonLink>
         <ButtonLink to="/checkout">

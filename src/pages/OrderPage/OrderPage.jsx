@@ -47,7 +47,7 @@ const OrderPage = () => {
           title="Order not found"
           message="We could not find this order."
           actionLabel="Explore stories"
-          actionTo="/explore"
+          actionTo="/"
         />
       </div>
     );
@@ -99,7 +99,7 @@ const OrderPage = () => {
             otherwise the order history, where the delivery can be followed */}
         {!isFromOrderHistory && (
           <div className={styles.actions}>
-            <ButtonLink to="/explore" variant="secondary">
+            <ButtonLink to="/" variant="secondary">
               Keep exploring
             </ButtonLink>
             {hasDigitalItems(order.items) ? (

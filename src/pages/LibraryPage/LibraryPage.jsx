@@ -40,7 +40,7 @@ const LibraryPage = () => {
           title="Your library is empty"
           message="Movies, series and e-books you buy will show up here."
           actionLabel="Explore stories"
-          actionTo="/explore"
+          actionTo="/"
         />
       </div>
     );

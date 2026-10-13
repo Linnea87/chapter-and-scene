@@ -34,7 +34,7 @@ const OrderHistoryPage = () => {
           title="No orders yet"
           message="Your orders will show up here after your first purchase."
           actionLabel="Explore stories"
-          actionTo="/explore"
+          actionTo="/"
         />
       </div>
     );

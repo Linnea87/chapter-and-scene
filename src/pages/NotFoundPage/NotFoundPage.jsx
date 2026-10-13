@@ -11,8 +11,8 @@ const NotFoundPage = () => (
       titleAs="h1"
       title="This chapter is missing"
       message="The page you're looking for doesn't exist."
-      actionLabel="Back to Explore"
-      actionTo="/explore"
+      actionLabel="Back to home"
+      actionTo="/"
     />
   </div>
 );
