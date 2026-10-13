@@ -2,11 +2,9 @@
 /* The cart: item list, summary and buttons. */
 
 /* --- List --- */
+/* The list around the cart rows, see CartItem */
 .list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--color-border);
+  composes: list from "../../components/cart/CartItem/CartItem.module.css";
 }
 
 /* --- Summary --- */

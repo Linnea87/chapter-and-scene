@@ -1,5 +1,15 @@
 /* ===== Cart item styles ===== */
-/* One row in the cart, checkout and order: image, info, price and remove button. */
+/* One row in the cart, checkout and order: image, info, price and remove button.
+   Also the list around the rows, which the pages reuse with composes. */
+
+/* --- List --- */
+/* A line above the first row. Each row draws its own line below */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
 
 /* --- Row --- */
 /* Image, info, price and remove button side by side.
