@@ -3,6 +3,7 @@
 // Shared by movies and series. The page decides which facts to show in meta.
 
 import getImageUrl from "../../../services/tmdb/getImageUrl";
+import AgeRating from "../../titles/AgeRating/AgeRating";
 import TrailerButton from "../../trailer/TrailerButton/TrailerButton";
 import styles from "./DetailHero.module.css";
 
@@ -32,9 +33,7 @@ const DetailHero = ({ details, meta }) => {
 
           <ul className={styles.meta}>
             {/* Age rating first, e.g. "13+", only when TMDb has one */}
-            {details.certification && (
-              <li className={styles.badge}>{details.certification}</li>
-            )}
+            <AgeRating rating={details.certification} as="li" />
             {meta.map((fact) => (
               <li key={fact}>{fact}</li>
             ))}

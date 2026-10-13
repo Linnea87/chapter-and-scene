@@ -13,6 +13,7 @@ import useSwipe from "../../../hooks/useSwipe";
 import { useGetTitleDetailsQuery } from "../../../services/tmdb/tmdbApi";
 import getImageUrl from "../../../services/tmdb/getImageUrl";
 import { HERO } from "../../../features/home/homeConfig";
+import AgeRating from "../../titles/AgeRating/AgeRating";
 import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./HeroCarousel.module.css";
 
@@ -93,11 +94,7 @@ const HeroCarousel = () => {
 
                   {isCurrent && (
                     <p className={styles.meta}>
-                      {details?.certification && (
-                        <span className={styles.badge}>
-                          {details.certification}
-                        </span>
-                      )}
+                      <AgeRating rating={details?.certification} />
                       <span>
                         {item.year}
                         {genres && ` · ${genres}`}

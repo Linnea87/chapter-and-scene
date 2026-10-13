@@ -101,13 +101,6 @@
   animation: fade-in 0.4s ease 0.5s both;
 }
 
-.badge {
-  padding: 0 var(--space-xs);
-  border: 1px solid currentColor;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-}
-
 /* --- Arrows --- */
 /* Size and look come from IconButton. Centred over the peeking edges. */
 .arrow {
