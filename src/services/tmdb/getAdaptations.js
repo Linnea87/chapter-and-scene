@@ -2,6 +2,7 @@
 // Query function for the adaptation search endpoint.
 // TMDb search cannot filter on keywords, so every candidate gets its own
 // keywords request. Only titles with a book keyword are returned.
+// Arguments that are only listed to reach the next one start with _.
 
 import { LANGUAGE, SEARCH_CANDIDATE_LIMIT } from "./tmdbConfig";
 import { hasBookKeyword, mapKeywordIds, mapTitleList } from "./tmdbMappers";
@@ -10,7 +11,9 @@ import { hasBookKeyword, mapKeywordIds, mapTitleList } from "./tmdbMappers";
 const getCandidates = (search, mediaType) =>
   mapTitleList(search.data, mediaType).results.slice(0, SEARCH_CANDIDATE_LIMIT);
 
-const getAdaptations = async (searchTerm, api, extraOptions, fetchWithBQ) => {
+// RTK Query passes four arguments in a fixed order.
+// Only the search term and fetchWithBQ (its baseQuery, for calling TMDb) are used
+const getAdaptations = async (searchTerm, _api, _extraOptions, fetchWithBQ) => {
   const params = { query: searchTerm, language: LANGUAGE };
 
   const [movieSearch, seriesSearch] = await Promise.all([
@@ -32,9 +35,10 @@ const getAdaptations = async (searchTerm, api, extraOptions, fetchWithBQ) => {
     ),
   );
 
+  // keywordChecks[index] belongs to candidates[index], so only the index is used
   const titles = candidates
     .filter(
-      (title, index) =>
+      (_title, index) =>
         keywordChecks[index].data &&
         hasBookKeyword(mapKeywordIds(keywordChecks[index].data)),
     )

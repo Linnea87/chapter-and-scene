@@ -1,6 +1,7 @@
 // ===== TMDb service =====
 // All requests to TMDb go through this service.
 // mediaType is either "movie" or "tv", since TMDb has separate endpoints for them.
+// Arguments that are only listed to reach the next one start with _.
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { TMDB_BASE_URL, LANGUAGE, CERTIFICATION_APPEND } from "./tmdbConfig";
@@ -48,8 +49,9 @@ export const tmdbApi = createApi({
         },
       }),
 
+      // The second argument is the request meta, not used here.
       // For infinite queries the third argument holds both queryArg and pageParam
-      transformResponse: (response, meta, { queryArg }) =>
+      transformResponse: (response, _meta, { queryArg }) =>
         mapTitleList(response, queryArg.mediaType),
     }),
 
@@ -67,7 +69,8 @@ export const tmdbApi = createApi({
           language: LANGUAGE,
         },
       }),
-      transformResponse: (response, meta, { mediaType }) =>
+      // The third argument is what the query was called with, e.g. { mediaType, id }
+      transformResponse: (response, _meta, { mediaType }) =>
         mapTitleDetails(response, mediaType),
     }),
 
@@ -80,14 +83,6 @@ export const tmdbApi = createApi({
       }),
       transformResponse: mapCollectionMovies,
     }),
-
-    // --- Genres ---
-    getGenres: builder.query({
-      query: (mediaType) => ({
-        url: `genre/${mediaType}/list`,
-        params: { language: LANGUAGE },
-      }),
-    }),
   }),
 });
 
@@ -97,5 +92,4 @@ export const {
   useSearchAdaptationsQuery,
   useGetTitleDetailsQuery,
   useGetCollectionQuery,
-  useGetGenresQuery,
 } = tmdbApi;

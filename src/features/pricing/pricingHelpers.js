@@ -14,7 +14,7 @@ import roundPrice from "../../utils/roundPrice";
 
 // --- Release age ---
 // A missing year counts as an older title
-export const isNewRelease = (year) => {
+const isNewRelease = (year) => {
   if (!year) return false;
 
   const currentYear = new Date().getFullYear();

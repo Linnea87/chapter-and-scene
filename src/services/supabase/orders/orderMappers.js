@@ -22,7 +22,7 @@ export const toOrderItemRow = (item, orderId) => ({
 // --- Database → app ---
 // Same shape as a cart item, so CartItem can show it.
 // The order date is needed to show if a book has been shipped, see getDeliveryStatus.
-export const toOrderItem = (row, orderCreatedAt) => ({
+const toOrderItem = (row, orderCreatedAt) => ({
   key: row.id,
   id: row.external_id,
   mediaType: row.media_type,

@@ -10,7 +10,7 @@ import msToHours from "../../utils/msToHours";
 
 // Returns the hours left on a rental, rounded up, e.g. 30.2 → 31.
 // Returns 0 when the rental has expired.
-export const getHoursLeft = (expiresAt) => {
+const getHoursLeft = (expiresAt) => {
   const msLeft = new Date(expiresAt) - Date.now();
 
   return Math.max(0, Math.ceil(msToHours(msLeft)));
