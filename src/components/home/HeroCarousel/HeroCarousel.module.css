@@ -195,6 +195,12 @@
     aspect-ratio: 3 / 1;
   }
 
+  /* The wide slide crops the backdrop. Faces are usually high up,
+     so the crop keeps more of the top than the bottom */
+  .image {
+    object-position: center 20%;
+  }
+
   .content {
     inset: auto 0 0 0;
     padding: var(--space-xl);
