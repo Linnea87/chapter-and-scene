@@ -1,5 +1,6 @@
 /* ===== Price styles ===== */
-/* The converted amount shown next to a USD price. */
+/* The converted amount next to a USD price, and the stacked price layout
+   that price rows and cart rows share. */
 
 /* --- Converted amount --- */
 /* Smaller and muted, since it is only a guide. The USD price is what is charged */
@@ -8,4 +9,23 @@
   font-weight: 400;
   color: var(--color-text-muted);
   white-space: nowrap;
+}
+
+/* --- Stacked price --- */
+/* For the element around a Price in a narrow row, e.g. PriceOptions and CartItem.
+   Mobile first: the converted amount goes under the price, so the price
+   column is narrow and the name next to it has room. Smaller and normal weight,
+   so the name is read first. From 600px on one line */
+.stacked {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+@media (min-width: 600px) {
+  .stacked {
+    display: block;
+  }
 }
