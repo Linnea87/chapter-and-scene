@@ -15,7 +15,7 @@ import {
 const getYear = (date) => (date ? date.slice(0, 4) : null);
 
 // --- Titles ---
-export const mapTitle = (item, mediaType) => {
+const mapTitle = (item, mediaType) => {
   const isMovie = mediaType === "movie";
   const date = isMovie ? item.release_date : item.first_air_date;
 
@@ -51,7 +51,7 @@ export const hasBookKeyword = (keywordIds) =>
 
 // --- Details ---
 // Only the main cast is shown, in the order TMDb ranks them
-export const mapCast = (credits) =>
+const mapCast = (credits) =>
   (credits?.cast ?? []).slice(0, CAST_LIMIT).map((person) => ({
     id: person.id,
     name: person.name,
@@ -61,7 +61,7 @@ export const mapCast = (credits) =>
 
 // Season 0 holds specials and extras, and seasons without episodes have not aired yet.
 // Both are left out, since they cannot be bought.
-export const mapSeasons = (seasons) =>
+const mapSeasons = (seasons) =>
   (seasons ?? [])
     .filter((season) => season.season_number > 0 && season.episode_count > 0)
     .map((season) => ({
@@ -73,13 +73,13 @@ export const mapSeasons = (seasons) =>
     }));
 
 // The author is listed in the crew, e.g. with the job "Novel"
-export const findAuthor = (credits) =>
+const findAuthor = (credits) =>
   credits?.crew?.find((person) => AUTHOR_JOBS.includes(person.job))?.name ??
   null;
 
 // Picks a YouTube trailer and returns its video key, e.g. "dQw4w9WgXcQ".
 // Official trailers come first, then any trailer, then a teaser.
-export const findTrailerKey = (videos) => {
+const findTrailerKey = (videos) => {
   const youtubeVideos = (videos?.results ?? []).filter(
     (video) => video.site === "YouTube",
   );
