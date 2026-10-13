@@ -5,7 +5,6 @@ import { Play } from "lucide-react";
 import useDisclosure from "../../../hooks/useDisclosure";
 import Button from "../../ui/buttons/Button/Button";
 import TrailerModal from "../TrailerModal/TrailerModal";
-import styles from "./TrailerButton.module.css";
 
 const TrailerButton = ({ trailerKey, title }) => {
   const { isOpen, open, close } = useDisclosure();
@@ -15,10 +14,8 @@ const TrailerButton = ({ trailerKey, title }) => {
   return (
     <>
       <Button onClick={open}>
-        <span className={styles.content}>
-          <Play size={20} fill="currentColor" aria-hidden="true" />
-          Watch trailer
-        </span>
+        <Play size={20} fill="currentColor" aria-hidden="true" />
+        Watch trailer
       </Button>
 
       <TrailerModal

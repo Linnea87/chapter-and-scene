@@ -2,8 +2,13 @@
 /* The shared button styles: variants, sizes and states. */
 
 /* --- Base --- */
-/* Shared size and shape for all variants, with rounded ends */
+/* Shared size and shape for all variants, with rounded ends.
+   An icon and text inside sit on one line, centred, e.g. "▶ Play" */
 .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
   min-height: var(--touch-target);
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
@@ -32,8 +37,10 @@
 }
 
 /* --- Sizes --- */
-/* The height stays the same, so both sizes are easy to tap */
+/* The height stays the same, so both sizes are easy to tap.
+   A little more room between icon and text on the larger size */
 .medium {
+  gap: var(--space-sm);
   padding: 0 var(--space-lg);
 }
 

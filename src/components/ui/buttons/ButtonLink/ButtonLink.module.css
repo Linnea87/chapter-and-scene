@@ -2,11 +2,8 @@
 /* A link that reuses the Button styles. */
 
 /* --- Link --- */
-/* What every link button needs, on top of the Button styles */
+/* The only thing a link needs on top of the Button styles */
 .link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   text-decoration: none;
 }
 

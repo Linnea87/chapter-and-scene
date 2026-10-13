@@ -53,11 +53,9 @@ const ReadButton = ({ item }) => {
   return (
     <>
       <Button variant="secondary" size="small" onClick={open}>
-        <span className={styles.content}>
-          <BookOpen size={16} aria-hidden="true" />
-          Read
-          <span className="visually-hidden"> {item.title}</span>
-        </span>
+        <BookOpen size={16} aria-hidden="true" />
+        Read
+        <span className="visually-hidden"> {item.title}</span>
       </Button>
 
       <ReaderModal
