@@ -12,6 +12,7 @@ import {
   PAYMENT_METHODS,
 } from "../../../features/checkout/checkoutConfig";
 import Button from "../../ui/buttons/Button/Button";
+import FormError from "../../ui/forms/FormError/FormError";
 import TextField from "../../ui/forms/TextField/TextField";
 import styles from "./CheckoutForm.module.css";
 
@@ -80,10 +81,7 @@ const CheckoutForm = ({ needsAddress, onSubmit }) => {
 
       <p className={styles.notice}>{DEMO_NOTICE}</p>
 
-      {/* Always rendered, so the layout does not jump when an error appears */}
-      <p className={styles.error} role="alert">
-        {errorMessage}
-      </p>
+      <FormError message={errorMessage} />
 
       <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Placing order…" : "Place order"}

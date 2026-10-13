@@ -7,12 +7,3 @@
   flex-direction: column;
   gap: var(--space-md);
 }
-
-/* --- Error message --- */
-/* Keeps its height when empty, so the form does not jump.
-   No margin of its own, the form's gap sets the spacing */
-.error {
-  min-height: 1.5em;
-  margin: 0;
-  color: var(--color-error);
-}
