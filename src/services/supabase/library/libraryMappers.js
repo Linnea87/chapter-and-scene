@@ -2,13 +2,14 @@
 // Convert between purchased items in the app and rows in library_items.
 
 import { RENTAL_HOURS } from "../../../features/cart/cartConfig";
+import hoursToMs from "../../../utils/hoursToMs";
 
 // --- Helpers ---
 // Rentals expire RENTAL_HOURS after purchase, everything else is kept forever
 const getExpiresAt = (format) => {
   if (format !== "rent") return null;
 
-  const expiresAt = new Date(Date.now() + RENTAL_HOURS * 60 * 60 * 1000);
+  const expiresAt = new Date(Date.now() + hoursToMs(RENTAL_HOURS));
   return expiresAt.toISOString();
 };
 
