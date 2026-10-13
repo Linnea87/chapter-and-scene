@@ -1,4 +1,7 @@
-/* ===== Card ===== */
+/* ===== Library item styles ===== */
+/* One poster card in My library with its Play or Read button. */
+
+/* --- Card --- */
 /* Poster on top, title, label and action below, like TitleCard */
 .item {
   display: flex;
@@ -6,7 +9,7 @@
   gap: var(--space-xs);
 }
 
-/* ===== Image ===== */
+/* --- Image --- */
 /* Fixed 2:3 ratio keeps all cards the same height, with or without an image */
 .image {
   width: 100%;
@@ -14,7 +17,7 @@
   border-radius: var(--radius);
 }
 
-/* ===== Text ===== */
+/* --- Text --- */
 /* Fills the rest of the card, so the action can sit at the bottom.
    min-width lets long titles wrap instead of widening the card */
 .info {
@@ -25,11 +28,9 @@
   min-width: 0;
 }
 
+/* The same title as on the poster cards in explore */
 .title {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  line-height: 1.3;
+  composes: title from "../../titles/TitleCard/TitleCard.module.css";
 }
 
 /* The title link only shows its underline on hover */

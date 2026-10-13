@@ -1,3 +1,6 @@
+// ===== Pricing helpers =====
+// Pure functions for prices: movies, seasons, whole series, books and bundles.
+
 import {
   BOOK_PRICES,
   BUNDLE_DISCOUNT,
@@ -8,8 +11,6 @@ import {
   SERIES_DISCOUNT,
 } from "./pricingConfig";
 import roundPrice from "../../utils/roundPrice";
-
-// ===== Pricing helpers =====
 
 // --- Release age ---
 // A missing year counts as an older title

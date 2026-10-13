@@ -1,10 +1,10 @@
-import { supabase } from "../supabaseClient";
-import { toLibraryItem } from "./libraryMappers";
-
 // ===== Get library items =====
 // Fetches the signed-in user's library, newest first.
 // Row Level Security makes sure only their own rows are returned.
 // Throws on failure, so the caller can handle the error.
+
+import { supabase } from "../supabaseClient";
+import { toLibraryItem } from "./libraryMappers";
 
 const getLibraryItems = async () => {
   const { data, error } = await supabase

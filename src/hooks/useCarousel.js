@@ -1,8 +1,8 @@
-import { useState } from "react";
-
 // ===== useCarousel =====
 // Keeps track of the current slide and wraps around at both ends.
 // count: number of slides
+
+import { useState } from "react";
 
 const useCarousel = (count) => {
   const [current, setCurrent] = useState(0);

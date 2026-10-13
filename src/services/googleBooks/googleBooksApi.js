@@ -1,10 +1,10 @@
+// ===== Google Books service =====
+// Finds the book a movie or series is based on, and fetches one book by id
+
 import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
 import { GOOGLE_BOOKS_BASE_URL, MAX_RESULTS } from "./googleBooksConfig";
 import buildBookQuery from "./buildBookQuery";
 import { mapBook, pickBestMatch } from "./googleBooksMappers";
-
-// ===== Google Books service =====
-// Finds the book a movie or series is based on, and fetches one book by id
 
 export const googleBooksApi = createApi({
   reducerPath: "googleBooksApi",

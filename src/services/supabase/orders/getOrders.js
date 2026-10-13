@@ -1,10 +1,10 @@
-import { supabase } from "../supabaseClient";
-import { toOrder } from "./orderMappers";
-
 // ===== Get orders =====
 // Fetches all of the signed-in user's orders with their items, newest first.
 // Row Level Security makes sure only their own orders are returned.
 // Throws on failure, so the caller can handle the error.
+
+import { supabase } from "../supabaseClient";
+import { toOrder } from "./orderMappers";
 
 const getOrders = async () => {
   const { data, error } = await supabase

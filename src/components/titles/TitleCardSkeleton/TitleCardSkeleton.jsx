@@ -1,7 +1,7 @@
-import styles from "./TitleCardSkeleton.module.css";
-
 // ===== Title card skeleton =====
 // Placeholder with the same shape as TitleCard, shown while titles are loading
+
+import styles from "./TitleCardSkeleton.module.css";
 
 const TitleCardSkeleton = () => {
   return (
@@ -13,4 +13,4 @@ const TitleCardSkeleton = () => {
   );
 };
 
-export default TitleCardSkeleton
+export default TitleCardSkeleton;

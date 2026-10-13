@@ -1,22 +1,15 @@
-/* ===== Button content ===== */
-/* Icon and text on one line */
-.content {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-}
+/* ===== Read button styles ===== */
+/* The link to Google's reader and the no preview message in My library. */
 
-/* ===== Link to Google's reader ===== */
-/* Looks like the Read button, so both cases match in the library */
+/* --- Link to Google's reader --- */
+/* Looks like the Read button, so both cases match in the library.
+   Icon and text on one line come from the Button styles */
 .link {
   composes: button secondary small from "../../ui/buttons/Button/Button.module.css";
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
   text-decoration: none;
 }
 
-/* ===== No preview ===== */
+/* --- No preview --- */
 .message {
   margin: 0;
   font-size: 0.875rem;

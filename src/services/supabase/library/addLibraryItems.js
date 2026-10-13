@@ -1,10 +1,10 @@
-import { supabase } from "../supabaseClient";
-import { toLibraryRow } from "./libraryMappers";
-
 // ===== Add library items =====
 // Adds purchased digital items to the signed-in user's library.
 // Renting a movie again updates the expiry time instead of adding a new row.
 // Throws on failure, so the caller can handle the error.
+
+import { supabase } from "../supabaseClient";
+import { toLibraryRow } from "./libraryMappers";
 
 const addLibraryItems = async (items) => {
   if (items.length === 0) return;

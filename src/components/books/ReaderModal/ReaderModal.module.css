@@ -1,45 +1,7 @@
-/* ===== Dialog ===== */
-/* Fills the whole window, like the player in My library.
-   No display rule here: the browser hides a closed <dialog> with display: none */
-.dialog {
-  width: 100%;
-  max-width: none;
-  height: 100%;
-  max-height: none;
-  margin: 0;
-  padding: var(--space-sm);
-  border: none;
-  background-color: var(--color-media-background);
-  color: var(--color-text);
-}
+/* ===== Reader modal styles ===== */
+/* The Google Books reader inside the media dialog. */
 
-/* Stacks the close button, notice and reader. Only while open,
-   so a closed dialog stays hidden */
-.dialog[open] {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Dims the page behind the open dialog */
-.dialog::backdrop {
-  background-color: var(--color-overlay);
-}
-
-/* ===== Close button ===== */
-/* Pushed to the right, above the reader */
-.close {
-  margin: 0 0 var(--space-sm) auto;
-}
-
-/* ===== Notice ===== */
-/* Above the reader, so it is read first */
-.notice {
-  margin: 0 0 var(--space-sm);
-  font-weight: 600;
-  text-align: center;
-}
-
-/* ===== Reader ===== */
+/* --- Reader --- */
 /* Takes the rest of the height. A readable width on large screens */
 .reader {
   flex: 1;

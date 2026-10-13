@@ -1,4 +1,7 @@
-/* ===== Price options ===== */
+/* ===== Price options styles ===== */
+/* The price rows on a detail page, also used by the bundle offer. */
+
+/* --- List and rows --- */
 .list {
   display: grid;
   gap: var(--space-sm);
@@ -23,22 +26,9 @@
   background-color: var(--color-surface);
 }
 
-/* Mobile first: the converted amount goes under the price, so the price
-   column is narrow and the option name fits on one line.
-   Smaller and normal weight, so the option name is read first.
-   From 600px on one line */
+/* The converted amount under the price on mobile, see Price */
 .price {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  line-height: 1.3;
-  font-size: 0.875rem;
-}
-
-@media (min-width: 600px) {
-  .price {
-    display: block;
-  }
+  composes: stacked from "../Price/Price.module.css";
 }
 
 /* Price and add button stay together on the right */

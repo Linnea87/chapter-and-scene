@@ -1,4 +1,7 @@
-/* ===== Icon button ===== */
+/* ===== Icon button styles ===== */
+/* A round button that only shows an icon. */
+
+/* --- Button --- */
 /* Square touch target with the icon centered */
 .button {
   display: grid;

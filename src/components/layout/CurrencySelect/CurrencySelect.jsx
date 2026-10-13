@@ -1,13 +1,13 @@
+// ===== Currency select =====
+// Lets the visitor choose the currency that prices are converted to.
+// Shown at the bottom of the account menu, for everyone, signed in or not.
+
 import { useId } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CURRENCIES } from "../../../features/currency/currencyConfig";
 import { selectCurrency } from "../../../features/currency/currencySelectors";
 import { setCurrency } from "../../../features/currency/currencySlice";
 import styles from "./CurrencySelect.module.css";
-
-// ===== Currency select =====
-// Lets the visitor choose the currency that prices are converted to.
-// Shown at the bottom of the account menu, for everyone, signed in or not.
 
 const CurrencySelect = () => {
   const dispatch = useDispatch();

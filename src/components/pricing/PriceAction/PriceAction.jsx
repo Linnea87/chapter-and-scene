@@ -1,9 +1,3 @@
-import useOwnedItem from "../../../hooks/useOwnedItem";
-import { getLibraryLabel } from "../../../features/library/libraryHelpers";
-import AddToCartButton from "../../cart/AddToCartButton/AddToCartButton";
-import ButtonLink from "../../ui/buttons/ButtonLink/ButtonLink";
-import styles from "./PriceAction.module.css";
-
 // ===== Price action =====
 // What the user can do with one price option on a detail page:
 // - already bought: a link to My library instead of buying it twice
@@ -11,6 +5,12 @@ import styles from "./PriceAction.module.css";
 // - an active rental: the time left, e.g. "Rented · 31 h left"
 // - otherwise: the add to cart button
 // item: a cart item from createCartItem
+
+import useOwnedItem from "../../../hooks/useOwnedItem";
+import { getLibraryLabel } from "../../../features/library/libraryHelpers";
+import AddToCartButton from "../../cart/AddToCartButton/AddToCartButton";
+import ButtonLink from "../../ui/buttons/ButtonLink/ButtonLink";
+import styles from "./PriceAction.module.css";
 
 const PriceAction = ({ item }) => {
   const ownedItem = useOwnedItem(item);

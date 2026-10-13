@@ -1,3 +1,9 @@
+// ===== Header =====
+// The site name on top, linking to the home page.
+// Below it, icons only, on every screen size: the account menu on the left,
+// the main pages in the middle, and search and the cart on the right.
+// The search icon folds out a search bar under the icons.
+
 import { useRef } from "react";
 import { Link } from "react-router";
 import { Search } from "lucide-react";
@@ -9,12 +15,6 @@ import NavMenu from "../NavMenu/NavMenu";
 import SearchBar from "../SearchBar/SearchBar";
 import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./Header.module.css";
-
-// ===== Header =====
-// The site name on top, linking to the home page.
-// Below it, icons only, on every screen size: the account menu on the left,
-// the main pages in the middle, and search and the cart on the right.
-// The search icon folds out a search bar under the icons.
 
 const Header = () => {
   // --- Search bar ---

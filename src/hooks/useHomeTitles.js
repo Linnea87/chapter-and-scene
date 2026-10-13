@@ -1,10 +1,10 @@
-import { useDiscoverTitlesInfiniteQuery } from "../services/tmdb/tmdbApi";
-import { mergeAndSortTitles } from "../features/home/homeHelpers";
-
 // ===== useHomeTitles =====
 // Fetches the first page of movies and series for one home section
 // and returns them as one sorted list.
 // sort: "popular", "topRated" or "recent"
+
+import { useDiscoverTitlesInfiniteQuery } from "../services/tmdb/tmdbApi";
+import { mergeAndSortTitles } from "../features/home/homeHelpers";
 
 const useHomeTitles = ({ sort, limit }) => {
   // --- Requests ---

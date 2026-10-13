@@ -1,4 +1,7 @@
-/* ===== Layout ===== */
+/* ===== Detail layout styles ===== */
+/* The frame of a detail page and the spacing between its sections. */
+
+/* --- Layout --- */
 /* Controls the spacing between the sections of a detail page.
    Not positioned, so the hero backdrop is placed from the top of the page,
    behind the header. isolation keeps the backdrop behind the page content */

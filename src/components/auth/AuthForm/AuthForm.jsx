@@ -1,11 +1,12 @@
-import { useState } from "react";
-import Button from "../../ui/buttons/Button/Button";
-import TextField from "../../ui/forms/TextField/TextField";
-import styles from "./AuthForm.module.css";
-
 // ===== Auth form =====
 // Email and password form shared by the log in and sign up pages.
 // onSubmit receives { email, password } and may throw, the message is shown in the form.
+
+import { useState } from "react";
+import Button from "../../ui/buttons/Button/Button";
+import FormError from "../../ui/forms/FormError/FormError";
+import TextField from "../../ui/forms/TextField/TextField";
+import styles from "./AuthForm.module.css";
 
 const AuthForm = ({ submitLabel, passwordAutoComplete, onSubmit }) => {
   // --- State ---
@@ -48,10 +49,7 @@ const AuthForm = ({ submitLabel, passwordAutoComplete, onSubmit }) => {
         autoComplete={passwordAutoComplete}
       />
 
-      {/* Always rendered, so the layout does not jump when an error appears */}
-      <p className={styles.error} role="alert">
-        {errorMessage}
-      </p>
+      <FormError message={errorMessage} />
 
       <Button type="submit" disabled={isSubmitting}>
         {submitLabel}

@@ -1,3 +1,7 @@
+// ===== TMDb service =====
+// All requests to TMDb go through this service.
+// mediaType is either "movie" or "tv", since TMDb has separate endpoints for them.
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { TMDB_BASE_URL, LANGUAGE, CERTIFICATION_APPEND } from "./tmdbConfig";
 import getAdaptations from "./getAdaptations";
@@ -8,10 +12,6 @@ import {
   mapTitleDetails,
   mapTitleList,
 } from "./tmdbMappers";
-
-// ===== TMDb service =====
-// All requests to TMDb go through this service.
-// mediaType is either "movie" or "tv", since TMDb has separate endpoints for them.
 
 export const tmdbApi = createApi({
   reducerPath: "tmdbApi",

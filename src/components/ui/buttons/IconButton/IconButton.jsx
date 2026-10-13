@@ -1,11 +1,11 @@
-import styles from "./IconButton.module.css";
-
 // ===== Icon button =====
 // A button that only shows an icon, e.g. close or clear.
 // label is required, since screen readers cannot read the icon.
 // className lets the parent decide where the button is placed.
 // iconSize is 20 by default, larger for e.g. carousel arrows.
 // strokeWidth is 2 by default, thinner to match the header icons.
+
+import styles from "./IconButton.module.css";
 
 const IconButton = ({
   icon: Icon,

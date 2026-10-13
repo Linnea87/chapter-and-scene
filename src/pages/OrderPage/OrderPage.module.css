@@ -1,11 +1,7 @@
-/* ===== Content ===== */
-/* One narrow centred column, like the checkout */
-.content {
-  max-width: 32rem;
-  margin-inline: auto;
-}
+/* ===== Order page styles ===== */
+/* The order details and confirmation: order number, items, total and buttons. */
 
-/* ===== Back link ===== */
+/* --- Back link --- */
 /* Only shown when the order is opened from the order history.
    The round area around the arrow is larger than the arrow itself,
    so it is pulled up and left to line the arrow up with the heading */
@@ -13,27 +9,21 @@
   margin: calc(-1 * var(--space-md)) 0 0 calc(-1 * var(--space-sm));
 }
 
-/* ===== Title and order number ===== */
-/* Centred, like the headings on the other pages */
-.title {
-  text-align: center;
-}
-
+/* --- Order number --- */
+/* Centred under the page title */
 .number {
   margin: 0 0 var(--space-md);
   text-align: center;
   color: var(--color-text-muted);
 }
 
-/* ===== List ===== */
+/* --- List --- */
+/* The list around the cart rows, see CartItem */
 .list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--color-border);
+  composes: list from "../../components/cart/CartItem/CartItem.module.css";
 }
 
-/* ===== Discount ===== */
+/* --- Discount --- */
 /* Same row layout as the total, but in normal text */
 .discount {
   display: flex;
@@ -42,7 +32,7 @@
   color: var(--color-text-muted);
 }
 
-/* ===== Total ===== */
+/* --- Total --- */
 .total {
   display: flex;
   justify-content: space-between;
@@ -51,7 +41,7 @@
   font-size: 1.125rem;
 }
 
-/* ===== Actions ===== */
+/* --- Actions --- */
 /* Mobile first: full width buttons stacked, easy to tap */
 .actions {
   display: flex;

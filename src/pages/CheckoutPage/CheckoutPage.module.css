@@ -1,31 +1,22 @@
-/* ===== Content ===== */
-/* One narrow centred column, full width on mobile */
-.content {
-  max-width: 32rem;
-  margin-inline: auto;
-}
+/* ===== Checkout page styles ===== */
+/* The checkout: account, items and summary above the form. */
 
-/* ===== Title and account ===== */
-/* Centred, like the headings on the other pages */
-.title {
-  text-align: center;
-}
-
+/* --- Account --- */
+/* Centred under the page title */
 .account {
   margin: 0 0 var(--space-md);
   text-align: center;
   color: var(--color-text-muted);
 }
 
-/* ===== List ===== */
+/* --- List --- */
+/* The list around the cart rows, see CartItem, with room under it */
 .list {
-  margin: 0 0 var(--space-md);
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--color-border);
+  composes: list from "../../components/cart/CartItem/CartItem.module.css";
+  margin-bottom: var(--space-md);
 }
 
-/* ===== Summary ===== */
+/* --- Summary --- */
 .summary {
   margin-bottom: var(--space-lg);
 }

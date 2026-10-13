@@ -1,4 +1,7 @@
-/* ===== Summary list ===== */
+/* ===== Cart summary styles ===== */
+/* The subtotal, discount, shipping and total rows under the cart. */
+
+/* --- Summary list --- */
 .list {
   display: grid;
   gap: var(--space-sm);
@@ -26,7 +29,7 @@
   font-weight: 600;
 }
 
-/* ===== Free shipping hint ===== */
+/* --- Free shipping hint --- */
 .hint {
   margin: var(--space-sm) 0 0;
   font-size: 0.875rem;

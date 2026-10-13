@@ -1,3 +1,7 @@
+// ===== Store =====
+// Single global store for the app. API services from RTK Query are added in CS-038,
+// the Supabase service in CS-027 and the Frankfurter service in CS-044.
+
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "../features/cart/cartSlice";
 import { loadCartItems, saveCartItems } from "../features/cart/cartStorage";
@@ -13,10 +17,6 @@ import { tmdbApi } from "../services/tmdb/tmdbApi";
 import { googleBooksApi } from "../services/googleBooks/googleBooksApi";
 import { supabaseApi } from "../services/supabase/supabaseApi";
 import { frankfurterApi } from "../services/frankfurter/frankfurterApi";
-
-// ===== Store =====
-// Single global store for the app. API services from RTK Query are added in CS-038,
-// the Supabase service in CS-027 and the Frankfurter service in CS-044.
 
 const store = configureStore({
   reducer: {
@@ -45,7 +45,7 @@ const store = configureStore({
   },
 });
 
-// ===== Persistence =====
+// --- Persistence ---
 // Saves the cart items (CS-019) and the selected currency (CS-044) whenever they change.
 // The store updates on every action, including API requests,
 // so each value is only saved when it actually changed.

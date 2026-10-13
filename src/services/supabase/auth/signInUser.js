@@ -1,8 +1,8 @@
-import { supabase } from "../supabaseClient";
-
 // ===== Sign in =====
 // Logs in with email and password.
 // Throws on failure, so the caller can show the error message.
+
+import { supabase } from "../supabaseClient";
 
 const signInUser = async ({ email, password }) => {
   const { data, error } = await supabase.auth.signInWithPassword({

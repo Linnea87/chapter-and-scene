@@ -1,4 +1,7 @@
-/* ===== Back link ===== */
+/* ===== Back link styles ===== */
+/* The arrow link back to a page, with or without text. */
+
+/* --- Link --- */
 /* Arrow and text on one line, easy to tap. The parent sets the spacing */
 .link {
   display: inline-flex;
@@ -19,7 +22,7 @@
   filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.6));
 }
 
-/* ===== States ===== */
+/* --- States --- */
 @media (hover: hover) {
   .link:hover {
     text-decoration: underline;

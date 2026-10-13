@@ -1,9 +1,9 @@
+// ===== Error page =====
+// Shown by the router when a page throws an error while rendering.
+
 import { TriangleAlert } from "lucide-react";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
 import styles from "./ErrorPage.module.css";
-
-// ===== Error page =====
-// Shown by the router when a page throws an error while rendering.
 
 const ErrorPage = () => (
   <main className={styles.page}>

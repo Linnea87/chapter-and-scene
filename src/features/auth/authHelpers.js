@@ -1,4 +1,5 @@
 // ===== Auth helpers =====
+// Pure functions for signing in: the user kept in Redux and where to go after log in.
 
 // Keeps only what the app needs from a Supabase user, so Redux
 // holds plain values instead of the whole Supabase object.

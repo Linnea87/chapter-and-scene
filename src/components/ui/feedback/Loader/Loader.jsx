@@ -1,7 +1,7 @@
-import styles from "./Loader.module.css";
-
 // ===== Loader =====
 // Spinner used while a single item is loading, e.g. a detail page
+
+import styles from "./Loader.module.css";
 
 const Loader = ({ label = "Loading…" }) => {
   return (

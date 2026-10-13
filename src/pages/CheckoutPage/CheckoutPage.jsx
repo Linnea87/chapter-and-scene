@@ -1,3 +1,7 @@
+// ===== Checkout page =====
+// Only reachable when signed in, see ProtectedRoute.
+// Saves the order, adds digital items to the library and empties the cart.
+
 import { useState } from "react";
 import { Navigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -5,8 +9,8 @@ import {
   useAddLibraryItemsMutation,
   useCreateOrderMutation,
 } from "../../services/supabase/supabaseApi";
-import { isPhysicalFormat } from "../../features/cart/cartHelpers";
 import { selectUser } from "../../features/auth/authSelectors";
+import { isPhysicalFormat } from "../../features/cart/cartHelpers";
 import {
   selectBundleDiscount,
   selectCartItems,
@@ -20,10 +24,6 @@ import CartItem from "../../components/cart/CartItem/CartItem";
 import CartSummary from "../../components/cart/CartSummary/CartSummary";
 import CheckoutForm from "../../components/checkout/CheckoutForm/CheckoutForm";
 import styles from "./CheckoutPage.module.css";
-
-// ===== Checkout page =====
-// Only reachable when signed in, see ProtectedRoute.
-// Saves the order, adds digital items to the library and empties the cart.
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
@@ -75,8 +75,8 @@ const CheckoutPage = () => {
 
   return (
     <div className="container">
-      <div className={styles.content}>
-        <h1 className={styles.title}>Checkout</h1>
+      <div className="narrow-column">
+        <h1 className="page-title">Checkout</h1>
         <p className={styles.account}>
           Ordering as <strong>{user.email}</strong>
         </p>

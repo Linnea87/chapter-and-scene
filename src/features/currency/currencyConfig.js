@@ -12,6 +12,6 @@ export const CURRENCIES = [
   { code: "GBP", label: "GBP" },
 ];
 
-// ===== Storage =====
+// --- Storage ---
 // Key for the selected currency in localStorage
 export const CURRENCY_STORAGE_KEY = "chapter-and-scene-currency";

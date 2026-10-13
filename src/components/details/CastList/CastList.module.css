@@ -1,4 +1,7 @@
-/* ===== Cast list ===== */
+/* ===== Cast list styles ===== */
+/* The row of actors with photo, name and character on a detail page. */
+
+/* --- List --- */
 /* Mobile first: one horizontally scrollable row */
 .list {
   display: flex;

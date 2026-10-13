@@ -1,4 +1,7 @@
-/* ===== Carousel ===== */
+/* ===== Hero carousel styles ===== */
+/* The sliding featured stories at the top of the home page. */
+
+/* --- Carousel --- */
 /* --peek is how much of the next slides shows, --gap the space between slides.
    Mobile first: narrow edges and smaller arrows, so the slide gets more room */
 .carousel {
@@ -7,7 +10,7 @@
   --gap: var(--space-sm);
 }
 
-/* ===== Viewport and track ===== */
+/* --- Viewport and track --- */
 /* The viewport shows one slide plus the peeking edges, the rest is hidden.
    It is as wide as the window, edge to edge, even inside the page container */
 .viewport {
@@ -34,7 +37,7 @@
   transition: transform 0.5s ease;
 }
 
-/* ===== Slide ===== */
+/* --- Slide --- */
 /* Mobile first: tall for the upright poster, low and wide from 600px
    for the backdrop. Faded unless current. */
 .slide {
@@ -98,14 +101,7 @@
   animation: fade-in 0.4s ease 0.5s both;
 }
 
-.badge {
-  padding: 0 var(--space-xs);
-  border: 1px solid currentColor;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-}
-
-/* ===== Arrows ===== */
+/* --- Arrows --- */
 /* Size and look come from IconButton. Centred over the peeking edges. */
 .arrow {
   position: absolute;
@@ -145,7 +141,7 @@
   }
 }
 
-/* ===== Dots ===== */
+/* --- Dots --- */
 .dots {
   display: flex;
   justify-content: center;
@@ -182,7 +178,7 @@
   background-color: var(--color-text);
 }
 
-/* ===== Larger screens ===== */
+/* --- Larger screens --- */
 @media (min-width: 600px) {
   .carousel {
     --arrow-size: 56px;

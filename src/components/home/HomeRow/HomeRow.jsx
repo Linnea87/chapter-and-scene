@@ -1,11 +1,11 @@
+// ===== Home row =====
+// Fetches the titles for one row in HOME_ROWS and shows them in a TitleRow.
+// row: { title, hint, sort, link }
+
 import useHomeTitles from "../../../hooks/useHomeTitles";
 import { ROW_LIMIT } from "../../../features/home/homeConfig";
 import LoadError from "../../ui/feedback/LoadError/LoadError";
 import TitleRow from "../../titles/TitleRow/TitleRow";
-
-// ===== Home row =====
-// Fetches the titles for one row in HOME_ROWS and shows them in a TitleRow.
-// row: { title, hint, sort, link }
 
 const HomeRow = ({ row }) => {
   const { titles, isLoading, error, refetch } = useHomeTitles({

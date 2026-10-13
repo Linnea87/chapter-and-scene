@@ -1,11 +1,14 @@
-/* ===== Layout ===== */
+/* ===== Loader styles ===== */
+/* The spinning circle shown while something is loading. */
+
+/* --- Layout --- */
 .loader {
   display: flex;
   justify-content: center;
   padding: var(--space-xl) 0;
 }
 
-/* ===== Spinner ===== */
+/* --- Spinner --- */
 .spinner {
   width: 40px;
   height: 40px;
@@ -21,7 +24,7 @@
   }
 }
 
-/* ===== Accessibility ===== */
+/* --- Accessibility --- */
 /* Slower rotation for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .spinner {

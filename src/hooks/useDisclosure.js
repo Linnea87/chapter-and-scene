@@ -1,8 +1,8 @@
-import { useState } from "react";
-
 // ===== Disclosure hook =====
 // Open and closed state for anything that can be shown and hidden,
 // e.g. the mobile menu or the trailer modal.
+
+import { useState } from "react";
 
 const useDisclosure = (initialState = false) => {
   const [isOpen, setIsOpen] = useState(initialState);

@@ -1,4 +1,5 @@
 // ===== Google Books configuration =====
+// Addresses and limits for the Google Books API and its preview reader.
 
 export const GOOGLE_BOOKS_BASE_URL = "https://www.googleapis.com/books/v1/";
 

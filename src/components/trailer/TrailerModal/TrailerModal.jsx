@@ -1,12 +1,10 @@
-import { X } from "lucide-react";
-import useDialog from "../../../hooks/useDialog";
-import IconButton from "../../ui/buttons/IconButton/IconButton";
-import styles from "./TrailerModal.module.css";
-
 // ===== Trailer modal =====
-// Plays a YouTube trailer in a native <dialog>, so the user stays on the page.
+// Plays a YouTube trailer in a MediaDialog, so the user stays on the page.
 // isPlayer: player mode, used in My library. Fills the window, is labelled
 // "Now playing" and can show a notice above the video.
+
+import MediaDialog from "../../ui/media/MediaDialog/MediaDialog";
+import styles from "./TrailerModal.module.css";
 
 const TrailerModal = ({
   trailerKey,
@@ -16,40 +14,28 @@ const TrailerModal = ({
   isPlayer = false,
   notice,
 }) => {
-  const dialogRef = useDialog(isOpen);
-
   const label = isPlayer ? `Now playing: ${title}` : `${title} trailer`;
-  const dialogClass = isPlayer
-    ? `${styles.dialog} ${styles.fullWindow}`
-    : styles.dialog;
+  const playerClass = isPlayer
+    ? `${styles.player} ${styles.fitWindow}`
+    : styles.player;
 
   return (
-    <dialog
-      ref={dialogRef}
-      className={dialogClass}
-      aria-label={label}
+    <MediaDialog
+      label={label}
+      closeLabel={isPlayer ? "Close player" : "Close trailer"}
+      isOpen={isOpen}
       onClose={onClose}
+      fullWindow={isPlayer}
+      notice={notice}
     >
-      <IconButton
-        icon={X}
-        label={isPlayer ? "Close player" : "Close trailer"}
-        className={styles.close}
-        onClick={onClose}
+      <iframe
+        className={playerClass}
+        src={`https://www.youtube-nocookie.com/embed/${trailerKey}?autoplay=1`}
+        title={label}
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowFullScreen
       />
-
-      {notice && <p className={styles.notice}>{notice}</p>}
-
-      {/* The player is only rendered while open, so the video stops on close */}
-      {isOpen && (
-        <iframe
-          className={styles.player}
-          src={`https://www.youtube-nocookie.com/embed/${trailerKey}?autoplay=1`}
-          title={label}
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowFullScreen
-        />
-      )}
-    </dialog>
+    </MediaDialog>
   );
 };
 

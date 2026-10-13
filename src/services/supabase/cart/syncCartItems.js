@@ -1,9 +1,9 @@
-import { supabase } from "../supabaseClient";
-import { toCartRow } from "./cartMappers";
-
 // ===== Sync cart items =====
 // Makes the signed-in user's saved cart match the cart in the app.
 // Throws on failure, so the caller can handle the error.
+
+import { supabase } from "../supabaseClient";
+import { toCartRow } from "./cartMappers";
 
 const syncCartItems = async (items) => {
   // --- Empty cart: remove all saved rows ---

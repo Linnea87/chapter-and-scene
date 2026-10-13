@@ -1,4 +1,7 @@
-/* ===== Layout ===== */
+/* ===== Header styles ===== */
+/* The logo, the icon row and the fold-out search bar at the top of every page. */
+
+/* --- Layout --- */
 /* Transparent, so the page glow starts at the very top of the window
    and there is no hard edge under the header.
    Above the page, so the detail backdrop can sit behind the icons.
@@ -13,7 +16,7 @@
   padding: var(--space-sm) var(--space-md);
 }
 
-/* ===== Logo ===== */
+/* --- Logo --- */
 /* A row of its own above the icons, centred.
    Small, light and muted, like a signature, so it does not take over the page */
 .logo {
@@ -28,7 +31,7 @@
   text-decoration: none;
 }
 
-/* ===== Areas ===== */
+/* --- Areas --- */
 .accountArea {
   justify-self: start;
 }
@@ -45,7 +48,7 @@
   margin-right: calc(-1 * var(--space-sm));
 }
 
-/* ===== Search bar ===== */
+/* --- Search bar --- */
 /* A row of its own under the icons, centred and not too wide on large screens */
 .searchArea {
   grid-column: 1 / -1;

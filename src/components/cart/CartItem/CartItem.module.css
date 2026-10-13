@@ -1,4 +1,17 @@
-/* ===== Row ===== */
+/* ===== Cart item styles ===== */
+/* One row in the cart, checkout and order: image, info, price and remove button.
+   Also the list around the rows, which the pages reuse with composes. */
+
+/* --- List --- */
+/* A line above the first row. Each row draws its own line below */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+/* --- Row --- */
 /* Image, info, price and remove button side by side.
    Mobile first: tighter columns, so the title has room next to the price */
 .item {
@@ -21,14 +34,14 @@
   }
 }
 
-/* ===== Image ===== */
+/* --- Image --- */
 .image {
   width: 100%;
   aspect-ratio: 2 / 3;
   border-radius: var(--radius-sm);
 }
 
-/* ===== Text ===== */
+/* --- Text --- */
 /* Lets long titles wrap instead of pushing the price out of the row */
 .info {
   min-width: 0;
@@ -56,25 +69,14 @@
   margin-top: var(--space-sm);
 }
 
-/* Mobile first: the converted amount goes under the price, so the price
-   column is narrow and the title has room. Smaller and normal weight,
-   like the price rows on the detail page. From 600px on one line */
+/* --- Price --- */
+/* The converted amount under the price on mobile, see Price */
 .price {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  composes: stacked from "../../pricing/Price/Price.module.css";
   margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.3;
 }
 
-@media (min-width: 600px) {
-  .price {
-    display: block;
-  }
-}
-
-/* ===== Remove button ===== */
+/* --- Remove button --- */
 /* Size and look come from IconButton, this only places it.
    Lines the icon up with the right edge of the row */
 .remove {

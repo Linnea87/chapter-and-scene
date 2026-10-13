@@ -1,9 +1,9 @@
-import { useRef } from "react";
-
 // ===== Swipe hook =====
 // Calls onSwipeLeft or onSwipeRight when the user swipes sideways
 // on a touch screen, e.g. to change slide in a carousel.
 // Returns touch handlers to spread on the element that can be swiped.
+
+import { useRef } from "react";
 
 // Shortest sideways move in pixels that counts as a swipe, so a tap is not a swipe
 const MIN_SWIPE_DISTANCE = 50;

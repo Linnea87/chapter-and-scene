@@ -1,3 +1,8 @@
+// ===== Protected route =====
+// Wraps routes that require a signed-in user.
+// Guests are sent to the log in page, and the page they came from
+// is passed along so they can be sent back after logging in.
+
 import { Navigate, Outlet, useLocation } from "react-router";
 import { useSelector } from "react-redux";
 import {
@@ -5,11 +10,6 @@ import {
   selectIsLoggedIn,
 } from "../../../features/auth/authSelectors";
 import Loader from "../../ui/feedback/Loader/Loader";
-
-// ===== Protected route =====
-// Wraps routes that require a signed-in user.
-// Guests are sent to the log in page, and the page they came from
-// is passed along so they can be sent back after logging in.
 
 const ProtectedRoute = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

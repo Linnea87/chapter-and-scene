@@ -1,0 +1,12 @@
+/* ===== Age rating styles ===== */
+/* The age rating in a small box with a thin border. */
+
+/* --- Rating --- */
+/* White text and border, so it stands out next to muted facts */
+.rating {
+  padding: 0 var(--space-xs);
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}

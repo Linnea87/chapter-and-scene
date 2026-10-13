@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-
 // ===== useDebouncedValue =====
 // Returns a value only after it has stopped changing for a short time.
 // Used to wait until the user stops typing before a request is sent.
+
+import { useEffect, useState } from "react";
 
 const useDebouncedValue = (value, delay = 400) => {
   const [debouncedValue, setDebouncedValue] = useState(value);

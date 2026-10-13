@@ -1,8 +1,8 @@
-import { loadFromStorage, saveToStorage } from "../../services/storage/storage";
-import { CART_STORAGE_KEY } from "./cartConfig";
-
 // ===== Cart storage =====
 // Loads and saves the guest cart items in localStorage.
+
+import { loadFromStorage, saveToStorage } from "../../services/storage/storage";
+import { CART_STORAGE_KEY } from "./cartConfig";
 
 // --- Load ---
 // Only an array is accepted, so old or edited data cannot break the cart

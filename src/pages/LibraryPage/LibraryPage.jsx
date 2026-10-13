@@ -1,3 +1,7 @@
+// ===== Library page =====
+// Everything the user has bought or rented digitally, grouped into sections.
+// Only reachable when signed in, see ProtectedRoute.
+
 import { LibraryBig } from "lucide-react";
 import { useGetLibraryItemsQuery } from "../../services/supabase/supabaseApi";
 import { groupBySection } from "../../features/library/libraryHelpers";
@@ -6,10 +10,6 @@ import LoadError from "../../components/ui/feedback/LoadError/LoadError";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
 import styles from "./LibraryPage.module.css";
-
-// ===== Library page =====
-// Everything the user has bought or rented digitally, grouped into sections.
-// Only reachable when signed in, see ProtectedRoute.
 
 const LibraryPage = () => {
   const {
@@ -49,7 +49,7 @@ const LibraryPage = () => {
   // --- Library ---
   return (
     <div className="container">
-      <h1 className={styles.title}>My library</h1>
+      <h1 className="page-title">My library</h1>
 
       {groupBySection(items).map((section) => (
         <section key={section.id} className={styles.section}>

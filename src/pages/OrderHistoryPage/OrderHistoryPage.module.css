@@ -1,16 +1,7 @@
-/* ===== Content ===== */
-/* One narrow centred column, like the order page */
-.content {
-  max-width: 32rem;
-  margin-inline: auto;
-}
+/* ===== Order history page styles ===== */
+/* The list of orders, one card per order. */
 
-/* Centred, like the headings on the movies, series and library pages */
-.title {
-  text-align: center;
-}
-
-/* ===== List ===== */
+/* --- List --- */
 /* The orders as separate cards with a little space between them */
 .list {
   display: flex;

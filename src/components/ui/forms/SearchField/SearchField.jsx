@@ -1,12 +1,12 @@
-import { useId } from "react";
-import { Search, X } from "lucide-react";
-import IconButton from "../../buttons/IconButton/IconButton";
-import styles from "./SearchField.module.css";
-
 // ===== Search field =====
 // A controlled search input with a clear button.
 // The parent owns the value and receives every change through onChange.
 // ref is passed on to the input, so the parent can move focus into it.
+
+import { useId } from "react";
+import { Search, X } from "lucide-react";
+import IconButton from "../../buttons/IconButton/IconButton";
+import styles from "./SearchField.module.css";
 
 const SearchField = ({ label, value, onChange, placeholder, ref }) => {
   // Unique id that connects the label to the input

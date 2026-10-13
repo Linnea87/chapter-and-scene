@@ -1,3 +1,9 @@
+// ===== Checkout form =====
+// Shipping address (only when needsAddress is true), payment method,
+// a demo notice and "Place order".
+// onSubmit receives the address, or null for digital orders, and may throw.
+// The error message is then shown in the form.
+
 import { useState } from "react";
 import {
   ADDRESS_FIELDS,
@@ -6,14 +12,9 @@ import {
   PAYMENT_METHODS,
 } from "../../../features/checkout/checkoutConfig";
 import Button from "../../ui/buttons/Button/Button";
+import FormError from "../../ui/forms/FormError/FormError";
 import TextField from "../../ui/forms/TextField/TextField";
 import styles from "./CheckoutForm.module.css";
-
-// ===== Checkout form =====
-// Shipping address (only when needsAddress is true), payment method,
-// a demo notice and "Place order".
-// onSubmit receives the address, or null for digital orders, and may throw.
-// The error message is then shown in the form.
 
 const CheckoutForm = ({ needsAddress, onSubmit }) => {
   // --- State ---
@@ -80,10 +81,7 @@ const CheckoutForm = ({ needsAddress, onSubmit }) => {
 
       <p className={styles.notice}>{DEMO_NOTICE}</p>
 
-      {/* Always rendered, so the layout does not jump when an error appears */}
-      <p className={styles.error} role="alert">
-        {errorMessage}
-      </p>
+      <FormError message={errorMessage} />
 
       <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Placing order…" : "Place order"}
