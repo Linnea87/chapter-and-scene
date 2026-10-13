@@ -47,6 +47,17 @@ select {
   font: inherit;
 }
 
+/* Every dialog dims the page behind it */
+dialog::backdrop {
+  background-color: var(--color-overlay);
+}
+
+/* A dialog only takes focus to move it inside, see useDialog.
+   No ring around the whole dialog. The buttons inside still show theirs */
+dialog:focus {
+  outline: none;
+}
+
 /* --- Accessibility --- */
 /* Visible focus outline for keyboard users */
 :focus-visible {

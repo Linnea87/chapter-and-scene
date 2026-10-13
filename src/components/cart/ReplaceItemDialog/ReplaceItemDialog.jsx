@@ -26,6 +26,8 @@ const ReplaceItemDialog = ({
       ref={dialogRef}
       className={styles.dialog}
       aria-labelledby={titleId}
+      // Lets useDialog focus the dialog itself when it opens
+      tabIndex={-1}
       onClose={onKeep}
     >
       <h2 id={titleId} className={styles.title}>
