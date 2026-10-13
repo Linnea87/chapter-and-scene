@@ -13,4 +13,4 @@ const TitleCardSkeleton = () => {
   );
 };
 
-export default TitleCardSkeleton
+export default TitleCardSkeleton;
