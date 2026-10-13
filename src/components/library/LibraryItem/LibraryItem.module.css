@@ -28,11 +28,9 @@
   min-width: 0;
 }
 
+/* The same title as on the poster cards in explore */
 .title {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  line-height: 1.3;
+  composes: title from "../../titles/TitleCard/TitleCard.module.css";
 }
 
 /* The title link only shows its underline on hover */
