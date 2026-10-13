@@ -1,13 +1,13 @@
-import { NavLink } from "react-router";
-import { Clapperboard, House, Tv } from "lucide-react";
-import getNavLinkClass from "../../../utils/getNavLinkClass";
-import styles from "./NavMenu.module.css";
-
 // ===== Nav menu =====
 // The main pages as icon links in the middle of the header:
 // home, movies and series.
 // The icons have no text, so aria-label names each link for screen readers.
 // The link for the current page is highlighted.
+
+import { NavLink } from "react-router";
+import { Clapperboard, House, Tv } from "lucide-react";
+import getNavLinkClass from "../../../utils/getNavLinkClass";
+import styles from "./NavMenu.module.css";
 
 // Adds the active class to the link that matches the current page
 const getLinkClass = getNavLinkClass(styles.link, styles.active);

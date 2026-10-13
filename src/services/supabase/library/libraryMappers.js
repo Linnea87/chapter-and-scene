@@ -1,7 +1,7 @@
-import { RENTAL_HOURS } from "../../../features/cart/cartConfig";
-
 // ===== Library mappers =====
 // Convert between purchased items in the app and rows in library_items.
+
+import { RENTAL_HOURS } from "../../../features/cart/cartConfig";
 
 // --- Helpers ---
 // Rentals expire RENTAL_HOURS after purchase, everything else is kept forever

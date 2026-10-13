@@ -1,8 +1,8 @@
-import { MIN_VOTES } from "./tmdbConfig";
-
 // ===== Sort parameters =====
 // Turns the app's sort names into TMDb discover parameters.
 // sort: "popular" (default), "topRated" or "recent"
+
+import { MIN_VOTES } from "./tmdbConfig";
 
 const getSortParams = (mediaType, sort = "popular") => {
   // Movies and series use different names for the release date

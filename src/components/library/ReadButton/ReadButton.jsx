@@ -1,3 +1,11 @@
+// ===== Read button =====
+// Opens an e-book from My library. The Google Books preview stands in for the full book:
+// - the preview can be embedded: it opens in the reader inside the app
+// - the preview is only allowed on Google's site: it opens in Google's reader in a new tab
+// - there is no preview: a message is shown instead
+// Renders nothing while the book is loading.
+// item: a library item with mediaType "book"
+
 import { BookOpen, ExternalLink } from "lucide-react";
 import useDisclosure from "../../../hooks/useDisclosure";
 import { useGetBookQuery } from "../../../services/googleBooks/googleBooksApi";
@@ -9,14 +17,6 @@ import {
 import ReaderModal from "../../books/ReaderModal/ReaderModal";
 import Button from "../../ui/buttons/Button/Button";
 import styles from "./ReadButton.module.css";
-
-// ===== Read button =====
-// Opens an e-book from My library. The Google Books preview stands in for the full book:
-// - the preview can be embedded: it opens in the reader inside the app
-// - the preview is only allowed on Google's site: it opens in Google's reader in a new tab
-// - there is no preview: a message is shown instead
-// Renders nothing while the book is loading.
-// item: a library item with mediaType "book"
 
 const ReadButton = ({ item }) => {
   const { isOpen, open, close } = useDisclosure();

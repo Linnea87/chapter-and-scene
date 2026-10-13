@@ -1,3 +1,7 @@
+// ===== Router =====
+// Every page and its address. Pages that need a signed-in user
+// are wrapped in ProtectedRoute.
+
 import { createBrowserRouter } from "react-router";
 import App from "../App";
 import HomePage from "../pages/HomePage/HomePage";

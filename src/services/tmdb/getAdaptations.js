@@ -1,10 +1,10 @@
-import { LANGUAGE, SEARCH_CANDIDATE_LIMIT } from "./tmdbConfig";
-import { hasBookKeyword, mapKeywordIds, mapTitleList } from "./tmdbMappers";
-
 // ===== getAdaptations =====
 // Query function for the adaptation search endpoint.
 // TMDb search cannot filter on keywords, so every candidate gets its own
 // keywords request. Only titles with a book keyword are returned.
+
+import { LANGUAGE, SEARCH_CANDIDATE_LIMIT } from "./tmdbConfig";
+import { hasBookKeyword, mapKeywordIds, mapTitleList } from "./tmdbMappers";
 
 // Takes the first search results of one media type, as candidates for the keyword check
 const getCandidates = (search, mediaType) =>

@@ -1,3 +1,7 @@
+// ===== Title grid =====
+// Movies and series as a grid of poster cards, e.g. on the explore and browse pages.
+// titles: titles from the TMDb mappers
+
 import TitleCard from "../TitleCard/TitleCard";
 import styles from "./TitleGrid.module.css";
 

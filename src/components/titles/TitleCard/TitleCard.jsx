@@ -1,3 +1,9 @@
+// ===== Title card =====
+// One movie or series in a grid or row: poster, title, type and year.
+// The whole card links to the detail page.
+// item: a title from the TMDb mappers, e.g. { id, mediaType, title, posterPath, year }
+// titleAs: heading level for the title, "h2" in the grid, "h3" inside a titled row
+
 import { Link } from "react-router";
 import getImageUrl from "../../../services/tmdb/getImageUrl";
 import styles from "./TitleCard.module.css";
@@ -8,7 +14,6 @@ const MEDIA_LABELS = {
   tv: "Series",
 };
 
-// titleAs: heading level for the title, "h2" in the grid, "h3" inside a titled row
 const TitleCard = ({ item, titleAs: Title = "h2" }) => {
   const posterUrl = getImageUrl(item.posterPath, "w342");
 

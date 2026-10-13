@@ -1,8 +1,8 @@
-import styles from "./AuthLayout.module.css";
-
 // ===== Auth layout =====
 // Centred card shared by the log in and sign up pages.
 // children is the form, footer is the link to the other page.
+
+import styles from "./AuthLayout.module.css";
 
 const AuthLayout = ({ title, subtitle, children, footer }) => (
   <div className="container">

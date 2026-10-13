@@ -1,11 +1,12 @@
+// ===== Library helpers =====
+// Pure functions for My library: rental time, owned items, labels and sections.
+
 import {
   EXPIRED_RENTAL_LABEL,
   LIBRARY_SECTIONS,
   RENTAL_LABEL,
 } from "./libraryConfig";
 import msToHours from "../../utils/msToHours";
-
-// ===== Library helpers =====
 
 // Returns the hours left on a rental, rounded up, e.g. 30.2 → 31.
 // Returns 0 when the rental has expired.

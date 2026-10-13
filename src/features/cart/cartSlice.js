@@ -1,6 +1,11 @@
+// ===== Cart slice =====
+// The items in the cart: add, remove, change quantity and replace them all.
+// Saved to localStorage in the store, and synced with Supabase when signed in.
+
 import { createSlice } from "@reduxjs/toolkit";
 import { createCartKey, isPhysicalFormat } from "./cartHelpers";
 
+// ===== State =====
 const initialState = {
   cartItems: [],
 };

@@ -1,3 +1,8 @@
+// ===== Quantity control =====
+// Minus, quantity and plus for one cart row.
+// Minus is disabled at 1, the row is removed with the remove button.
+// item: a row from the cart state
+
 import { useDispatch } from "react-redux";
 import { Minus, Plus } from "lucide-react";
 import {
@@ -6,11 +11,6 @@ import {
 } from "../../../features/cart/cartSlice";
 import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./QuantityControl.module.css";
-
-// ===== Quantity control =====
-// Minus, quantity and plus for one cart row.
-// Minus is disabled at 1, the row is removed with the remove button.
-// item: a row from the cart state
 
 const QuantityControl = ({ item }) => {
   const dispatch = useDispatch();

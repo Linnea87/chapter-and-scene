@@ -1,6 +1,9 @@
+// ===== Get nav link class =====
+// Returns a className function for NavLink, adding activeClass on the current page.
 
-// Returns a className function for NavLink, adding activeClass on the current page
-const getNavLinkClass = (baseClass, activeClass) => ({ isActive }) =>
+const getNavLinkClass =
+  (baseClass, activeClass) =>
+  ({ isActive }) =>
     isActive ? `${baseClass} ${activeClass}` : baseClass;
 
 export default getNavLinkClass;

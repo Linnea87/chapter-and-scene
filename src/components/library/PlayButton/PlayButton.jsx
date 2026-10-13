@@ -1,3 +1,9 @@
+// ===== Play button =====
+// Plays a movie or series from My library in the player.
+// The trailer from TMDb stands in for the full content.
+// Renders nothing while loading or when the title has no trailer.
+// item: a library item with mediaType "movie" or "tv"
+
 import { Play } from "lucide-react";
 import useDisclosure from "../../../hooks/useDisclosure";
 import { useGetTitleDetailsQuery } from "../../../services/tmdb/tmdbApi";
@@ -5,12 +11,6 @@ import { PLAYER_NOTICE } from "../../../features/library/libraryConfig";
 import Button from "../../ui/buttons/Button/Button";
 import TrailerModal from "../../trailer/TrailerModal/TrailerModal";
 import styles from "./PlayButton.module.css";
-
-// ===== Play button =====
-// Plays a movie or series from My library in the player.
-// The trailer from TMDb stands in for the full content.
-// Renders nothing while loading or when the title has no trailer.
-// item: a library item with mediaType "movie" or "tv"
 
 const PlayButton = ({ item }) => {
   const { isOpen, open, close } = useDisclosure();

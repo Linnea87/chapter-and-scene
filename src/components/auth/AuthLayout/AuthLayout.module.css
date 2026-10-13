@@ -1,3 +1,6 @@
+/* ===== Auth layout styles ===== */
+/* The centred card around the log in and sign up forms. */
+
 /* ===== Auth layout ===== */
 .card {
   display: flex;

@@ -1,3 +1,10 @@
+// ===== Cart summary =====
+// Subtotal, shipping and total for the cart.
+// Shipping is only shown when the cart has a physical book.
+// Amounts show a conversion next to them when another currency is selected.
+// A bundle discount is shown when a book and its movie or series are both in the cart.
+// className lets the parent decide the spacing.
+
 import { useSelector } from "react-redux";
 import {
   selectAmountToFreeShipping,
@@ -20,12 +27,6 @@ const SummaryRow = ({ label, value, isTotal = false }) => (
 );
 
 // ===== Cart summary =====
-// Subtotal, shipping and total for the cart.
-// Shipping is only shown when the cart has a physical book.
-// Amounts show a conversion next to them when another currency is selected.
-// A bundle discount is shown when a book and its movie or series are both in the cart.
-// className lets the parent decide the spacing.
-
 const CartSummary = ({ className }) => {
   const subtotal = useSelector(selectSubtotal);
   const bundleDiscount = useSelector(selectBundleDiscount);

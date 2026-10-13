@@ -1,3 +1,9 @@
+// ===== Order page =====
+// Shows one order: order number, items and total.
+// After a purchase it is the confirmation (CS-027), with links to keep shopping.
+// From the order history (CS-028) it shows the order details and a link back.
+// Only reachable when signed in, see ProtectedRoute.
+
 import { useLocation, useParams } from "react-router";
 import { useGetOrderQuery } from "../../services/supabase/supabaseApi";
 import {
@@ -12,12 +18,6 @@ import LoadError from "../../components/ui/feedback/LoadError/LoadError";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
 import styles from "./OrderPage.module.css";
-
-// ===== Order page =====
-// Shows one order: order number, items and total.
-// After a purchase it is the confirmation (CS-027), with links to keep shopping.
-// From the order history (CS-028) it shows the order details and a link back.
-// Only reachable when signed in, see ProtectedRoute.
 
 const OrderPage = () => {
   const { id } = useParams();

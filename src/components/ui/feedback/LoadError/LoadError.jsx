@@ -1,7 +1,7 @@
-import StatusMessage from "../StatusMessage/StatusMessage";
-
 // ===== Load error =====
 // Shown when data could not be loaded. Always offers a retry.
+
+import StatusMessage from "../StatusMessage/StatusMessage";
 
 const LoadError = ({ title, onRetry }) => (
   <StatusMessage

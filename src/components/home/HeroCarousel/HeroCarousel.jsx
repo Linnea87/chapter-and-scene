@@ -1,3 +1,10 @@
+// ===== Hero carousel =====
+// The highest rated book adaptations on a track that slides sideways.
+// The current slide links to the title, and the slides next to it peek in
+// on each side. No autoplay, so the user decides when the slide changes.
+// Mobile shows the upright poster, larger screens the wide backdrop.
+// On touch screens the slides are swiped, with a mouse the arrows are used.
+
 import { Link } from "react-router";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import useCarousel from "../../../hooks/useCarousel";
@@ -8,13 +15,6 @@ import getImageUrl from "../../../services/tmdb/getImageUrl";
 import { HERO } from "../../../features/home/homeConfig";
 import IconButton from "../../ui/buttons/IconButton/IconButton";
 import styles from "./HeroCarousel.module.css";
-
-// ===== Hero carousel =====
-// The highest rated book adaptations on a track that slides sideways.
-// The current slide links to the title, and the slides next to it peek in
-// on each side. No autoplay, so the user decides when the slide changes.
-// Mobile shows the upright poster, larger screens the wide backdrop.
-// On touch screens the slides are swiped, with a mouse the arrows are used.
 
 const HeroCarousel = () => {
   const { titles, isLoading } = useHomeTitles({ sort: HERO.sort });

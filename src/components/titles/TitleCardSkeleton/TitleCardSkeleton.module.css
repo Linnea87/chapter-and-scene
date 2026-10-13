@@ -1,3 +1,6 @@
+/* ===== Title card skeleton styles ===== */
+/* The grey placeholder card shown while titles are loading. */
+
 /* ===== Card ===== */
 /* Same layout as TitleCard, so the page does not jump when real cards appear */
 .card {

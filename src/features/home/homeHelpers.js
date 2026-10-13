@@ -1,6 +1,7 @@
-import { sortTitles } from "../titles/titleHelpers";
-
 // ===== Home helpers =====
+// Pure functions for the home rows: merging movies and series into one list.
+
+import { sortTitles } from "../titles/titleHelpers";
 
 // --- Merge ---
 // Combines movies and series, sorts them the same way TMDb did

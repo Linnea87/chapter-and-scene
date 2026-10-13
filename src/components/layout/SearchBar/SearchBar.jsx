@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
-import { useLocation, useNavigate, useSearchParams } from "react-router";
-import SearchField from "../../ui/forms/SearchField/SearchField";
-
 // ===== Search bar =====
 // The search field that folds out under the header icons.
 // Typing shows the results on the explore page, e.g. /explore?q=dune.
 // On the explore page the chosen category is kept.
+
+import { useEffect, useRef } from "react";
+import { useLocation, useNavigate, useSearchParams } from "react-router";
+import SearchField from "../../ui/forms/SearchField/SearchField";
 
 const SearchBar = () => {
   const [searchParams] = useSearchParams();

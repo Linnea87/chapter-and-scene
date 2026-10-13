@@ -1,10 +1,10 @@
-import getImageUrl from "../../../services/tmdb/getImageUrl";
-import TrailerButton from "../../trailer/TrailerButton/TrailerButton";
-import styles from "./DetailHero.module.css";
-
 // ===== Detail hero =====
 // Top of a detail page: backdrop, poster, title, facts, genres and overview.
 // Shared by movies and series. The page decides which facts to show in meta.
+
+import getImageUrl from "../../../services/tmdb/getImageUrl";
+import TrailerButton from "../../trailer/TrailerButton/TrailerButton";
+import styles from "./DetailHero.module.css";
 
 const DetailHero = ({ details, meta }) => {
   const backdropUrl = getImageUrl(details.backdropPath, "w1280");

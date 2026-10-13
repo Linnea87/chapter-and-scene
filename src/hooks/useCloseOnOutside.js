@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-
 // ===== Close on outside hook =====
 // Calls onClose when the user clicks outside the element in ref
 // or presses Escape, e.g. to close a dropdown menu.
 // Only listens while isOpen is true, so closed menus cost nothing.
+
+import { useEffect } from "react";
 
 const useCloseOnOutside = (ref, isOpen, onClose) => {
   useEffect(() => {

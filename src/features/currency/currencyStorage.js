@@ -1,12 +1,12 @@
+// ===== Currency storage =====
+// Loads and saves the selected currency in localStorage.
+
 import { loadFromStorage, saveToStorage } from "../../services/storage/storage";
 import {
   BASE_CURRENCY,
   CURRENCIES,
   CURRENCY_STORAGE_KEY,
 } from "./currencyConfig";
-
-// ===== Currency storage =====
-// Loads and saves the selected currency in localStorage.
 
 // --- Load ---
 // Only a currency the shop offers is accepted, so old or edited data

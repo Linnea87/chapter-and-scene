@@ -1,3 +1,9 @@
+// ===== Explore page =====
+// Shows movies and series based on books, filtered by category.
+// /movies and /series show one media type, /explore shows both, e.g. search results.
+// The category lives in the URL, e.g. ?category=romance.
+// The search term (?q=) comes from the search bar in the header.
+
 import { useSearchParams } from "react-router";
 import useDebouncedValue from "../../hooks/useDebouncedValue";
 import useExploreTitles from "../../hooks/useExploreTitles";
@@ -14,12 +20,6 @@ import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMess
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
 import styles from "./ExplorePage.module.css";
-
-// ===== Explore page =====
-// Shows movies and series based on books, filtered by category.
-// /movies and /series show one media type, /explore shows both, e.g. search results.
-// The category lives in the URL, e.g. ?category=romance.
-// The search term (?q=) comes from the search bar in the header.
 
 const ExplorePage = ({ mediaTypeId = ALL_ID }) => {
   // --- Media type from the route, filters from the URL ---

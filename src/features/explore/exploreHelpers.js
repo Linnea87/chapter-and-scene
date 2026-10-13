@@ -1,7 +1,8 @@
+// ===== Explore helpers =====
+// Pure functions for the explore pages: filtering search results and merging pages.
+
 import { sortTitles } from "../titles/titleHelpers";
 import { ALL_ID } from "./exploreConfig";
-
-// ===== Explore helpers =====
 
 // --- Search ---
 // Keeps titles that have at least one of the category's genres.

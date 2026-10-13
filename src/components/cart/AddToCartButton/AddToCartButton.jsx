@@ -1,3 +1,11 @@
+// ===== Add to cart button =====
+// Adds one price option to the cart and shows when it is already there:
+// a basket icon to add, a check mark when it is in the cart.
+// When the option clashes with something in the cart, e.g. renting and buying
+// the same movie, the user is asked which one to keep.
+// The quantity of physical books is changed in the cart.
+// item: a cart item from createCartItem
+
 import { useDispatch, useSelector } from "react-redux";
 import { Check, ShoppingBasket } from "lucide-react";
 import useDisclosure from "../../../hooks/useDisclosure";
@@ -12,14 +20,6 @@ import {
 } from "../../../features/cart/cartHelpers";
 import Button from "../../ui/buttons/Button/Button";
 import ReplaceItemDialog from "../ReplaceItemDialog/ReplaceItemDialog";
-
-// ===== Add to cart button =====
-// Adds one price option to the cart and shows when it is already there:
-// a basket icon to add, a check mark when it is in the cart.
-// When the option clashes with something in the cart, e.g. renting and buying
-// the same movie, the user is asked which one to keep.
-// The quantity of physical books is changed in the cart.
-// item: a cart item from createCartItem
 
 const AddToCartButton = ({ item }) => {
   const dispatch = useDispatch();

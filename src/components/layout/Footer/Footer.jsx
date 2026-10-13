@@ -1,10 +1,10 @@
-import { Link } from "react-router";
-import tmdbLogo from "../../../assets/tmdb-logo.svg";
-import styles from "./Footer.module.css";
-
 // ===== Footer =====
 // Site name, tagline, the same main pages as the header, and the
 // attribution that TMDB and Google Books require.
+
+import { Link } from "react-router";
+import tmdbLogo from "../../../assets/tmdb-logo.svg";
+import styles from "./Footer.module.css";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

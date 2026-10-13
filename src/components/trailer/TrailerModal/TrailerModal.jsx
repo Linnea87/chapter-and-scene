@@ -1,12 +1,12 @@
-import { X } from "lucide-react";
-import useDialog from "../../../hooks/useDialog";
-import IconButton from "../../ui/buttons/IconButton/IconButton";
-import styles from "./TrailerModal.module.css";
-
 // ===== Trailer modal =====
 // Plays a YouTube trailer in a native <dialog>, so the user stays on the page.
 // isPlayer: player mode, used in My library. Fills the window, is labelled
 // "Now playing" and can show a notice above the video.
+
+import { X } from "lucide-react";
+import useDialog from "../../../hooks/useDialog";
+import IconButton from "../../ui/buttons/IconButton/IconButton";
+import styles from "./TrailerModal.module.css";
 
 const TrailerModal = ({
   trailerKey,

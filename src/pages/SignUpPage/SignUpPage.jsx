@@ -1,10 +1,11 @@
+// ===== Sign up page =====
+// Creates an account with email and password, then goes on like after log in.
+
 import { Link, useLocation, useNavigate } from "react-router";
 import signUpUser from "../../services/supabase/auth/signUpUser";
 import { getRedirectPath } from "../../features/auth/authHelpers";
 import AuthForm from "../../components/auth/AuthForm/AuthForm";
 import AuthLayout from "../../components/auth/AuthLayout/AuthLayout";
-
-// ===== Sign up page =====
 
 const SignUpPage = () => {
   const navigate = useNavigate();

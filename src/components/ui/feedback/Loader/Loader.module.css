@@ -1,3 +1,6 @@
+/* ===== Loader styles ===== */
+/* The spinning circle shown while something is loading. */
+
 /* ===== Layout ===== */
 .loader {
   display: flex;

@@ -1,3 +1,8 @@
+// ===== Order list item =====
+// One row in the order history: date, order number, number of items and total.
+// The whole row links to the order page, which then shows a link back here.
+// order: an order from getOrders, see toOrder
+
 import { Link } from "react-router";
 import {
   formatOrderNumber,
@@ -7,11 +12,6 @@ import formatDate from "../../../utils/formatDate";
 import formatPrice from "../../../utils/formatPrice";
 import pluralize from "../../../utils/pluralize";
 import styles from "./OrderListItem.module.css";
-
-// ===== Order list item =====
-// One row in the order history: date, order number, number of items and total.
-// The whole row links to the order page, which then shows a link back here.
-// order: an order from getOrders, see toOrder
 
 const OrderListItem = ({ order }) => (
   <li>

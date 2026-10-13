@@ -1,11 +1,11 @@
+// ===== Auth form =====
+// Email and password form shared by the log in and sign up pages.
+// onSubmit receives { email, password } and may throw, the message is shown in the form.
+
 import { useState } from "react";
 import Button from "../../ui/buttons/Button/Button";
 import TextField from "../../ui/forms/TextField/TextField";
 import styles from "./AuthForm.module.css";
-
-// ===== Auth form =====
-// Email and password form shared by the log in and sign up pages.
-// onSubmit receives { email, password } and may throw, the message is shown in the form.
 
 const AuthForm = ({ submitLabel, passwordAutoComplete, onSubmit }) => {
   // --- State ---

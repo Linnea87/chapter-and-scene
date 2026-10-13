@@ -1,3 +1,6 @@
+/* ===== Reader modal styles ===== */
+/* The full window Google Books reader for e-books in My library. */
+
 /* ===== Dialog ===== */
 /* Fills the whole window, like the player in My library.
    No display rule here: the browser hides a closed <dialog> with display: none */

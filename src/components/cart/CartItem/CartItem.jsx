@@ -1,3 +1,11 @@
+// ===== Cart item =====
+// One row in the cart: image, title, format, delivery, price and a remove button.
+// Physical books also get a quantity control.
+// isReadOnly hides the controls, e.g. in the checkout.
+// showConversion: false on the order page, where prices are only shown in USD.
+// Order items also show their delivery status.
+// item: a row from the cart state, see createCartItem
+
 import { useDispatch } from "react-redux";
 import { Trash2 } from "lucide-react";
 import { removeItem } from "../../../features/cart/cartSlice";
@@ -11,14 +19,6 @@ import QuantityControl from "../QuantityControl/QuantityControl";
 import Price from "../../pricing/Price/Price";
 import Thumbnail from "../../ui/media/Thumbnail/Thumbnail";
 import styles from "./CartItem.module.css";
-
-// ===== Cart item =====
-// One row in the cart: image, title, format, delivery, price and a remove button.
-// Physical books also get a quantity control.
-// isReadOnly hides the controls, e.g. in the checkout.
-// showConversion: false on the order page, where prices are only shown in USD.
-// Order items also show their delivery status.
-// item: a row from the cart state, see createCartItem
 
 const CartItem = ({ item, isReadOnly = false, showConversion = true }) => {
   const dispatch = useDispatch();

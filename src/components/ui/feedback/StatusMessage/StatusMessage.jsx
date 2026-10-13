@@ -1,11 +1,11 @@
-import Button from "../../buttons/Button/Button";
-import ButtonLink from "../../buttons/ButtonLink/ButtonLink";
-import styles from "./StatusMessage.module.css";
-
 // ===== Status message =====
 // A centered message with an optional icon and action.
 // Used for errors (role "alert"), empty results and not found pages (role "status").
 // Technical error details are never shown.
+
+import Button from "../../buttons/Button/Button";
+import ButtonLink from "../../buttons/ButtonLink/ButtonLink";
+import styles from "./StatusMessage.module.css";
 
 const StatusMessage = ({
   title,

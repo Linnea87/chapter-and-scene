@@ -1,3 +1,8 @@
+// ===== Movie detail page =====
+// Shows one movie with facts, tabs to watch the movie, read the book and,
+// for movies in a movie series, see the other movies. Then the cast.
+// The id comes from the URL (/movie/:id).
+
 import { useParams } from "react-router";
 import { useGetTitleDetailsQuery } from "../../services/tmdb/tmdbApi";
 import getImageUrl from "../../services/tmdb/getImageUrl";
@@ -14,11 +19,6 @@ import PriceOptions from "../../components/pricing/PriceOptions/PriceOptions";
 import TitleNotFound from "../../components/ui/feedback/TitleNotFound/TitleNotFound";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
-
-// ===== Movie detail page =====
-// Shows one movie with facts, tabs to watch the movie, read the book and,
-// for movies in a movie series, see the other movies. Then the cast.
-// The id comes from the URL (/movie/:id).
 
 const MovieDetailPage = () => {
   const { id } = useParams();

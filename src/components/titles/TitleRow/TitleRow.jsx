@@ -1,12 +1,12 @@
+// ===== Title row =====
+// A titled row of title cards that scrolls sideways, with a "See all" link.
+// The parent fetches the titles, this component only shows them.
+
 import { useId } from "react";
 import { Link } from "react-router";
 import TitleCard from "../TitleCard/TitleCard";
 import TitleCardSkeleton from "../TitleCardSkeleton/TitleCardSkeleton";
 import styles from "./TitleRow.module.css";
-
-// ===== Title row =====
-// A titled row of title cards that scrolls sideways, with a "See all" link.
-// The parent fetches the titles, this component only shows them.
 
 // Number of placeholder cards while loading
 const SKELETON_COUNT = 6;

@@ -1,9 +1,9 @@
-import { useId } from "react";
-import styles from "./TextField.module.css";
-
 // ===== Text field =====
 // A labelled, controlled input. The parent owns the value and
 // receives every change through onChange.
+
+import { useId } from "react";
+import styles from "./TextField.module.css";
 
 const TextField = ({ label, type = "text", value, onChange, autoComplete }) => {
   // Unique id that connects the label to the input

@@ -1,3 +1,7 @@
+// ===== Order history page =====
+// Lists the signed-in user's orders, newest first. Each order opens the order page.
+// Only reachable when signed in, see ProtectedRoute.
+
 import { Receipt } from "lucide-react";
 import { useGetOrdersQuery } from "../../services/supabase/supabaseApi";
 import OrderListItem from "../../components/orders/OrderListItem/OrderListItem";
@@ -5,10 +9,6 @@ import LoadError from "../../components/ui/feedback/LoadError/LoadError";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
 import styles from "./OrderHistoryPage.module.css";
-
-// ===== Order history page =====
-// Lists the signed-in user's orders, newest first. Each order opens the order page.
-// Only reachable when signed in, see ProtectedRoute.
 
 const OrderHistoryPage = () => {
   const { data: orders, isLoading, isError, refetch } = useGetOrdersQuery();

@@ -1,3 +1,9 @@
+// ===== Checkout form =====
+// Shipping address (only when needsAddress is true), payment method,
+// a demo notice and "Place order".
+// onSubmit receives the address, or null for digital orders, and may throw.
+// The error message is then shown in the form.
+
 import { useState } from "react";
 import {
   ADDRESS_FIELDS,
@@ -8,12 +14,6 @@ import {
 import Button from "../../ui/buttons/Button/Button";
 import TextField from "../../ui/forms/TextField/TextField";
 import styles from "./CheckoutForm.module.css";
-
-// ===== Checkout form =====
-// Shipping address (only when needsAddress is true), payment method,
-// a demo notice and "Place order".
-// onSubmit receives the address, or null for digital orders, and may throw.
-// The error message is then shown in the form.
 
 const CheckoutForm = ({ needsAddress, onSubmit }) => {
   // --- State ---

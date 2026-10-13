@@ -1,3 +1,6 @@
+// ===== Currency slice =====
+// The currency that prices are converted to. The shop always charges in USD.
+
 import { createSlice } from "@reduxjs/toolkit";
 import { BASE_CURRENCY } from "./currencyConfig";
 

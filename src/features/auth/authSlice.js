@@ -1,3 +1,6 @@
+// ===== Auth slice =====
+// The signed-in user, or null for a guest. Set by the Supabase auth listener.
+
 import { createSlice } from "@reduxjs/toolkit";
 
 // ===== State =====

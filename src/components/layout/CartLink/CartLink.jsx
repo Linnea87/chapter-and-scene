@@ -1,13 +1,13 @@
+// ===== Cart link =====
+// The basket icon in the header, with the number of items in a badge.
+// Highlighted when the cart page is open.
+
 import { NavLink } from "react-router";
 import { ShoppingBasket } from "lucide-react";
 import { useSelector } from "react-redux";
 import { selectCartCount } from "../../../features/cart/cartSelectors";
 import getNavLinkClass from "../../../utils/getNavLinkClass";
 import styles from "./CartLink.module.css";
-
-// ===== Cart link =====
-// The basket icon in the header, with the number of items in a badge.
-// Highlighted when the cart page is open.
 
 // Adds the active class when the cart page is open
 const getLinkClass = getNavLinkClass(styles.cartLink, styles.active);

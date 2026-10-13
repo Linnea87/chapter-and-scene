@@ -1,3 +1,6 @@
+/* ===== Status message styles ===== */
+/* The centred message for empty and error states, with an optional icon and action. */
+
 /* ===== Layout ===== */
 .status {
   display: flex;

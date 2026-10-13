@@ -1,14 +1,14 @@
+// ===== Supabase API =====
+// RTK Query service for reading and saving data in Supabase.
+// Gives loading, error and retry states like the TMDb and Google Books services.
+// The Supabase calls live in their own service files, this only wraps them.
+
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import addLibraryItems from "./library/addLibraryItems";
 import getLibraryItems from "./library/getLibraryItems";
 import createOrder from "./orders/createOrder";
 import getOrder from "./orders/getOrder";
 import getOrders from "./orders/getOrders";
-
-// ===== Supabase API =====
-// RTK Query service for reading and saving data in Supabase.
-// Gives loading, error and retry states like the TMDb and Google Books services.
-// The Supabase calls live in their own service files, this only wraps them.
 
 // Runs a Supabase service function and returns it in the shape RTK Query expects.
 // RTK Query needs a value, so functions that return nothing give null.

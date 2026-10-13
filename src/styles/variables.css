@@ -1,3 +1,6 @@
+/* ===== Variables styles ===== */
+/* Design tokens used by every CSS file: colors, fonts, spacing and sizes. */
+
 :root {
   /* ===== Colors ===== */
   /* Dark theme with a turquoise to aqua gradient (CS-048) */

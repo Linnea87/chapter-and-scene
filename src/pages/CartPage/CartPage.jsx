@@ -1,3 +1,6 @@
+// ===== Cart page =====
+// Lists the items in the cart with a summary of subtotal, shipping and total.
+
 import { useSelector } from "react-redux";
 import { ShoppingBasket } from "lucide-react";
 import { selectIsLoggedIn } from "../../features/auth/authSelectors";
@@ -7,9 +10,6 @@ import CartItem from "../../components/cart/CartItem/CartItem";
 import CartSummary from "../../components/cart/CartSummary/CartSummary";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
 import styles from "./CartPage.module.css";
-
-// ===== Cart page =====
-// Lists the items in the cart with a summary of subtotal, shipping and total.
 
 const CartPage = () => {
   const items = useSelector(selectCartItems);

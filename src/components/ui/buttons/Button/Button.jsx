@@ -1,5 +1,3 @@
-import styles from "./Button.module.css";
-
 // ===== Button =====
 // Button used across the app, in three variants:
 // "primary" (filled, the main action), "secondary" (outlined, less prominent)
@@ -7,6 +5,8 @@ import styles from "./Button.module.css";
 // and three sizes: "medium" (default), "small" (for repeated actions in lists)
 // and "icon" (round, for a single icon with hidden text).
 // Other props (onClick, disabled, aria-*) are passed on to the <button>.
+
+import styles from "./Button.module.css";
 
 const Button = ({
   children,

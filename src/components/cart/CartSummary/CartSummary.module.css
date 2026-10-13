@@ -1,3 +1,6 @@
+/* ===== Cart summary styles ===== */
+/* The subtotal, discount, shipping and total rows under the cart. */
+
 /* ===== Summary list ===== */
 .list {
   display: grid;

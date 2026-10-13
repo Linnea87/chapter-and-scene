@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
-
 // ===== Dialog hook =====
 // Keeps a native <dialog> in sync with React state.
 // Returns a ref to put on the <dialog> element.
+
+import { useEffect, useRef } from "react";
 
 const useDialog = (isOpen) => {
   const dialogRef = useRef(null);

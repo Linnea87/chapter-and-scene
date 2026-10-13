@@ -1,3 +1,7 @@
+// ===== Browse page =====
+// "See all" for a home row: every title in the row's order, e.g. /browse/recent.
+// The row comes from HOME_ROWS, so a new row gets its page without changes here.
+
 import { useParams } from "react-router";
 import useExploreTitles from "../../hooks/useExploreTitles";
 import { HOME_ROWS } from "../../features/home/homeConfig";
@@ -8,10 +12,6 @@ import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMess
 import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
 import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
 import styles from "./BrowsePage.module.css";
-
-// ===== Browse page =====
-// "See all" for a home row: every title in the row's order, e.g. /browse/recent.
-// The row comes from HOME_ROWS, so a new row gets its page without changes here.
 
 const BrowsePage = () => {
   const { rowId } = useParams();

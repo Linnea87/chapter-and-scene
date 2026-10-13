@@ -1,3 +1,6 @@
+/* ===== Replace item dialog styles ===== */
+/* The small dialog that asks which of two clashing items to keep. */
+
 /* ===== Dialog ===== */
 /* A small centred box. The browser centres a modal <dialog> on its own.
    No display rule here: the browser hides a closed <dialog> with display: none */

@@ -1,3 +1,9 @@
+// ===== Book section =====
+// Finds the book a movie or series is based on in Google Books,
+// and shows it with prices for each book format. The tab above it names the section.
+// If Google Books cannot be reached, the user can try again without reloading.
+// storyId: the movie or series the book belongs to, used for the bundle discount.
+
 import { useFindBookQuery } from "../../../services/googleBooks/googleBooksApi";
 import { getBookPrices } from "../../../features/pricing/pricingHelpers";
 import { BOOK_FORMATS, FORMAT_LABELS } from "../../../features/cart/cartConfig";
@@ -5,12 +11,6 @@ import Loader from "../../ui/feedback/Loader/Loader";
 import LoadError from "../../ui/feedback/LoadError/LoadError";
 import PriceOptions from "../../pricing/PriceOptions/PriceOptions";
 import styles from "./BookSection.module.css";
-
-// ===== Book section =====
-// Finds the book a movie or series is based on in Google Books,
-// and shows it with prices for each book format. The tab above it names the section.
-// If Google Books cannot be reached, the user can try again without reloading.
-// storyId: the movie or series the book belongs to, used for the bundle discount.
 
 const BookSection = ({ title, author, mediaType, storyId }) => {
   // The search is skipped until there is a title to search for

@@ -1,3 +1,6 @@
+/* ===== Text field styles ===== */
+/* A labelled text input, e.g. email, password and address. */
+
 /* ===== Text field ===== */
 .field {
   display: flex;
