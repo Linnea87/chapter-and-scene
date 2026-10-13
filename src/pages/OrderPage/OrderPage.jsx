@@ -1,7 +1,7 @@
 // ===== Order page =====
 // Shows one order: order number, items and total.
-// After a purchase it is the confirmation (CS-027), with links to keep shopping.
-// From the order history (CS-028) it shows the order details and a link back.
+// After a purchase it is the confirmation, with links to keep shopping.
+// From the order history it shows the order details and a link back.
 // Only reachable when signed in, see ProtectedRoute.
 
 import { useLocation, useParams } from "react-router";

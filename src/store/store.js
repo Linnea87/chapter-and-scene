@@ -1,6 +1,6 @@
 // ===== Store =====
-// Single global store for the app. API services from RTK Query are added in CS-038,
-// the Supabase service in CS-027 and the Frankfurter service in CS-044.
+// Single global store for the app: the auth, cart and currency slices,
+// and the RTK Query services for TMDb, Google Books, Supabase and Frankfurter.
 
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "../features/cart/cartSlice";
@@ -38,7 +38,7 @@ const store = configureStore({
       frankfurterApi.middleware,
     ),
 
-  // Restores the guest cart (CS-019) and the selected currency (CS-044) from localStorage
+  // Restores the guest cart and the selected currency from localStorage
   preloadedState: {
     cart: { cartItems: loadCartItems() },
     currency: { currency: loadCurrency() },
@@ -46,7 +46,7 @@ const store = configureStore({
 });
 
 // --- Persistence ---
-// Saves the cart items (CS-019) and the selected currency (CS-044) whenever they change.
+// Saves the cart items and the selected currency whenever they change.
 // The store updates on every action, including API requests,
 // so each value is only saved when it actually changed.
 
