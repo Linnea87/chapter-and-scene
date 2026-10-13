@@ -1,14 +1,14 @@
 /* ===== Order page styles ===== */
 /* The order details and confirmation column. */
 
-/* ===== Content ===== */
+/* --- Content --- */
 /* One narrow centred column, like the checkout */
 .content {
   max-width: 32rem;
   margin-inline: auto;
 }
 
-/* ===== Back link ===== */
+/* --- Back link --- */
 /* Only shown when the order is opened from the order history.
    The round area around the arrow is larger than the arrow itself,
    so it is pulled up and left to line the arrow up with the heading */
@@ -16,7 +16,7 @@
   margin: calc(-1 * var(--space-md)) 0 0 calc(-1 * var(--space-sm));
 }
 
-/* ===== Title and order number ===== */
+/* --- Title and order number --- */
 /* Centred, like the headings on the other pages */
 .title {
   text-align: center;
@@ -28,7 +28,7 @@
   color: var(--color-text-muted);
 }
 
-/* ===== List ===== */
+/* --- List --- */
 .list {
   margin: 0;
   padding: 0;
@@ -36,7 +36,7 @@
   border-top: 1px solid var(--color-border);
 }
 
-/* ===== Discount ===== */
+/* --- Discount --- */
 /* Same row layout as the total, but in normal text */
 .discount {
   display: flex;
@@ -45,7 +45,7 @@
   color: var(--color-text-muted);
 }
 
-/* ===== Total ===== */
+/* --- Total --- */
 .total {
   display: flex;
   justify-content: space-between;
@@ -54,7 +54,7 @@
   font-size: 1.125rem;
 }
 
-/* ===== Actions ===== */
+/* --- Actions --- */
 /* Mobile first: full width buttons stacked, easy to tap */
 .actions {
   display: flex;

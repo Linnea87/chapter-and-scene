@@ -1,7 +1,7 @@
 /* ===== Thumbnail styles ===== */
 /* A small image with a placeholder when there is no image. */
 
-/* ===== Thumbnail ===== */
+/* --- Image --- */
 /* Size and shape come from the parent through className */
 .thumbnail {
   display: block;

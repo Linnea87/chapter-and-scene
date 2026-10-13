@@ -1,7 +1,7 @@
 /* ===== Title row styles ===== */
 /* A heading with a See all link and a row of poster cards that scrolls sideways. */
 
-/* ===== Row ===== */
+/* --- Row --- */
 .row {
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@
   color: inherit;
 }
 
-/* ===== Cards ===== */
+/* --- Cards --- */
 /* Scrolls sideways and stops at the start of each card */
 .list {
   display: flex;

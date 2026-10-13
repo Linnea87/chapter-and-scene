@@ -1,7 +1,7 @@
 /* ===== Title grid styles ===== */
 /* The poster grid, also used by the skeleton grid and My library. */
 
-/* ===== Grid ===== */
+/* --- Grid --- */
 /* Mobile first: 3 columns, like the poster rows in streaming apps,
    then more on larger screens */
 .grid {
@@ -13,7 +13,7 @@
   list-style: none;
 }
 
-/* ===== Responsive ===== */
+/* --- Responsive --- */
 @media (min-width: 600px) {
   .grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));

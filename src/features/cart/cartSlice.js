@@ -5,12 +5,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createCartKey, isPhysicalFormat } from "./cartHelpers";
 
-// ===== State =====
+// --- State ---
 const initialState = {
   cartItems: [],
 };
 
-// ===== Helpers =====
+// --- Helpers ---
 // Called from the reducers with Immer's draft state, so direct mutation is safe
 
 const findItem = (state, key) =>
@@ -20,7 +20,7 @@ const removeByKey = (state, key) => {
   state.cartItems = state.cartItems.filter((item) => item.key !== key);
 };
 
-// ===== Slice =====
+// --- Slice ---
 const cartSlice = createSlice({
   name: "cart",
   initialState,

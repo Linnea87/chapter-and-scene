@@ -17,7 +17,7 @@ import {
 import Price from "../../pricing/Price/Price";
 import styles from "./CartSummary.module.css";
 
-// ===== Summary row =====
+// --- Summary row ---
 // One label and amount, only used inside CartSummary
 const SummaryRow = ({ label, value, isTotal = false }) => (
   <div className={isTotal ? `${styles.row} ${styles.total}` : styles.row}>
@@ -26,7 +26,7 @@ const SummaryRow = ({ label, value, isTotal = false }) => (
   </div>
 );
 
-// ===== Cart summary =====
+// --- Cart summary ---
 const CartSummary = ({ className }) => {
   const subtotal = useSelector(selectSubtotal);
   const bundleDiscount = useSelector(selectBundleDiscount);

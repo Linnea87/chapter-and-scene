@@ -1,7 +1,7 @@
 /* ===== Read button styles ===== */
 /* The Read button in My library, the link to Google's reader and the no preview message. */
 
-/* ===== Button content ===== */
+/* --- Button content --- */
 /* Icon and text on one line */
 .content {
   display: inline-flex;
@@ -9,7 +9,7 @@
   gap: var(--space-xs);
 }
 
-/* ===== Link to Google's reader ===== */
+/* --- Link to Google's reader --- */
 /* Looks like the Read button, so both cases match in the library */
 .link {
   composes: button secondary small from "../../ui/buttons/Button/Button.module.css";
@@ -19,7 +19,7 @@
   text-decoration: none;
 }
 
-/* ===== No preview ===== */
+/* --- No preview --- */
 .message {
   margin: 0;
   font-size: 0.875rem;

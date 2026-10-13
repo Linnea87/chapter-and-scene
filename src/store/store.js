@@ -45,7 +45,7 @@ const store = configureStore({
   },
 });
 
-// ===== Persistence =====
+// --- Persistence ---
 // Saves the cart items (CS-019) and the selected currency (CS-044) whenever they change.
 // The store updates on every action, including API requests,
 // so each value is only saved when it actually changed.

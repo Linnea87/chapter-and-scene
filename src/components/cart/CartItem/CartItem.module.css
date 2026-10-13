@@ -1,7 +1,7 @@
 /* ===== Cart item styles ===== */
 /* One row in the cart, checkout and order: image, info, price and remove button. */
 
-/* ===== Row ===== */
+/* --- Row --- */
 /* Image, info, price and remove button side by side.
    Mobile first: tighter columns, so the title has room next to the price */
 .item {
@@ -24,14 +24,14 @@
   }
 }
 
-/* ===== Image ===== */
+/* --- Image --- */
 .image {
   width: 100%;
   aspect-ratio: 2 / 3;
   border-radius: var(--radius-sm);
 }
 
-/* ===== Text ===== */
+/* --- Text --- */
 /* Lets long titles wrap instead of pushing the price out of the row */
 .info {
   min-width: 0;
@@ -77,7 +77,7 @@
   }
 }
 
-/* ===== Remove button ===== */
+/* --- Remove button --- */
 /* Size and look come from IconButton, this only places it.
    Lines the icon up with the right edge of the row */
 .remove {

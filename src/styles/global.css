@@ -1,7 +1,7 @@
 /* ===== Global styles ===== */
 /* Base styles for the whole app: reset, typography, focus ring and utility classes. */
 
-/* ===== Base ===== */
+/* --- Base --- */
 *,
 *::before,
 *::after {
@@ -22,7 +22,7 @@ body {
   overflow-x: clip;
 }
 
-/* ===== Typography ===== */
+/* --- Typography --- */
 h1,
 h2,
 h3 {
@@ -35,7 +35,7 @@ a {
   color: inherit;
 }
 
-/* ===== Elements ===== */
+/* --- Elements --- */
 img {
   display: block;
   max-width: 100%;
@@ -47,14 +47,14 @@ select {
   font: inherit;
 }
 
-/* ===== Accessibility ===== */
+/* --- Accessibility --- */
 /* Visible focus outline for keyboard users */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-/* ===== Layout ===== */
+/* --- Layout --- */
 /* Keeps the footer at the bottom on short pages */
 #root {
   display: flex;
@@ -66,7 +66,7 @@ main {
   flex: 1;
 }
 
-/* ===== Utilities ===== */
+/* --- Utilities --- */
 /* Hides content visually but keeps it available for screen readers */
 .visually-hidden {
   position: absolute;

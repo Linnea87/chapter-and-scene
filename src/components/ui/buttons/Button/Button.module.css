@@ -1,7 +1,7 @@
 /* ===== Button styles ===== */
 /* The shared button styles: variants, sizes and states. */
 
-/* ===== Button ===== */
+/* --- Base --- */
 /* Shared size and shape for all variants, with rounded ends */
 .button {
   min-height: var(--touch-target);
@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-/* ===== Variants ===== */
+/* --- Variants --- */
 /* Filled with the brand gradient: the main action on a page */
 .primary {
   color: var(--color-primary-contrast);
@@ -31,7 +31,7 @@
   background-color: transparent;
 }
 
-/* ===== Sizes ===== */
+/* --- Sizes --- */
 /* The height stays the same, so both sizes are easy to tap */
 .medium {
   padding: 0 var(--space-lg);
@@ -51,7 +51,7 @@
   padding: 0;
 }
 
-/* ===== States ===== */
+/* --- States --- */
 .button:disabled {
   opacity: 0.6;
   cursor: default;

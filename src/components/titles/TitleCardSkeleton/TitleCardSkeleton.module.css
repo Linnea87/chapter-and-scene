@@ -1,7 +1,7 @@
 /* ===== Title card skeleton styles ===== */
 /* The grey placeholder card shown while titles are loading. */
 
-/* ===== Card ===== */
+/* --- Card --- */
 /* Same layout as TitleCard, so the page does not jump when real cards appear */
 .card {
   display: flex;
@@ -9,7 +9,7 @@
   gap: var(--space-xs);
 }
 
-/* ===== Blocks ===== */
+/* --- Blocks --- */
 .block {
   background-color: var(--color-border);
   border-radius: var(--radius-sm);
@@ -31,7 +31,7 @@
   height: 0.8rem;
 }
 
-/* ===== Animation ===== */
+/* --- Animation --- */
 @keyframes pulse {
   0%,
   100% {
@@ -43,7 +43,7 @@
   }
 }
 
-/* ===== Accessibility ===== */
+/* --- Accessibility --- */
 @media (prefers-reduced-motion: reduce) {
   .block {
     animation: none;

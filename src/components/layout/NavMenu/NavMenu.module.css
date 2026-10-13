@@ -1,7 +1,7 @@
 /* ===== Nav menu styles ===== */
 /* The Home, Movies and Series icons in the middle of the header. */
 
-/* ===== List ===== */
+/* --- List --- */
 /* The icons close together, so they read as one group */
 .navList {
   display: flex;
@@ -11,7 +11,7 @@
   list-style: none;
 }
 
-/* ===== Links ===== */
+/* --- Links --- */
 /* Round touch target with the icon in the middle */
 .link {
   display: inline-flex;

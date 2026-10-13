@@ -1,7 +1,7 @@
 /* ===== Status message styles ===== */
 /* The centred message for empty and error states, with an optional icon and action. */
 
-/* ===== Layout ===== */
+/* --- Layout --- */
 .status {
   display: flex;
   flex-direction: column;
@@ -11,13 +11,13 @@
   text-align: center;
 }
 
-/* ===== Icon ===== */
+/* --- Icon --- */
 /* Placeholder until the custom illustrations are made */
 .icon {
   color: var(--color-text-muted);
 }
 
-/* ===== Text ===== */
+/* --- Text --- */
 .title {
   margin: 0;
   font-size: 1.25rem;

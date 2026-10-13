@@ -1,7 +1,7 @@
 /* ===== Footer styles ===== */
 /* The site name, links and the TMDB and Google Books attribution. */
 
-/* ===== Layout ===== */
+/* --- Layout --- */
 /* Mobile first: compact, so the footer does not take over a small screen.
    Room above it, so the page content does not end right at the footer.
    More room from 600px */
@@ -18,7 +18,7 @@
   border-top: 1px solid var(--color-border);
 }
 
-/* ===== Branding ===== */
+/* --- Branding --- */
 .logo {
   margin: 0;
   font-family: var(--font-heading);
@@ -32,7 +32,7 @@
   color: var(--color-text-muted);
 }
 
-/* ===== Links ===== */
+/* --- Links --- */
 .linkList {
   display: flex;
   gap: var(--space-lg);
@@ -56,7 +56,7 @@
   }
 }
 
-/* ===== Attribution ===== */
+/* --- Attribution --- */
 .attribution {
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@
   color: inherit;
 }
 
-/* ===== Bottom row ===== */
+/* --- Bottom row --- */
 /* The copyright and the TMDB logo together in the middle, like the rest of the footer */
 .bottomRow {
   display: flex;
@@ -98,14 +98,14 @@
   height: 9px;
 }
 
-/* ===== Text ===== */
+/* --- Text --- */
 .smallText {
   margin: 0;
   font-size: 0.75rem;
   color: var(--color-text-muted);
 }
 
-/* ===== Larger screens ===== */
+/* --- Larger screens --- */
 @media (min-width: 600px) {
   .footer {
     gap: var(--space-sm);

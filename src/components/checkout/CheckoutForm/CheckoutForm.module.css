@@ -1,7 +1,7 @@
 /* ===== Checkout form styles ===== */
 /* The address, payment method and messages in the checkout. */
 
-/* ===== Checkout form ===== */
+/* --- Form --- */
 .form {
   display: flex;
   flex-direction: column;

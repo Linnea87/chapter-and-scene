@@ -1,7 +1,7 @@
 /* ===== Trailer button styles ===== */
 /* The play icon and text inside the Watch trailer button. */
 
-/* ===== Button content ===== */
+/* --- Button content --- */
 /* Icon and text on one line */
 .content {
   display: inline-flex;

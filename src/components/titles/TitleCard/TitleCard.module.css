@@ -1,7 +1,7 @@
 /* ===== Title card styles ===== */
 /* One movie or series poster card with its title, type and year. */
 
-/* ===== Card ===== */
+/* --- Card --- */
 .card {
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
   text-decoration: none;
 }
 
-/* ===== Poster ===== */
+/* --- Poster --- */
 /* Fixed 2:3 ratio keeps all cards the same height, with or without an image */
 .posterWrapper {
   aspect-ratio: 2 / 3;
@@ -35,7 +35,7 @@
   color: var(--color-text-muted);
 }
 
-/* ===== Text ===== */
+/* --- Text --- */
 .title {
   margin: 0;
   font-family: var(--font-body);
@@ -58,7 +58,7 @@
   border-radius: var(--radius-sm);
 }
 
-/* ===== States ===== */
+/* --- States --- */
 @media (hover: hover) {
   .card:hover .poster {
     transform: scale(1.03);

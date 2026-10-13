@@ -1,7 +1,7 @@
 /* ===== Price options styles ===== */
 /* The price rows on a detail page, also used by the bundle offer. */
 
-/* ===== Price options ===== */
+/* --- List and rows --- */
 .list {
   display: grid;
   gap: var(--space-sm);

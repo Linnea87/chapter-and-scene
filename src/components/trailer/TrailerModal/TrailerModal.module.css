@@ -1,7 +1,7 @@
 /* ===== Trailer modal styles ===== */
 /* The dialog with the YouTube trailer, also used as the full window player. */
 
-/* ===== Dialog ===== */
+/* --- Dialog --- */
 /* No display rule here: the browser hides a closed <dialog> with display: none */
 .dialog {
   width: calc(100% - 2 * var(--space-md));
@@ -36,13 +36,13 @@
   justify-content: center;
 }
 
-/* ===== Close button ===== */
+/* --- Close button --- */
 /* Pushed to the right, above the player */
 .close {
   margin: 0 0 var(--space-sm) auto;
 }
 
-/* ===== Notice ===== */
+/* --- Notice --- */
 /* Above the video, so it is read before the trailer starts */
 .notice {
   margin: 0 0 var(--space-sm);
@@ -50,7 +50,7 @@
   text-align: center;
 }
 
-/* ===== Player ===== */
+/* --- Player --- */
 /* Keeps the YouTube player in widescreen format at every width */
 .player {
   display: block;

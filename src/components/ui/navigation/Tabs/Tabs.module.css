@@ -1,7 +1,7 @@
 /* ===== Tabs styles ===== */
 /* The tab row with a gradient line under the selected tab, and its panel. */
 
-/* ===== Tab list ===== */
+/* --- Tab list --- */
 /* The tabs side by side, with a line under them on all screen sizes.
    If they do not fit on a narrow screen, the row scrolls sideways */
 .list {
@@ -12,7 +12,7 @@
   scrollbar-width: none;
 }
 
-/* ===== Tab ===== */
+/* --- Tab --- */
 /* Text with a line under the selected tab. Same height as other buttons */
 .tab {
   min-height: var(--touch-target);
@@ -41,12 +41,12 @@
   }
 }
 
-/* ===== Panel ===== */
+/* --- Panel --- */
 .panel {
   padding-top: var(--space-lg);
 }
 
-/* ===== Larger screens ===== */
+/* --- Larger screens --- */
 @media (min-width: 600px) {
   .list {
     gap: var(--space-md);

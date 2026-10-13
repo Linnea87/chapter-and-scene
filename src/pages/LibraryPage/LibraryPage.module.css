@@ -1,19 +1,19 @@
 /* ===== Library page styles ===== */
 /* My library: heading, sections and poster grids. */
 
-/* ===== Title ===== */
+/* --- Title --- */
 /* Centred, like the headings on the movies and series pages */
 .title {
   text-align: center;
 }
 
-/* ===== Sections ===== */
+/* --- Sections --- */
 /* Space between Movies, Series and E-books */
 .section {
   margin-top: var(--space-xl);
 }
 
-/* ===== Grid ===== */
+/* --- Grid --- */
 /* The same poster grid as explore, so the columns match across the site */
 .list {
   composes: grid from "../../components/titles/TitleGrid/TitleGrid.module.css";

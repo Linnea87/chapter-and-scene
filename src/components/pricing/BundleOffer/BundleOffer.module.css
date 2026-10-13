@@ -1,7 +1,7 @@
 /* ===== Bundle offer styles ===== */
 /* The bundle tab: the offer text, the rows and the notes under them. */
 
-/* ===== Offer ===== */
+/* --- Offer --- */
 /* Laid out like the other tabs, directly in the panel */
 .offer {
   display: flex;
@@ -9,7 +9,7 @@
   gap: var(--space-md);
 }
 
-/* ===== Text ===== */
+/* --- Text --- */
 .text {
   margin: 0;
   color: var(--color-text-muted);
@@ -21,7 +21,7 @@
   color: var(--color-text-muted);
 }
 
-/* ===== Note ===== */
+/* --- Note --- */
 /* Tells the user before adding that a rental in the cart is replaced */
 .note {
   margin: 0;

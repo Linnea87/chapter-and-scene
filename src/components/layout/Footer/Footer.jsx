@@ -40,7 +40,7 @@ const Footer = () => {
         </ul>
       </nav>
 
-      {/* ===== Attribution ===== */}
+      {/* --- Attribution --- */}
       {/* Required by the TMDB terms of use. The notice names TMDB,
           and the logo sits in the bottom row, less prominent than the app logo */}
       <div className={styles.attribution}>

@@ -1,7 +1,7 @@
 /* ===== Search field styles ===== */
 /* The search input with an icon and a clear button. */
 
-/* ===== Search field ===== */
+/* --- Field --- */
 .field {
   position: relative;
   display: flex;

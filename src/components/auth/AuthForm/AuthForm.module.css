@@ -1,7 +1,7 @@
 /* ===== Auth form styles ===== */
 /* The email and password form on the log in and sign up pages. */
 
-/* ===== Auth form ===== */
+/* --- Form --- */
 .form {
   display: flex;
   flex-direction: column;

@@ -1,7 +1,7 @@
 /* ===== Price styles ===== */
 /* The converted amount shown next to a USD price. */
 
-/* ===== Converted amount ===== */
+/* --- Converted amount --- */
 /* Smaller and muted, since it is only a guide. The USD price is what is charged */
 .converted {
   font-size: 0.875em;

@@ -1,7 +1,7 @@
 /* ===== Replace item dialog styles ===== */
 /* The small dialog that asks which of two clashing items to keep. */
 
-/* ===== Dialog ===== */
+/* --- Dialog --- */
 /* A small centred box. The browser centres a modal <dialog> on its own.
    No display rule here: the browser hides a closed <dialog> with display: none */
 .dialog {
@@ -19,7 +19,7 @@
   background-color: var(--color-overlay);
 }
 
-/* ===== Text ===== */
+/* --- Text --- */
 .title {
   margin: 0 0 var(--space-sm);
   font-size: 1.25rem;
@@ -29,7 +29,7 @@
   margin: 0 0 var(--space-lg);
 }
 
-/* ===== Actions ===== */
+/* --- Actions --- */
 /* Mobile first: stacked, easy to tap */
 .actions {
   display: flex;

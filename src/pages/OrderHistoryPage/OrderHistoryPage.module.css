@@ -1,7 +1,7 @@
 /* ===== Order history page styles ===== */
 /* The order history column with one card per order. */
 
-/* ===== Content ===== */
+/* --- Content --- */
 /* One narrow centred column, like the order page */
 .content {
   max-width: 32rem;
@@ -13,7 +13,7 @@
   text-align: center;
 }
 
-/* ===== List ===== */
+/* --- List --- */
 /* The orders as separate cards with a little space between them */
 .list {
   display: flex;

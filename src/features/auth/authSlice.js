@@ -3,7 +3,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-// ===== State =====
+// --- State ---
 // isLoading is true until Supabase has told us if someone is signed in,
 // so the app does not flash a "logged out" view on page load.
 
@@ -12,7 +12,7 @@ const initialState = {
   isLoading: true,
 };
 
-// ===== Slice =====
+// --- Slice ---
 const authSlice = createSlice({
   name: "auth",
   initialState,

@@ -4,14 +4,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { BASE_CURRENCY } from "./currencyConfig";
 
-// ===== State =====
+// --- State ---
 // The currency the visitor has chosen. Restored from localStorage in the store.
 
 const initialState = {
   currency: BASE_CURRENCY,
 };
 
-// ===== Slice =====
+// --- Slice ---
 const currencySlice = createSlice({
   name: "currency",
   initialState,

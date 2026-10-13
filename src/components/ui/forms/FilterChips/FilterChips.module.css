@@ -1,7 +1,7 @@
 /* ===== Filter chips styles ===== */
 /* The row of genre chips on the movies and series pages. */
 
-/* ===== Filter chips ===== */
+/* --- List --- */
 /* Mobile first: one row that scrolls sideways */
 .list {
   display: flex;
@@ -41,7 +41,7 @@
   font-weight: 600;
 }
 
-/* ===== States ===== */
+/* --- States --- */
 @media (hover: hover) {
   .chip:not(.active):hover {
     background: var(--color-surface-hover);

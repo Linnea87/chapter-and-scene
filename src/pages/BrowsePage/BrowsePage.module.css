@@ -1,14 +1,14 @@
 /* ===== Browse page styles ===== */
 /* The See all page for one home row: back arrow, heading and grid. */
 
-/* ===== Back link ===== */
+/* --- Back link --- */
 /* The round area around the arrow is larger than the arrow itself,
    so it is pulled up and left to line the arrow up with the heading */
 .backLink {
   margin: calc(-1 * var(--space-md)) 0 0 calc(-1 * var(--space-sm));
 }
 
-/* ===== Layout ===== */
+/* --- Layout --- */
 /* The hint sits close under the heading, so they read as one block */
 .title {
   margin-bottom: var(--space-xs);

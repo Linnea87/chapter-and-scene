@@ -1,14 +1,14 @@
 /* ===== Checkout page styles ===== */
 /* The checkout column: heading, account, items, summary and form. */
 
-/* ===== Content ===== */
+/* --- Content --- */
 /* One narrow centred column, full width on mobile */
 .content {
   max-width: 32rem;
   margin-inline: auto;
 }
 
-/* ===== Title and account ===== */
+/* --- Title and account --- */
 /* Centred, like the headings on the other pages */
 .title {
   text-align: center;
@@ -20,7 +20,7 @@
   color: var(--color-text-muted);
 }
 
-/* ===== List ===== */
+/* --- List --- */
 .list {
   margin: 0 0 var(--space-md);
   padding: 0;
@@ -28,7 +28,7 @@
   border-top: 1px solid var(--color-border);
 }
 
-/* ===== Summary ===== */
+/* --- Summary --- */
 .summary {
   margin-bottom: var(--space-lg);
 }

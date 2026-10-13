@@ -69,7 +69,7 @@ export const CATEGORIES = [
   },
 ];
 
-// ===== Helpers =====
+// --- Helpers ---
 // Finds an option by id. Falls back to the first option ("All")
 // if the id is missing or unknown, e.g. a typo in the URL.
 export const getOptionById = (options, id) =>

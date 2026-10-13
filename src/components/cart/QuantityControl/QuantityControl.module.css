@@ -1,7 +1,7 @@
 /* ===== Quantity control styles ===== */
 /* The minus and plus buttons for physical books in the cart. */
 
-/* ===== Quantity control ===== */
+/* --- Control --- */
 /* Minus, quantity and plus in a row, inside a rounded border */
 .control {
   display: inline-flex;
