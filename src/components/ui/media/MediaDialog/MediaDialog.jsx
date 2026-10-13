@@ -32,6 +32,8 @@ const MediaDialog = ({
       ref={dialogRef}
       className={dialogClass}
       aria-label={label}
+      // Lets useDialog focus the dialog itself when it opens
+      tabIndex={-1}
       onClose={onClose}
     >
       <IconButton

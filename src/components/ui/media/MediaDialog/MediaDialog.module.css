@@ -14,11 +14,6 @@
   color: var(--color-text);
 }
 
-/* Dims the page behind the open dialog */
-.dialog::backdrop {
-  background-color: var(--color-overlay);
-}
-
 /* --- Full window --- */
 /* Fills the whole window, like a streaming player */
 .fullWindow {

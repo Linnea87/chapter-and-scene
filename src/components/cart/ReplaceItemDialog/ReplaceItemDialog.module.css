@@ -14,11 +14,6 @@
   color: var(--color-text);
 }
 
-/* Dims the page behind the open dialog */
-.dialog::backdrop {
-  background-color: var(--color-overlay);
-}
-
 /* --- Text --- */
 .title {
   margin: 0 0 var(--space-sm);
