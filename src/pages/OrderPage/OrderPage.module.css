@@ -1,12 +1,5 @@
 /* ===== Order page styles ===== */
-/* The order details and confirmation column. */
-
-/* --- Content --- */
-/* One narrow centred column, like the checkout */
-.content {
-  max-width: 32rem;
-  margin-inline: auto;
-}
+/* The order details and confirmation: order number, items, total and buttons. */
 
 /* --- Back link --- */
 /* Only shown when the order is opened from the order history.
@@ -16,12 +9,8 @@
   margin: calc(-1 * var(--space-md)) 0 0 calc(-1 * var(--space-sm));
 }
 
-/* --- Title and order number --- */
-/* Centred, like the headings on the other pages */
-.title {
-  text-align: center;
-}
-
+/* --- Order number --- */
+/* Centred under the page title */
 .number {
   margin: 0 0 var(--space-md);
   text-align: center;

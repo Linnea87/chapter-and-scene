@@ -1,17 +1,5 @@
 /* ===== Order history page styles ===== */
-/* The order history column with one card per order. */
-
-/* --- Content --- */
-/* One narrow centred column, like the order page */
-.content {
-  max-width: 32rem;
-  margin-inline: auto;
-}
-
-/* Centred, like the headings on the movies, series and library pages */
-.title {
-  text-align: center;
-}
+/* The list of orders, one card per order. */
 
 /* --- List --- */
 /* The orders as separate cards with a little space between them */

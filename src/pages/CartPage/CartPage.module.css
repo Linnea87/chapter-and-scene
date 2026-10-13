@@ -1,11 +1,5 @@
 /* ===== Cart page styles ===== */
-/* The cart: heading, item list, summary and buttons. */
-
-/* --- Title --- */
-/* Centred, like the headings on the other pages */
-.title {
-  text-align: center;
-}
+/* The cart: item list, summary and buttons. */
 
 /* --- List --- */
 .list {

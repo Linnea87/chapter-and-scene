@@ -9,8 +9,8 @@ import {
   useAddLibraryItemsMutation,
   useCreateOrderMutation,
 } from "../../services/supabase/supabaseApi";
-import { isPhysicalFormat } from "../../features/cart/cartHelpers";
 import { selectUser } from "../../features/auth/authSelectors";
+import { isPhysicalFormat } from "../../features/cart/cartHelpers";
 import {
   selectBundleDiscount,
   selectCartItems,
@@ -75,8 +75,8 @@ const CheckoutPage = () => {
 
   return (
     <div className="container">
-      <div className={styles.content}>
-        <h1 className={styles.title}>Checkout</h1>
+      <div className="narrow-column">
+        <h1 className="page-title">Checkout</h1>
         <p className={styles.account}>
           Ordering as <strong>{user.email}</strong>
         </p>

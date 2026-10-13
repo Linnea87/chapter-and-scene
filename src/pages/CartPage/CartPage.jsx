@@ -33,7 +33,7 @@ const CartPage = () => {
 
   return (
     <div className="container">
-      <h1 className={styles.title}>Your cart</h1>
+      <h1 className="page-title">Your cart</h1>
 
       <ul className={styles.list}>
         {items.map((item) => (

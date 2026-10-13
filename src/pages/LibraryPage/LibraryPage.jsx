@@ -49,7 +49,7 @@ const LibraryPage = () => {
   // --- Library ---
   return (
     <div className="container">
-      <h1 className={styles.title}>My library</h1>
+      <h1 className="page-title">My library</h1>
 
       {groupBySection(items).map((section) => (
         <section key={section.id} className={styles.section}>

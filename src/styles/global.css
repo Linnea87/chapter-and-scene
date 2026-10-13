@@ -86,3 +86,14 @@ main {
   margin: 0 auto;
   padding: var(--space-lg) var(--space-md);
 }
+
+/* One narrow centred column inside the container, e.g. checkout and orders */
+.narrow-column {
+  max-width: 32rem;
+  margin-inline: auto;
+}
+
+/* The centred heading at the top of a page */
+.page-title {
+  text-align: center;
+}

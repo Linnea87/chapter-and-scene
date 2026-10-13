@@ -43,8 +43,8 @@ const OrderHistoryPage = () => {
   // --- Orders ---
   return (
     <div className="container">
-      <div className={styles.content}>
-        <h1 className={styles.title}>Order history</h1>
+      <div className="narrow-column">
+        <h1 className="page-title">Order history</h1>
 
         <ul className={styles.list}>
           {orders.map((order) => (

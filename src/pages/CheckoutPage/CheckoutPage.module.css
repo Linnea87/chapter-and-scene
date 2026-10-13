@@ -1,19 +1,8 @@
 /* ===== Checkout page styles ===== */
-/* The checkout column: heading, account, items, summary and form. */
+/* The checkout: account, items and summary above the form. */
 
-/* --- Content --- */
-/* One narrow centred column, full width on mobile */
-.content {
-  max-width: 32rem;
-  margin-inline: auto;
-}
-
-/* --- Title and account --- */
-/* Centred, like the headings on the other pages */
-.title {
-  text-align: center;
-}
-
+/* --- Account --- */
+/* Centred under the page title */
 .account {
   margin: 0 0 var(--space-md);
   text-align: center;

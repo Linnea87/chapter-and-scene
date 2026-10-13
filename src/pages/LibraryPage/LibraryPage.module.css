@@ -1,11 +1,5 @@
 /* ===== Library page styles ===== */
-/* My library: heading, sections and poster grids. */
-
-/* --- Title --- */
-/* Centred, like the headings on the movies and series pages */
-.title {
-  text-align: center;
-}
+/* My library: sections and poster grids. */
 
 /* --- Sections --- */
 /* Space between Movies, Series and E-books */

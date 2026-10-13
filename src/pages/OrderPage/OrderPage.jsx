@@ -11,12 +11,12 @@ import {
   hasDigitalItems,
 } from "../../features/orders/orderHelpers";
 import formatPrice from "../../utils/formatPrice";
-import ButtonLink from "../../components/ui/buttons/ButtonLink/ButtonLink";
-import BackLink from "../../components/ui/navigation/BackLink/BackLink";
 import CartItem from "../../components/cart/CartItem/CartItem";
+import ButtonLink from "../../components/ui/buttons/ButtonLink/ButtonLink";
 import LoadError from "../../components/ui/feedback/LoadError/LoadError";
 import Loader from "../../components/ui/feedback/Loader/Loader";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
+import BackLink from "../../components/ui/navigation/BackLink/BackLink";
 import styles from "./OrderPage.module.css";
 
 const OrderPage = () => {
@@ -56,14 +56,14 @@ const OrderPage = () => {
   // --- Order ---
   return (
     <div className="container">
-      <div className={styles.content}>
+      <div className="narrow-column">
         {isFromOrderHistory && (
           <BackLink to="/orders" iconOnly className={styles.backLink}>
             Back to order history
           </BackLink>
         )}
 
-        <h1 className={styles.title}>
+        <h1 className="page-title">
           {isFromOrderHistory ? "Order details" : "Thank you for your purchase"}
         </h1>
         <p className={styles.number}>
