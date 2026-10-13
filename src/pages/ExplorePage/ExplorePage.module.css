@@ -1,24 +1,17 @@
 /* ===== Explore page styles ===== */
-/* The movies, series and search results pages: heading, genres and grid. */
+/* The movies, series and search results pages: heading and genre filters. */
 
-/* --- Layout --- */
-/* Centred above the genres, with room between them */
+/* --- Title --- */
+/* Room between the centred title and the genres */
 .title {
   margin-bottom: var(--space-lg);
-  text-align: center;
 }
 
+/* --- Filters --- */
 /* Room between the filters and the grid, same as on the browse pages */
 .filters {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
   margin-bottom: var(--space-xl);
-}
-
-/* --- Load more --- */
-.loadMore {
-  display: flex;
-  justify-content: center;
-  margin-top: var(--space-xl);
 }

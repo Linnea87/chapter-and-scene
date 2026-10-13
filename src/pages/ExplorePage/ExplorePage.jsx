@@ -13,12 +13,9 @@ import {
   MEDIA_TYPES,
   getOptionById,
 } from "../../features/explore/exploreConfig";
-import Button from "../../components/ui/buttons/Button/Button";
-import FilterChips from "../../components/ui/forms/FilterChips/FilterChips";
-import LoadError from "../../components/ui/feedback/LoadError/LoadError";
+import TitleResults from "../../components/titles/TitleResults/TitleResults";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
-import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
-import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
+import FilterChips from "../../components/ui/forms/FilterChips/FilterChips";
 import styles from "./ExplorePage.module.css";
 
 const ExplorePage = ({ mediaTypeId = ALL_ID }) => {
@@ -49,23 +46,11 @@ const ExplorePage = ({ mediaTypeId = ALL_ID }) => {
   // The search waits until the user stops typing
   const debouncedSearchTerm = useDebouncedValue(searchTerm);
 
-  const {
-    titles,
-    isFetching,
-    isFetchingMore,
-    hasMore,
-    loadMore,
-    error,
-    refetch,
-  } = useExploreTitles({
+  const results = useExploreTitles({
     category,
     mediaType,
     searchTerm: debouncedSearchTerm,
   });
-
-  // --- Result states ---
-  const showResults = !isFetching && !error;
-  const isEmpty = showResults && titles.length === 0;
 
   // --- Empty state ---
   // Uses the debounced term so the message matches the shown results
@@ -74,14 +59,18 @@ const ExplorePage = ({ mediaTypeId = ALL_ID }) => {
     ? `We couldn't find a book adaptation called "${debouncedSearchTerm.trim()}"`
     : "No titles match your filters";
 
-  // Removes search, type and category in one step
+  // Removes search and category in one step
   const clearAll = () => setSearchParams({});
 
   return (
     <section className="container">
       {/* "Movies" or "Series". On /explore, the search results page,
           the heading is only for screen readers */}
-      <h1 className={isAllTypes ? "visually-hidden" : styles.title}>
+      <h1
+        className={
+          isAllTypes ? "visually-hidden" : `page-title ${styles.title}`
+        }
+      >
         {isAllTypes ? "Explore stories" : mediaType.label}
       </h1>
 
@@ -95,36 +84,18 @@ const ExplorePage = ({ mediaTypeId = ALL_ID }) => {
         />
       </div>
 
-      {/* isFetching covers the first load, filter changes and retries */}
-      {isFetching && <TitleGridSkeleton />}
-
-      {!isFetching && error && (
-        <LoadError title="We couldn't load the titles" onRetry={refetch} />
-      )}
-
-      {isEmpty && (
-        <StatusMessage
-          title={emptyTitle}
-          message="Try another search or clear your filters to see all titles."
-          actionLabel="Clear search and filters"
-          onAction={clearAll}
-        />
-      )}
-
-      {showResults && !isEmpty && <TitleGrid titles={titles} />}
-
-      {/* --- Load more --- */}
-      {showResults && hasMore && (
-        <div className={styles.loadMore}>
-          <Button
-            onClick={loadMore}
-            disabled={isFetchingMore}
-            aria-busy={isFetchingMore}
-          >
-            {isFetchingMore ? "Loading..." : "Load more"}
-          </Button>
-        </div>
-      )}
+      {/* --- Results --- */}
+      <TitleResults
+        results={results}
+        empty={
+          <StatusMessage
+            title={emptyTitle}
+            message="Try another search or clear your filters to see all titles."
+            actionLabel="Clear search and filters"
+            onAction={clearAll}
+          />
+        }
+      />
     </section>
   );
 };

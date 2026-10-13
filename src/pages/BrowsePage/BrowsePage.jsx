@@ -1,16 +1,13 @@
 // ===== Browse page =====
 // "See all" for a home row: every title in the row's order, e.g. /browse/recent.
 // The row comes from HOME_ROWS, so a new row gets its page without changes here.
+// No back link: the Home icon in the header and the browser's back button lead back.
 
 import { useParams } from "react-router";
 import useExploreTitles from "../../hooks/useExploreTitles";
 import { HOME_ROWS } from "../../features/home/homeConfig";
-import Button from "../../components/ui/buttons/Button/Button";
-import BackLink from "../../components/ui/navigation/BackLink/BackLink";
-import LoadError from "../../components/ui/feedback/LoadError/LoadError";
+import TitleResults from "../../components/titles/TitleResults/TitleResults";
 import StatusMessage from "../../components/ui/feedback/StatusMessage/StatusMessage";
-import TitleGrid from "../../components/titles/TitleGrid/TitleGrid";
-import TitleGridSkeleton from "../../components/titles/TitleGridSkeleton/TitleGridSkeleton";
 import styles from "./BrowsePage.module.css";
 
 const BrowsePage = () => {
@@ -18,15 +15,7 @@ const BrowsePage = () => {
   const row = HOME_ROWS.find((item) => item.id === rowId);
 
   // Hooks always run, so an unknown row is handled after them
-  const {
-    titles,
-    isFetching,
-    isFetchingMore,
-    hasMore,
-    loadMore,
-    error,
-    refetch,
-  } = useExploreTitles({ sort: row?.sort });
+  const results = useExploreTitles({ sort: row?.sort });
 
   // --- Unknown row ---
   if (!row) {
@@ -43,38 +32,13 @@ const BrowsePage = () => {
     );
   }
 
-  const showResults = !isFetching && !error;
-
   return (
     <section className="container">
-      <BackLink to="/" iconOnly className={styles.backLink}>
-        Back to home
-      </BackLink>
-
       <h1 className={styles.title}>{row.title}</h1>
       <p className={styles.intro}>{row.hint}</p>
 
-      {/* isFetching covers the first load and retries */}
-      {isFetching && <TitleGridSkeleton />}
-
-      {!isFetching && error && (
-        <LoadError title="We couldn't load the titles" onRetry={refetch} />
-      )}
-
-      {showResults && <TitleGrid titles={titles} />}
-
-      {/* --- Load more --- */}
-      {showResults && hasMore && (
-        <div className={styles.loadMore}>
-          <Button
-            onClick={loadMore}
-            disabled={isFetchingMore}
-            aria-busy={isFetchingMore}
-          >
-            {isFetchingMore ? "Loading..." : "Load more"}
-          </Button>
-        </div>
-      )}
+      {/* --- Results --- */}
+      <TitleResults results={results} />
     </section>
   );
 };
