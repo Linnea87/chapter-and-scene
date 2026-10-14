@@ -101,7 +101,7 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 #### Implemented User Stories
 
 <details>
-<summary><strong>EPIC 1 - Catalog & search</strong></summary>
+<summary>EPIC 1 - Catalog & search</summary>
 
 <br>
 
@@ -130,7 +130,7 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 <br>
 
 <details>
-<summary><strong>EPIC 2 - Title details</strong></summary>
+<summary>EPIC 2 - Title details</summary>
 
 <br>
 
@@ -153,7 +153,7 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 <br>
 
 <details>
-<summary><strong>EPIC 3 - Cart</strong></summary>
+<summary>EPIC 3 - Cart</summary>
 
 <br>
 
@@ -178,7 +178,7 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 <br>
 
 <details>
-<summary><strong>EPIC 4 - Account</strong></summary>
+<summary>EPIC 4 - Account</summary>
 
 <br>
 
@@ -191,7 +191,7 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 <br>
 
 <details>
-<summary><strong>EPIC 5 - Checkout & orders</strong></summary>
+<summary>EPIC 5 - Checkout & orders</summary>
 
 <br>
 
@@ -208,7 +208,7 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 <br>
 
 <details>
-<summary><strong>EPIC 6 - My library</strong></summary>
+<summary>EPIC 6 - My library</summary>
 
 <br>
 
@@ -229,7 +229,7 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 <br>
 
 <details>
-<summary><strong>EPIC 7 - Setup & delivery</strong></summary>
+<summary>EPIC 7 - Setup & delivery</summary>
 
 <br>
 
@@ -255,9 +255,8 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 #### Not Implemented User Stories
 
-
 <details>
-<summary><strong>EPIC 1 - Catalog & search</strong></summary>
+<summary>EPIC 1 - Catalog & search</summary>
 
 <br>
 
@@ -268,13 +267,15 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 <br>
 
 <details>
-<summary><strong>EPIC 4 - Account</strong></summary>
+<summary>EPIC 4 - Account</summary>
 
 <br>
 
 - **CS-025** As a User I can reset my password, so I can get back into my account if I forget it. *Resetting a password needs emails to be sent, and Supabase's free email service only sends to the project's own team members.*
 
 </details>
+
+<br>
 
 ### MoSCoW Prioritisation
 
