@@ -125,9 +125,9 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-046** As a Visitor I can search for any movie or series title, so I can find out if it is based on a book, even if it is not shown in the catalog yet.
 
-</details>
-
 <br>
+
+</details>
 
 <details>
 <summary>EPIC 2 - Title details</summary>
@@ -148,9 +148,9 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-047** As a Visitor I can switch between watching and reading options with tabs, so I can focus on one format at a time without a long page.
 
-</details>
-
 <br>
+
+</details>
 
 <details>
 <summary>EPIC 3 - Cart</summary>
@@ -173,9 +173,9 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-044** As a Visitor I can choose to see prices in USD, SEK or GBP, so I can understand the prices in a currency I know.
 
-</details>
-
 <br>
+
+</details>
 
 <details>
 <summary>EPIC 4 - Account</summary>
@@ -186,9 +186,9 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-024** As a Visitor I can keep my cart when I log in, so I can avoid adding everything again.
 
-</details>
-
 <br>
+
+</details>
 
 <details>
 <summary>EPIC 5 - Checkout & orders</summary>
@@ -203,9 +203,9 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-029** As a User I can see the delivery status of my physical books, so I can know when they will arrive.
 
-</details>
-
 <br>
+
+</details>
 
 <details>
 <summary>EPIC 6 - My library</summary>
@@ -224,9 +224,9 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-035** As a User I can find my expired rentals in one place, so I can easily buy or rent the movie again.
 
-</details>
-
 <br>
+
+</details>
 
 <details>
 <summary>EPIC 7 - Setup & delivery</summary>
@@ -264,8 +264,6 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 </details>
 
-<br>
-
 <details>
 <summary>EPIC 4 - Account</summary>
 
@@ -274,8 +272,6 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 - **CS-025** As a User I can reset my password, so I can get back into my account if I forget it. *Resetting a password needs emails to be sent, and Supabase's free email service only sends to the project's own team members.*
 
 </details>
-
-<br>
 
 ### MoSCoW Prioritisation
 
