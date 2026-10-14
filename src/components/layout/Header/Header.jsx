@@ -1,7 +1,6 @@
 // ===== Header =====
-// The site name on top, linking to the home page.
-// Below it, icons only, on every screen size: the account menu on the left,
-// the main pages in the middle, and search and the cart on the right.
+// One row of icons on every screen size: the logo and the account menu
+// on the left, the main pages in the middle, and search and the cart on the right.
 // The search icon folds out a search bar under the icons.
 
 import { useRef } from "react";
@@ -14,6 +13,7 @@ import CartLink from "../CartLink/CartLink";
 import NavMenu from "../NavMenu/NavMenu";
 import SearchBar from "../SearchBar/SearchBar";
 import IconButton from "../../ui/buttons/IconButton/IconButton";
+import logoIcon from "../../../assets/logo-icon.webp";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -30,12 +30,18 @@ const Header = () => {
   // --- Render ---
   return (
     <header ref={headerRef} className={styles.header}>
-      {/* Text logo in a handwritten font until a real logo is designed */}
-      <Link to="/" className={styles.logo}>
-        Chapter & Scene
-      </Link>
-
       <div className={styles.accountArea}>
+        {/* The icon only, the full logo with the name is in the footer.
+            The alt text gives the link its name for screen readers */}
+        <Link to="/">
+          <img
+            src={logoIcon}
+            alt="Chapter & Scene"
+            width="40"
+            height="40"
+            className={styles.logoImage}
+          />
+        </Link>
         <AccountMenu />
       </div>
 

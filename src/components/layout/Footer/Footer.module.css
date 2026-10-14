@@ -1,5 +1,5 @@
 /* ===== Footer styles ===== */
-/* The site name, links and the TMDB and Google Books attribution. */
+/* The logo, links and the TMDB and Google Books attribution. */
 
 /* --- Layout --- */
 /* Mobile first: compact, so the footer does not take over a small screen.
@@ -20,16 +20,9 @@
 
 /* --- Branding --- */
 .logo {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-.tagline {
-  margin: 0;
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
+  display: block;
+  width: 7rem;
+  height: auto;
 }
 
 /* --- Links --- */
@@ -41,16 +34,19 @@
   list-style: none;
 }
 
+/* Muted like the rest of the footer, white on hover */
 .navLink {
   display: inline-flex;
   align-items: center;
   min-height: var(--touch-target);
-  color: inherit;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
   text-decoration: none;
 }
 
 @media (hover: hover) {
   .navLink:hover {
+    color: var(--color-text);
     text-decoration: underline;
     text-underline-offset: 6px;
   }
@@ -110,10 +106,5 @@
   .footer {
     gap: var(--space-sm);
     padding: var(--space-xl) var(--space-md);
-  }
-
-  .tagline {
-    margin-bottom: var(--space-sm);
-    font-size: 1rem;
   }
 }
