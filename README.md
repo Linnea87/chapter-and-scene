@@ -19,7 +19,6 @@ Titles come from TMDb, books from Google Books and exchange rates from Frankfurt
   - [Communication](#communication)
   - [User Goals](#user-goals)
 - [Agile Workflow](#agile-workflow)
-  - [EPICs](#epics)
   - [User Stories](#user-stories)
   - [MoSCoW Prioritisation](#moscow-prioritisation)
   - [Milestones](#milestones)
@@ -95,118 +94,184 @@ The project was planned with user stories, written as GitHub issues in the forma
 
 All issues can be found [HERE](https://github.com/Linnea87/chapter-and-scene/issues?q=is%3Aissue).
 
-### EPICs
-
-The user stories are grouped into seven EPICs:
-
-1. Catalog & search
-2. Title details
-3. Cart
-4. Account
-5. Checkout & orders
-6. My library
-7. Setup & delivery
-
 ### User Stories
 
-All *Must Have*, *Should Have* and *Could Have* user stories are implemented. The two *Won't Have* stories were left out on purpose.
+The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* and *Could Have* user stories are implemented, and the two *Won't Have* stories were left out on purpose.
 
 #### Implemented User Stories
 
 <details>
 <summary><strong>EPIC 1 - Catalog & search</strong></summary>
 
+<br>
+
 - **CS-001** As a Visitor I can explore movies and series based on books, so I can discover stories I might want to read or watch.
+
 - **CS-002** As a Visitor I can filter the catalog by category, so I can find stories in genres I like.
+
 - **CS-003** As a Visitor I can search for a title, so I can quickly find a specific story.
+
 - **CS-004** As a Visitor I can see that content is loading, so I can tell that the app is working.
+
 - **CS-005** As a Visitor I can see a clear message when something goes wrong, so I can understand what happened and try again.
+
 - **CS-006** As a Visitor I can choose to see movies, series or both, so I can find the format I am in the mood for.
+
 - **CS-007** As a Visitor I can see a message when my search or filter has no results, so I can tell that the app is not broken.
+
 - **CS-008** As a Visitor I can load more titles, so I can keep browsing beyond the first page.
+
 - **CS-045** As a Visitor I can discover featured stories and themed rows on the home page, so I can find something to read or watch without searching.
+
 - **CS-046** As a Visitor I can search for any movie or series title, so I can find out if it is based on a book, even if it is not shown in the catalog yet.
 
 </details>
 
+<br>
+
 <details>
 <summary><strong>EPIC 2 - Title details</strong></summary>
 
+<br>
+
 - **CS-010** As a Visitor I can see detailed information about a movie, so I can decide whether I want to watch it.
+
 - **CS-011** As a Visitor I can see details about a series and its seasons, so I can choose what to buy.
+
 - **CS-012** As a Visitor I can see the book a movie or series is based on, so I can choose to read the book, watch the adaptation or both.
+
 - **CS-013** As a Visitor I can watch the trailer, so I can get a feel for the movie or series before buying.
+
 - **CS-014** As a Visitor I can see a clear message when a title does not exist, so I can find my way back.
+
 - **CS-015** As a Visitor I can see the other movies in the same movie series, so I can follow the whole story.
+
 - **CS-047** As a Visitor I can switch between watching and reading options with tabs, so I can focus on one format at a time without a long page.
 
 </details>
 
+<br>
+
 <details>
 <summary><strong>EPIC 3 - Cart</strong></summary>
 
+<br>
+
 - **CS-016** As a Visitor I can add a movie, series or book to my cart in the format I choose, so I can buy it later.
+
 - **CS-017** As a Visitor I can remove items from my cart, so I can only buy what I want.
+
 - **CS-018** As a Visitor I can see how many items are in my cart, so I can always know what I have selected.
+
 - **CS-019** As a Visitor I can keep my cart when I reload the page, so I can continue where I left off.
+
 - **CS-020** As a Visitor I can change the quantity of physical books, so I can buy more than one copy.
+
 - **CS-021** As a Visitor I can see subtotal, shipping and total, so I can know what I will pay.
+
 - **CS-022** As a Visitor I can get a discount when I buy both the book and the movie or series, so I can get more for my money.
+
 - **CS-044** As a Visitor I can choose to see prices in USD, SEK or GBP, so I can understand the prices in a currency I know.
 
 </details>
 
+<br>
+
 <details>
 <summary><strong>EPIC 4 - Account</strong></summary>
 
+<br>
+
 - **CS-023** As a Visitor I can create an account, log in and log out, so I can keep my purchases and library.
+
 - **CS-024** As a Visitor I can keep my cart when I log in, so I can avoid adding everything again.
 
 </details>
 
+<br>
+
 <details>
 <summary><strong>EPIC 5 - Checkout & orders</strong></summary>
 
+<br>
+
 - **CS-026** As a User I can complete my purchase, so I can get access to what I bought.
+
 - **CS-027** As a User I can see a confirmation after my purchase, so I can know that it went through.
+
 - **CS-028** As a User I can see my previous orders, so I can keep track of what I have bought.
+
 - **CS-029** As a User I can see the delivery status of my physical books, so I can know when they will arrive.
 
 </details>
 
+<br>
+
 <details>
 <summary><strong>EPIC 6 - My library</strong></summary>
 
+<br>
+
 - **CS-030** As a User I can see everything I have bought or rented digitally, so I can access it in one place.
+
 - **CS-031** As a User I can see how long I have left on a rental, so I can watch it in time.
+
 - **CS-032** As a User I can play a movie or series from my library, so I can watch what I have bought.
+
 - **CS-033** As a User I can open an e-book from my library, so I can read what I have bought.
+
 - **CS-034** As a User I can see when I already own a title, so I can avoid buying it twice.
+
 - **CS-035** As a User I can find my expired rentals in one place, so I can easily buy or rent the movie again.
 
 </details>
 
+<br>
+
 <details>
 <summary><strong>EPIC 7 - Setup & delivery</strong></summary>
 
+<br>
+
 - **CS-036** As a Developer I can start from the Twinflower base structure, so I can spend my time on the new features.
+
 - **CS-037** As a Developer I can manage the cart with Redux Toolkit, so I can share cart state across the whole app.
+
 - **CS-038** As a Developer I can fetch data from TMDb through one service, so I can keep API logic out of the components.
+
 - **CS-039** As a Developer I can fetch book data from Google Books through one service, so I can combine it with TMDb data.
+
 - **CS-040** As a Developer I can store orders, cart and library in Supabase, so I can keep user data safe and available across devices.
+
 - **CS-041** As a Developer I can credit the APIs I use, so I can follow their terms of use.
+
 - **CS-042** As a Developer I can document the project, so I can show how it is built and how it works.
+
 - **CS-043** As a Developer I can deploy the app, so I can share it through a link.
+
 - **CS-048** As a Visitor I can browse a shop with a clear and inviting look, so I can enjoy finding stories to watch and read.
 
 </details>
 
 #### Not Implemented User Stories
 
+
 <details>
-<summary><strong>Won't Have</strong></summary>
+<summary><strong>EPIC 1 - Catalog & search</strong></summary>
+
+<br>
 
 - **CS-009** As a Visitor I can sort the catalog, so I can see the most popular, newest or highest rated stories first. *The home page rows already show the newest, most popular and highest rated stories, each with a "See all" page, so a separate sort control was not needed.*
+
+</details>
+
+<br>
+
+<details>
+<summary><strong>EPIC 4 - Account</strong></summary>
+
+<br>
+
 - **CS-025** As a User I can reset my password, so I can get back into my account if I forget it. *Resetting a password needs emails to be sent, and Supabase's free email service only sends to the project's own team members.*
 
 </details>
