@@ -1,8 +1,9 @@
 // ===== Footer =====
-// Site name, tagline, the same main pages as the header, and the
+// The logo, the same main pages as the header, and the
 // attribution that TMDB and Google Books require.
 
 import { Link } from "react-router";
+import logoFull from "../../../assets/logo-full.webp";
 import tmdbLogo from "../../../assets/tmdb-logo.svg";
 import styles from "./Footer.module.css";
 
@@ -11,9 +12,13 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      {/* Text logo until the real logo is designed */}
-      <p className={styles.logo}>Chapter & Scene</p>
-      <p className={styles.tagline}>Find the story. Choose the format.</p>
+      <img
+        src={logoFull}
+        alt="Chapter & Scene"
+        width="400"
+        height="393"
+        className={styles.logo}
+      />
 
       <nav aria-label="Footer navigation">
         <ul className={styles.linkList}>
