@@ -52,11 +52,20 @@ const ExplorePage = ({ mediaTypeId = ALL_ID }) => {
     searchTerm: debouncedSearchTerm,
   });
 
+  // --- Heading ---
+  // "Movies" or "Series", and on /explore the search term, so the user
+  // can see they are not on one of the main pages.
+  // Uses the debounced term so the heading matches the shown results
+  const trimmedSearchTerm = debouncedSearchTerm.trim();
+  const hasSearch = trimmedSearchTerm !== "";
+  const searchHeading = hasSearch
+    ? `Results for "${trimmedSearchTerm}"`
+    : "All stories";
+  const heading = isAllTypes ? searchHeading : mediaType.label;
+
   // --- Empty state ---
-  // Uses the debounced term so the message matches the shown results
-  const hasSearch = debouncedSearchTerm.trim() !== "";
   const emptyTitle = hasSearch
-    ? `We couldn't find a book adaptation called "${debouncedSearchTerm.trim()}"`
+    ? `We couldn't find a book adaptation called "${trimmedSearchTerm}"`
     : "No titles match your filters";
 
   // Removes search and category in one step
@@ -64,15 +73,7 @@ const ExplorePage = ({ mediaTypeId = ALL_ID }) => {
 
   return (
     <section className="container">
-      {/* "Movies" or "Series". On /explore, the search results page,
-          the heading is only for screen readers */}
-      <h1
-        className={
-          isAllTypes ? "visually-hidden" : `page-title ${styles.title}`
-        }
-      >
-        {isAllTypes ? "Explore stories" : mediaType.label}
-      </h1>
+      <h1 className={`page-title ${styles.title}`}>{heading}</h1>
 
       {/* --- Filters --- */}
       <div className={styles.filters}>
