@@ -14,7 +14,10 @@
   display: grid;
   grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
   align-items: center;
-  padding: var(--space-sm) var(--space-md);
+  /* The safe area keeps the icons below the iPhone status bar in the home screen app,
+     in the browser it is 0 */
+  padding: calc(var(--space-sm) + env(safe-area-inset-top)) var(--space-md)
+    var(--space-sm);
 }
 
 /* --- Areas --- */
@@ -60,5 +63,13 @@
   .logoImage {
     width: 2.5rem;
     height: 2.5rem;
+  }
+}
+
+/* --- Home screen app --- */
+/* iOS softens the area under the status bar, so the icons sit a little lower */
+@media (display-mode: standalone) {
+  .header {
+    padding-top: calc(var(--space-lg) + env(safe-area-inset-top));
   }
 }
