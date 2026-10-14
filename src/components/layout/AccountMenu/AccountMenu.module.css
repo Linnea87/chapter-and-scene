@@ -1,17 +1,9 @@
 /* ===== Account menu styles ===== */
-/* The round account icon and the menu that opens under it. */
+/* The account icon and the menu that opens under it. */
 
 /* --- Account icon and menu --- */
 .account {
   position: relative;
-}
-
-/* The account icon in a circle with a thin light ring, like a profile picture,
-   so it stands apart from the page icons on any background */
-.trigger {
-  background-color: var(--color-surface-hover);
-  box-shadow: inset 0 0 0 1px
-    color-mix(in srgb, var(--color-text) 30%, transparent);
 }
 
 /* Opens below the icon, aligned to the left edge, since the icon
