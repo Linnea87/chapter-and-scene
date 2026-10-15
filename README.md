@@ -42,6 +42,9 @@ Titles come from TMDb, books from Google Books and exchange rates from Frankfurt
   - [My Library](#my-library)
   - [Not Found Pages](#not-found-pages)
 - [Data and APIs](#data-and-apis)
+  - [APIs](#apis)
+  - [Fetching Data with RTK Query](#fetching-data-with-rtk-query)
+  - [State with Redux Toolkit](#state-with-redux-toolkit)
 - [Testing](#testing)
   - [Manual Testing](#manual-testing)
   - [Lighthouse](#lighthouse)
@@ -56,6 +59,8 @@ Titles come from TMDb, books from Google Books and exchange rates from Frankfurt
 - [Credits](#credits)
 
 ## UX
+
+Chapter & Scene is made for people who love a story enough to want it both on the page and on screen. This section covers the purpose of the shop, who it is for and what users should be able to do.
 
 ### Site Purpose
 
@@ -107,7 +112,7 @@ All issues can be found [HERE](https://github.com/Linnea87/chapter-and-scene/iss
 
 ### User Stories
 
-The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* and *Could Have* user stories are implemented, and the two *Won't Have* stories were left out on purpose.
+The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* and *Could Have* user stories are implemented, and the two *Won't Have* stories were left out on purpose. Open an EPIC to see its user stories.
 
 #### Implemented User Stories
 
@@ -315,6 +320,8 @@ A GitHub Projects board was used to follow each issue from backlog to done. It c
 
 ## Design
 
+The design was planned with wireframes and a database schema before the build, and then given a dark, cinematic look with a turquoise brand colour and a logo that joins the book and the film.
+
 ### Wireframes
 
 Low-fidelity wireframes were made for the three main pages, the catalog, the title details and the cart, on mobile (375 px) and desktop (1440 px). They set the structure of the shop: the filters above the grid, the watch and read options on the title page, and the order summary next to the cart.
@@ -325,7 +332,7 @@ The final design changed in places as the project grew:
 - The header became a row of icons with the logo, and the search bar opens from a search icon.
 - The Watch and Read options on the title page became tabs, with a third tab for the book and film bundle.
 
-The final pages are shown under [Features](#features).
+The final pages are shown under [Features](#features). Open the box below to see the wireframes.
 
 <details>
 <summary><strong>Wireframes</strong></summary>
@@ -345,7 +352,7 @@ The plan changed during the project. Supabase's own `auth.users` table is used f
 - **order_items:** the titles in each order. `delivery_status` shows if a physical book is processing or shipped.
 - **library_items:** everything a user has bought or rented digitally. `expires_at` is set for rentals and empty for titles that are bought.
 
-The full schema with all policies is in [`supabase/schema.sql`](supabase/schema.sql).
+The full schema with all policies is in [`supabase/schema.sql`](supabase/schema.sql). Open the boxes below to compare the first plan with the final database.
 
 <details>
 <summary><strong>The first plan of the database</strong></summary>
@@ -877,5 +884,45 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 </details>
 
 <br>
+
+[Back to top](#table-of-contents)
+
+## Data and APIs
+
+Chapter & Scene combines four APIs into one shop. This section explains where the data comes from, how it is fetched and how the app keeps track of the cart, the currency and the logged-in user.
+
+### APIs
+
+| API | Used for |
+| --- | --- |
+| [TMDb](https://www.themoviedb.org/) | Movies and series: lists, search, details, cast, trailers, age ratings and movie series |
+| [Google Books](https://developers.google.com/books) | The book behind each story, its cover, description and the e-book preview |
+| [Frankfurter](https://frankfurter.dev/) | Exchange rates from US dollars to SEK and GBP |
+| [Supabase](https://supabase.com/) | Accounts, the saved cart, orders and the library |
+
+<br>
+
+- **Only book adaptations:** TMDb has keywords such as *based on novel or book*. Every list is filtered on these keywords, and since TMDb's search cannot filter on keywords, each search result is checked one by one.
+- **Prices:** TMDb and Google Books have no prices, so the shop sets its own. New releases cost more, a whole series is 20% off, and a bundle is 15% off the book.
+- **Currency:** the shop charges in US dollars. When another currency is chosen, the converted price is shown next to the price in dollars.
+
+### Fetching Data with RTK Query
+
+Each API has its own RTK Query service in `src/services/`. RTK Query gives every request a loading and error state, caches the answers and fetches them again only when needed.
+
+- **TMDb** uses an infinite query for *Load more*, and maps every answer to the app's own shape, so components never see the raw data.
+- **Google Books** tries a failed request again up to two times, since the API sometimes answers with a temporary error.
+- **Frankfurter** keeps the rates in the cache for an hour, since they only change once a day.
+- **Supabase** is called through its own client instead of a URL, so its service uses `fakeBaseQuery`. Tags make the library and order history fetch again automatically after a purchase.
+
+### State with Redux Toolkit
+
+Redux Toolkit holds the state that many parts of the app need:
+
+- **cart:** the items in the cart, read through selectors that also work out the subtotal, discount, shipping and total.
+- **currency:** the chosen currency.
+- **auth:** the logged-in user.
+
+The cart and the currency are saved in localStorage when they change, and loaded again when the app starts, so they are kept after a reload. When a user is logged in, the cart is also saved in Supabase, so it follows them to other devices.
 
 [Back to top](#table-of-contents)
