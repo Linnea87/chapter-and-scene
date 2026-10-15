@@ -454,6 +454,10 @@ The logo is a film strip that rises out of an open book and forms an S, so the s
 
 ## Features
 
+Chapter & Scene is built mobile first and works on every screen size, from small phones to large desktops. Visitors can explore, search and fill their cart without an account, and a free account is needed to check out and use the library.
+
+Each feature below has screenshots on mobile and desktop. Open a box to see them.
+
 ### Header and Footer
 
 - The header is one row of icons on every screen size: the logo and the account menu on the left, Home, Movies and Series in the middle, and search and the cart on the right.
