@@ -48,7 +48,9 @@ Titles come from TMDb, books from Google Books and exchange rates from Frankfurt
 - [Testing](#testing)
   - [Manual Testing](#manual-testing)
   - [Lighthouse](#lighthouse)
-  - [Bugs](#bugs)
+  - [Validation](#validation)
+  - [Solved Bugs](#solved-bugs)
+  - [Unfixed Bugs](#unfixed-bugs)
 - [Known Limitations](#known-limitations)
 - [Future Improvements](#future-improvements)
 - [Technologies Used](#technologies-used)
@@ -924,5 +926,100 @@ Redux Toolkit holds the state that many parts of the app need:
 - **auth:** the logged-in user.
 
 The cart and the currency are saved in localStorage when they change, and loaded again when the app starts, so they are kept after a reload. When a user is logged in, the cart is also saved in Supabase, so it follows them to other devices.
+
+[Back to top](#table-of-contents)
+
+## Testing
+
+Every feature was tested by hand on the live site, and the site was checked with Lighthouse and ESLint.
+
+### Manual Testing
+
+The tests were made on an iPhone in Safari and as a home screen app, and on a MacBook in Chrome and Safari. Chrome DevTools was used for other screen sizes, down to 320 px. Open the box below to see the tests.
+
+<details>
+<summary>Manual tests</summary>
+
+<br>
+
+| Feature | Test | Result |
+| --- | --- | --- |
+| Home page | The carousel can be swiped on mobile and changed with the arrows on desktop | ✅ |
+| Home page | *See all* opens the full list for a row | ✅ |
+| Movies and Series | A genre chip filters the titles and is kept in the URL after a reload | ✅ |
+| Movies and Series | *Load more* adds the next page without moving the titles already shown | ✅ |
+| Search | A search shows only book adaptations, and *Results for* shows the search term | ✅ |
+| Search | A search with no results shows a message, and *Clear search and filters* leads to *All stories* | ✅ |
+| Title details | The tabs switch between Watch, Read the book, Movie + book and More from, and the chosen tab is kept in the URL | ✅ |
+| Title details | A series shows a price per season and for the whole series | ✅ |
+| Title details | A title the user owns shows *In your library* instead of the cart button | ✅ |
+| Cart | Adding a title updates the count in the header | ✅ |
+| Cart | The quantity can only be changed for physical books | ✅ |
+| Cart | Renting and buying the same movie asks which one to keep | ✅ |
+| Cart | A book with its movie in the cart gives the bundle discount | ✅ |
+| Cart | Shipping is free from $35 | ✅ |
+| Cart | The cart is kept after a reload | ✅ |
+| Currency | Choosing SEK or GBP shows a converted price next to the dollar price | ✅ |
+| Account | Sign up, log in and log out work, and the user is sent back to the page they came from | ✅ |
+| Account | A guest cart is merged with the saved cart when logging in | ✅ |
+| Account | Checkout, orders and the library send a guest to the log in page | ✅ |
+| Checkout | The shipping address is only asked for when the order has physical books | ✅ |
+| Checkout | A purchase shows a confirmation and adds digital titles to the library | ✅ |
+| Order history | Physical books show *Processing*, then *Shipped* after 24 hours | ✅ |
+| Library | Rentals show the hours left, and expired rentals move to *History* | ✅ |
+| Library | *Play* opens the trailer and *Read* opens the Google Books preview | ✅ |
+| Errors | An unknown title and an unknown address show a not found page | ✅ |
+| Errors | A failed request shows a message with *Try again* | ✅ |
+| Accessibility | All pages can be used with the keyboard, and dialogs keep the focus inside | ✅ |
+
+</details>
+
+### Lighthouse
+
+The live site was tested with Lighthouse in Chrome. The Performance score on mobile varies a little between runs, between 79 and 83.
+
+| | Performance | Accessibility | Best Practices | SEO |
+| --- | --- | --- | --- | --- |
+| Mobile | 83 | 100 | 100 | 100 |
+| Desktop | 96 | 100 | 100 | 100 |
+
+Lighthouse first gave Performance 56 and SEO 83 on mobile. A meta description and a `robots.txt` raised SEO to 100. Keeping the space for the carousel while it loads stopped the page from jumping, and connecting early to the TMDb image server made the first image load sooner.
+
+The rest of the mobile score comes from the carousel image, which is only known after the app has loaded and TMDb has answered. Fixing that would need server-side rendering. Open the box below to see the reports.
+
+<details>
+<summary>Lighthouse reports</summary>
+
+<br>
+
+**Mobile**
+
+![Lighthouse scores on mobile](docs/images/testing/lighthouse-mobile.webp)
+
+**Desktop**
+
+![Lighthouse scores on desktop](docs/images/testing/lighthouse-desktop.webp)
+
+</details>
+
+### Validation
+
+- **ESLint:** `npm run lint` checks the whole project for errors and unused code, and passes without warnings.
+- **Build:** `npm run build` builds the app without errors.
+
+### Solved Bugs
+
+These bugs were found during testing and have been fixed:
+
+- The page did not scroll to the top when a *See all* page was opened. Fixed with React Router's `ScrollRestoration`.
+- Switching tabs on the title page scrolled the page to the top. Fixed with `preventScrollReset` when the tab changes.
+- The home page rows jumped down when the carousel loaded. Fixed by showing a placeholder with the same size while it loads.
+- The wide carousel image cut off heads in some backdrops. Fixed by cropping from the upper part of the image.
+- Buttons inside dialogs showed a focus ring after a tap on iPhone. Fixed by giving the dialog itself the focus when it opens.
+- The *Explore stories* links led to the search page instead of the home page after the header changed. Fixed by linking to the home page.
+
+### Unfixed Bugs
+
+No known bugs.
 
 [Back to top](#table-of-contents)
