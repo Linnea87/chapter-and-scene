@@ -12,6 +12,7 @@ const useTabParam = (defaultId) => {
 
   // replace: switching tabs does not add a step to the browser history,
   // so the back button still goes back to the previous page
+  // preventScrollReset: the page stays where it is when a tab is chosen
   const selectTab = (id) => {
     setSearchParams(
       (prev) => {
@@ -25,7 +26,7 @@ const useTabParam = (defaultId) => {
 
         return next;
       },
-      { replace: true },
+      { replace: true, preventScrollReset: true },
     );
   };
 
