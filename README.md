@@ -30,6 +30,17 @@ Titles come from TMDb, books from Google Books and exchange rates from Frankfurt
   - [Typography](#typography)
   - [Logo](#logo)
 - [Features](#features)
+  - [Header and Footer](#header-and-footer)
+  - [Home Page](#home-page)
+  - [Movies and Series](#movies-and-series)
+  - [Search](#search)
+  - [Title Details](#title-details)
+  - [Cart](#cart)
+  - [Log In and Sign Up](#log-in-and-sign-up)
+  - [Checkout and Order Confirmation](#checkout-and-order-confirmation)
+  - [Order History](#order-history)
+  - [My Library](#my-library)
+  - [Not Found Pages](#not-found-pages)
 - [Data and APIs](#data-and-apis)
 - [Testing](#testing)
   - [Manual Testing](#manual-testing)
@@ -251,6 +262,8 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-048** As a Visitor I can browse a shop with a clear and inviting look, so I can enjoy finding stories to watch and read.
 
+<br>
+
 </details>
 
 #### Not Implemented User Stories
@@ -262,6 +275,8 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-009** As a Visitor I can sort the catalog, so I can see the most popular, newest or highest rated stories first. *The home page rows already show the newest, most popular and highest rated stories, each with a "See all" page, so a separate sort control was not needed.*
 
+<br>
+
 </details>
 
 <details>
@@ -270,6 +285,8 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 <br>
 
 - **CS-025** As a User I can reset my password, so I can get back into my account if I forget it. *Resetting a password needs emails to be sent, and Supabase's free email service only sends to the project's own team members.*
+
+<br>
 
 </details>
 
@@ -313,7 +330,7 @@ The final pages are shown under [Features](#features).
 <details>
 <summary><strong>Wireframes</strong></summary>
 
-![Wireframes for the catalog, title details and cart](docs/images/wireframes.png)
+![Wireframes for the catalog, title details and cart](docs/images/design/wireframes.png)
 
 </details>
 
@@ -333,7 +350,7 @@ The full schema with all policies is in [`supabase/schema.sql`](supabase/schema.
 <details>
 <summary><strong>The first plan of the database</strong></summary>
 
-![The first plan of the database](docs/images/database-schema.png)
+![The first plan of the database](docs/images/design/database-schema.png)
 
 </details>
 
@@ -404,13 +421,14 @@ erDiagram
     timestamptz created_at
   }
 ```
+
 </details>
 
 ### Colour Scheme
 
 A dark theme lets the posters and backdrops stand out, like on a streaming service. Turquoise was chosen as the brand colour, as it is easy to read on the dark background and less common than the purple and red many streaming sites use.
 
-![Colour palette](docs/images/colour-palette.png)
+![Colour palette](docs/images/design/colour-palette.png)
 
 | Colour | Hex | Used for |
 | --- | --- | --- |
@@ -431,5 +449,429 @@ Buttons use a gradient from turquoise to aqua with dark text, which is easier to
 ### Logo
 
 The logo is a film strip that rises out of an open book and forms an S, so the story goes from the page to the screen. The icon is used on its own in the header, as the favicon and as the app icon, and the full logo with the name is shown in the footer.
+
+[Back to top](#table-of-contents)
+
+## Features
+
+### Header and Footer
+
+- The header is one row of icons on every screen size: the logo and the account menu on the left, Home, Movies and Series in the middle, and search and the cart on the right.
+- The account menu shows *Log in* for guests and *My library*, *Order history* and *Log out* for logged-in users. The currency is chosen at the bottom of the menu.
+- The search icon folds out a search bar under the icons.
+- The cart icon shows how many items are in the cart.
+- The footer shows the full logo, the main pages and the credits that TMDB and Google Books require.
+
+<details>
+<summary>Account menu for a guest</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/account-menu-mobile.webp" alt="The account menu for a guest on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/account-menu-desktop.webp" alt="The account menu for a guest on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>Account menu when logged in</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/account-menu-logged-in-mobile.webp" alt="The account menu for a logged-in user on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/account-menu-logged-in-desktop.webp" alt="The account menu for a logged-in user on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>Search bar</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/search-open-mobile.webp" alt="The search bar on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/search-open-desktop.webp" alt="The search bar on desktop" width="600"></td>
+  </tr>
+</table>
+
+</details>
+
+### Home Page
+
+- A carousel shows the highest rated book adaptations. On touch screens the slides are swiped, with a mouse the arrows are used.
+- Mobile shows the upright poster, larger screens the wide backdrop with the title.
+- Themed rows, such as *Recently added* and *Popular right now*, each have a *See all* page with the full list.
+
+<details>
+<summary>Home page</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/home-mobile.webp" alt="The home page on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/home-desktop.webp" alt="The home page on desktop" width="600"></td>
+  </tr>
+</table>
+
+</details>
+
+### Movies and Series
+
+- Movies and Series have their own pages, with the same layout.
+- Genre chips filter the titles, for example *Drama*, *Romance* or *Fantasy & Sci-Fi*. The chosen genre is kept in the URL, so it stays after a reload and can be shared.
+- Skeleton cards are shown while the titles load, and *Load more* fetches the next page.
+
+<details>
+<summary>Movies page</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/movies-mobile.webp" alt="The Movies page on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/movies-desktop.webp" alt="The Movies page on desktop" width="600"></td>
+  </tr>
+</table>
+
+</details>
+
+### Search
+
+- The search finds both movies and series, and only shows titles that are based on a book.
+- The search waits until the user stops typing, so a request is not sent for every letter.
+- The heading shows what was searched for, and a message is shown when nothing is found, with a button to clear the search.
+
+<details>
+<summary>Search results</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/search-mobile.webp" alt="Search results on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/search-desktop.webp" alt="Search results on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>No results</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/search-empty-mobile.webp" alt="A search with no results on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/search-empty-desktop.webp" alt="A search with no results on desktop" width="600"></td>
+  </tr>
+</table>
+
+</details>
+
+### Title Details
+
+- The backdrop sits behind the title, with the age rating, year, length, rating, genres, overview and a trailer button.
+- Tabs separate the ways to get the story. The chosen tab is kept in the URL.
+  - **Watch:** rent for 48 hours or buy the movie. Series are sold per season, or as the whole series with 20% off.
+  - **Read the book:** the book from Google Books as paperback, hardcover or e-book.
+  - **Movie + book / Series + book:** the story and the book together, with 15% off the book.
+  - **More from:** the other movies in the same movie series, for example all the Dune movies.
+- A title the user already owns shows *In your library* instead of the cart button, so it is not bought twice.
+- The cast is shown at the bottom.
+
+<details>
+<summary>Watch</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/detail-watch-mobile.webp" alt="The Watch tab on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/detail-watch-desktop.webp" alt="The Watch tab on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>Read the book</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/detail-read-mobile.webp" alt="The Read the book tab on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/detail-read-desktop.webp" alt="The Read the book tab on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>Movie + book</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/detail-bundle-mobile.webp" alt="The Movie + book tab on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/detail-bundle-desktop.webp" alt="The Movie + book tab on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>More from</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/detail-more-mobile.webp" alt="The More from tab on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/detail-more-desktop.webp" alt="The More from tab on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>A series with seasons</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/detail-series-mobile.webp" alt="A series with seasons on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/detail-series-desktop.webp" alt="A series with seasons on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>In your library</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/in-your-library-mobile.webp" alt="A title that is already in the library on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/in-your-library-desktop.webp" alt="A title that is already in the library on desktop" width="600"></td>
+  </tr>
+</table>
+
+</details>
+
+### Cart
+
+- Movies and series can only be in the cart once, while the quantity of physical books can be changed.
+- The cart shows the subtotal, the bundle discount and shipping. Shipping is $4.99 for physical books, and free from $35.
+- The cart works without an account and is kept in localStorage, so it stays after a reload. When the user logs in, it is merged with the cart saved on their account.
+- Prices are always in US dollars, with a conversion to SEK or GBP next to them when another currency is chosen.
+
+<details>
+<summary>Cart</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/cart-mobile.webp" alt="The cart on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/cart-desktop.webp" alt="The cart on desktop" width="600"></td>
+  </tr>
+</table>
+
+</details>
+
+### Log In and Sign Up
+
+- Users create an account with email and password, and log in to check out and see their library and orders.
+- After logging in, the user is sent back to the page they came from.
+
+<details>
+<summary>Log in</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/login-mobile.webp" alt="The log in page on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/login-desktop.webp" alt="The log in page on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>Sign up</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/signup-mobile.webp" alt="The sign up page on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/signup-desktop.webp" alt="The sign up page on desktop" width="600"></td>
+  </tr>
+</table>
+
+</details>
+
+### Checkout and Order Confirmation
+
+- The checkout shows the order with the total, and asks for a shipping address only when the order has physical books.
+- The payment is simulated, no payment is taken and nothing is shipped.
+- After the purchase, a confirmation shows the order number, and the digital titles are added to the user's library.
+
+<details>
+<summary>Checkout</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/checkout-mobile.webp" alt="The checkout on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/checkout-desktop.webp" alt="The checkout on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>Order confirmation</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/order-confirmation-mobile.webp" alt="The order confirmation on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/order-confirmation-desktop.webp" alt="The order confirmation on desktop" width="600"></td>
+  </tr>
+</table>
+
+</details>
+
+### Order History
+
+- All orders are listed with the date, the number of items and the total.
+- Physical books show their delivery status, *Processing* at first and *Shipped* after 24 hours.
+- Each order can be opened to see what was bought.
+
+<details>
+<summary>Order history</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/order-history-mobile.webp" alt="The order history on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/order-history-desktop.webp" alt="The order history on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>Order details</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/order-details-mobile.webp" alt="The order details on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/order-details-desktop.webp" alt="The order details on desktop" width="600"></td>
+  </tr>
+</table>
+
+</details>
+
+### My Library
+
+- Everything the user has bought or rented digitally is sorted into Movies, Series and E-books.
+- Rentals show how many hours are left. *Play* opens the trailer, which stands in for the movie, and *Read* opens the Google Books preview.
+- Expired rentals move to *History*, with a link to buy or rent the title again.
+
+<details>
+<summary>My library</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/library-mobile.webp" alt="My library on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/library-desktop.webp" alt="My library on desktop" width="600"></td>
+  </tr>
+</table>
+
+</details>
+
+### Not Found Pages
+
+- A title that does not exist shows a message with a way back.
+- Any other unknown address shows a 404 page with a link to the home page.
+
+<details>
+<summary>A title that does not exist</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/not-found-title-mobile.webp" alt="A title that does not exist on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/not-found-title-desktop.webp" alt="A title that does not exist on desktop" width="600"></td>
+  </tr>
+</table>
+
+<br>
+
+</details>
+
+<details>
+<summary>Page not found</summary>
+
+<br>
+
+<table>
+  <tr>
+    <td valign="top"><img src="docs/images/features/not-found-page-mobile.webp" alt="The 404 page on mobile" width="220"></td>
+    <td valign="top"><img src="docs/images/features/not-found-page-desktop.webp" alt="The 404 page on desktop" width="600"></td>
+  </tr>
+</table>
+
+</details>
+
+<br>
 
 [Back to top](#table-of-contents)
