@@ -4,6 +4,7 @@
 // The basket button adds both to the cart. A rental of the same movie is replaced.
 // Shown in its own tab, so a short message is shown instead when there is
 // no bundle: the book is not found, or the user already owns the story.
+// If Google Books cannot be reached, the user can try again without reloading.
 // description: e.g. "Buy the movie and the book together."
 // product, option: what is watched, e.g. the movie and its "Buy" option
 // book: { title, author, storyId } to find the book in Google Books
@@ -29,6 +30,7 @@ import { BUNDLE_DISCOUNT } from "../../../features/pricing/pricingConfig";
 import roundPrice from "../../../utils/roundPrice";
 import Button from "../../ui/buttons/Button/Button";
 import Loader from "../../ui/feedback/Loader/Loader";
+import LoadError from "../../ui/feedback/LoadError/LoadError";
 import Price from "../Price/Price";
 import optionStyles from "../PriceOptions/PriceOptions.module.css";
 import styles from "./BundleOffer.module.css";
@@ -38,7 +40,12 @@ const BundleOffer = ({ description, product, option, book }) => {
   const cartItems = useSelector(selectCartItems);
 
   // Same request as the book tab, so it comes from the cache
-  const { currentData: foundBook, isFetching } = useFindBookQuery(
+  const {
+    currentData: foundBook,
+    isFetching,
+    error,
+    refetch,
+  } = useFindBookQuery(
     { title: book.title, author: book.author },
     { skip: !book.title },
   );
@@ -60,6 +67,12 @@ const BundleOffer = ({ description, product, option, book }) => {
     );
   }
 
+  // Google Books could not be reached, so trying again can help
+  if (error) {
+    return <LoadError title="We couldn't load the bundle" onRetry={refetch} />;
+  }
+
+  // Google Books answered, but has no match for this story
   if (!foundBook) {
     return (
       <p className={styles.message}>
