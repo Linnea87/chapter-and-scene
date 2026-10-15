@@ -3,12 +3,15 @@
 
 /* --- Tab list --- */
 /* The tabs side by side, with a line under them on all screen sizes.
-   If they do not fit on a narrow screen, the row scrolls sideways */
+   If they do not fit on a narrow screen, the row scrolls sideways only,
+   and fades out on the right to show that there is more */
 .list {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
   border-bottom: 1px solid var(--color-border);
   overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
   scrollbar-width: none;
 }
 
@@ -16,7 +19,7 @@
 /* Text with a line under the selected tab. Same height as other buttons */
 .tab {
   min-height: var(--touch-target);
-  padding: 0 var(--space-sm);
+  padding: 0 var(--space-xs);
   border: none;
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
@@ -54,5 +57,6 @@
 
   .tab {
     font-size: 1rem;
+    padding: 0 var(--space-sm);
   }
 }
