@@ -1,6 +1,6 @@
 # Chapter & Scene
 
-![Chapter & Scene on different screen sizes](docs/images/mockup.png)
+![Chapter & Scene on different screen sizes](docs/images/mockup.webp)
 
 [LIVE SITE](https://chapter-and-scene.vercel.app)
 
@@ -57,10 +57,15 @@ Titles come from TMDb, books from Google Books and exchange rates from Frankfurt
   - [For Users](#for-users)
   - [Technical](#technical)
 - [Technologies Used](#technologies-used)
+  - [Languages](#languages)
+  - [Frameworks and Libraries](#frameworks-and-libraries)
+  - [Tools](#tools)
 - [Deployment](#deployment)
   - [Deploying with Vercel](#deploying-with-vercel)
   - [Running the Project Locally](#running-the-project-locally)
 - [Credits](#credits)
+  - [Data and Media](#data-and-media)
+  - [Documentation](#documentation)
 
 ## UX
 
@@ -1092,5 +1097,101 @@ The shop covers everything that was planned, but there are ideas for where it co
 - **Code splitting** with `React.lazy`. It was tested, and it removed the build's chunk size warning, but it only made the first load about 10 KB smaller, since most of the code is libraries that every page needs.
 - **Server-side rendering**, so the carousel image is in the first HTML and the page loads faster on mobile.
 - **A brand font for the headings**, such as Playfair Display, to match the logo even more.
+
+[Back to top](#table-of-contents)
+
+## Technologies Used
+
+The app is a React single-page app built with Vite, with Redux Toolkit for the state and Supabase as the backend.
+
+### Languages
+
+- **JavaScript** with React and JSX
+- **HTML**
+- **CSS** with CSS Modules and CSS variables
+
+### Frameworks and Libraries
+
+- [React](https://react.dev/): the user interface
+- [React Router](https://reactrouter.com/): the pages, links and URL parameters
+- [Redux Toolkit](https://redux-toolkit.js.org/) and [React Redux](https://react-redux.js.org/): the global state, and RTK Query for fetching data
+- [Supabase JS](https://supabase.com/docs/reference/javascript/introduction): accounts and the database
+- [Lucide React](https://lucide.dev/): the icons
+
+### Tools
+
+- [Vite](https://vite.dev/): the development server and the build
+- [ESLint](https://eslint.org/): checking the code
+- [Git](https://git-scm.com/) and [GitHub](https://github.com/): version control, issues, milestones, the Kanban board and pull requests
+- [Vercel](https://vercel.com/): hosting the live site
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools) and [Lighthouse](https://developer.chrome.com/docs/lighthouse): testing on different screen sizes, performance and accessibility
+- [Coolors](https://coolors.co/): the colour palette
+
+[Back to top](#table-of-contents)
+
+## Deployment
+
+The live site is hosted on Vercel and is built from the `main` branch.
+
+### Deploying with Vercel
+
+1. Log in to [Vercel](https://vercel.com/) with GitHub and choose **Add New → Project**.
+2. Import the `chapter-and-scene` repository. Vercel finds the Vite settings on its own.
+3. Add the environment variables from [Running the Project Locally](#running-the-project-locally) under **Environment Variables**.
+4. Click **Deploy**.
+
+Every merge to `main` deploys the site again, and every pull request gets its own preview link. The file `vercel.json` sends every address to `index.html`, so React Router can show the right page when a link is opened or a page is reloaded.
+
+### Running the Project Locally
+
+You need [Node.js](https://nodejs.org/) and free accounts on [TMDb](https://www.themoviedb.org/) and [Supabase](https://supabase.com/).
+
+1. Clone the repository and install the packages:
+
+   ```bash
+   git clone https://github.com/Linnea87/chapter-and-scene.git
+   cd chapter-and-scene
+   npm install
+   ```
+
+2. Copy `.env.example` to `.env` and add your own keys:
+
+   | Variable | Where to find it |
+   | --- | --- |
+   | `VITE_TMDB_TOKEN` | TMDb → Settings → API → API Read Access Token |
+   | `VITE_GOOGLE_BOOKS_KEY` | Optional. Google Cloud Console, with the Books API turned on |
+   | `VITE_SUPABASE_URL` | Supabase → Project Settings → API |
+   | `VITE_SUPABASE_PUBLISHABLE_KEY` | Supabase → Project Settings → API |
+
+3. Create the tables by running [`supabase/schema.sql`](supabase/schema.sql) in the Supabase SQL Editor.
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+Other scripts:
+
+- `npm run build` builds the app for production.
+- `npm run preview` shows the production build locally.
+- `npm run lint` checks the code with ESLint.
+
+[Back to top](#table-of-contents)
+
+## Credits
+
+### Data and Media
+
+- [TMDb](https://www.themoviedb.org/): film and series data, posters, backdrops, cast photos, and trailers from YouTube. This product uses the TMDB API but is not endorsed or certified by TMDB.
+- [Google Books](https://books.google.com/): book data, covers and previews.
+- [Frankfurter](https://frankfurter.dev/): exchange rates.
+- [Lucide](https://lucide.dev/): icons.
+- [Canva](https://www.canva.com/): the logo, which I generated with Canva and then cropped and adjusted for the site.
+
+### Documentation
+
+- [React](https://react.dev/), [React Router](https://reactrouter.com/), [Redux Toolkit](https://redux-toolkit.js.org/) and [Supabase](https://supabase.com/docs): how the libraries are used.
+- [MDN Web Docs](https://developer.mozilla.org/): HTML, CSS and JavaScript, for example the native `<dialog>` element.
 
 [Back to top](#table-of-contents)
