@@ -3,8 +3,7 @@
 
 /* --- Tab list --- */
 /* The tabs side by side, with a line under them on all screen sizes.
-   If they do not fit on a narrow screen, the row scrolls sideways only,
-   and fades out on the right to show that there is more */
+   If they do not fit on a narrow screen, the row scrolls sideways only */
 .list {
   display: flex;
   gap: var(--space-xs);
