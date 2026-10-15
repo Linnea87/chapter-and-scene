@@ -41,6 +41,7 @@ Titles come from TMDb, books from Google Books and exchange rates from Frankfurt
   - [Order History](#order-history)
   - [My Library](#my-library)
   - [Not Found Pages](#not-found-pages)
+- [Project Structure](#project-structure)
 - [Data and APIs](#data-and-apis)
   - [APIs](#apis)
   - [Fetching Data with RTK Query](#fetching-data-with-rtk-query)
@@ -53,8 +54,9 @@ Titles come from TMDb, books from Google Books and exchange rates from Frankfurt
   - [Unfixed Bugs](#unfixed-bugs)
 - [Known Limitations](#known-limitations)
 - [Future Improvements](#future-improvements)
+  - [For Users](#for-users)
+  - [Technical](#technical)
 - [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
 - [Deployment](#deployment)
   - [Deploying with Vercel](#deploying-with-vercel)
   - [Running the Project Locally](#running-the-project-locally)
@@ -889,6 +891,39 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 
 [Back to top](#table-of-contents)
 
+## Project Structure
+
+The code is split into layers, so each part has one job. Services fetch the data, features hold the rules and the Redux state, hooks combine them for the components, and pages decide what is shown on each route.
+
+```
+src/
+├── assets/        Logos used in the header and footer
+├── components/    Reusable parts, grouped by area
+│   ├── layout/    Header, footer, account menu, search bar and cart icon
+│   ├── titles/    Title cards, grids, rows and results
+│   ├── details/   The title page: hero, tabs, cast and movie series
+│   ├── pricing/   Price rows, prices and the bundle offer
+│   ├── cart/      Cart items, cart button and order summary
+│   ├── ...        auth, books, checkout, home, library, orders, trailer
+│   └── ui/        Buttons, forms, feedback, media and navigation shared by everything
+├── features/      Redux slices, selectors, configuration and helpers per area,
+│                  e.g. cart, currency, auth, pricing and explore
+├── hooks/         Custom hooks, e.g. useExploreTitles, useCartSync and useDialog
+├── pages/         One folder per route, e.g. HomePage, ExplorePage and CartPage
+├── routes/        The router with all routes
+├── services/      One RTK Query service per API: tmdb, googleBooks,
+│                  frankfurter and supabase, plus localStorage helpers
+├── store/         The Redux store, and saving the cart and currency
+├── styles/        Global styles and the design tokens as CSS variables
+└── utils/         Small functions, e.g. formatPrice, formatDate and pluralize
+```
+
+- **Components** are styled with CSS Modules, one `.module.css` file next to each component, and use the CSS variables in `variables.css` for colours, spacing and fonts.
+- **Configuration** such as prices, rental time, shipping and the home page rows lives in config files in `features/`, so a rule is changed in one place instead of in the components.
+- **Every file** starts with a short comment that explains what it does.
+
+[Back to top](#table-of-contents)
+
 ## Data and APIs
 
 Chapter & Scene combines four APIs into one shop. This section explains where the data comes from, how it is fetched and how the app keeps track of the cart, the currency and the logged-in user.
@@ -1021,5 +1056,41 @@ These bugs were found during testing and have been fixed:
 ### Unfixed Bugs
 
 No known bugs.
+
+[Back to top](#table-of-contents)
+
+## Known Limitations
+
+Chapter & Scene is a demo shop, so some parts are simulated or depend on what the APIs allow.
+
+- **Payment and delivery are simulated.** No payment is taken and nothing is shipped. Physical books change from *Processing* to *Shipped* after 24 hours.
+- **A trailer stands in for the movie.** *Play* in the library opens the trailer from TMDb, since the shop has no real films to stream.
+- **Google Books limits the previews.** Some books have no preview, and Google limits how many preview pages one network can read of a book, so *Read* can show a short preview or open Google's own reader instead.
+- **Only titles with the right keywords are shown.** The shop relies on TMDb's keywords to find book adaptations, so an adaptation that is missing those keywords on TMDb does not appear.
+- **Prices are always charged in US dollars.** SEK and GBP are only shown as a conversion next to the dollar price.
+- **No email from the app.** Email confirmation is turned off in Supabase and password reset is not available, since Supabase's free email service only sends to the project's own team members.
+- **Trailers do not start with sound on iPhone.** Safari on iOS does not autoplay embedded YouTube videos with sound, so the user taps play.
+- **The first load on mobile is slower than on desktop.** The carousel image is only known after the app has loaded and TMDb has answered, which keeps the Lighthouse Performance score on mobile around 80.
+
+[Back to top](#table-of-contents)
+
+## Future Improvements
+
+The shop covers everything that was planned, but there are ideas for where it could go next, both for the users and in how the app is built.
+
+### For Users
+
+- **Password reset and email confirmation** with an email provider, such as Resend, connected to Supabase.
+- **The user's name in the account menu**, saved when the account is created.
+- **Removing expired rentals** from the library.
+- **A wish list**, so users can save stories they want to watch or read later.
+- **More currencies**, such as euro, next to USD, SEK and GBP.
+- **The site in the user's own language**, chosen from the browser's language setting, for example Swedish.
+
+### Technical
+
+- **Code splitting** with `React.lazy`. It was tested, and it removed the build's chunk size warning, but it only made the first load about 10 KB smaller, since most of the code is libraries that every page needs.
+- **Server-side rendering**, so the carousel image is in the first HTML and the page loads faster on mobile.
+- **A brand font for the headings**, such as Playfair Display, to match the logo even more.
 
 [Back to top](#table-of-contents)
