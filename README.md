@@ -128,8 +128,6 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 <details>
 <summary>EPIC 1 - Catalog & search</summary>
 
-<br>
-
 - **CS-001** As a Visitor I can explore movies and series based on books, so I can discover stories I might want to read or watch.
 
 - **CS-002** As a Visitor I can filter the catalog by category, so I can find stories in genres I like.
@@ -150,14 +148,10 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-046** As a Visitor I can search for any movie or series title, so I can find out if it is based on a book, even if it is not shown in the catalog yet.
 
-<br>
-
 </details>
 
 <details>
 <summary>EPIC 2 - Title details</summary>
-
-<br>
 
 - **CS-010** As a Visitor I can see detailed information about a movie, so I can decide whether I want to watch it.
 
@@ -173,14 +167,10 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-047** As a Visitor I can switch between watching and reading options with tabs, so I can focus on one format at a time without a long page.
 
-<br>
-
 </details>
 
 <details>
 <summary>EPIC 3 - Cart</summary>
-
-<br>
 
 - **CS-016** As a Visitor I can add a movie, series or book to my cart in the format I choose, so I can buy it later.
 
@@ -198,27 +188,19 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-044** As a Visitor I can choose to see prices in USD, SEK or GBP, so I can understand the prices in a currency I know.
 
-<br>
-
 </details>
 
 <details>
 <summary>EPIC 4 - Account</summary>
 
-<br>
-
 - **CS-023** As a Visitor I can create an account, log in and log out, so I can keep my purchases and library.
 
 - **CS-024** As a Visitor I can keep my cart when I log in, so I can avoid adding everything again.
-
-<br>
 
 </details>
 
 <details>
 <summary>EPIC 5 - Checkout & orders</summary>
-
-<br>
 
 - **CS-026** As a User I can complete my purchase, so I can get access to what I bought.
 
@@ -228,14 +210,10 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-029** As a User I can see the delivery status of my physical books, so I can know when they will arrive.
 
-<br>
-
 </details>
 
 <details>
 <summary>EPIC 6 - My library</summary>
-
-<br>
 
 - **CS-030** As a User I can see everything I have bought or rented digitally, so I can access it in one place.
 
@@ -249,14 +227,10 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-035** As a User I can find my expired rentals in one place, so I can easily buy or rent the movie again.
 
-<br>
-
 </details>
 
 <details>
 <summary>EPIC 7 - Setup & delivery</summary>
-
-<br>
 
 - **CS-036** As a Developer I can start from the Twinflower base structure, so I can spend my time on the new features.
 
@@ -276,8 +250,6 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 
 - **CS-048** As a Visitor I can browse a shop with a clear and inviting look, so I can enjoy finding stories to watch and read.
 
-<br>
-
 </details>
 
 #### Not Implemented User Stories
@@ -285,22 +257,14 @@ The user stories are grouped into seven EPICs. All *Must Have*, *Should Have* an
 <details>
 <summary>EPIC 1 - Catalog & search</summary>
 
-<br>
-
 - **CS-009** As a Visitor I can sort the catalog, so I can see the most popular, newest or highest rated stories first. *The home page rows already show the newest, most popular and highest rated stories, each with a "See all" page, so a separate sort control was not needed.*
-
-<br>
 
 </details>
 
 <details>
 <summary>EPIC 4 - Account</summary>
 
-<br>
-
 - **CS-025** As a User I can reset my password, so I can get back into my account if I forget it. *Resetting a password needs emails to be sent, and Supabase's free email service only sends to the project's own team members.*
-
-<br>
 
 </details>
 
@@ -369,8 +333,6 @@ The full schema with all policies is in [`supabase/schema.sql`](supabase/schema.
 ![The first plan of the database](docs/images/design/database-schema.png)
 
 </details>
-
-<br>
 
 <details>
 <summary><strong>The final database</strong></summary>
@@ -485,8 +447,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 <details>
 <summary>Account menu for a guest</summary>
 
-<br>
-
 <table>
   <tr>
     <td valign="top"><img src="docs/images/features/account-menu-mobile.webp" alt="The account menu for a guest on mobile" width="220"></td>
@@ -494,14 +454,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>Account menu when logged in</summary>
-
-<br>
 
 <table>
   <tr>
@@ -510,14 +466,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>Search bar</summary>
-
-<br>
 
 <table>
   <tr>
@@ -537,8 +489,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 <details>
 <summary>Home page</summary>
 
-<br>
-
 <table>
   <tr>
     <td valign="top"><img src="docs/images/features/home-mobile.webp" alt="The home page on mobile" width="220"></td>
@@ -556,8 +506,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 
 <details>
 <summary>Movies page</summary>
-
-<br>
 
 <table>
   <tr>
@@ -577,8 +525,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 <details>
 <summary>Search results</summary>
 
-<br>
-
 <table>
   <tr>
     <td valign="top"><img src="docs/images/features/search-mobile.webp" alt="Search results on mobile" width="220"></td>
@@ -586,14 +532,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>No results</summary>
-
-<br>
 
 <table>
   <tr>
@@ -618,8 +560,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 <details>
 <summary>Watch</summary>
 
-<br>
-
 <table>
   <tr>
     <td valign="top"><img src="docs/images/features/detail-watch-mobile.webp" alt="The Watch tab on mobile" width="220"></td>
@@ -627,14 +567,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>Read the book</summary>
-
-<br>
 
 <table>
   <tr>
@@ -643,14 +579,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>Movie + book</summary>
-
-<br>
 
 <table>
   <tr>
@@ -659,14 +591,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>More from</summary>
-
-<br>
 
 <table>
   <tr>
@@ -675,14 +603,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>A series with seasons</summary>
-
-<br>
 
 <table>
   <tr>
@@ -691,14 +615,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>In your library</summary>
-
-<br>
 
 <table>
   <tr>
@@ -719,8 +639,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 <details>
 <summary>Cart</summary>
 
-<br>
-
 <table>
   <tr>
     <td valign="top"><img src="docs/images/features/cart-mobile.webp" alt="The cart on mobile" width="220"></td>
@@ -738,8 +656,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 <details>
 <summary>Log in</summary>
 
-<br>
-
 <table>
   <tr>
     <td valign="top"><img src="docs/images/features/login-mobile.webp" alt="The log in page on mobile" width="220"></td>
@@ -747,14 +663,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>Sign up</summary>
-
-<br>
 
 <table>
   <tr>
@@ -774,8 +686,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 <details>
 <summary>Checkout</summary>
 
-<br>
-
 <table>
   <tr>
     <td valign="top"><img src="docs/images/features/checkout-mobile.webp" alt="The checkout on mobile" width="220"></td>
@@ -783,14 +693,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>Order confirmation</summary>
-
-<br>
 
 <table>
   <tr>
@@ -810,8 +716,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 <details>
 <summary>Order history</summary>
 
-<br>
-
 <table>
   <tr>
     <td valign="top"><img src="docs/images/features/order-history-mobile.webp" alt="The order history on mobile" width="220"></td>
@@ -819,14 +723,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>Order details</summary>
-
-<br>
 
 <table>
   <tr>
@@ -846,8 +746,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 <details>
 <summary>My library</summary>
 
-<br>
-
 <table>
   <tr>
     <td valign="top"><img src="docs/images/features/library-mobile.webp" alt="My library on mobile" width="220"></td>
@@ -865,8 +763,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 <details>
 <summary>A title that does not exist</summary>
 
-<br>
-
 <table>
   <tr>
     <td valign="top"><img src="docs/images/features/not-found-title-mobile.webp" alt="A title that does not exist on mobile" width="220"></td>
@@ -874,14 +770,10 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
   </tr>
 </table>
 
-<br>
-
 </details>
 
 <details>
 <summary>Page not found</summary>
-
-<br>
 
 <table>
   <tr>
@@ -891,8 +783,6 @@ Each feature below has screenshots on mobile and desktop. Open a box to see them
 </table>
 
 </details>
-
-<br>
 
 [Back to top](#table-of-contents)
 
@@ -942,8 +832,6 @@ Chapter & Scene combines four APIs into one shop. This section explains where th
 | [Frankfurter](https://frankfurter.dev/) | Exchange rates from US dollars to SEK and GBP |
 | [Supabase](https://supabase.com/) | Accounts, the saved cart, orders and the library |
 
-<br>
-
 - **Only book adaptations:** TMDb has keywords such as *based on novel or book*. Every list is filtered on these keywords, and since TMDb's search cannot filter on keywords, each search result is checked one by one.
 - **Prices:** TMDb and Google Books have no prices, so the shop sets its own. New releases cost more, a whole series is 20% off, and a bundle is 15% off the book.
 - **Currency:** the shop charges in US dollars. When another currency is chosen, the converted price is shown next to the price in dollars.
@@ -979,8 +867,6 @@ The tests were made on an iPhone in Safari and as a home screen app, and on a Ma
 
 <details>
 <summary>Manual tests</summary>
-
-<br>
 
 | Feature | Test | Result |
 | --- | --- | --- |
@@ -1029,8 +915,6 @@ The rest of the mobile score comes from the carousel image, which is only known 
 
 <details>
 <summary>Lighthouse reports</summary>
-
-<br>
 
 **Mobile**
 
